@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAIN · 降雨预报 · 订阅管理</title>
+<style>
+:root{--bg:#f4f0e8;--ink:#2b2722;--ink2:#5c5750;--ink3:#8a857b;--gold:#b8943e;--gold-d:#8b691e;--radius:6px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;padding:2rem}
+h1{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:.15em;margin-bottom:.3rem}
+.sub{font-size:.75rem;color:var(--ink3);margin-bottom:2.5rem}
+.card{background:rgba(250,247,240,.4);backdrop-filter:blur(16px);border:1px solid rgba(184,148,62,.06);border-radius:var(--radius);padding:1.5rem 2rem;margin-bottom:1.5rem}
+.stats{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.stat{background:rgba(250,247,240,.3);backdrop-filter:blur(8px);border:1px solid rgba(184,148,62,.05);border-radius:var(--radius);padding:1.2rem 2rem;text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);font-weight:500}
+.stat-label{font-size:.6rem;letter-spacing:.3em;color:var(--ink3);text-transform:uppercase;margin-top:.3rem}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:.6rem;letter-spacing:.25em;color:var(--gold-d);text-transform:uppercase;padding:.8rem 1rem;border-bottom:1px solid rgba(184,148,62,.08)}
+td{font-size:.75rem;color:var(--ink2);padding:.7rem 1rem;border-bottom:1px solid rgba(184,148,62,.03)}
+.badge{display:inline-block;font-size:.55rem;letter-spacing:.2em;padding:.2rem .7rem;border-radius:100px;text-transform:uppercase}
+.badge-email{background:rgba(184,148,62,.1);color:var(--gold-d)}
+.badge-phone{background:rgba(107,118,128,.1);color:var(--ink3)}
+.loading{color:var(--ink3);font-style:italic;font-size:.85rem}
+.error{color:#b84444;font-size:.85rem}
+.btn{font-family:'Inter',sans-serif;font-size:.62rem;letter-spacing:.25em;color:var(--bg);background:var(--gold-d);border:none;border-radius:100px;padding:.5rem 1.5rem;cursor:pointer;text-transform:uppercase;transition:background .3s}
+.btn:hover{background:var(--gold)}
+.btn-outline{background:transparent;color:var(--gold-d);border:1px solid rgba(184,148,62,.15)}
+.btn-outline:hover{background:rgba(184,148,62,.06);color:var(--gold)}
+.toolbar{display:flex;gap:1rem;align-items:center;margin-bottom:2rem;flex-wrap:wrap}
+@media(max-width:640px){body{padding:1rem}.card{padding:1rem}.stats{gap:1rem}.stat{padding:.8rem 1.2rem}}
+</style>
+</head>
+<body>
+<h1>RAIN · 降雨预报</h1>
+<p class="sub">订阅者管理 · Subscriber Dashboard</p>
+
+<div class="toolbar">
+  <button class="btn" onclick="loadData()">刷新数据</button>
+  <button class="btn btn-outline" onclick="exportCSV()">导出 CSV</button>
+  <span style="font-size:.65rem;color:var(--ink3);margin-left:1rem" id="lastUpdated"></span>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num" id="statTotal">—</div><div class="stat-label">总订阅</div></div>
+  <div class="stat"><div class="stat-num" id="statEmail">—</div><div class="stat-label">邮箱</div></div>
+  <div class="stat"><div class="stat-num" id="statPhone">—</div><div class="stat-label">手机号</div></div>
+</div>
+
+<div class="card">
+  <table>
+    <thead><tr><th>联系方式</th><th>类型</th><th>订阅时间</th></tr></thead>
+    <tbody id="tableBody"><tr><td colspan="3" class="loading">加载中...</td></tr></tbody>
+  </table>
+</div>
+
+<script>
+const API = '/api/admin?key=rain2026';
+
+function formatDate(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('zh-CN', {
+    year:'numeric', month:'2-digit', day:'2-digit',
+    hour:'2-digit', minute:'2-digit'
+  });
+}
+
+async function loadData() {
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '<tr><td colspan="3" class="loading">加载中...</td></tr>';
+  try {
+    const res = await fetch(API);
+    if (!res.ok) throw new Error('无法连接服务器，请确保 node server.js 正在运行');
+    const data = await res.json();
+    render(data);
+    document.getElementById('lastUpdated').textContent = '最后更新: ' + formatDate(new Date().toISOString());
+  } catch (e) {
+    tbody.innerHTML = '<tr><td colspan="3" class="error">' + e.message + '</td></tr>';
+  }
+}
+
+function render(data) {
+  const tbody = document.getElementById('tableBody');
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="3" style="color:var(--ink3)">暂无订阅记录。当有用户通过网站提交后，这里会显示。</td></tr>';
+    updateStats(0,0,0);
+    return;
+  }
+  const sorted = [...data].reverse();
+  tbody.innerHTML = sorted.map(s => {
+    const typeLabel = s.type === 'email' ? '邮箱' : '手机号';
+    const badgeCls = s.type === 'email' ? 'badge-email' : 'badge-phone';
+    return `<tr><td>${esc(s.contact)}</td><td><span class="badge ${badgeCls}">${typeLabel}</span></td><td>${formatDate(s.subscribedAt)}</td></tr>`;
+  }).join('');
+
+  const emails = data.filter(s=>s.type==='email').length;
+  const phones = data.filter(s=>s.type==='phone').length;
+  updateStats(data.length, emails, phones);
+}
+
+function updateStats(total, email, phone) {
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statEmail').textContent = email;
+  document.getElementById('statPhone').textContent = phone;
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function exportCSV() {
+  fetch(API).then(r=>r.json()).then(data=>{
+    const csv = 'contact,type,subscribedAt\n' + data.map(s=>`${s.contact},${s.type},${s.subscribedAt}`).join('\n');
+    const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'rain-subscribers.csv'; a.click();
+    URL.revokeObjectURL(url);
+  });
+}
+
+loadData();
+</script>
+</body>
+</html>

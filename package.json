@@ -1,0 +1,13 @@
+{
+  "name": "rain-perfume",
+  "version": "1.0.0",
+  "description": "RAIN · 香水之雨 — Perfume as Rain",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}

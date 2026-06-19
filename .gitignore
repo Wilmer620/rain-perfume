@@ -1,0 +1,7 @@
+node_modules/
+data/
+*.ps1
+check-imgs.ps1
+fix-js.py
+quiz-new.js
+lt-url.txt
