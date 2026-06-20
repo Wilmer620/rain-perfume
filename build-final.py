@@ -893,8 +893,8 @@ html = f'''<!DOCTYPE html>
 <li><a href="#phil">品牌哲学</a></li>
 <li><a href="#series">产品介绍</a></li>
 <li><a href="#collection">臻品雨酿</a></li>
-<li><a href="#craft">制香之道</a></li>
-<li><a href="#founders">主理人手记</a></li>
+<li><a href="#craft">雨的贮存指南</a></li>
+<li><a href="#founders">雨的观察日记</a></li>
 <li><a href="#quiz">寻雨之路</a></li>
 <li><a href="#newsletter">降雨预报</a></li>
 </ul>
@@ -904,8 +904,8 @@ html = f'''<!DOCTYPE html>
 <a href="#phil">品牌哲学</a>
 <a href="#series">产品介绍</a>
 <a href="#collection">臻品雨酿</a>
-<a href="#craft">制香之道</a>
-<a href="#founders">主理人手记</a>
+<a href="#craft">雨的贮存指南</a>
+<a href="#founders">雨的观察日记</a>
 <a href="#quiz">寻雨之路</a>
 <a href="#newsletter">降雨预报</a>
 </div>
@@ -1036,25 +1036,25 @@ html = f'''<!DOCTYPE html>
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 04 · 制香之道 -->
-<div class="sec-label reveal"><p class="num">04</p><h2 class="title">制香之道</h2><p class="sec-en">The Art of Perfumery</p></div>
+<!-- 04 · 雨的贮存指南 -->
+<div class="sec-label reveal"><p class="num">04</p><h2 class="title">雨的贮存指南</h2><p class="sec-en">How to Keep the Rain</p></div>
 <section class="craft reveal" id="craft">
 <div class="craft-grid">
-<div class="craft-card"><span class="num">01</span><h4>冷萃 · 锁住第一缕气息</h4><p>植物的灵魂储存在清晨五点的水分里。我们将原料在 4°C 下浸入有机甘蔗酒精，持续 72 小时——让前调最脆弱的分子在低温中完整保留，不急不躁，像雨前酝酿的云。</p></div>
-<div class="craft-card"><span class="num">02</span><h4>静置 · 让时间完成配方</h4><p>混合后的液体被送入恒温暗室，在绝对的安静中静置 4–8 周。没有搅拌、没有催促——每一天，分子都在自行寻找彼此。这是一场由时间主导的交响排练，我们不能代劳。</p></div>
-<div class="craft-card"><span class="num">03</span><h4>微滤 · 只留下光的重量</h4><p>五层微米级滤膜，逐级去除残留的植物蜡质与杂质——却不带走任何香气分子。最终的液体应当如雨水穿过空气后落在叶面上那一刻般澄澈：透明、轻盈、没有多余的重量。</p></div>
+<div class="craft-card"><span class="num">01</span><h4>接雨 · 在雨滴落下的前一秒</h4><p>贮存雨水的最佳时机——<em>不是下雨时，而是雨即将落下时</em>。空气里的湿度达到临界点，每一寸缝隙都充满了即将成为雨的水分子。在这一刻捕捉到的气息，保留了云层的冷冽和天空的记忆。我们称之为<em>「云的前调」</em>——它还没来得及落地，就已经被保存下来。</p></div>
+<div class="craft-card"><span class="num">02</span><h4>藏雨 · 让时间做唯一容器</h4><p>收集到的雨水不能立刻封存——它需要<em>呼吸</em>。我们将其置于恒温玻璃容器中，在暗处静置 4–8 周。每一天，水分子都在重组。这不是等待——这是<em>一场无声的对话</em>，雨在讲述它从哪片云来、经过了多少米的高度。我们不能催促，只能旁听。</p></div>
+<div class="craft-card"><span class="num">03</span><h4>释雨 · 回到最初的形态</h4><p>封存雨水的最终目的——<em>不是占有，是让它重新蒸发</em>。经过五层微米级滤膜，去除一切杂质，却保留雨的一切记忆。最终的液体应如雨滴初落在叶片上那一刻——澄澈、透明、随时准备回到天空。我们不是一个香水品牌——我们是<em>雨的翻译者</em>。</p></div>
 </div>
 </section>
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 05 · 主理人手记 -->
-<div class="sec-label reveal"><p class="num">05</p><h2 class="title">主理人手记</h2></div>
+<!-- 05 · 雨的观察日记 -->
+<div class="sec-label reveal"><p class="num">05</p><h2 class="title">雨的观察日记</h2></div>
 <section class="founders reveal" id="founders">
 <div class="founders-inner glass-panel">
-<p class="kicker">A Letter from the Founder</p>
-<p class="text"><em>我一直在找一种气味。</em><br>不是那种走进房间就能被认出来的——<br>而是你在雨天窗边发呆时，<br>自己都不确定自己闻到了什么的那种。<br><br>2025 年冬天，我们做了 RAIN。<br>不是想做一个香水品牌。我们只是想：<br>如果有人能把<em>雨停之后那一分钟的安静</em>收集起来，<br>世界上会不会多一种温柔。<br><br>我们没有答案。但我们会一直做下去。</p>
-<p class="sign">— RAIN 主理人</p>
+<p class="kicker">Diary of Rain</p>
+<p class="text"><em>3月12日 · 毛毛雨</em><br>今天的雨很小，小到你几乎不确定它是不是雨。我在窗边站了很久，伸出手试探了三次才确认——有东西落在掌心。这种雨不会打湿头发，但会在睫毛上停留很久。我想到那些<em>不确定的温柔</em>——不被人察觉，却一直在发生。或许香气也应该是这样：不需要被人认出，只需要一直存在。<br><br><em>6月8日 · 雷阵雨</em><br>下午三点，天突然黑了。雨来得毫无预兆，砸在玻璃上像一千颗小石子同时落下。整个城市都躲进了屋檐，只有外卖骑手和麻雀还在雨里。这让我想起那些<em>拒绝退让</em>的人——不是因为勇敢，是因为有地方要去。有些雨不是为了柔软——它是为了<em>冲刷</em>。<br><br><em>9月21日 · 雨后初晴</em><br>雨停之后的第十分钟。空气从没有这么干净过。每一片叶子都在滴水，每一个水洼都倒映着一小块天空。我蹲下来看一个水洼——里面有一朵很小的云。我想起了 RAIN 要做的事：<em>不制造香水，只收集雨停之后那一分钟的安静。</em></p>
+<p class="sign">— RAIN · 雨的观察员</p>
 </div>
 </section>
 
