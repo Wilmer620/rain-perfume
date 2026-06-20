@@ -378,25 +378,21 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 /* ══ Entrance ══ */
 .entrance{position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;align-items:center;justify-content:center;pointer-events:all;transition:opacity .7s ease,visibility .7s ease}
 .entrance.out{opacity:0;visibility:hidden;pointer-events:none}
-.entrance-ripple{position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;border:1px solid rgba(184,148,62,.25);transform:translate(-50%,-50%);animation:rippleOut 1.8s .2s ease-out forwards}
-.entrance-ripple:nth-child(2){animation-delay:.4s;border-color:rgba(184,148,62,.15)}
-.entrance-ripple:nth-child(3){animation-delay:.6s;border-color:rgba(184,148,62,.1)}
-.entrance-brand{position:relative;z-index:1;text-align:center;opacity:0;animation:brandReveal .7s 1.0s cubic-bezier(.25,.1,.25,1) forwards}
-.entrance-brand h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:400;letter-spacing:.3em;color:var(--ink);margin-bottom:.3rem}
-.entrance-brand p{font-family:'Noto Serif SC',serif;font-size:.7rem;font-weight:300;letter-spacing:.5em;color:var(--ink3)}
-.entrance-skip-wrap{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%)}
-.entrance-skip{font-family:'Inter',sans-serif;font-size:.55rem;letter-spacing:.35em;color:var(--ink3);text-transform:uppercase;opacity:0;animation:brandReveal .5s 1.3s ease-out forwards;cursor:none}
-/* 三线雨标 */
-.entrance-rain-mark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;justify-content:center;gap:10px;width:56px;height:40px;margin-top:-50px}
-.entrance-rain-mark .rl{display:block;background:var(--ink);border-radius:1px;transform:translateY(-80px);opacity:0}
-.entrance-rain-mark .rl.r1{width:.9px;height:34px;animation:rlDrop .6s .05s cubic-bezier(.22,0,.36,1) forwards}
-.entrance-rain-mark .rl.r2{width:1.2px;height:40px;animation:rlDrop .6s .15s cubic-bezier(.22,0,.36,1) forwards}
-.entrance-rain-mark .rl.r3{width:.6px;height:28px;animation:rlDrop .6s .25s cubic-bezier(.22,0,.36,1) forwards}
-@keyframes rlDrop{0%{transform:translateY(-80px);opacity:0}60%{opacity:1}100%{transform:translateY(0);opacity:1}}
-.entrance-gold-dot{position:absolute;top:50%;left:50%;width:5px;height:5px;border-radius:50%;background:var(--gold);transform:translate(-50%,-50%);opacity:0;animation:dotGlow .4s .4s ease-out forwards;box-shadow:0 0 10px rgba(184,148,62,.5);margin-top:-50px}
-@keyframes dotGlow{0%{opacity:0;transform:translate(-50%,-50%) scale(0)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
-.entrance-rain-mark-wrap{position:absolute;inset:0;z-index:1;opacity:1;transition:opacity .6s;pointer-events:none}
-@keyframes rippleOut{0%{width:0;height:0;opacity:.6}100%{width:360px;height:360px;opacity:0}}@keyframes brandReveal{0%{opacity:0;transform:translateY(16px) scale(.96);filter:blur(8px)}60%{opacity:.7;filter:blur(2px)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+/* Entrance Logo SVG */
+.entrance-logo{position:relative;z-index:1;opacity:1;transition:opacity .5s}
+.entrance.out .entrance-logo{opacity:0}
+.entrance-logo .el{opacity:0}
+.entrance-logo .el1{animation:elDrop .5s .1s cubic-bezier(.22,0,.36,1) forwards}
+.entrance-logo .el2{animation:elDrop .5s .18s cubic-bezier(.22,0,.36,1) forwards}
+.entrance-logo .el3{animation:elDrop .5s .26s cubic-bezier(.22,0,.36,1) forwards}
+.entrance-logo .el4{animation:elDot .35s .35s ease-out forwards}
+.entrance-logo .el5{animation:elFade .7s .5s ease-out forwards}
+.entrance-logo .el6{animation:elFade .7s .65s ease-out forwards}
+@keyframes elDrop{0%{transform:translateY(-60px);opacity:0}60%{opacity:1}100%{transform:translateY(0);opacity:1}}
+@keyframes elDot{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:scale(1)}}
+@keyframes elFade{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+.entrance-skip-wrap{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);z-index:1}
+.entrance-skip{font-family:'Inter',sans-serif;font-size:.55rem;letter-spacing:.35em;color:var(--ink3);text-transform:uppercase;opacity:0;animation:elFade .5s 1.5s ease-out forwards;cursor:none}
 
 /* ══ Top Navigation ══ */
 .top-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background .5s,backdrop-filter .5s,box-shadow .5s}
@@ -443,12 +439,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .hero-tag{font-family:'Inter',sans-serif;font-size:.56rem;letter-spacing:.6em;color:var(--gold-d);text-transform:uppercase;position:relative;z-index:1;opacity:0;animation:fUp 1s .15s ease-out forwards}
 .hero-title{font-family:'Cormorant Garamond','Playfair Display',serif;font-size:clamp(5rem,12vw,10rem);font-weight:400;letter-spacing:.22em;color:var(--ink);line-height:.9;margin:.25em 0 .08em;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .4s ease-out forwards}
 .hero-sub{font-family:'Noto Serif SC',serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:300;letter-spacing:.5em;color:var(--ink2);margin-bottom:3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .6s ease-out forwards}
-.hero-rain-mark{display:flex;justify-content:center;gap:10px;margin-bottom:1.2rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .5s ease-out forwards}
-.hero-rain-mark .hrl{display:block;background:var(--ink);border-radius:1px}
-.hero-rain-mark .hrl.h1{width:.9px;height:34px}
-.hero-rain-mark .hrl.h2{width:1.2px;height:40px}
-.hero-rain-mark .hrl.h3{width:.6px;height:28px}
-.hero-gold-dot{display:block;width:5px;height:5px;border-radius:50%;background:var(--gold);margin:-.6rem auto .6rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .55s ease-out forwards;box-shadow:0 0 10px rgba(184,148,62,.4)}
+.hero-rain-logo{display:block;margin:0 auto .8rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .5s ease-out forwards}
 .hero-vd{width:2px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold-d) 30%,var(--gold-d) 70%,transparent);margin:0 auto 3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .8s ease-out forwards}
 .hero-line{font-family:'Noto Serif SC',serif;font-size:.9rem;font-weight:300;color:var(--ink3);letter-spacing:.07em;line-height:2.4;max-width:460px;position:relative;z-index:1;opacity:0;animation:fUp 1.4s 1s ease-out forwards}
 @keyframes fUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
@@ -457,7 +448,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .hero-scroll-inner span{font-size:.53rem;letter-spacing:.42em;color:var(--ink3);text-transform:uppercase}
 .hero-scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:breathe 3s ease-in-out infinite}
 @keyframes breathe{0%,100%{opacity:.16}50%{opacity:.65}}
-.hero-tag,.hero-title,.hero-sub,.hero-vd,.hero-line,.hero-rain-mark,.hero-gold-dot{animation-delay:1.8s!important}.hero-scroll-inner{animation-delay:2s!important}
+.hero-tag,.hero-title,.hero-sub,.hero-vd,.hero-line,.hero-rain-logo{animation-delay:1.8s!important}.hero-scroll-inner{animation-delay:2s!important}
 
 /* ══ Common ══ */
 .glass-panel{backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));border:1px solid rgba(184,148,62,.03);border-radius:var(--radius);box-shadow:0 4px 30px rgba(139,105,30,.02);background:rgba(255,253,250,.1)}
@@ -773,14 +764,17 @@ html = f'''<!DOCTYPE html>
 
 <!-- ENTRANCE -->
 <div class="entrance" id="entrance">
-<div class="entrance-rain-mark-wrap">
-<div class="entrance-rain-mark">
-<span class="rl r1"></span><span class="rl r2"></span><span class="rl r3"></span>
-</div>
-<div class="entrance-gold-dot"></div>
-</div>
-<div class="entrance-ripple"></div><div class="entrance-ripple"></div><div class="entrance-ripple"></div>
-<div class="entrance-brand"><h2>RAIN</h2><p>PERFUME AS RAIN · 香水之雨</p></div>
+<svg class="entrance-logo" viewBox="0 0 260 64" width="240" height="59">
+<line class="el el1" x1="122" y1="4" x2="122" y2="18" stroke="#2b2722" stroke-width=".7" stroke-linecap="round"/>
+<line class="el el2" x1="130" y1="2" x2="130" y2="20" stroke="#2b2722" stroke-width=".9" stroke-linecap="round"/>
+<line class="el el3" x1="138" y1="6" x2="138" y2="16" stroke="#2b2722" stroke-width=".5" stroke-linecap="round"/>
+<circle class="el el4" cx="130" cy="1" r=".8" fill="#b8943e"/>
+<text class="el el5" x="130" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="10" fill="#2b2722">RAIN</text>
+<line class="el el5" x1="28" y1="43.5" x2="232" y2="43.5" stroke="#b8943e" stroke-width=".25" stroke-linecap="round"/>
+<text class="el el6" x="130" y="53" text-anchor="middle" font-family="Inter,Helvetica Neue,sans-serif" font-weight="300" font-size="6" letter-spacing="6" fill="#2b2722" opacity=".4">PERFUME AS RAIN</text>
+<text class="el el6" x="130" y="62" text-anchor="middle" font-family="Noto Serif SC,serif" font-weight="200" font-size="7" letter-spacing="4" fill="#2b2722" opacity=".3">香水之雨</text>
+</svg>
+<div class="entrance-skip-wrap"><span class="entrance-skip">每一滴雨都是重生</span></div>
 <div class="entrance-skip-wrap"><span class="entrance-skip">每一滴雨都是重生</span></div>
 </div>
 
@@ -829,10 +823,12 @@ html = f'''<!DOCTYPE html>
 <div class="hero-frame"></div>
 <div class="hero-geo" style="position:absolute;top:22%;right:12%;width:140px;height:140px;border:1px solid rgba(184,148,62,.07);transform:rotate(45deg);pointer-events:none;z-index:0"></div>
 <p class="hero-tag">Perfume as Rain · 香水之雨</p>
-<div class="hero-rain-mark">
-<span class="hrl h1"></span><span class="hrl h2"></span><span class="hrl h3"></span>
-</div>
-<span class="hero-gold-dot"></span>
+<svg class="hero-rain-logo" viewBox="0 0 260 32" width="180" height="22">
+<line x1="122" y1="2"  x2="122" y2="16" stroke="var(--ink)" stroke-width=".7" stroke-linecap="round"/>
+<line x1="130" y1="0"  x2="130" y2="18" stroke="var(--ink)" stroke-width=".9" stroke-linecap="round"/>
+<line x1="138" y1="4"  x2="138" y2="14" stroke="var(--ink)" stroke-width=".5" stroke-linecap="round"/>
+<circle cx="130" cy="-1" r=".8" fill="var(--gold-d)"/>
+</svg>
 <h1 class="hero-title">RAIN</h1>
 <p class="hero-sub">每一滴雨都是重生</p>
 <div class="hero-vd"></div>
