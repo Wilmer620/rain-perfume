@@ -445,7 +445,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .hero-title{font-family:'Cormorant Garamond','Playfair Display',serif;font-size:clamp(5rem,12vw,10rem);font-weight:400;letter-spacing:.22em;color:var(--ink);line-height:.9;margin:.25em 0 .08em;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .4s ease-out forwards}
 .hero-sub{font-family:'Noto Serif SC',serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:300;letter-spacing:.5em;color:var(--ink2);margin-bottom:3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .6s ease-out forwards}
 .hero-rain-logo{display:block;margin:0 auto .8rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .5s ease-out forwards}
-.hero-gold-line{width:200px;height:1px;background:var(--gold);margin:1.2rem auto 1.2rem;position:relative;z-index:1;opacity:0;animation:hlReveal 1.4s .75s ease-out forwards}
+.hero-gold-line{width:400px;height:.5px;background:var(--gold);margin:1.2rem auto 1.2rem;position:relative;z-index:1;opacity:0;animation:hlReveal 1.4s .75s ease-out forwards}
 @keyframes hlReveal{0%{opacity:0;transform:translateY(22px)}100%{opacity:.45;transform:translateY(0)}}
 .hero-vd{width:2px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold-d) 30%,var(--gold-d) 70%,transparent);margin:0 auto 3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .8s ease-out forwards}
 .hero-line{font-family:'Noto Serif SC',serif;font-size:.9rem;font-weight:300;color:var(--ink3);letter-spacing:.07em;line-height:2.4;max-width:460px;position:relative;z-index:1;opacity:0;animation:fUp 1.4s 1s ease-out forwards}
