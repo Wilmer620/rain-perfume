@@ -220,7 +220,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 /* ══ Music ══ */
 .music-btn{position:fixed;bottom:6rem;right:2.5rem;z-index:150;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(253,249,240,.4);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(184,148,62,.08);border-radius:50%;cursor:none;transition:all .4s}.music-btn:hover{background:rgba(253,249,240,.55);border-color:rgba(184,148,62,.14)}
-.music-btn svg{width:15px;height:15px;fill:none;stroke:var(--gold-d);stroke-width:1.5;transition:stroke .4s}.music-btn:hover svg{stroke:var(--gold)}
+.music-btn svg{width:15px;height:15px;fill:none;stroke:var(--gold-d);stroke-width:1.5;transition:all .4s}.music-btn:hover svg{stroke:var(--gold)}
+.music-btn.playing svg{fill:rgba(184,148,62,.15)}.music-btn.playing:hover svg{fill:rgba(184,148,62,.25)}
 
 /* ══ Responsive ══ */
 @media (max-width:1080px){.frag-grid{grid-template-columns:1fr 1fr;padding:0 1.5rem;gap:14px}.frag-card{min-height:420px;padding:2.5rem 1.5rem}.craft-grid{grid-template-columns:1fr;gap:14px}}
@@ -661,9 +662,9 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="sec-label reveal"><p class="num">03</p><h2 class="title">制香之道</h2></div>
 <section class="craft reveal" id="craft">
 <div class="craft-grid">
-<div class="craft-card"><span class="num">01</span><h4>冷萃 · 锁住第一缕气息</h4><p>在低温下将植物原料浸入有机甘蔗酒精中，持续 72 小时。冷萃不是为了快——是为了抓住最脆弱的前调分子。</p></div>
-<div class="craft-card"><span class="num">02</span><h4>静置 · 让时间完成配方</h4><p>混合后的液体在恒温暗室中静置 4–8 周。每一天，分子都在重新组合。这不是等待——是让时间成为调香师。</p></div>
-<div class="craft-card"><span class="num">03</span><h4>微滤 · 只留下光的重量</h4><p>经过多层微米级过滤，去除残留的植物蜡质，却不带走任何香气分子。最终的液体透明如雨。</p></div>
+<div class="craft-card"><span class="num">01</span><h4>冷萃 · 锁住第一缕气息</h4><p>植物的灵魂储存在清晨五点的水分里。我们将原料在 4°C 下浸入有机甘蔗酒精，持续 72 小时——让前调最脆弱的分子在低温中完整保留，不急不躁，像雨前酝酿的云。</p></div>
+<div class="craft-card"><span class="num">02</span><h4>静置 · 让时间完成配方</h4><p>混合后的液体被送入恒温暗室，在绝对的安静中静置 4–8 周。没有搅拌、没有催促——每一天，分子都在自行寻找彼此。这是一场由时间主导的交响排练，我们不能代劳。</p></div>
+<div class="craft-card"><span class="num">03</span><h4>微滤 · 只留下光的重量</h4><p>五层微米级滤膜，逐级去除残留的植物蜡质与杂质——却不带走任何香气分子。最终的液体应当如雨水穿过空气后落在叶面上那一刻般澄澈：透明、轻盈、没有多余的重量。</p></div>
 </div>
 </section>
 
@@ -715,7 +716,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 </div></section>
 
 <!-- BUTTONS -->
-<button class="music-btn" id="musicBtn"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></button>
+<button class="music-btn" id="musicBtn"><svg viewBox="0 0 24 24"><path d="M12 2C9.5 2 7 4 7 10c0 3 1.2 5 2.5 6l-1.5 4h8l-1.5-4c1.3-1 2.5-3 2.5-6 0-6-2.5-8-5-8z"/></svg></button>
 <button class="back-top" id="backTop"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
 <!-- FOOTER -->
@@ -759,8 +760,64 @@ function cardReset(card){card.style.setProperty("--mx","50%");card.style.setProp
 /* Rain */
 try{(function(){var c=document.getElementById("cssRainLayer"),n=100;var t=["thin","reg","reg","reg","wide","reg","reg","gold","reg","reg","reg","gold","reg","reg","thin","reg","slate","reg","gold","reg","reg","reg","gold","reg","thin","ice","reg","reg","reg","gold","reg","reg"];for(var i=0;i<n;i++){var s=document.createElement("div"),type=t[i%t.length];s.className="rain-s "+type;s.style.left=Math.random()*100+"%";s.style.height=(25+Math.random()*130)+"px";s.style.animationDuration=(3+Math.random()*11)+"s";s.style.animationDelay=Math.random()*18+"s";if(type==="gold"||type==="slate")s.style.height=(45+Math.random()*150)+"px";c.appendChild(s)}})()}catch(e){console.warn(e)}
 
-/* Music */
-(function(){var btn=document.getElementById("musicBtn"),playing=false,ctx=null,gain=null;if(!btn)return;function noiseNode(){var buf=ctx.createBuffer(1,ctx.sampleRate*3,ctx.sampleRate),d=buf.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*0.5;var s=ctx.createBufferSource();s.buffer=buf;s.loop=true;return s}btn.addEventListener("click",function(){if(!ctx){ctx=new(window.AudioContext||window.webkitAudioContext)();gain=ctx.createGain();gain.gain.value=0;gain.connect(ctx.destination)}if(playing){gain.gain.linearRampToValueAtTime(0,ctx.currentTime+0.3);btn.style.borderColor="";btn.style.boxShadow="";playing=false}else{var n1=noiseNode(),f1=ctx.createBiquadFilter();f1.type="lowpass";f1.frequency.value=350;var n2=noiseNode(),f2=ctx.createBiquadFilter();f2.type="lowpass";f2.frequency.value=600;var n3=noiseNode(),f3=ctx.createBiquadFilter();f3.type="bandpass";f3.frequency.value=2000;f3.Q.value=0.5;n1.connect(f1);f1.connect(gain);n2.connect(f2);f2.connect(gain);n3.connect(f3);f3.connect(gain);n1.start();n2.start();n3.start();gain.gain.linearRampToValueAtTime(0.22,ctx.currentTime+0.3);btn.style.borderColor="var(--gold)";btn.style.boxShadow="0 0 16px rgba(184,148,62,.25)";playing=true}})})();
+/* Rain Ambient — 细雨朦胧 */
+(function(){var btn=document.getElementById("musicBtn");if(!btn)return;
+var ctx=null,master=null,playing=true,started=false;
+
+/* build one filtered noise layer */
+function mkLayer(type,fc,q,vol){
+  var len=ctx.sampleRate*6,buf=ctx.createBuffer(1,len,ctx.sampleRate),d=buf.getChannelData(0);
+  for(var i=0;i<len;i++)d[i]=(Math.random()*2-1)*0.5;
+  var src=ctx.createBufferSource(),flt=ctx.createBiquadFilter(),g=ctx.createGain();
+  src.buffer=buf;src.loop=true;
+  flt.type=type;flt.frequency.value=fc;if(q)flt.Q.value=q;
+  g.gain.value=vol;
+  src.connect(flt);flt.connect(g);g.connect(master);
+  src.start();
+  return src;
+}
+
+function startAmbient(){
+  if(started)return;started=true;
+  ctx=new(window.AudioContext||window.webkitAudioContext)();
+  if(ctx.state==='suspended')ctx.resume();
+  master=ctx.createGain();
+  master.gain.value=0.06; /* 轻声起步 */
+  master.connect(ctx.destination);
+
+  mkLayer('lowpass',280,0.5,0.06);   // 远雷低吟
+  mkLayer('bandpass',1100,0.25,0.08); // 细雨主体
+  mkLayer('highpass',4500,0.4,0.03);  // 叶面碎珠
+  mkLayer('lowpass',150,2.5,0.10);    // 檐下滴水
+
+  /* 短渐入，1s 到位 */
+  master.gain.linearRampToValueAtTime(0.14,ctx.currentTime+1.0);
+  btn.classList.add('playing');
+}
+
+/* 入场幕布点击即启动 */
+(function(){
+  var e=document.getElementById("entrance");
+  if(e)e.addEventListener("click",function(){startAmbient()},{once:true});
+})();
+
+/* 其他任意点击兜底 */
+document.body.addEventListener("click",function(){startAmbient()},{once:true});
+document.body.addEventListener("touchstart",function(){startAmbient()},{once:true});
+
+/* 按钮切换静音/恢复 */
+btn.addEventListener('click',function(e){
+  e.stopPropagation();
+  if(!ctx){startAmbient();return;}
+  if(playing){
+    master.gain.linearRampToValueAtTime(0,ctx.currentTime+0.8);
+    btn.classList.remove('playing');playing=false;
+  }else{
+    master.gain.linearRampToValueAtTime(0.14,ctx.currentTime+0.4);
+    btn.classList.add('playing');playing=true;
+  }
+});
+})();
 
 /* Quiz */
 var qs=document.querySelectorAll(".quiz-step"),qr=document.getElementById("quizResult"),qrn=document.getElementById("qrName"),qrc=document.getElementById("qrCn"),qrd=document.getElementById("qrDesc"),qrx=document.getElementById("quizReset"),scores=new Array(6).fill(0),frags=[{en:"Respiration",cn:"光合",d:"你是清晨推开窗的那个人——干净、透明、不需要多余的解释。"},{en:"Last Word",cn:"明日",d:"你永远在看前方。天还没亮就相信太阳会升起来的那种人。"},{en:"Our Melody",cn:"共鸣",d:"你不需说太多——频率对的人自然会听见你。"},{en:"Rising Sunset",cn:"潮汐",d:"你知道一切都有节奏——涨和落、来和去。你跟随某种更古老的节拍。"},{en:"Past Dream",cn:"旧心事",d:"你不是忘记——你是带着所有发生过的事一起往前走。"},{en:"Prejudice",cn:"我独我",d:"你不需要被人读懂才成立。你站在自己的重心上，不被任何风向带偏。"}];document.querySelectorAll(".quiz-opt").forEach(function(b){b.addEventListener("click",function(){var st=parseInt(this.closest(".quiz-step").dataset.step),w=this.dataset.w.split(",").map(Number);for(var i=0;i<6;i++)scores[i]+=w[i];this.parentElement.querySelectorAll(".quiz-opt").forEach(function(x){x.classList.remove("selected")});this.classList.add("selected");setTimeout(function(){var cs=document.querySelector(".quiz-step.active");if(cs)cs.classList.remove("active");if(st<5){var ns=document.querySelector('.quiz-step[data-step="'+(st+1)+'"]');if(ns)ns.classList.add("active")}else{var best=0;for(var i=1;i<6;i++)if(scores[i]>scores[best])best=i;var r=frags[best];qrn.textContent=r.en;qrc.textContent=r.cn;qrd.textContent=r.d;qr.classList.add("active")}},280)})});if(qrx)qrx.addEventListener("click",function(){scores.fill(0);qr.classList.remove("active");document.querySelectorAll(".quiz-opt").forEach(function(b){b.classList.remove("selected")});document.querySelectorAll(".quiz-step").forEach(function(s){s.classList.remove("active")});qs[0].classList.add("active")});
