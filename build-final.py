@@ -154,9 +154,9 @@ NARRATIVES = {
             ('我故臆想', 'The Fable I Tell Myself', '驻足苦旅', '记忆从不负责记录——它负责<em>重新安排</em>。不是你回到了某个过去的时刻，是你带着现在全部的重量，把那个时刻<em>重写了一遍</em>。我故臆想取的正是这种精致的再造：一件从未发生的事、一句从未说出口的话、一个从未存在过的夜晚——但在你的叙述里，它们比真实还要<em>不可动摇</em>。它是关于「讲述」的香气——你如何讲述自己，你便如何成为自己。'),
             ('着我之境', 'The World Through Me', '世界之色', '你不是一块接收光线的幕布——你是<em>改变光线</em>的介质。同一片天空穿过不同的人，折射成完全不同的颜色。着我之境捕捉的正是这种穿透与偏折——你不必去冒险去远方，你已经是一座<em>行走的美术馆</em>：大海在你皮肤上留下盐的刻度，古老街道在你衣领里藏了灰。你不是看过世界——你<em>就是</em>世界被看的方式。'),
             ('今夜唯我', 'Tonight, Only I Remain', '灵感盛宴', '派对的高潮不在杯盏之间——在<em>所有的人都走了以后</em>。你解开领口的第一颗扣子，空气忽然多了三分米的体积。没有什么需要庆祝了——<em>安静本身</em>就是庆祝。今夜唯我捕捉的正是这最终的一刻——不挽留热闹，不与任何人为伍，房间空了之后你第一次听见自己的呼吸。这不是孤独——这是所有社交结束之后，你<em>还给自己的款待</em>。'),
+            ('熵增时', 'The Hour of Entropy', '宙宇寰星', '一切秩序的尽头不是<em>毁灭</em>——是<em>散落</em>。当所有结构被温和地松开，当每一个曾经聚拢的瞬间回到它们各自的轨道——这不是终结，是<em>归还</em>。熵增时捕捉的是宙宇寰星五支各自抵达<em>热力学终点</em>之后的形态：瞬息不再是一个空拍，而是<em>永恒中的第一个毫秒</em>；此刻不再抓紧现在，而是允许一切的<em>流逝</em>；彼时将记忆交还给时间；光年把目光收回闭上；起源回到未命名的混沌。所有的事物回归它们<em>未被整理</em>的样子——不是混乱，是<em>自由</em>。'),
             ('新时代迁流', 'The River of Seasons', '四季所生', '你不随时间流逝——时间<em>从你身上流过</em>。春雨在你的左手虎口发芽，夏阳从你的右肩倾斜而下，秋风在你的脚踝处打着旋，冬雪从你头顶落下，却从未真正触碰你。你站在河中央。<em>不增不减。</em>新时迁流不是一支关于时间的香——它是一个<em>在时间之外的坐标</em>：此刻，此身，此在。四季从你身边经过，你不动——你<em>就是</em>四季经过的方式。'),
             ('致新生', 'To What Comes Next', '雨后', '最重要的时刻不是结束——是<em>结束之后的第一个瞬间</em>。雨停了。你不确定接下来会发生什么——但你已经在<em>准备吸气</em>了。致新生守在一个模棱两可的临界点上：旧的一页尚未完全翻过，新的一行还没写下。它不是写给过去的悼词——它是写给空气里<em>即将到来的事物</em>的第一句问候。你不需要知道那是什么。你只需要<em>推开窗户</em>。'),
-            ('熵增时', 'The Hour of Entropy', '宙宇寰星', '一切秩序的尽头不是<em>毁灭</em>——是<em>散落</em>。当所有结构被温和地松开，当每一个曾经聚拢的瞬间回到它们各自的轨道——这不是终结，是<em>归还</em>。熵增时捕捉的是宙宇寰星五支各自抵达<em>热力学终点</em>之后的形态：瞬息不再是一个空拍，而是<em>永恒中的第一个毫秒</em>；此刻不再抓紧现在，而是允许一切的<em>流逝</em>；彼时将记忆交还给时间；光年把目光收回闭上；起源回到未命名的混沌。所有的事物回归它们<em>未被整理</em>的样子——不是混乱，是<em>自由</em>。'),
         ]
     },
 }
@@ -1126,6 +1126,17 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card-inner">
 <div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon"></div>
 <div class="frag-info">
+<p class="frag-num">COSMOS · 宙宇寰星</p>
+<h3 class="frag-name-en" style="font-size:1.75rem">熵增时</h3>
+<p class="frag-name-cn">The Hour of Entropy</p>
+<p class="frag-accord"><b>Top</b> 醛香 · 臭氧 · 薄荷<br><b>Heart</b> 鸢尾 · 没药 · 焚香<br><b>Base</b> 白麝香 · 琥珀 · 矿物调</p>
+</div></div></div>
+
+<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon"></div>
+<div class="frag-info">
 <p class="frag-num">SEASONS · 四季所生</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">新时代迁流</h3>
 <p class="frag-name-cn">The River of Seasons</p>
@@ -1141,17 +1152,6 @@ html = f'''<!DOCTYPE html>
 <h3 class="frag-name-en" style="font-size:1.75rem">致新生</h3>
 <p class="frag-name-cn">To What Comes Next</p>
 <p class="frag-accord"><b>Top</b> 绿叶 · 佛手柑 · 薄荷<br><b>Heart</b> 铃兰 · 白茶 · 蕨类<br><b>Base</b> 白麝香 · 雪松 · 琥珀</p>
-</div></div></div>
-
-<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon"></div>
-<div class="frag-info">
-<p class="frag-num">COSMOS · 宙宇寰星</p>
-<h3 class="frag-name-en" style="font-size:1.75rem">熵增时</h3>
-<p class="frag-name-cn">The Hour of Entropy</p>
-<p class="frag-accord"><b>Top</b> 醛香 · 臭氧 · 薄荷<br><b>Heart</b> 鸢尾 · 没药 · 焚香<br><b>Base</b> 白麝香 · 琥珀 · 矿物调</p>
 </div></div></div>
 </div>
 
