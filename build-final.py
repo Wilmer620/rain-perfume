@@ -351,7 +351,29 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .top-nav-links a:hover{color:var(--gold)}
 .top-nav-links a::after{content:'';position:absolute;bottom:-5px;left:50%;width:3px;height:3px;border-radius:50%;background:var(--gold);transform:translateX(-50%) scale(0);transition:transform .35s}
 .top-nav-links a.active{color:var(--ink)}.top-nav-links a.active::after{transform:translateX(-50%) scale(1)}
-@media (max-width:768px){.top-nav-links{display:none}.top-nav{padding:1rem 1.5rem}}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:28px;height:28px;background:none;border:none;cursor:none;z-index:220;padding:0;position:relative}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);border-radius:1px;transition:all .35s;transform-origin:center;margin:0 auto}
+.hamburger.open span:nth-child(1){transform:translateY(3.25px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-3.25px) rotate(-45deg)}
+
+/* Mobile Nav Overlay */
+.mob-nav{position:fixed;inset:0;z-index:190;background:rgba(253,249,240,.96);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s,visibility .4s}
+.mob-nav.open{opacity:1;visibility:visible;pointer-events:all}
+.mob-nav a{font-family:'Noto Serif SC',serif;font-size:1.15rem;font-weight:300;letter-spacing:.15em;color:var(--ink2);text-decoration:none;transition:all .4s;transform:translateY(16px);opacity:0}
+.mob-nav.open a{transform:translateY(0);opacity:1}
+.mob-nav a:nth-child(1){transition-delay:.06s}
+.mob-nav a:nth-child(2){transition-delay:.12s}
+.mob-nav a:nth-child(3){transition-delay:.18s}
+.mob-nav a:nth-child(4){transition-delay:.24s}
+.mob-nav a:nth-child(5){transition-delay:.30s}
+.mob-nav a:nth-child(6){transition-delay:.36s}
+.mob-nav a:hover{color:var(--gold)}
+.mob-nav a.active{color:var(--gold-d)}
+
+@media (max-width:768px){.top-nav-links{display:none}.top-nav{padding:1rem 1.5rem}.hamburger{display:flex}}
 
 /* ══ Hero ══ */
 .hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2rem 4rem}
@@ -542,13 +564,15 @@ var entranceEl=document.getElementById("entrance");if(entranceEl){setTimeout(fun
 (function(){var stops=[{p:0,r:253,g:251,b:245},{p:.18,r:253,g:247,b:232},{p:.36,r:251,g:249,b:242},{p:.54,r:250,g:250,b:244},{p:.72,r:253,g:246,b:228},{p:1,r:253,g:251,b:245}];function lerp(a,b,t){return a+(b-a)*t}function updateBg(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h<=0)return;var t=Math.min(1,Math.max(0,window.scrollY/h));for(var i=0;i<stops.length-1;i++){if(t>=stops[i].p&&t<=stops[i+1].p){var lt=(t-stops[i].p)/(stops[i+1].p-stops[i].p);var r=Math.round(lerp(stops[i].r,stops[i+1].r,lt));var g=Math.round(lerp(stops[i].g,stops[i+1].g,lt));var b=Math.round(lerp(stops[i].b,stops[i+1].b,lt));document.body.style.backgroundColor="rgb("+r+","+g+","+b+")";return}}}window.addEventListener("scroll",updateBg,{passive:true});updateBg()})();
 
 /* Cursor */
-var dot=document.getElementById("cursorDot"),ring=document.getElementById("cursorRing"),mx=-200,my=-200,rx=-200,ry=-200;document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});document.addEventListener("touchstart",function(){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"},{once:true});if(window.matchMedia("(pointer:coarse)").matches){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"}var intEls=document.querySelectorAll("a,.frag-card,.back-top,.quiz-opt,.nl-toggle-btn,.music-btn,.top-nav-links a,.series-tab,.narr-btn,.note-chip");for(var i=0;i<intEls.length;i++){(function(el){el.addEventListener("mouseenter",function(){dot.classList.add("expand");ring.classList.add("expand")});el.addEventListener("mouseleave",function(){dot.classList.remove("expand");ring.classList.remove("expand")})})(intEls[i])}(function L(){dot.style.left=mx+"px";dot.style.top=my+"px";rx+=(mx-rx)*0.2;ry+=(my-ry)*0.2;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(L)})();
+var dot=document.getElementById("cursorDot"),ring=document.getElementById("cursorRing"),mx=-200,my=-200,rx=-200,ry=-200;document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});document.addEventListener("touchstart",function(){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"},{once:true});if(window.matchMedia("(pointer:coarse)").matches){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"}var intEls=document.querySelectorAll("a,.frag-card,.back-top,.quiz-opt,.nl-toggle-btn,.music-btn,.top-nav-links a,.series-tab,.narr-btn,.note-chip,.hamburger,.mob-nav a");for(var i=0;i<intEls.length;i++){(function(el){el.addEventListener("mouseenter",function(){dot.classList.add("expand");ring.classList.add("expand")});el.addEventListener("mouseleave",function(){dot.classList.remove("expand");ring.classList.remove("expand")})})(intEls[i])}(function L(){dot.style.left=mx+"px";dot.style.top=my+"px";rx+=(mx-rx)*0.2;ry+=(my-ry)*0.2;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(L)})();
 
 /* Reveal */
 var revealEls=document.querySelectorAll(".reveal");revealEls.forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in-view")})},{threshold:0.08,rootMargin:"0px 0px -20px 0px"}).observe(el)});
 
 /* Top Nav */
-var topNav=document.getElementById("topNav"),navLinks=document.querySelectorAll(".top-nav-links a"),allSecs=document.querySelectorAll("section[id]");function updateNav(){var y=window.scrollY+window.innerHeight/3,cur="";allSecs.forEach(function(s){if(y>=s.offsetTop)cur=s.getAttribute("id")});navLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+cur)});topNav.classList.toggle("scrolled",window.scrollY>80)}window.addEventListener("scroll",updateNav,{passive:true});updateNav();
+var topNav=document.getElementById("topNav"),navLinks=document.querySelectorAll(".top-nav-links a"),allSecs=document.querySelectorAll("section[id]");function updateNav(){var y=window.scrollY+window.innerHeight/3,cur="";allSecs.forEach(function(s){if(y>=s.offsetTop)cur=s.getAttribute("id")});navLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+cur)});if(typeof mobNavLinks!=="undefined")mobNavLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+cur)});topNav.classList.toggle("scrolled",window.scrollY>80)}window.addEventListener("scroll",updateNav,{passive:true});
+/* Mobile Nav */
+var hamburger=document.getElementById("hamburger"),mobNav=document.getElementById("mobNav"),mobNavLinks=mobNav?mobNav.querySelectorAll("a"):[],mobOpen=false;if(hamburger&&mobNav){function toggleMob(){mobOpen=!mobOpen;hamburger.classList.toggle("open",mobOpen);mobNav.classList.toggle("open",mobOpen);document.body.style.overflow=mobOpen?"hidden":""}hamburger.addEventListener("click",toggleMob);mobNavLinks.forEach(function(a){a.addEventListener("click",function(){if(mobOpen)toggleMob()})})}updateNav();
 
 /* Back to top */
 var backTop=document.getElementById("backTop");window.addEventListener("scroll",function(){backTop.classList.toggle("visible",window.scrollY>600)},{passive:true});backTop.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
@@ -698,7 +722,16 @@ html = f'''<!DOCTYPE html>
 <li><a href="#quiz">寻雨之路</a></li>
 <li><a href="#newsletter">降雨预报</a></li>
 </ul>
+<button class="hamburger" id="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
 </nav>
+<div class="mob-nav" id="mobNav">
+<a href="#phil">品牌哲学</a>
+<a href="#series">产品介绍</a>
+<a href="#craft">制香之道</a>
+<a href="#founders">主理人手记</a>
+<a href="#quiz">寻雨之路</a>
+<a href="#newsletter">降雨预报</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
