@@ -320,14 +320,14 @@ PRODUCT_NOTES = {
     ],
 }
 
-def narrative_btn(pid):
-    pid2 = pid.replace('-','')
+def narrative_btn(pid, suffix=''):
+    pid2 = pid.replace('-','') + suffix
     data = NARRATIVES.get(pid, {'intro': '深度叙事即将呈现。', 'items': []})
     items_html = ''
     for item in data.get('items', []):
         if len(item) == 4:
             cn_name, en_name, tag, text = item
-            subtitle = f'{en_name}  ·  {tag}'
+            subtitle = f'<span class="col-tag">典藏 · {tag}</span><span class="col-en">{en_name}</span>'
         else:
             en_name, cn_name, text = item
             subtitle = cn_name
@@ -514,6 +514,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .narr-body{transition:max-height .6s ease,opacity .4s ease;overflow:hidden}
 .narr-body.collapsed{max-height:0!important;opacity:0}
 .narr-body em,.narr-body .gold{font-style:normal;color:var(--gold);font-weight:500}
+.col-tag{display:inline-block;font-family:'Inter',sans-serif;font-size:.48rem;letter-spacing:.2em;color:var(--gold-d);background:rgba(184,148,62,.06);border:1px solid rgba(184,148,62,.12);border-radius:100px;padding:.18rem .8rem;margin-bottom:.4rem}
+.col-en{display:block;font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:400;color:var(--ink2);letter-spacing:.06em;margin-top:.25rem}
 
 /* Note Chips */
 .note-chips{display:flex;justify-content:center;gap:.45rem;flex-wrap:wrap;margin-top:.8rem}
@@ -840,8 +842,6 @@ html = f'''<!DOCTYPE html>
 <div class="sec-label reveal"><p class="num">03</p><h2 class="title">臻品雨酿</h2><p class="sec-en">The Rain Collection</p></div>
 <section class="collection-hub reveal" id="collection">
 <p class="kicker">The Rain Collection</p>
-<h2 class="en-title">臻品雨酿</h2>
-<p class="cn-sub">典藏级 · 每系列一支</p>
 <p class="desc">五支香，五个极点——每一支都代表一个主题被推到<em>最远</em>的地方。</p>
 </section>
 
@@ -902,7 +902,7 @@ html = f'''<!DOCTYPE html>
 </div></div></div>
 </div>
 
-{narrative_btn('collection')}
+{narrative_btn('collection', 'Narr')}
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 

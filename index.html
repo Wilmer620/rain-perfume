@@ -164,6 +164,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .narr-body{transition:max-height .6s ease,opacity .4s ease;overflow:hidden}
 .narr-body.collapsed{max-height:0!important;opacity:0}
 .narr-body em,.narr-body .gold{font-style:normal;color:var(--gold);font-weight:500}
+.col-tag{display:inline-block;font-family:'Inter',sans-serif;font-size:.48rem;letter-spacing:.2em;color:var(--gold-d);background:rgba(184,148,62,.06);border:1px solid rgba(184,148,62,.12);border-radius:100px;padding:.18rem .8rem;margin-bottom:.4rem}
+.col-en{display:block;font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:400;color:var(--ink2);letter-spacing:.06em;margin-top:.25rem}
 
 /* Note Chips */
 .note-chips{display:flex;justify-content:center;gap:.45rem;flex-wrap:wrap;margin-top:.8rem}
@@ -699,8 +701,6 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="sec-label reveal"><p class="num">03</p><h2 class="title">臻品雨酿</h2><p class="sec-en">The Rain Collection</p></div>
 <section class="collection-hub reveal" id="collection">
 <p class="kicker">The Rain Collection</p>
-<h2 class="en-title">臻品雨酿</h2>
-<p class="cn-sub">典藏级 · 每系列一支</p>
 <p class="desc">五支香，五个极点——每一支都代表一个主题被推到<em>最远</em>的地方。</p>
 </section>
 
@@ -762,34 +762,34 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 </div>
 
 <div style="text-align:center;margin:1rem 0 2rem">
-<button class="narr-btn" data-target="collection">展开叙事</button>
-<div class="narr-body" id="collection" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
+<button class="narr-btn" data-target="collectionNarr">展开叙事</button>
+<div class="narr-body" id="collectionNarr" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
 <div class="glass-panel" style="padding:3rem 2.5rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
 <p style="font-family:'Noto Serif SC',serif;font-size:.92rem;font-weight:300;color:var(--ink2);line-height:2.6;max-width:640px;margin:0 auto 2.5rem;letter-spacing:.04em">臻品雨酿——五支<em>典藏之作</em>，<br>从每个系列的深处提取最极致的那一滴。<br>它们是雨的精华——不是稀释，是<em>蒸馏</em>。<br>每一支都将一个主题<em>推向极致</em>。</p>
 <div style="width:36px;height:1px;background:var(--gold-d);opacity:.2;margin:0 auto 2.5rem"></div>
 <div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">我故臆想</h4>
-<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem">The Fable I Tell Myself  ·  驻足苦旅</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span class="col-tag">典藏 · 驻足苦旅</span><span class="col-en">The Fable I Tell Myself</span></p>
 <p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">旅途不是向外走——是向内走。所有的记忆都是一场<em>精致的虚构</em>：你以为回到了过去，其实是现在的自己写给过去的一封信。我故臆想不做还原——它做<em>创造</em>。因为每个人讲述的「我记得」，从来不是重复，是<em>重新活一次</em>。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">当归</span><span class="note-chip-tip">根部最深的泥土气息——苦中带着回甘，像一段走了很远才理解的路。</span></span><span class="note-chip"><span class="note-chip-name">没药</span><span class="note-chip-tip">比乳香更深、更古老——古埃及人用它保存永恒，带着药感与神圣的暗色。</span></span><span class="note-chip"><span class="note-chip-name">纸莎草</span><span class="note-chip-tip">干燥的书写材料——每个字都见过光，每个字都在等一个人来读。</span></span><span class="note-chip"><span class="note-chip-name">安息香</span><span class="note-chip-tip">琥珀色的树脂——温暖到让人闭上眼睛，是所有故事最温柔的句号。</span></span></div>
 </div><div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">着我之境</h4>
-<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem">The World Through Me  ·  世界之色</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span class="col-tag">典藏 · 世界之色</span><span class="col-en">The World Through Me</span></p>
 <p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">不是我去看世界，是世界<em>穿过</em>我——像光线穿过彩色玻璃，每一片都改变了颜色。你站在拥挤的广场上，却觉得自己同时站在<em>所有去过的地方</em>。你不是观看者——你是一座移动的<em>美术馆</em>，所有的风景都陈列在你的皮肤上。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">苦橙叶</span><span class="note-chip-tip">橙花树下被碾碎的叶——青绿、微苦、清醒，像第一次独自出远门时吸入的第一口空气。</span></span><span class="note-chip"><span class="note-chip-name">土耳其玫瑰</span><span class="note-chip-tip">必须在天亮前手工采摘——玫瑰中的玫瑰，浓而不艳，近而不逼。</span></span><span class="note-chip"><span class="note-chip-name">苏合香</span><span class="note-chip-tip">来自东方的树脂——甜中带辛，像一段跨越大洲的记忆，熟悉又陌生。</span></span><span class="note-chip"><span class="note-chip-name">皮革</span><span class="note-chip-tip">鞣制过的皮面气息——粗粝、干燥、带着体温，是所有远方统一的底色。</span></span></div>
 </div><div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">今夜唯我</h4>
-<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem">Tonight, Only I Remain  ·  灵感盛宴</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span class="col-tag">典藏 · 灵感盛宴</span><span class="col-en">Tonight, Only I Remain</span></p>
 <p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">午夜两点，最后一个客人走了。你脱下外套，倒了一杯水，坐在沙发上——<em>不说话、不思考、不证明</em>。这不是孤独——这是所有社交结束后最奢侈的款待：今夜，你只需要做<em>自己</em>。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">香槟调</span><span class="note-chip-tip">气泡破裂时释放的微醺——欢庆的开场但不喧哗，是克制后的自由。</span></span><span class="note-chip"><span class="note-chip-name">烟草</span><span class="note-chip-tip">烟叶在指尖揉碎时的气息——干燥、微甜、带着成年人的安静与克制。</span></span><span class="note-chip"><span class="note-chip-name">黑巧克力</span><span class="note-chip-tip">可可含量80%以上的苦甜——复杂的愉悦，不是每个人都懂，但懂的人会笑。</span></span><span class="note-chip"><span class="note-chip-name">愈创木</span><span class="note-chip-tip">南美洲密度最大的硬木——沉于水，是所有轻浮的反面，是最安静的坚定。</span></span></div>
 </div><div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">新时代迁流</h4>
-<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem">The River of Seasons  ·  四季所生</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span class="col-tag">典藏 · 四季所生</span><span class="col-en">The River of Seasons</span></p>
 <p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">时间不是直线——是<em>河流</em>。春天在你左手边发芽，夏天从右肩流过，秋天在脚边堆积，冬天从头顶落下。但你站在河中央，<em>不增不减</em>。四季流过你，你成了四季。新时代迁流不是一支香——是一个<em>坐标</em>：此刻，此身，此在。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">竹叶</span><span class="note-chip-tip">清晨竹叶上的露水被风吹散——清、冷、一直向上，不争不抢却从不停止。</span></span><span class="note-chip"><span class="note-chip-name">紫藤</span><span class="note-chip-tip">春夏之交悬挂的花穗——淡紫到几乎透明，香气却让你走过时一定回头。</span></span><span class="note-chip"><span class="note-chip-name">米浆</span><span class="note-chip-tip">石磨碾过米粒时溢出的白色液体——最朴素的安全感，每个人都认得。</span></span><span class="note-chip"><span class="note-chip-name">檀木</span><span class="note-chip-tip">寺庙里多年的香火记忆——是时间最温柔的证明，让人想把呼吸放慢。</span></span></div>
 </div><div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">致新生</h4>
-<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem">To What Comes Next  ·  雨后</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span class="col-tag">典藏 · 雨后</span><span class="col-en">To What Comes Next</span></p>
 <p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">雨停之后的第一行字。不是写给过去的<em>告别信</em>——是写给未来的第一句话。你站在刚被洗过的空气里，不确定接下来会发生什么——但你已经准备<em>呼吸</em>了。所有的重生都不需要宣言——它只需要雨停之后，你推开窗户。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">铃兰</span><span class="note-chip-tip">山谷里最早开的花——细小、洁白，香气却可以穿透整片森林，清而不淡。</span></span><span class="note-chip"><span class="note-chip-name">蕨类</span><span class="note-chip-tip">森林底层的古老植物——比花更安静，比树更久远，是所有新生的底床。</span></span><span class="note-chip"><span class="note-chip-name">白麝香</span><span class="note-chip-tip">干净的棉布贴在皮肤上——是所有香气最终回归的地方，不争不抢。</span></span><span class="note-chip"><span class="note-chip-name">琥珀</span><span class="note-chip-tip">松脂历经千万年而成——把时间封存在金色的透明里，是大地最古老的记忆。</span></span></div>
 </div>
