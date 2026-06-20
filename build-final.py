@@ -606,11 +606,15 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .man-auth{font-family:'Cormorant Garamond',serif;font-size:.85rem;letter-spacing:.42em;color:var(--gold-d);margin-top:3rem}
 
 /* ══ Footer ══ */
-.footer{position:relative;z-index:2;padding:3rem;border-top:1px solid rgba(184,148,62,.04);text-align:center}
-.ft-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;letter-spacing:.3em;color:var(--ink);margin-bottom:.8rem}
+.footer{position:relative;z-index:2;padding:4rem 3rem 3rem;border-top:1px solid rgba(184,148,62,.04);text-align:center}
+.ft-rain-logo{display:block;margin:0 auto 1.5rem;opacity:.7}
+.ft-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;letter-spacing:.3em;color:var(--ink);margin-bottom:.5rem}
+.ft-gold-line{width:180px;height:.4px;background:var(--gold);margin:.6rem auto .8rem;opacity:.35}
+.ft-en{font-family:'Inter','Helvetica Neue',sans-serif;font-size:.45rem;font-weight:300;letter-spacing:.3em;color:var(--ink3);opacity:.35;margin-bottom:.15rem}
+.ft-cn{font-family:'Noto Serif SC',serif;font-size:.48rem;font-weight:200;letter-spacing:.2em;color:var(--ink3);opacity:.25;margin-bottom:2rem}
 .ft-links{display:flex;justify-content:center;gap:2.5rem;margin-bottom:1.5rem}
 .ft-links a{font-family:'Inter',sans-serif;font-size:.58rem;letter-spacing:.25em;color:var(--ink3);text-decoration:none;text-transform:uppercase;transition:color .4s}.ft-links a:hover{color:var(--gold)}
-.ft-copy{font-size:.55rem;color:var(--ink3);opacity:.45}
+.ft-copy{font-size:.55rem;color:var(--ink3);opacity:.35}
 
 /* ══ Back to Top ══ */
 .back-top{position:fixed;bottom:2.5rem;right:2.5rem;z-index:150;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(253,249,240,.4);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(184,148,62,.08);border-radius:50%;cursor:none;opacity:0;visibility:hidden;transform:translateY(16px);transition:all .4s}
@@ -1095,9 +1099,18 @@ html = f'''<!DOCTYPE html>
 
 <!-- FOOTER -->
 <footer class="footer">
+<svg class="ft-rain-logo" viewBox="0 0 260 36" width="260" height="36">
+<line x1="122" y1="4"  x2="122" y2="18" stroke="var(--ink)" stroke-width=".7" stroke-linecap="round"/>
+<line x1="130" y1="2"  x2="130" y2="20" stroke="var(--ink)" stroke-width=".9" stroke-linecap="round"/>
+<line x1="138" y1="6"  x2="138" y2="16" stroke="var(--ink)" stroke-width=".5" stroke-linecap="round"/>
+<circle cx="130" cy="1" r=".8" fill="var(--gold-d)"/>
+</svg>
 <div class="ft-brand">RAIN</div>
+<div class="ft-gold-line"></div>
+<p class="ft-en">PERFUME AS RAIN</p>
+<p class="ft-cn">香水之雨</p>
 <div class="ft-links"><a href="#">Instagram</a><a href="#">小红书</a><a href="#">Contact</a><a href="#">Stockists</a></div>
-<p class="ft-copy">© 2026 RAIN · Perfume as Rain · 香水之雨 · All rights reserved.<br>每一滴雨都是重生。</p>
+<p class="ft-copy">© 2026 RAIN · All rights reserved</p>
 </footer>
 
 <script>{JS}</script>
