@@ -476,11 +476,6 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .section-divider-inner::before,.section-divider-inner::after{content:'';height:1px;flex:1;background:linear-gradient(to right,transparent,rgba(139,105,30,.12),transparent)}
 .reveal{opacity:0;transform:translateY(38px);transition:opacity .9s ease,transform .9s cubic-bezier(.25,.1,.25,1);will-change:opacity,transform}
 .reveal.in-view{opacity:1;transform:translateY(0)}
-/* 板块雨丝过渡 */
-.sec-rain-sweep{position:absolute;inset:0;pointer-events:none;z-index:5;opacity:0;overflow:hidden}
-.sec-rain-sweep.active{opacity:1}
-.sec-rain-sweep::before{content:'';position:absolute;top:-10%;left:-30%;width:50%;height:130%;background:repeating-linear-gradient(70deg,transparent,transparent 2px,rgba(184,148,62,.08) 2.5px,transparent 3px);animation:secSweep .8s ease-out forwards}
-@keyframes secSweep{0%{transform:translateX(-40%)}60%{opacity:.5}100%{transform:translateX(240%);opacity:0}}
 .rev-d1{transition-delay:.03s}.rev-d2{transition-delay:.09s}.rev-d3{transition-delay:.15s}.rev-d4{transition-delay:.21s}.rev-d5{transition-delay:.27s}.rev-d6{transition-delay:.33s}.rev-d7{transition-delay:.38s}
 
 /* ══ Section Label ══ */
@@ -623,21 +618,13 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .nl-msg{font-family:'Noto Serif SC',serif;font-size:.7rem;color:var(--gold-d);margin-top:1.2rem;opacity:0;transition:opacity .4s}.nl-msg.show{opacity:1}
 
 /* ══ Manifesto ══ */
-.manifesto{position:relative;z-index:2;padding:5rem 2rem 4rem;text-align:center}
-.man-inner{max-width:720px;margin:0 auto;padding:4rem 3rem}
-.man-rain{display:flex;justify-content:center;gap:12px;margin-bottom:2.5rem}
-.man-rain span{display:block;width:1.2px;background:var(--gold-d);border-radius:1px;opacity:.25;animation:manRain 4s ease-in-out infinite}
-.man-rain span:nth-child(1){height:22px;animation-delay:.0s}
-.man-rain span:nth-child(2){height:38px;opacity:.38;animation-delay:.3s}
-.man-rain span:nth-child(3){height:28px;opacity:.28;animation-delay:.6s}
-.man-rain span:nth-child(4){height:48px;opacity:.45;animation-delay:.2s}
-.man-rain span:nth-child(5){height:24px;opacity:.22;animation-delay:.8s}
-.man-rain span:nth-child(6){height:36px;opacity:.38;animation-delay:.5s}
-.man-rain span:nth-child(7){height:30px;opacity:.30;animation-delay:.1s}
-@keyframes manRain{0%,100%{opacity:.10;transform:scaleY(.8)}50%{opacity:.55;transform:scaleY(1.2)}}
-.man-divider{width:50px;height:1px;background:var(--gold);opacity:.3;margin:0 auto 2.5rem}
-.man-rain-svg{display:block;margin:0 auto 2.5rem;opacity:.8}
-.man-quote{font-family:'Noto Serif SC',serif;font-size:clamp(1.05rem,2vw,1.4rem);font-weight:300;line-height:3;color:var(--ink2);letter-spacing:.1em}
+.manifesto{position:relative;z-index:2;padding:3rem 2rem;text-align:center}
+.man-inner{max-width:660px;margin:0 auto;padding:3.5rem 3rem}
+.man-rain{display:flex;justify-content:center;gap:14px;margin-bottom:3rem}
+.man-rain span{display:block;width:1.5px;background:var(--gold-d);border-radius:1px;opacity:.35;animation:manRain 5s ease-in-out infinite}
+.man-rain span:nth-child(1){height:18px}.man-rain span:nth-child(2){height:32px;opacity:.48}.man-rain span:nth-child(3){height:24px;opacity:.35}.man-rain span:nth-child(4){height:40px;opacity:.55}.man-rain span:nth-child(5){height:20px;opacity:.3}.man-rain span:nth-child(6){height:30px;opacity:.48}.man-rain span:nth-child(7){height:22px;opacity:.35}
+@keyframes manRain{0%,100%{opacity:.15}50%{opacity:.6}}
+.man-quote{font-family:'Noto Serif SC',serif;font-size:clamp(1rem,2vw,1.3rem);font-weight:300;line-height:2.8;color:var(--ink2);letter-spacing:.1em}
 .man-quote em{font-style:normal;color:var(--gold);font-weight:500}
 .man-auth{font-family:'Cormorant Garamond',serif;font-size:.85rem;letter-spacing:.42em;color:var(--gold-d);margin-top:3rem}
 
@@ -690,13 +677,8 @@ var dot=document.getElementById("cursorDot"),ring=document.getElementById("curso
 
 /* Reveal */
 var revealEls=document.querySelectorAll(".reveal");revealEls.forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in-view")})},{threshold:0.08,rootMargin:"0px 0px -20px 0px"}).observe(el)});
-/* Section Rain Sweep */
-var sectionSweeps={};document.querySelectorAll("section[id]").forEach(function(sec){var sweep=document.createElement("div");sweep.className="sec-rain-sweep";sec.style.position=sec.style.position||"relative";sec.appendChild(sweep);sectionSweeps[sec.id]=sweep});
-var sweepObserver=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var s=sectionSweeps[e.target.id];if(s){s.classList.add("active");setTimeout(function(){s.classList.remove("active")},900)}}})},{threshold:.3});
-document.querySelectorAll("section[id]").forEach(function(s){sweepObserver.observe(s)});
-
 /* Hero Typewriter */
-(function(){var hl=document.getElementById("heroLine");if(!hl)return;var lines=["如雨水洗过空气后的片刻澄澈——","在每一次呼吸里，找回最初的自己。"];var lIdx=0,cIdx=0,cursor='<span class="cursor-blink"></span>';function type(){if(lIdx>=lines.length)return;if(cIdx<lines[lIdx].length){hl.innerHTML=lines[lIdx].substring(0,cIdx+1)+cursor;cIdx++;setTimeout(type,60+Math.random()*40)}else{hl.innerHTML=lines[lIdx]+"<br>"+(lIdx+1<lines.length?"":"");lIdx++;cIdx=0;if(lIdx<lines.length){hl.innerHTML=lines[0]+"<br>"+cursor;setTimeout(type,300)}}}setTimeout(type,2600)})();
+(function(){var hl=document.getElementById("heroLine");if(!hl)return;var lines=["如雨水洗过空气后的片刻澄澈——","在每一次呼吸里，找回最初的自己。"];var done="",lIdx=0,cIdx=0,cursor='<span class="cursor-blink"></span>';function type(){if(lIdx>=lines.length)return;if(cIdx<lines[lIdx].length){var current=lIdx===0?"":done+"<br>";hl.innerHTML=current+lines[lIdx].substring(0,cIdx+1)+cursor;cIdx++;setTimeout(type,60+Math.random()*40)}else{done=lIdx===0?lines[0]:done+"<br>"+lines[lIdx];hl.innerHTML=done+cursor;lIdx++;cIdx=0;if(lIdx<lines.length)setTimeout(type,300)}}setTimeout(type,2600)})();
 
 /* Top Nav */
 var topNav=document.getElementById("topNav"),navLinks=document.querySelectorAll(".top-nav-links a"),allSecs=document.querySelectorAll("section[id]");function updateNav(){var y=window.scrollY+window.innerHeight/3,cur="";allSecs.forEach(function(s){if(y>=s.offsetTop)cur=s.getAttribute("id")});navLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+cur)});if(typeof mobNavLinks!=="undefined")mobNavLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+cur)});topNav.classList.toggle("scrolled",window.scrollY>80)}window.addEventListener("scroll",updateNav,{passive:true});
@@ -1140,17 +1122,9 @@ html = f'''<!DOCTYPE html>
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
 <!-- MANIFESTO -->
-<section class="manifesto" id="manifesto">
-<svg class="man-rain-svg" viewBox="0 0 260 40" width="200" height="31">
-<line x1="122" y1="6" x2="122" y2="22" stroke="var(--ink)" stroke-width=".7" stroke-linecap="round" opacity=".5"/>
-<line x1="130" y1="4" x2="130" y2="24" stroke="var(--ink)" stroke-width=".9" stroke-linecap="round" opacity=".6"/>
-<line x1="138" y1="8" x2="138" y2="20" stroke="var(--ink)" stroke-width=".5" stroke-linecap="round" opacity=".4"/>
-<circle cx="130" cy="2.5" r=".9" fill="var(--gold-d)" opacity=".7"/>
-</svg>
-<div class="man-inner glass-panel reveal">
+<section class="manifesto" id="manifesto"><div class="man-inner glass-panel reveal">
 <div class="man-rain"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="man-divider"></div>
-<p class="man-quote">我们不制造香水。<br>我们只是<em>收集雨水</em>的人——<br>将那些无法言说的感受，<br>将雨后片刻的澄澈与新生，<br>翻译成<em>可以呼吸的诗</em>。</p>
+<p class="man-quote">「 我们不制造香水。<br>我们只是<em>收集雨水</em>的人——<br>将那些无法言说的感受，<br>将雨后片刻的澄澈与新生，<br>翻译成<em>可以呼吸的诗</em>。 」</p>
 <p class="man-auth">— RAIN · Perfume as Rain</p>
 </div></section>
 
