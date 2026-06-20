@@ -890,7 +890,7 @@ html = f'''<!DOCTYPE html>
 </svg>
 </a>
 <ul class="top-nav-links">
-<li><a href="#phil">品牌哲学</a></li>
+<li><a href="#phil">雨之思</a></li>
 <li><a href="#series">雨的衍生</a></li>
 <li><a href="#collection">臻品雨酿</a></li>
 <li><a href="#craft">雨的贮存指南</a></li>
@@ -901,7 +901,7 @@ html = f'''<!DOCTYPE html>
 <button class="hamburger" id="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob-nav" id="mobNav">
-<a href="#phil">品牌哲学</a>
+<a href="#phil">雨之思</a>
 <a href="#series">雨的衍生</a>
 <a href="#collection">臻品雨酿</a>
 <a href="#craft">雨的贮存指南</a>
@@ -931,8 +931,8 @@ html = f'''<!DOCTYPE html>
 <div class="hero-scroll-wrap"><div class="hero-scroll-inner"><span>探索香气</span><div class="hero-scroll-line"></div></div></div>
 </section>
 
-<!-- 01 · 品牌哲学 -->
-<div class="sec-label reveal"><p class="num">01</p><h2 class="title">品牌哲学</h2><p class="sec-en">The Philosophy of Rain</p></div>
+<!-- 01 · 雨之思 -->
+<div class="sec-label reveal"><p class="num">01</p><h2 class="title">雨之思</h2><p class="sec-en">Reflections on Rain</p></div>
 <section class="phil" id="phil">
 <div class="phil-inner glass-panel reveal">
 <p class="phil-text">雨是天空写给大地的<em>诗</em>。<br>在 RAIN，每一支香气都不是配方，<br>而是一场<em>小型的降雨</em>——<br>它洗净杂音，唤醒沉睡的感官，<br>在你皮肤上留下<em>转瞬即逝的印记</em>。</p>
