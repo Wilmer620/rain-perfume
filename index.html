@@ -98,8 +98,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .hero-frame::before{content:'';position:absolute;top:-1px;left:28%;right:28%;height:1px;background:var(--gold);opacity:.1}
 .hero-frame::after{content:'';position:absolute;bottom:-1px;left:38%;right:38%;height:1px;background:var(--gold);opacity:.06}
 .hero-title{font-family:'Cormorant Garamond','Playfair Display',serif;font-size:clamp(5rem,12vw,10rem);font-weight:400;letter-spacing:.22em;color:var(--ink);line-height:.9;margin:0 0 .15em;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .4s ease-out forwards}
-.hero-rain-logo{display:block;margin:0 auto 2rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .5s ease-out forwards}
-.hero-gold-line{width:600px;height:.5px;background:var(--gold);margin:1.2rem auto 1.2rem;position:relative;z-index:1;opacity:0;animation:hlReveal 1.4s .75s ease-out forwards}
+.hero-rain-logo{display:block;margin:0 auto 2rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .5s ease-out forwards;max-width:90vw;height:auto}
+.hero-gold-line{width:600px;height:.5px;background:var(--gold);margin:1.2rem auto 1.2rem;position:relative;z-index:1;opacity:0;animation:hlReveal 1.4s .75s ease-out forwards;max-width:90vw}
 @keyframes hlReveal{0%{opacity:0;transform:translateY(22px)}100%{opacity:.45;transform:translateY(0)}}
 .hero-sub-en{font-family:'Inter','Helvetica Neue',sans-serif;font-size:clamp(.5rem,1vw,.55rem);font-weight:300;letter-spacing:.4em;color:var(--ink3);margin-bottom:.2rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .85s ease-out forwards}
 .hero-sub-cn{font-family:'Noto Serif SC',serif;font-size:clamp(.55rem,1.1vw,.6rem);font-weight:200;letter-spacing:.3em;color:var(--ink3);margin-bottom:3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .9s ease-out forwards}
