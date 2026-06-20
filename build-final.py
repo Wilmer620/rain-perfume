@@ -959,11 +959,24 @@ html = f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="RAIN · 香水之雨 — 每一滴雨都是重生。小众艺术香水品牌，将雨水收集、翻译为可以呼吸的诗。7个系列，41款香氛，在每一次呼吸里找回最初的自己。">
+<meta name="keywords" content="RAIN,香水,小众香水,艺术香水,沙龙香,雨水,品牌,niche perfume,rain perfume">
+<meta property="og:title" content="RAIN · 香水之雨 — 每一滴雨都是重生">
+<meta property="og:description" content="小众艺术香水品牌。7个系列，41款香氛。我们不制造香水——我们只是收集雨水的人，翻译成可以呼吸的诗。">
+<meta property="og:image" content="https://wilmer620.github.io/rain-perfume/images/favicon.png">
+<meta property="og:url" content="https://wilmer620.github.io/rain-perfume/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RAIN · 香水之雨">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RAIN · 香水之雨">
+<meta name="twitter:description" content="每一滴雨都是重生。小众艺术香水品牌。">
+<meta name="twitter:image" content="https://wilmer620.github.io/rain-perfume/images/favicon.png">
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
-<title>RAIN · 香水之雨</title>
+<title>RAIN · 香水之雨 — 每一滴雨都是重生</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@200;300;400;500;600;700&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
