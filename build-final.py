@@ -125,13 +125,13 @@ NARRATIVES = {
         ]
     },
     'collection': {
-        'intro': '臻品雨酿——五支<em>典藏之作</em>，<br>从每个系列的深处提取最极致的那一滴。<br>它们是雨的精华——不是稀释，是<em>蒸馏</em>。<br>每一支都将一个主题<em>推向极致</em>。',
+        'intro': '有些气味只在你停留得足够久之后才会显现——<br>像雨水渗透进最深的土层，<br>在不可见处汇聚成一道<em>地下暗河</em>。<br>臻品雨酿，五支在主题尽头等待的<em>典藏之雨</em>。',
         'items': [
-            ('我故臆想', 'The Fable I Tell Myself', '驻足苦旅', '旅途不是向外走——是向内走。所有的记忆都是一场<em>精致的虚构</em>：你以为回到了过去，其实是现在的自己写给过去的一封信。我故臆想不做还原——它做<em>创造</em>。因为每个人讲述的「我记得」，从来不是重复，是<em>重新活一次</em>。'),
-            ('着我之境', 'The World Through Me', '世界之色', '不是我去看世界，是世界<em>穿过</em>我——像光线穿过彩色玻璃，每一片都改变了颜色。你站在拥挤的广场上，却觉得自己同时站在<em>所有去过的地方</em>。你不是观看者——你是一座移动的<em>美术馆</em>，所有的风景都陈列在你的皮肤上。'),
-            ('今夜唯我', 'Tonight, Only I Remain', '灵感盛宴', '午夜两点，最后一个客人走了。你脱下外套，倒了一杯水，坐在沙发上——<em>不说话、不思考、不证明</em>。这不是孤独——这是所有社交结束后最奢侈的款待：今夜，你只需要做<em>自己</em>。'),
-            ('新时代迁流', 'The River of Seasons', '四季所生', '时间不是直线——是<em>河流</em>。春天在你左手边发芽，夏天从右肩流过，秋天在脚边堆积，冬天从头顶落下。但你站在河中央，<em>不增不减</em>。四季流过你，你成了四季。新时代迁流不是一支香——是一个<em>坐标</em>：此刻，此身，此在。'),
-            ('致新生', 'To What Comes Next', '雨后', '雨停之后的第一行字。不是写给过去的<em>告别信</em>——是写给未来的第一句话。你站在刚被洗过的空气里，不确定接下来会发生什么——但你已经准备<em>呼吸</em>了。所有的重生都不需要宣言——它只需要雨停之后，你推开窗户。'),
+            ('我故臆想', 'The Fable I Tell Myself', '驻足苦旅', '记忆从不负责记录——它负责<em>重新安排</em>。不是你回到了某个过去的时刻，是你带着现在全部的重量，把那个时刻<em>重写了一遍</em>。我故臆想取的正是这种精致的再造：一件从未发生的事、一句从未说出口的话、一个从未存在过的夜晚——但在你的叙述里，它们比真实还要<em>不可动摇</em>。它是关于「讲述」的香气——你如何讲述自己，你便如何成为自己。'),
+            ('着我之境', 'The World Through Me', '世界之色', '你不是一块接收光线的幕布——你是<em>改变光线</em>的介质。同一片天空穿过不同的人，折射成完全不同的颜色。着我之境捕捉的正是这种穿透与偏折——你不必去冒险去远方，你已经是一座<em>行走的美术馆</em>：大海在你皮肤上留下盐的刻度，古老街道在你衣领里藏了灰。你不是看过世界——你<em>就是</em>世界被看的方式。'),
+            ('今夜唯我', 'Tonight, Only I Remain', '灵感盛宴', '派对的高潮不在杯盏之间——在<em>所有的人都走了以后</em>。你解开领口的第一颗扣子，空气忽然多了三分米的体积。没有什么需要庆祝了——<em>安静本身</em>就是庆祝。今夜唯我捕捉的正是这最终的一刻——不挽留热闹，不与任何人为伍，房间空了之后你第一次听见自己的呼吸。这不是孤独——这是所有社交结束之后，你<em>还给自己的款待</em>。'),
+            ('新时代迁流', 'The River of Seasons', '四季所生', '你不随时间流逝——时间<em>从你身上流过</em>。春雨在你的左手虎口发芽，夏阳从你的右肩倾斜而下，秋风在你的脚踝处打着旋，冬雪从你头顶落下，却从未真正触碰你。你站在河中央。<em>不增不减。</em>新时迁流不是一支关于时间的香——它是一个<em>在时间之外的坐标</em>：此刻，此身，此在。四季从你身边经过，你不动——你<em>就是</em>四季经过的方式。'),
+            ('致新生', 'To What Comes Next', '雨后', '最重要的时刻不是结束——是<em>结束之后的第一个瞬间</em>。雨停了。你不确定接下来会发生什么——但你已经在<em>准备吸气</em>了。致新生守在一个模棱两可的临界点上：旧的一页尚未完全翻过，新的一行还没写下。它不是写给过去的悼词——它是写给空气里<em>即将到来的事物</em>的第一句问候。你不需要知道那是什么。你只需要<em>推开窗户</em>。'),
         ]
     },
 }
@@ -336,7 +336,7 @@ def narrative_btn(pid, suffix=''):
         else:
             en_name, cn_name, text = item
             subtitle = f'<span style="color:var(--gold);font-weight:400;letter-spacing:.06em">{en_name}</span>'
-        name_for_notes = cn_name
+        name_for_notes = cn_name if len(item) == 4 else en_name
         notes_html = ''
         product_notes = PRODUCT_NOTES.get(name_for_notes, [])
         if product_notes:
@@ -500,6 +500,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .collection-hub .en-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:400;letter-spacing:.1em;color:var(--ink);margin-bottom:.3rem}
 .collection-hub .cn-sub{font-family:'Inter',sans-serif;font-size:.52rem;letter-spacing:.4em;color:var(--gold-d);text-transform:uppercase;margin-top:.3rem}
 .collection-card .frag-num{font-size:.48rem!important;letter-spacing:.5em!important;color:var(--ink3)!important}
+.collection-rule{font-family:'Inter',sans-serif;font-size:.45rem;letter-spacing:.15em;color:var(--gold-d);opacity:.45;margin-top:.6rem}
 
 /* ══ Series Tabs ══ */
 .series-tabs{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin:2rem 0 .5rem;padding:0 1rem}
@@ -991,7 +992,8 @@ html = f'''<!DOCTYPE html>
 <div class="sec-label reveal"><p class="num">03</p><h2 class="title">臻品雨酿</h2></div>
 <section class="collection-hub reveal" id="collection">
 <p class="kicker">The Rain Collection</p>
-<p class="desc">五支香，五个极点——每一支都代表一个主题被推到<em>最远</em>的地方。</p>
+<p class="desc">五支香，五个极点——每一支都是一个主题被推到<em>最远</em>的地方。</p>
+<p class="collection-rule">解锁条件：该主题系列拥有两件及以上作品</p>
 </section>
 
 <div class="frag-grid reveal">
