@@ -20,7 +20,7 @@ feast = [
     ('01','Face','皮囊','Juniper · Lemon Peel · Aldehydes','Orris · Violet · Powder','White Musk · Cool Amber · Suede'),
     ('02','Gone','隐身衣','Black Pepper · Clove · Aldehydes','Smoke · Incense · Ash','Vetiver · Leather · Patchouli'),
     ('03','Wait','等待','Bergamot · Cardamom · Saffron','Amber · Labdanum · Honey','Oud · Sandalwood · Vanilla Absolute'),
-    ('04','Rush','欢愉','Pink Pepper · Mandarin · Cassis','Rose · Jasmine · Peach Skin','Musk · Sandalwood · Praline'),
+    ('04','Bliss','欢愉','Pink Pepper · Mandarin · Cassis','Rose · Jasmine · Peach Skin','Musk · Sandalwood · Praline'),
     ('05','Stay','侍者','Green Tea · Bamboo · Cucumber','Lotus · Moss · Water Lily','White Musk · Cedar · Rice'),
 ]
 after = [
@@ -68,13 +68,76 @@ def panel(pid, cards_html, default_active=False, narrative=''):
     act = ' active' if default_active else ''
     return f'<div class="series-panel{act}" data-panel="{pid}">\n<div class="frag-grid">\n{cards_html}\n</div>\n{narrative}\n</div>'
 
+NARRATIVES = {
+    'sojourn': {
+        'intro': '人生是一场长途跋涉，但真正的旅行发生在你<em>停下来</em>的时候。<br>驻足苦旅系列，献给那些在最艰难的路上，<br>仍然选择停下脚步、深深<em>呼吸</em>的人。',
+        'items': [
+            ('Blur', '花非花·雾非雾', '你以为自己看清了，其实只是<em>雾</em>散了一点点。Blur 不负责给你答案——它只是让你学会，在<em>不确定</em>中安静下来。前调的梨与白牡丹像一场淡去的梦，中调是桂花穿过薄雾的香气，而尾调的白色麝香什么都不证明——它只是在那里，像早晨窗玻璃上的<em>水汽</em>。'),
+            ('Knot', '结', '有些<em>结</em>是别人系的，有些是自己系的。Knot 的气味像一根被拉紧又松开的<em>皮革绳</em>——前调是尖锐的小豆蔻与黑胡椒，像争执的开场；中调的雪松与丁香慢慢柔化，像妥协；而尾调的皮革与桦木焦油提醒你：结解开之后，<em>痕迹</em>还在。'),
+            ('Flirt', '风骚', '<em>风骚</em>不是轻浮——是一种知道风往哪吹、却故意逆风而行的从容。Flirt 藏红花的前调像一句低声的挑衅，五月玫瑰的中调是对方<em>回眸</em>那一秒，而香草与檀木的尾调——是你转身之后，风里还留着的那一点<em>说不清楚</em>的东西。'),
+            ('Peak', '摩登巅', '站在<em>高处</em>才知道，冷不是来自温度，是来自距离。Peak 的杜松与柠檬像摩登都市的玻璃幕墙，反射出冰冷的金属光；鸢尾与紫罗兰叶的中调像高楼间隙里透出的一丝<em>柔软</em>；而尾调的水泥调子很诚实——有些高度，是建在<em>钢筋</em>上的。'),
+            ('Wall', '围城', '每个人都有一道看不见的<em>墙</em>。Wall 的乳香与榄香前调像一座老教堂的门缓缓推开，玫瑰与没药的中调是墙内燃烧的香火，而安息香与檀木的尾调——是香火燃尽之后，墙缝里透进来的第一缕<em>光</em>。'),
+            ('Leave', '再别', '诀别从来不是结束——是下一次<em>重逢</em>的序章。Leave 的佛手柑与红茶前调像火车站的清晨，鸢尾与纸莎草的中调是一本翻开却读不下去的诗集，而雪松的尾调是铁轨延伸到很远很远的地方之后，空气里最后的<em>震动</em>。'),
+            ('Iris', '瞳孔', '<em>瞳孔</em>里可以装下整个天空，也可以只装一个人。Iris 的胡萝卜籽与醛香前调像瞳孔遇到光那一瞬的收缩——警觉而敏感；鸢尾与含羞草的中调是你注视某人时，<em>时间</em>变得很慢很慢的那几秒；而琥珀种子的尾调——是闭上眼之后，留在视网膜上的<em>残像</em>。'),
+        ]
+    },
+    'world': {
+        'intro': '世界不是用眼睛看见的——是用<em>气味</em>记下的。<br>每一座城市、每一片海域、每一次日出和每一次沉默，<br>都有属于自己的<em>颜色</em>。<br>世界之色，六支香气，六种观看世界的方式。',
+        'items': [
+            ('Respiration', '光合', '<em>光合作用</em>是人类最古老的语言——吸进去，呼出来，就成为自己的一部分。Respiration 的绿叶与露水前调像清晨草叶上凝结的第一滴水珠，铃兰与白茶的中调是阳光穿过叶片的<em>透明绿意</em>，而白雪松的尾调——是大地在你走后，慢慢吐出的那口气。'),
+            ('Last Word', '明日', '<em>明日</em>，永远在来的路上。Last Word 的杜松与柏树前调像清晨五点——天还没亮，你<em>已经醒了</em>；雪松与苔藓的中调是一种不确定的笃定，而香根草的尾调提醒你：有些话，今晚<em>说不出口</em>也没关系。'),
+            ('Our Melody', '共鸣', '两个人不一定认识，却可能在同一个<em>频率</em>上共振。Our Melody 的玫瑰与荔枝前调像第一次听到某首歌的前三秒——你停住了；土耳其玫瑰与沉香的中调像两个声音撞在一起，变成第三种声音；而琥珀与乳香的尾调——是音乐停了之后，房间里的<em>寂静</em>。'),
+            ('Rising Sunset', '潮汐', '月亮拉动着地球的<em>呼吸</em>。Rising Sunset 的海盐与柑橘前调像涨潮时浪花打在脚踝上那一秒冰冷，紫罗兰叶与鼠尾草的中调是海水退去后留在沙滩上的泡沫，而浮木与龙涎香的尾调——是你在海边坐了很久很久之后，风吹在脸上的<em>温度</em>。'),
+            ('Past Dream', '旧心事', '<em>旧心事</em>不是要你来解决——是要你来陪着。Past Dream 的焚香与红茶前调像一个多年没打开的抽屉，鸢尾与纸莎草的中调是里面那封写了又没寄的<em>信</em>，而檀木与香草的尾调——是你把抽屉轻轻<em>合上</em>，而不是关上。'),
+            ('Prejudice', '我独我', '<em>我独我</em>——不是孤独，是不需要被定义。Prejudice 的藏红花与孜然前调像一句别人听不懂的口头禅，大马士革玫瑰与沉香的中调是你给自己的<em>沉默</em>打了一个结，而皮革与琥珀的尾调——是一个人走在夜晚的街上，影子被路灯拉到<em>很长</em>。'),
+        ]
+    },
+    'feast': {
+        'intro': '灵感不是被找到的——是在一顿<em>盛宴</em>中被唤醒的。<br>五个瞬间、五种角色、五种不同的沉醉方式。<br>你不必是其中任何一个——<br>你只需要闻到它们，然后想起自己<em>曾经是谁</em>。',
+        'items': [
+            ('Face', '皮囊', '每个人都有不止一张<em>脸</em>——不是伪装，是版本。Face 的杜松与醛香前调像一张没有表情的脸，鸢尾与紫罗兰的中调是近距离时才能看见的微表情，而冷琥珀与麂皮的尾调——是你把脸埋进枕头之后，<em>剩下</em>的那个你。'),
+            ('Gone', '隐身衣', '最好的<em>消失</em>，是不需要解释的消失。Gone 的黑胡椒与烟熏前调像一个人从派对里悄悄退场，焚香与灰烬的中调是真空中只剩心跳声——而香根草与广藿香的尾调是三天后，还有人提起「那个谁去哪了」——你已经在<em>别处</em>了。'),
+            ('Wait', '等待', '<em>等待</em>是主动的——你决定等，所以你在。Wait 的佛手柑与藏红花前调像在咖啡馆里点了一杯不急着喝的 espresso，琥珀与蜂蜜的中调是等待的过程中，时间慢慢<em>变甜</em>，而沉香与檀木的尾调——是那个人推门进来之前的那一秒。'),
+            ('Bliss', '欢愉', '<em>欢愉</em>不讲道理——它来的时候像夏天突如其来的雨。Bliss 的粉红胡椒与黑加仑前调是一阵没有预警的笑声，五月玫瑰与水蜜桃皮的中调像两个人同时开口说「你记得那个吗」，而果仁糖的尾调——是快乐的证据，留在<em>指尖</em>，甜得很具体。'),
+            ('Stay', '侍者', '<em>侍者</em>从不走在前面，也从不在你不需要的时候出现。Stay 的绿茶与竹叶前调像一壶刚沏好的碧螺春放在你手边，莲花与水苔的中调是安静的<em>陪伴</em>，而白麝香与大米的尾调——是你喝完最后一口茶，杯底还有<em>温度</em>的安心。'),
+        ]
+    },
+    'seasons': {
+        'intro': '春生、夏长、秋收、冬藏——<br>四支香，四个时间节点，四种生命状态。<br>不是一年的四季——是<em>你自己的</em>四季。<br>在你的身体里，同时住着破土而出的种子、<br>疯长的藤蔓、沉淀的湖泊、和封存的<em>希望</em>。',
+        'items': [
+            ('春 · 生', '破土·呼吸', '春天的第一秒——<em>种子</em>裂开的那个瞬间。没有声音，没有观众。只有最原始的向上的冲动——一种不需要被鼓励也会发生的信心。你闻到的，是土壤缝隙里渗进来的第一口<em>氧气</em>。'),
+            ('夏 · 长', '疯长·蔓延', '夏天的核心是<em>失控</em>。藤蔓不在乎边界，树根不在乎方向。疯长是一种态度——把所有的力气花在成为自己这件事上，不在意速度，不计算回报。此刻——你闻起来像<em>热烈</em>本身。'),
+            ('秋 · 收', '沉淀·入静', '秋天不是凋零——是<em>选择</em>。树木把养分收回根部，落叶不是为了告别，是为了给明年的自己留空间。沉淀入静，不是退出，是把所有的声音调低，直到你听见自己血液流动的<em>频率</em>。'),
+            ('冬 · 藏', '封存·等待', '冬天不行动——冬天只是保持体温。种子被<em>封存</em>在冻土之下，不呼吸，不生长，不回应任何召唤。但这不是终结。封存是另一种形式的保存，<em>等待</em>是另一种形式的生长。你闻起来——像来年春天到来之前，世界憋住的那口气。'),
+        ]
+    },
+    'after': {
+        'intro': '雨停了。真正的故事从现在开始。<br>三支香，三滴雨水从天空到地面的旅程——<br>从云层之上的坠落，到穿透云间的漂流，<br>再到触地碎裂的最后一刻。<br>这不是结束——这是<em>重生</em>。',
+        'items': [
+            ('Fall', '自天穹', '<em>坠落</em>的第一秒——从云层之上开始。Ozone 的前调是电离层的味道，干净到刺眼。你不需要翅膀——坠落也是飞翔的一种。佛手柑与银冷杉在下降的气流中展开，这不是失败，是选择了<em>方向</em>。鸢尾与紫罗兰叶的中调是穿过云层时看见的那一抹蓝色。而矿物与白雪松的尾调——像你落在某片叶子上的重量：轻到没人注意，却足以让那片叶子<em>轻轻弯下去</em>一点。'),
+            ('Drift', '穿云间', '不是所有的雨都急着落地。Drift 是那滴选择<em>慢慢来</em>的雨——在云层之间穿行，享受每一个不确定的气流。醛香与薄荷的前调像风吹过云隙时的冰凉，棉花花与木兰花的中调是你看见地面上的人撑着伞匆忙走过——而你选择再<em>飘</em>一会儿。白色琥珀的尾调——是你最终决定落在哪里时的<em>安静</em>。不是哪里都可以——是在你准备好之后。'),
+            ('Shatter', '碎地霜', '触地的那一瞬间，你不会痛——你会<em>碎</em>成更多个自己。Shatter 是旅程的终点，也是无数个新的<em>起点</em>。肉桂与红茶的前调像地面迎接你的温度，桂花与广藿香的中调是你碎裂之后释放出的最后一声叹息——不是悲叹，是一种终于<em>抵达</em>的释然。而泥土与橡苔的尾调——是你的碎片渗入土地，成为明天某颗种子的一部分。'),
+        ]
+    },
+}
+
 def narrative_btn(pid):
     pid2 = pid.replace('-','')
+    data = NARRATIVES.get(pid, {'intro': '深度叙事即将呈现。', 'items': []})
+    items_html = ''
+    for name, cn, text in data.get('items', []):
+        items_html += f'''<div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">{name}</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem">{cn}</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">{text}</p>
+</div>'''
     return f'''<div style="text-align:center;margin:1rem 0 2rem">
 <button class="narr-btn" data-target="{pid2}">展开叙事</button>
 <div class="narr-body" id="{pid2}" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
-<div class="glass-panel" style="padding:3rem 2rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
-深度叙事即将呈现。<br>每一场雨都有自己的故事——这段内容将在后续版本中展开。
+<div class="glass-panel" style="padding:3rem 2.5rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
+<p style="font-family:'Noto Serif SC',serif;font-size:.92rem;font-weight:300;color:var(--ink2);line-height:2.6;max-width:640px;margin:0 auto 2.5rem;letter-spacing:.04em">{data['intro']}</p>
+<div style="width:36px;height:1px;background:var(--gold-d);opacity:.2;margin:0 auto 2.5rem"></div>
+{items_html}
 </div></div></div>'''
 
 # =====================================================================
@@ -208,6 +271,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .narr-btn:hover{border-color:var(--gold);color:var(--gold-d);background:rgba(255,253,250,.35)}
 .narr-body{transition:max-height .6s ease,opacity .4s ease;overflow:hidden}
 .narr-body.collapsed{max-height:0!important;opacity:0}
+.narr-body em,.narr-body .gold{font-style:normal;color:var(--gold);font-weight:500}
 
 /* ══ Craft ══ */
 .craft{position:relative;z-index:2;padding:1rem 3rem 4rem;max-width:1100px;margin:0 auto}
