@@ -42,10 +42,10 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 @keyframes elDot{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:scale(1)}}
 @keyframes elFade{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
 /* 入场涟漪 */
-.entrance-ripple{position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;border:1px solid rgba(184,148,62,.2);transform:translate(-50%,-50%);z-index:0;animation:rippleOut 2s .15s ease-out forwards}
-.entrance-ripple:nth-child(2){animation-delay:.35s;border-color:rgba(184,148,62,.12)}
-.entrance-ripple:nth-child(3){animation-delay:.55s;border-color:rgba(184,148,62,.07)}
-@keyframes rippleOut{0%{width:0;height:0;opacity:.5}100%{width:420px;height:420px;opacity:0;border-width:0}}
+.entrance-ripple{position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;border:1.5px solid rgba(184,148,62,.18);transform:translate(-50%,-50%);z-index:0;animation:rippleOut 2.2s .15s ease-out forwards}
+.entrance-ripple:nth-child(2){animation-delay:.38s;border-color:rgba(184,148,62,.10)}
+.entrance-ripple:nth-child(3){animation-delay:.6s;border-color:rgba(184,148,62,.06)}
+@keyframes rippleOut{0%{width:0;height:0;opacity:.6}100%{width:800px;height:800px;opacity:0;border-width:0}}
 .entrance-skip-wrap{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);z-index:1}
 .entrance-skip{font-family:'Inter',sans-serif;font-size:.55rem;letter-spacing:.35em;color:var(--ink3);text-transform:uppercase;opacity:0;animation:elFade .5s 1.5s ease-out forwards;cursor:none}
 
@@ -336,11 +336,11 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="hero-frame"></div>
 <div class="hero-geo" style="position:absolute;top:22%;right:12%;width:140px;height:140px;border:1px solid rgba(184,148,62,.07);transform:rotate(45deg);pointer-events:none;z-index:0"></div>
 <p class="hero-tag">Perfume as Rain · 香水之雨</p>
-<svg class="hero-rain-logo" viewBox="0 0 260 40" width="220" height="34">
-<line x1="122" y1="6"  x2="122" y2="26" stroke="var(--ink)" stroke-width=".8" stroke-linecap="round"/>
-<line x1="130" y1="4"  x2="130" y2="28" stroke="var(--ink)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="138" y1="8"  x2="138" y2="24" stroke="var(--ink)" stroke-width=".6" stroke-linecap="round"/>
-<circle cx="130" cy="3" r="1.0" fill="var(--gold-d)"/>
+<svg class="hero-rain-logo" viewBox="0 0 260 48" width="280" height="52">
+<line x1="122" y1="6"  x2="122" y2="30" stroke="var(--ink)" stroke-width=".9" stroke-linecap="round"/>
+<line x1="130" y1="4"  x2="130" y2="34" stroke="var(--ink)" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="138" y1="8"  x2="138" y2="28" stroke="var(--ink)" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="130" cy="2.5" r="1.2" fill="var(--gold-d)"/>
 </svg>
 <h1 class="hero-title">RAIN</h1>
 <p class="hero-sub">每一滴雨都是重生</p>
