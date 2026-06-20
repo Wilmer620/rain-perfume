@@ -62,12 +62,12 @@ def world_card(filename, alt, num, en, cn, top, heart, base):
     # These have real images with different filenames
     img_map = {
         'Pulse': '__coming__',
-        'Our Melody': '03-our-melody.png',
-        'Last Word': '02-last-word.jpg',
-        'Respiration': '01-respiraton.png',
-        'Rising Sunset': '04-rising-sunset.png',
-        'Past Dream': '05-past-dream.png',
-        'Prejudice': '06-prejudice.png',
+        'Our Melody': '03-our-melody.webp',
+        'Last Word': '02-last-word.webp',
+        'Respiration': '01-respiraton.webp',
+        'Rising Sunset': '04-rising-sunset.webp',
+        'Past Dream': '05-past-dream.webp',
+        'Prejudice': '06-prejudice.webp',
     }
     mapped = img_map.get(en, '')
     src = COMING_SOON_SVG if mapped == '__coming__' else f'images/{mapped}' if mapped else COMING_SOON_SVG
@@ -937,10 +937,13 @@ def series_panel(pid, data, active=False):
     cards_html = '\n'.join(card(*d) for d in data)
     return panel(pid, cards_html, active, narrative_btn(pid))
 
-seasons_cards = '\n'.join(
-    f'<div class="frag-card reveal rev-d{s[0]}"><div class="frag-card-inner"><div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon"></div><div class="frag-info"><p class="frag-num">{s[1]}</p><h3 class="frag-name-en">{s[2]}</h3><p class="frag-name-cn">{s[3]}</p><p class="frag-accord">{s[1]}日限定 · 即将呈现</p></div></div></div>'
-    for i, s in enumerate([(1,'春','生','破土·呼吸'),(2,'夏','长','疯长·蔓延'),(3,'秋','收','沉淀·入静'),(4,'冬','藏','封存·等待')])
-)
+seasons_data = [
+    ('01','Spring','破土·呼吸','橙花 · 佛手柑 · 绿叶','铃兰 · 白茶 · 蕨类','白麝香 · 雪松 · 泥土调'),
+    ('02','Summer','疯长·蔓延','薄荷 · 柑橘 · 杜松','茉莉 · 玫瑰 · 紫藤','檀木 · 麝香 · 琥珀'),
+    ('03','Autumn','沉淀·入静','桂花 · 红茶 · 佛手柑','鸢尾 · 纸莎草 · 沉香','安息香 · 香草 · 雪松'),
+    ('04','Winter','封存·等待','焚香 · 榄香 · 醛香','没药 · 檀木 · 乳香','劳丹脂 · 皮革 · 琥珀'),
+]
+seasons_cards = '\n'.join(card(*d) for d in seasons_data)
 seasons_panel_html = panel('seasons', seasons_cards, narrative=narrative_btn('seasons'))
 
 cosmos_cards = '\n'.join(card(*d) for d in cosmos)
@@ -954,6 +957,9 @@ html = f'''<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
 <title>RAIN · 香水之雨</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
