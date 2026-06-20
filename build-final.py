@@ -891,7 +891,7 @@ html = f'''<!DOCTYPE html>
 </a>
 <ul class="top-nav-links">
 <li><a href="#phil">品牌哲学</a></li>
-<li><a href="#series">产品介绍</a></li>
+<li><a href="#series">雨的衍生</a></li>
 <li><a href="#collection">臻品雨酿</a></li>
 <li><a href="#craft">雨的贮存指南</a></li>
 <li><a href="#founders">雨的观察日记</a></li>
@@ -902,7 +902,7 @@ html = f'''<!DOCTYPE html>
 </nav>
 <div class="mob-nav" id="mobNav">
 <a href="#phil">品牌哲学</a>
-<a href="#series">产品介绍</a>
+<a href="#series">雨的衍生</a>
 <a href="#collection">臻品雨酿</a>
 <a href="#craft">雨的贮存指南</a>
 <a href="#founders">雨的观察日记</a>
