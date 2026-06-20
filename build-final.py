@@ -418,6 +418,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .mob-nav a:nth-child(4){transition-delay:.24s}
 .mob-nav a:nth-child(5){transition-delay:.30s}
 .mob-nav a:nth-child(6){transition-delay:.36s}
+.mob-nav a:nth-child(7){transition-delay:.42s}
 .mob-nav a:hover{color:var(--gold)}
 .mob-nav a.active{color:var(--gold-d)}
 
@@ -783,6 +784,7 @@ html = f'''<!DOCTYPE html>
 <div class="mob-nav" id="mobNav">
 <a href="#phil">品牌哲学</a>
 <a href="#series">产品介绍</a>
+<a href="#collection">臻品雨酿</a>
 <a href="#craft">制香之道</a>
 <a href="#founders">主理人手记</a>
 <a href="#quiz">寻雨之路</a>
