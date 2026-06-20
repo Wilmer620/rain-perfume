@@ -96,7 +96,7 @@ function handleAdmin(req, res) {
 function checkAdminAuth(req) {
   const parsed = url.parse(req.url, true);
   const key = parsed.query.key;
-  return key === (process.env.ADMIN_KEY || 'rain2026');
+  return key === (process.env.ADMIN_KEY || '090620ghg');
 }
 
 const server = http.createServer((req, res) => {

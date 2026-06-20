@@ -1,13 +1,86 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>RAIN · 香水之雨</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@200;300;400;500;600;700&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-<style>
+#!/usr/bin/env python3
+"""RAIN website — complete clean build from scratch."""
+import json, os
+
+D = os.path.dirname(os.path.abspath(__file__)) if '__file__' in dir() else 'C:/Users/Ara/rain-website'
+
+# =====================================================================
+# DATA
+# =====================================================================
+sojourn = [
+    ('01','Blur','花非花·雾非雾','White Peony · Pear · Mist','Jasmine · Osmanthus · Silk','White Musk · Ambroxan · Blonde Woods'),
+    ('02','Knot','结','Cardamom · Black Pepper · Bergamot','Cedar · Clove · Labdanum','Oud · Leather · Birch Tar'),
+    ('03','Flirt','风骚','Pink Pepper · Bergamot · Saffron','Rose de Mai · Peony · Violet','Musk · Sandalwood · Vanilla'),
+    ('04','Peak','摩登巅','Juniper · Lemon · Metal Accord','Cedar · Orris · Violet Leaf','Musk · Amber · Concrete Accord'),
+    ('05','Wall','围城','Incense · Elemi · Bergamot','Rose · Myrrh · Patchouli','Frankincense · Sandalwood · Benzoin'),
+    ('06','Leave','再别','Bergamot · Black Tea · Lemon','Orris · Papyrus · Violet','Cedar · Vanilla · Musk'),
+    ('07','Iris','瞳孔','Carrot Seed · Aldehydes · Mandarin','Orris · Mimosa · Violet','Musk · Sandalwood · Ambrette'),
+]
+feast = [
+    ('01','Face','皮囊','Juniper · Lemon Peel · Aldehydes','Orris · Violet · Powder','White Musk · Cool Amber · Suede'),
+    ('02','Gone','隐身衣','Black Pepper · Clove · Aldehydes','Smoke · Incense · Ash','Vetiver · Leather · Patchouli'),
+    ('03','Wait','等待','Bergamot · Cardamom · Saffron','Amber · Labdanum · Honey','Oud · Sandalwood · Vanilla Absolute'),
+    ('04','Rush','欢愉','Pink Pepper · Mandarin · Cassis','Rose · Jasmine · Peach Skin','Musk · Sandalwood · Praline'),
+    ('05','Stay','侍者','Green Tea · Bamboo · Cucumber','Lotus · Moss · Water Lily','White Musk · Cedar · Rice'),
+]
+after = [
+    ('01','Fall','自天穹','Ozone · Bergamot · Silver Fir','Rain Accord · Iris · Violet Leaf','White Musk · Cedar · Mineral Notes'),
+    ('02','Drift','穿云间','Aldehydes · Bergamot · Mint','Cotton Flower · Magnolia · Cucumber','Musk · Sandalwood · White Amber'),
+    ('03','Shatter','碎地霜','Cassia · Black Tea · Rhubarb','Osmanthus · Patchouli · Leaves','Vetiver · Oakmoss · Earth Accord'),
+]
+seasons_labels = [('春','生','破土·呼吸'),('夏','长','疯长·蔓延'),('秋','收','沉淀·入静'),('冬','藏','封存·等待')]
+
+# =====================================================================
+# HTML BUILDERS
+# =====================================================================
+def card(num, en, cn, top, heart, base, has_img=False):
+    img_html = f'<img class="frag-img" src="images/{num}-{en.lower()}.jpg" alt="{en}" loading="lazy">' if has_img else ''
+    return f'''<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap">{img_html}</div>
+<div class="frag-info">
+<p class="frag-num">NO. {num}</p><h3 class="frag-name-en">{en}</h3><p class="frag-name-cn">{cn}</p>
+<p class="frag-accord"><b>Top</b> {top}<br><b>Heart</b> {heart}<br><b>Base</b> {base}</p>
+</div></div></div>'''
+
+def world_card(filename, alt, num, en, cn, top, heart, base):
+    # These have real images with different filenames
+    img_map = {
+        'Respiration': '01-respiraton.png',
+        'Last Word': '02-last-word.jpg',
+        'Our Melody': '03-our-melody.png',
+        'Rising Sunset': '04-rising-sunset.png',
+        'Past Dream': '05-past-dream.png',
+        'Prejudice': '06-prejudice.png',
+    }
+    src = f'images/{img_map.get(en, "placeholder.png")}'
+    return f'''<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img" src="{src}" alt="{en}" loading="lazy"></div>
+<div class="frag-info">
+<p class="frag-num">NO. {num}</p><h3 class="frag-name-en">{en}</h3><p class="frag-name-cn">{cn}</p>
+<p class="frag-accord"><b>Top</b> {top}<br><b>Heart</b> {heart}<br><b>Base</b> {base}</p>
+</div></div></div>'''
+
+def panel(pid, cards_html, default_active=False):
+    act = ' active' if default_active else ''
+    return f'<div class="series-panel{act}" data-panel="{pid}">\n<div class="frag-grid">\n{cards_html}\n</div>\n</div>'
+
+def narrative_btn(pid):
+    pid2 = pid.replace('-','')
+    return f'''<div style="text-align:center;margin:1rem 0 2rem">
+<button class="narr-btn" data-target="{pid2}">展开叙事</button>
+<div class="narr-body" id="{pid2}" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
+<div class="glass-panel" style="padding:3rem 2rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
+深度叙事即将呈现。<br>每一场雨都有自己的故事——这段内容将在后续版本中展开。
+</div></div></div>'''
+
+# =====================================================================
+# CSS
+# =====================================================================
+CSS = '''
 :root{--bg:#fdf9ef;--bg2:#fefcf6;--ink:#2b2722;--ink2:#5c5750;--ink3:#8a857b;--gold:#b8943e;--gold-l:#d4b660;--gold-d:#8b691e;--slate:#b8a888;--slate-d:#8b6d3f;--radius:6px;--blur:28px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;font-size:16px;scrollbar-width:thin;scrollbar-color:var(--ink3) var(--bg)}
@@ -216,7 +289,90 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 @media (max-width:1080px){.frag-grid{grid-template-columns:1fr 1fr;padding:0 1.5rem;gap:14px}.frag-card{min-height:420px;padding:2.5rem 1.5rem}.craft-grid{grid-template-columns:1fr;gap:14px}}
 @media (max-width:768px){.frag-grid{grid-template-columns:1fr;padding:0 1rem;gap:12px}.frag-card{min-height:360px;padding:2rem 1.2rem}.frag-name-en{font-size:1.3rem}.frag-name-cn{font-size:.8rem}.hero{padding:5rem 1.2rem 3rem;min-height:90vh}.hero-title{font-size:clamp(2.8rem,14vw,5rem)}.hero-sub{font-size:clamp(.9rem,3vw,1.2rem);letter-spacing:.3em}.hero-frame{inset:1.5rem}.hero-vd{height:40px}.phil{padding:3rem 1rem}.phil-inner{padding:2.5rem 1.5rem}.phil-text{font-size:.9rem;line-height:2.5}.quiz-inner{padding:2.5rem 1.5rem}.quiz .title{font-size:1.4rem}.quiz .q{font-size:.88rem}.quiz-opt{font-size:.68rem;padding:.5rem 1.2rem}.nl-inner{padding:2.5rem 1.5rem}.nl-form{flex-direction:column;gap:.8rem}.nl-btn{width:100%}.founders-inner,.man-inner{padding:2.5rem 1.5rem}.craft-card{padding:2rem 1.5rem}.footer{padding:2.5rem 1.5rem}.ft-links{gap:1.5rem}}
 @media (max-width:480px){.hero{padding:4rem 1rem 2.5rem;min-height:85vh}.hero-title{font-size:clamp(2.2rem,12vw,3.5rem)}.hero-sub{font-size:.85rem;letter-spacing:.2em}.hero-line{font-size:.78rem}.hero-tag{font-size:.48rem;letter-spacing:.4em}.hero-frame{display:none}.frag-card{min-height:300px;padding:1.5rem 1rem}.frag-img-wrap{margin-bottom:1.2rem}.phil-inner{padding:2rem 1.2rem}.footer{padding:2rem 1rem}}
-</style>
+'''
+
+# =====================================================================
+# JS
+# =====================================================================
+JS = '''
+/* Entrance */
+var entranceEl=document.getElementById("entrance");if(entranceEl){setTimeout(function(){entranceEl.classList.add("out")},2200);entranceEl.addEventListener("click",function(){entranceEl.classList.add("out")})}
+
+/* Scroll BG */
+(function(){var stops=[{p:0,r:253,g:251,b:245},{p:.18,r:253,g:247,b:232},{p:.36,r:251,g:249,b:242},{p:.54,r:250,g:250,b:244},{p:.72,r:253,g:246,b:228},{p:1,r:253,g:251,b:245}];function lerp(a,b,t){return a+(b-a)*t}function updateBg(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h<=0)return;var t=Math.min(1,Math.max(0,window.scrollY/h));for(var i=0;i<stops.length-1;i++){if(t>=stops[i].p&&t<=stops[i+1].p){var lt=(t-stops[i].p)/(stops[i+1].p-stops[i].p);var r=Math.round(lerp(stops[i].r,stops[i+1].r,lt));var g=Math.round(lerp(stops[i].g,stops[i+1].g,lt));var b=Math.round(lerp(stops[i].b,stops[i+1].b,lt));document.body.style.backgroundColor="rgb("+r+","+g+","+b+")";return}}}window.addEventListener("scroll",updateBg,{passive:true});updateBg()})();
+
+/* Cursor */
+var dot=document.getElementById("cursorDot"),ring=document.getElementById("cursorRing"),mx=-200,my=-200,rx=-200,ry=-200;document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});document.addEventListener("touchstart",function(){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"},{once:true});if(window.matchMedia("(pointer:coarse)").matches){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"}var intEls=document.querySelectorAll("a,.frag-card,.back-top,.quiz-opt,.nl-toggle-btn,.music-btn,.top-nav-links a,.series-tab,.narr-btn");for(var i=0;i<intEls.length;i++){(function(el){el.addEventListener("mouseenter",function(){dot.classList.add("expand");ring.classList.add("expand")});el.addEventListener("mouseleave",function(){dot.classList.remove("expand");ring.classList.remove("expand")})})(intEls[i])}(function L(){dot.style.left=mx+"px";dot.style.top=my+"px";rx+=(mx-rx)*0.2;ry+=(my-ry)*0.2;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(L)})();
+
+/* Reveal */
+var revealEls=document.querySelectorAll(".reveal");revealEls.forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in-view")})},{threshold:0.08,rootMargin:"0px 0px -20px 0px"}).observe(el)});
+
+/* Top Nav */
+var topNav=document.getElementById("topNav"),navLinks=document.querySelectorAll(".top-nav-links a"),allSecs=document.querySelectorAll("section[id]");function updateNav(){var y=window.scrollY+window.innerHeight/3,cur="";allSecs.forEach(function(s){if(y>=s.offsetTop)cur=s.getAttribute("id")});navLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+cur)});topNav.classList.toggle("scrolled",window.scrollY>80)}window.addEventListener("scroll",updateNav,{passive:true});updateNav();
+
+/* Back to top */
+var backTop=document.getElementById("backTop");window.addEventListener("scroll",function(){backTop.classList.toggle("visible",window.scrollY>600)},{passive:true});backTop.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
+
+/* Series tabs */
+var seriesTabs=document.querySelectorAll(".series-tab"),seriesPanels=document.querySelectorAll(".series-panel");seriesTabs.forEach(function(tab){tab.addEventListener("click",function(){seriesTabs.forEach(function(t){t.classList.remove("active")});tab.classList.add("active");seriesPanels.forEach(function(p){p.classList.remove("active")});var target=document.querySelector('.series-panel[data-panel="'+tab.dataset.panel+'"]');if(target)target.classList.add("active")})});
+
+/* Narrative buttons */
+document.querySelectorAll(".narr-btn").forEach(function(btn){var body=document.getElementById(btn.dataset.target),open=false;if(!body)return;body.style.maxHeight="0";body.classList.add("collapsed");btn.addEventListener("click",function(){if(open){body.style.maxHeight="0";body.classList.add("collapsed");btn.textContent="展开叙事";open=false}else{body.style.maxHeight=body.scrollHeight+"px";body.classList.remove("collapsed");btn.textContent="收起叙事";open=true}})});
+
+/* Card tilt */
+function cardTilt(card,e){if(window.innerWidth<=768)return;var r=card.getBoundingClientRect(),cx=e.clientX-r.left,cy=e.clientY-r.top,rx2=((cy/r.height)-0.5)*7,ry2=((cx/r.width)-0.5)*-7;card.style.setProperty("--mx",cx+"px");card.style.setProperty("--my",cy+"px");var inner=card.querySelector(".frag-card-inner");if(inner)inner.style.transform="rotateX("+rx2+"deg) rotateY("+ry2+"deg)"}
+function cardReset(card){card.style.setProperty("--mx","50%");card.style.setProperty("--my","50%");var inner=card.querySelector(".frag-card-inner");if(inner)inner.style.transform="rotateX(0deg) rotateY(0deg)"}
+
+/* Rain */
+try{(function(){var c=document.getElementById("cssRainLayer"),n=100;var t=["thin","reg","reg","reg","wide","reg","reg","gold","reg","reg","reg","gold","reg","reg","thin","reg","slate","reg","gold","reg","reg","reg","gold","reg","thin","ice","reg","reg","reg","gold","reg","reg"];for(var i=0;i<n;i++){var s=document.createElement("div"),type=t[i%t.length];s.className="rain-s "+type;s.style.left=Math.random()*100+"%";s.style.height=(25+Math.random()*130)+"px";s.style.animationDuration=(3+Math.random()*11)+"s";s.style.animationDelay=Math.random()*18+"s";if(type==="gold"||type==="slate")s.style.height=(45+Math.random()*150)+"px";c.appendChild(s)}})()}catch(e){console.warn(e)}
+
+/* Music */
+(function(){var btn=document.getElementById("musicBtn"),playing=false,ctx=null,gain=null;if(!btn)return;function noiseNode(){var buf=ctx.createBuffer(1,ctx.sampleRate*3,ctx.sampleRate),d=buf.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*0.5;var s=ctx.createBufferSource();s.buffer=buf;s.loop=true;return s}btn.addEventListener("click",function(){if(!ctx){ctx=new(window.AudioContext||window.webkitAudioContext)();gain=ctx.createGain();gain.gain.value=0;gain.connect(ctx.destination)}if(playing){gain.gain.linearRampToValueAtTime(0,ctx.currentTime+0.3);btn.style.borderColor="";btn.style.boxShadow="";playing=false}else{var n1=noiseNode(),f1=ctx.createBiquadFilter();f1.type="lowpass";f1.frequency.value=350;var n2=noiseNode(),f2=ctx.createBiquadFilter();f2.type="lowpass";f2.frequency.value=600;var n3=noiseNode(),f3=ctx.createBiquadFilter();f3.type="bandpass";f3.frequency.value=2000;f3.Q.value=0.5;n1.connect(f1);f1.connect(gain);n2.connect(f2);f2.connect(gain);n3.connect(f3);f3.connect(gain);n1.start();n2.start();n3.start();gain.gain.linearRampToValueAtTime(0.22,ctx.currentTime+0.3);btn.style.borderColor="var(--gold)";btn.style.boxShadow="0 0 16px rgba(184,148,62,.25)";playing=true}})})();
+
+/* Quiz */
+var qs=document.querySelectorAll(".quiz-step"),qr=document.getElementById("quizResult"),qrn=document.getElementById("qrName"),qrc=document.getElementById("qrCn"),qrd=document.getElementById("qrDesc"),qrx=document.getElementById("quizReset"),scores=new Array(6).fill(0),frags=[{en:"Respiration",cn:"光合",d:"你是清晨推开窗的那个人——干净、透明、不需要多余的解释。"},{en:"Last Word",cn:"明日",d:"你永远在看前方。天还没亮就相信太阳会升起来的那种人。"},{en:"Our Melody",cn:"共鸣",d:"你不需说太多——频率对的人自然会听见你。"},{en:"Rising Sunset",cn:"潮汐",d:"你知道一切都有节奏——涨和落、来和去。你跟随某种更古老的节拍。"},{en:"Past Dream",cn:"旧心事",d:"你不是忘记——你是带着所有发生过的事一起往前走。"},{en:"Prejudice",cn:"我独我",d:"你不需要被人读懂才成立。你站在自己的重心上，不被任何风向带偏。"}];document.querySelectorAll(".quiz-opt").forEach(function(b){b.addEventListener("click",function(){var st=parseInt(this.closest(".quiz-step").dataset.step),w=this.dataset.w.split(",").map(Number);for(var i=0;i<6;i++)scores[i]+=w[i];this.parentElement.querySelectorAll(".quiz-opt").forEach(function(x){x.classList.remove("selected")});this.classList.add("selected");setTimeout(function(){var cs=document.querySelector(".quiz-step.active");if(cs)cs.classList.remove("active");if(st<5){var ns=document.querySelector('.quiz-step[data-step="'+(st+1)+'"]');if(ns)ns.classList.add("active")}else{var best=0;for(var i=1;i<6;i++)if(scores[i]>scores[best])best=i;var r=frags[best];qrn.textContent=r.en;qrc.textContent=r.cn;qrd.textContent=r.d;qr.classList.add("active")}},280)})});if(qrx)qrx.addEventListener("click",function(){scores.fill(0);qr.classList.remove("active");document.querySelectorAll(".quiz-opt").forEach(function(b){b.classList.remove("selected")});document.querySelectorAll(".quiz-step").forEach(function(s){s.classList.remove("active")});qs[0].classList.add("active")});
+
+/* Newsletter */
+var nlType="email",nlToggleEmail=document.getElementById("nlToggleEmail"),nlTogglePhone=document.getElementById("nlTogglePhone"),nlInput=document.getElementById("nlInput"),nlForm=document.getElementById("nlForm"),nlMsg=document.getElementById("nlMsg");if(nlToggleEmail)nlToggleEmail.addEventListener("click",function(){nlType="email";nlToggleEmail.classList.add("active");nlTogglePhone.classList.remove("active");nlInput.type="email";nlInput.placeholder="你的邮箱地址";nlInput.value=""});if(nlTogglePhone)nlTogglePhone.addEventListener("click",function(){nlType="phone";nlTogglePhone.classList.add("active");nlToggleEmail.classList.remove("active");nlInput.type="tel";nlInput.placeholder="你的手机号码";nlInput.value=""});if(nlForm)nlForm.addEventListener("submit",function(e){e.preventDefault();var contact=nlInput.value.trim();if(!contact)return;fetch("/api/subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contact:contact,type:nlType})}).then(function(res){return res.json()}).then(function(data){nlMsg.textContent=data.msg;nlMsg.classList.add("show");if(data.ok)nlInput.value="";setTimeout(function(){nlMsg.classList.remove("show")},4000)}).catch(function(){nlMsg.textContent="网络错误，请稍后再试";nlMsg.classList.add("show");setTimeout(function(){nlMsg.classList.remove("show")},4000)})});
+
+console.log("%c[RAIN] Perfume as Rain %c已就绪","color:#b8943e;font-size:1.1em","color:#b8a888");
+'''
+
+# =====================================================================
+# BUILD HTML
+# =====================================================================
+world_cards = '\n'.join([
+    world_card('', 'Respiration', '01', 'Respiration', '光合', 'Green Leaves · Bergamot · Dew', 'Lily of the Valley · White Tea · Fern', 'White Musk · Cedarwood'),
+    world_card('', 'Last Word', '02', 'Last Word', '明日', 'Juniper · Cypress · Lemon Peel', 'Cedar · Moss · Fir Balsam', 'Sandalwood · Vetiver · Ambrette'),
+    world_card('', 'Our Melody', '03', 'Our Melody', '共鸣', 'Rose de Mai · Saffron · Lychee', 'Turkish Rose · Oud · Patchouli', 'Amber · Musk · Frankincense'),
+    world_card('', 'Rising Sunset', '04', 'Rising Sunset', '潮汐', 'Sea Salt · Mandarin · Pink Pepper', 'Violet Leaf · Iris · Sage', 'Driftwood · Ambergris · Oakmoss'),
+    world_card('', 'Past Dream', '05', 'Past Dream', '旧心事', 'Incense · Bergamot · Black Tea', 'Orris · Papyrus · Violet', 'Sandalwood · Vanilla · Musk'),
+    world_card('', 'Prejudice', '06', 'Prejudice', '我独我', 'Saffron · Pink Pepper · Cumin', 'Damask Rose · Oud · Myrrh', 'Leather · Amber · Labdanum'),
+])
+
+def series_panel(pid, data, active=False):
+    cards_html = '\n'.join(card(*d) for d in data)
+    return panel(pid, cards_html, active) + narrative_btn(pid)
+
+seasons_cards = '\n'.join(
+    f'<div class="frag-card reveal rev-d{s[0]}"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">{s[1]}</p><h3 class="frag-name-en">{s[2]}</h3><p class="frag-name-cn">{s[3]}</p><p class="frag-accord">{s[1]}日限定 · 即将呈现</p></div></div></div>'
+    for i, s in enumerate([(1,'春','生','破土·呼吸'),(2,'夏','长','疯长·蔓延'),(3,'秋','收','沉淀·入静'),(4,'冬','藏','封存·等待')])
+)
+seasons_panel_html = panel('seasons', seasons_cards) + narrative_btn('seasons')
+
+# Series panel with world (uses real images)
+world_panel_html = f'<div class="series-panel" data-panel="world">\n<div class="frag-grid">\n{world_cards}\n</div>\n</div>' + narrative_btn('world')
+
+html = f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RAIN · 香水之雨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@200;300;400;500;600;700&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>{CSS}</style>
 </head>
 <body>
 
@@ -287,223 +443,11 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <button class="series-tab" data-panel="after">雨后</button>
 </div>
 
-<div class="series-panel active" data-panel="sojourn">
-<div class="frag-grid">
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 01</p><h3 class="frag-name-en">Blur</h3><p class="frag-name-cn">花非花·雾非雾</p>
-<p class="frag-accord"><b>Top</b> White Peony · Pear · Mist<br><b>Heart</b> Jasmine · Osmanthus · Silk<br><b>Base</b> White Musk · Ambroxan · Blonde Woods</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 02</p><h3 class="frag-name-en">Knot</h3><p class="frag-name-cn">结</p>
-<p class="frag-accord"><b>Top</b> Cardamom · Black Pepper · Bergamot<br><b>Heart</b> Cedar · Clove · Labdanum<br><b>Base</b> Oud · Leather · Birch Tar</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 03</p><h3 class="frag-name-en">Flirt</h3><p class="frag-name-cn">风骚</p>
-<p class="frag-accord"><b>Top</b> Pink Pepper · Bergamot · Saffron<br><b>Heart</b> Rose de Mai · Peony · Violet<br><b>Base</b> Musk · Sandalwood · Vanilla</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 04</p><h3 class="frag-name-en">Peak</h3><p class="frag-name-cn">摩登巅</p>
-<p class="frag-accord"><b>Top</b> Juniper · Lemon · Metal Accord<br><b>Heart</b> Cedar · Orris · Violet Leaf<br><b>Base</b> Musk · Amber · Concrete Accord</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 05</p><h3 class="frag-name-en">Wall</h3><p class="frag-name-cn">围城</p>
-<p class="frag-accord"><b>Top</b> Incense · Elemi · Bergamot<br><b>Heart</b> Rose · Myrrh · Patchouli<br><b>Base</b> Frankincense · Sandalwood · Benzoin</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 06</p><h3 class="frag-name-en">Leave</h3><p class="frag-name-cn">再别</p>
-<p class="frag-accord"><b>Top</b> Bergamot · Black Tea · Lemon<br><b>Heart</b> Orris · Papyrus · Violet<br><b>Base</b> Cedar · Vanilla · Musk</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 07</p><h3 class="frag-name-en">Iris</h3><p class="frag-name-cn">瞳孔</p>
-<p class="frag-accord"><b>Top</b> Carrot Seed · Aldehydes · Mandarin<br><b>Heart</b> Orris · Mimosa · Violet<br><b>Base</b> Musk · Sandalwood · Ambrette</p>
-</div></div></div>
-</div>
-</div><div style="text-align:center;margin:1rem 0 2rem">
-<button class="narr-btn" data-target="sojourn">展开叙事</button>
-<div class="narr-body" id="sojourn" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
-<div class="glass-panel" style="padding:3rem 2rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
-深度叙事即将呈现。<br>每一场雨都有自己的故事——这段内容将在后续版本中展开。
-</div></div></div>
-<div class="series-panel" data-panel="world">
-<div class="frag-grid">
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img" src="images/01-respiraton.png" alt="Respiration" loading="lazy"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 01</p><h3 class="frag-name-en">Respiration</h3><p class="frag-name-cn">光合</p>
-<p class="frag-accord"><b>Top</b> Green Leaves · Bergamot · Dew<br><b>Heart</b> Lily of the Valley · White Tea · Fern<br><b>Base</b> White Musk · Cedarwood</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img" src="images/02-last-word.jpg" alt="Last Word" loading="lazy"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 02</p><h3 class="frag-name-en">Last Word</h3><p class="frag-name-cn">明日</p>
-<p class="frag-accord"><b>Top</b> Juniper · Cypress · Lemon Peel<br><b>Heart</b> Cedar · Moss · Fir Balsam<br><b>Base</b> Sandalwood · Vetiver · Ambrette</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img" src="images/03-our-melody.png" alt="Our Melody" loading="lazy"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 03</p><h3 class="frag-name-en">Our Melody</h3><p class="frag-name-cn">共鸣</p>
-<p class="frag-accord"><b>Top</b> Rose de Mai · Saffron · Lychee<br><b>Heart</b> Turkish Rose · Oud · Patchouli<br><b>Base</b> Amber · Musk · Frankincense</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img" src="images/04-rising-sunset.png" alt="Rising Sunset" loading="lazy"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 04</p><h3 class="frag-name-en">Rising Sunset</h3><p class="frag-name-cn">潮汐</p>
-<p class="frag-accord"><b>Top</b> Sea Salt · Mandarin · Pink Pepper<br><b>Heart</b> Violet Leaf · Iris · Sage<br><b>Base</b> Driftwood · Ambergris · Oakmoss</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img" src="images/05-past-dream.png" alt="Past Dream" loading="lazy"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 05</p><h3 class="frag-name-en">Past Dream</h3><p class="frag-name-cn">旧心事</p>
-<p class="frag-accord"><b>Top</b> Incense · Bergamot · Black Tea<br><b>Heart</b> Orris · Papyrus · Violet<br><b>Base</b> Sandalwood · Vanilla · Musk</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img" src="images/06-prejudice.png" alt="Prejudice" loading="lazy"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 06</p><h3 class="frag-name-en">Prejudice</h3><p class="frag-name-cn">我独我</p>
-<p class="frag-accord"><b>Top</b> Saffron · Pink Pepper · Cumin<br><b>Heart</b> Damask Rose · Oud · Myrrh<br><b>Base</b> Leather · Amber · Labdanum</p>
-</div></div></div>
-</div>
-</div><div style="text-align:center;margin:1rem 0 2rem">
-<button class="narr-btn" data-target="world">展开叙事</button>
-<div class="narr-body" id="world" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
-<div class="glass-panel" style="padding:3rem 2rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
-深度叙事即将呈现。<br>每一场雨都有自己的故事——这段内容将在后续版本中展开。
-</div></div></div>
-<div class="series-panel" data-panel="feast">
-<div class="frag-grid">
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 01</p><h3 class="frag-name-en">Face</h3><p class="frag-name-cn">皮囊</p>
-<p class="frag-accord"><b>Top</b> Juniper · Lemon Peel · Aldehydes<br><b>Heart</b> Orris · Violet · Powder<br><b>Base</b> White Musk · Cool Amber · Suede</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 02</p><h3 class="frag-name-en">Gone</h3><p class="frag-name-cn">隐身衣</p>
-<p class="frag-accord"><b>Top</b> Black Pepper · Clove · Aldehydes<br><b>Heart</b> Smoke · Incense · Ash<br><b>Base</b> Vetiver · Leather · Patchouli</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 03</p><h3 class="frag-name-en">Wait</h3><p class="frag-name-cn">等待</p>
-<p class="frag-accord"><b>Top</b> Bergamot · Cardamom · Saffron<br><b>Heart</b> Amber · Labdanum · Honey<br><b>Base</b> Oud · Sandalwood · Vanilla Absolute</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 04</p><h3 class="frag-name-en">Rush</h3><p class="frag-name-cn">欢愉</p>
-<p class="frag-accord"><b>Top</b> Pink Pepper · Mandarin · Cassis<br><b>Heart</b> Rose · Jasmine · Peach Skin<br><b>Base</b> Musk · Sandalwood · Praline</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 05</p><h3 class="frag-name-en">Stay</h3><p class="frag-name-cn">侍者</p>
-<p class="frag-accord"><b>Top</b> Green Tea · Bamboo · Cucumber<br><b>Heart</b> Lotus · Moss · Water Lily<br><b>Base</b> White Musk · Cedar · Rice</p>
-</div></div></div>
-</div>
-</div><div style="text-align:center;margin:1rem 0 2rem">
-<button class="narr-btn" data-target="feast">展开叙事</button>
-<div class="narr-body" id="feast" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
-<div class="glass-panel" style="padding:3rem 2rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
-深度叙事即将呈现。<br>每一场雨都有自己的故事——这段内容将在后续版本中展开。
-</div></div></div>
-<div class="series-panel" data-panel="seasons">
-<div class="frag-grid">
-<div class="frag-card reveal rev-d1"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">春</p><h3 class="frag-name-en">生</h3><p class="frag-name-cn">破土·呼吸</p><p class="frag-accord">春日限定 · 即将呈现</p></div></div></div>
-<div class="frag-card reveal rev-d2"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">夏</p><h3 class="frag-name-en">长</h3><p class="frag-name-cn">疯长·蔓延</p><p class="frag-accord">夏日限定 · 即将呈现</p></div></div></div>
-<div class="frag-card reveal rev-d3"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">秋</p><h3 class="frag-name-en">收</h3><p class="frag-name-cn">沉淀·入静</p><p class="frag-accord">秋日限定 · 即将呈现</p></div></div></div>
-<div class="frag-card reveal rev-d4"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">冬</p><h3 class="frag-name-en">藏</h3><p class="frag-name-cn">封存·等待</p><p class="frag-accord">冬日限定 · 即将呈现</p></div></div></div>
-</div>
-</div><div style="text-align:center;margin:1rem 0 2rem">
-<button class="narr-btn" data-target="seasons">展开叙事</button>
-<div class="narr-body" id="seasons" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
-<div class="glass-panel" style="padding:3rem 2rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
-深度叙事即将呈现。<br>每一场雨都有自己的故事——这段内容将在后续版本中展开。
-</div></div></div>
-<div class="series-panel" data-panel="after">
-<div class="frag-grid">
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 01</p><h3 class="frag-name-en">Fall</h3><p class="frag-name-cn">自天穹</p>
-<p class="frag-accord"><b>Top</b> Ozone · Bergamot · Silver Fir<br><b>Heart</b> Rain Accord · Iris · Violet Leaf<br><b>Base</b> White Musk · Cedar · Mineral Notes</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 02</p><h3 class="frag-name-en">Drift</h3><p class="frag-name-cn">穿云间</p>
-<p class="frag-accord"><b>Top</b> Aldehydes · Bergamot · Mint<br><b>Heart</b> Cotton Flower · Magnolia · Cucumber<br><b>Base</b> Musk · Sandalwood · White Amber</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 03</p><h3 class="frag-name-en">Shatter</h3><p class="frag-name-cn">碎地霜</p>
-<p class="frag-accord"><b>Top</b> Cassia · Black Tea · Rhubarb<br><b>Heart</b> Osmanthus · Patchouli · Leaves<br><b>Base</b> Vetiver · Oakmoss · Earth Accord</p>
-</div></div></div>
-</div>
-</div><div style="text-align:center;margin:1rem 0 2rem">
-<button class="narr-btn" data-target="after">展开叙事</button>
-<div class="narr-body" id="after" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
-<div class="glass-panel" style="padding:3rem 2rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
-深度叙事即将呈现。<br>每一场雨都有自己的故事——这段内容将在后续版本中展开。
-</div></div></div>
+{series_panel('sojourn', sojourn, True)}
+{world_panel_html}
+{series_panel('feast', feast)}
+{seasons_panel_html}
+{series_panel('after', after)}
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
@@ -575,48 +519,20 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <p class="ft-copy">© 2026 RAIN · Perfume as Rain · 香水之雨 · All rights reserved.<br>每一滴雨都是重生。</p>
 </footer>
 
-<script>
-/* Entrance */
-var entranceEl=document.getElementById("entrance");if(entranceEl){setTimeout(function(){entranceEl.classList.add("out")},2200);entranceEl.addEventListener("click",function(){entranceEl.classList.add("out")})}
-
-/* Scroll BG */
-(function(){var stops=[{p:0,r:253,g:251,b:245},{p:.18,r:253,g:247,b:232},{p:.36,r:251,g:249,b:242},{p:.54,r:250,g:250,b:244},{p:.72,r:253,g:246,b:228},{p:1,r:253,g:251,b:245}];function lerp(a,b,t){return a+(b-a)*t}function updateBg(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h<=0)return;var t=Math.min(1,Math.max(0,window.scrollY/h));for(var i=0;i<stops.length-1;i++){if(t>=stops[i].p&&t<=stops[i+1].p){var lt=(t-stops[i].p)/(stops[i+1].p-stops[i].p);var r=Math.round(lerp(stops[i].r,stops[i+1].r,lt));var g=Math.round(lerp(stops[i].g,stops[i+1].g,lt));var b=Math.round(lerp(stops[i].b,stops[i+1].b,lt));document.body.style.backgroundColor="rgb("+r+","+g+","+b+")";return}}}window.addEventListener("scroll",updateBg,{passive:true});updateBg()})();
-
-/* Cursor */
-var dot=document.getElementById("cursorDot"),ring=document.getElementById("cursorRing"),mx=-200,my=-200,rx=-200,ry=-200;document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});document.addEventListener("touchstart",function(){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"},{once:true});if(window.matchMedia("(pointer:coarse)").matches){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"}var intEls=document.querySelectorAll("a,.frag-card,.back-top,.quiz-opt,.nl-toggle-btn,.music-btn,.top-nav-links a,.series-tab,.narr-btn");for(var i=0;i<intEls.length;i++){(function(el){el.addEventListener("mouseenter",function(){dot.classList.add("expand");ring.classList.add("expand")});el.addEventListener("mouseleave",function(){dot.classList.remove("expand");ring.classList.remove("expand")})})(intEls[i])}(function L(){dot.style.left=mx+"px";dot.style.top=my+"px";rx+=(mx-rx)*0.2;ry+=(my-ry)*0.2;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(L)})();
-
-/* Reveal */
-var revealEls=document.querySelectorAll(".reveal");revealEls.forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in-view")})},{threshold:0.08,rootMargin:"0px 0px -20px 0px"}).observe(el)});
-
-/* Top Nav */
-var topNav=document.getElementById("topNav"),navLinks=document.querySelectorAll(".top-nav-links a"),allSecs=document.querySelectorAll("section[id]");function updateNav(){var y=window.scrollY+window.innerHeight/3,cur="";allSecs.forEach(function(s){if(y>=s.offsetTop)cur=s.getAttribute("id")});navLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+cur)});topNav.classList.toggle("scrolled",window.scrollY>80)}window.addEventListener("scroll",updateNav,{passive:true});updateNav();
-
-/* Back to top */
-var backTop=document.getElementById("backTop");window.addEventListener("scroll",function(){backTop.classList.toggle("visible",window.scrollY>600)},{passive:true});backTop.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
-
-/* Series tabs */
-var seriesTabs=document.querySelectorAll(".series-tab"),seriesPanels=document.querySelectorAll(".series-panel");seriesTabs.forEach(function(tab){tab.addEventListener("click",function(){seriesTabs.forEach(function(t){t.classList.remove("active")});tab.classList.add("active");seriesPanels.forEach(function(p){p.classList.remove("active")});var target=document.querySelector('.series-panel[data-panel="'+tab.dataset.panel+'"]');if(target)target.classList.add("active")})});
-
-/* Narrative buttons */
-document.querySelectorAll(".narr-btn").forEach(function(btn){var body=document.getElementById(btn.dataset.target),open=false;if(!body)return;body.style.maxHeight="0";body.classList.add("collapsed");btn.addEventListener("click",function(){if(open){body.style.maxHeight="0";body.classList.add("collapsed");btn.textContent="展开叙事";open=false}else{body.style.maxHeight=body.scrollHeight+"px";body.classList.remove("collapsed");btn.textContent="收起叙事";open=true}})});
-
-/* Card tilt */
-function cardTilt(card,e){if(window.innerWidth<=768)return;var r=card.getBoundingClientRect(),cx=e.clientX-r.left,cy=e.clientY-r.top,rx2=((cy/r.height)-0.5)*7,ry2=((cx/r.width)-0.5)*-7;card.style.setProperty("--mx",cx+"px");card.style.setProperty("--my",cy+"px");var inner=card.querySelector(".frag-card-inner");if(inner)inner.style.transform="rotateX("+rx2+"deg) rotateY("+ry2+"deg)"}
-function cardReset(card){card.style.setProperty("--mx","50%");card.style.setProperty("--my","50%");var inner=card.querySelector(".frag-card-inner");if(inner)inner.style.transform="rotateX(0deg) rotateY(0deg)"}
-
-/* Rain */
-try{(function(){var c=document.getElementById("cssRainLayer"),n=100;var t=["thin","reg","reg","reg","wide","reg","reg","gold","reg","reg","reg","gold","reg","reg","thin","reg","slate","reg","gold","reg","reg","reg","gold","reg","thin","ice","reg","reg","reg","gold","reg","reg"];for(var i=0;i<n;i++){var s=document.createElement("div"),type=t[i%t.length];s.className="rain-s "+type;s.style.left=Math.random()*100+"%";s.style.height=(25+Math.random()*130)+"px";s.style.animationDuration=(3+Math.random()*11)+"s";s.style.animationDelay=Math.random()*18+"s";if(type==="gold"||type==="slate")s.style.height=(45+Math.random()*150)+"px";c.appendChild(s)}})()}catch(e){console.warn(e)}
-
-/* Music */
-(function(){var btn=document.getElementById("musicBtn"),playing=false,ctx=null,gain=null;if(!btn)return;function noiseNode(){var buf=ctx.createBuffer(1,ctx.sampleRate*3,ctx.sampleRate),d=buf.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*0.5;var s=ctx.createBufferSource();s.buffer=buf;s.loop=true;return s}btn.addEventListener("click",function(){if(!ctx){ctx=new(window.AudioContext||window.webkitAudioContext)();gain=ctx.createGain();gain.gain.value=0;gain.connect(ctx.destination)}if(playing){gain.gain.linearRampToValueAtTime(0,ctx.currentTime+0.3);btn.style.borderColor="";btn.style.boxShadow="";playing=false}else{var n1=noiseNode(),f1=ctx.createBiquadFilter();f1.type="lowpass";f1.frequency.value=350;var n2=noiseNode(),f2=ctx.createBiquadFilter();f2.type="lowpass";f2.frequency.value=600;var n3=noiseNode(),f3=ctx.createBiquadFilter();f3.type="bandpass";f3.frequency.value=2000;f3.Q.value=0.5;n1.connect(f1);f1.connect(gain);n2.connect(f2);f2.connect(gain);n3.connect(f3);f3.connect(gain);n1.start();n2.start();n3.start();gain.gain.linearRampToValueAtTime(0.22,ctx.currentTime+0.3);btn.style.borderColor="var(--gold)";btn.style.boxShadow="0 0 16px rgba(184,148,62,.25)";playing=true}})})();
-
-/* Quiz */
-var qs=document.querySelectorAll(".quiz-step"),qr=document.getElementById("quizResult"),qrn=document.getElementById("qrName"),qrc=document.getElementById("qrCn"),qrd=document.getElementById("qrDesc"),qrx=document.getElementById("quizReset"),scores=new Array(6).fill(0),frags=[{en:"Respiration",cn:"光合",d:"你是清晨推开窗的那个人——干净、透明、不需要多余的解释。"},{en:"Last Word",cn:"明日",d:"你永远在看前方。天还没亮就相信太阳会升起来的那种人。"},{en:"Our Melody",cn:"共鸣",d:"你不需说太多——频率对的人自然会听见你。"},{en:"Rising Sunset",cn:"潮汐",d:"你知道一切都有节奏——涨和落、来和去。你跟随某种更古老的节拍。"},{en:"Past Dream",cn:"旧心事",d:"你不是忘记——你是带着所有发生过的事一起往前走。"},{en:"Prejudice",cn:"我独我",d:"你不需要被人读懂才成立。你站在自己的重心上，不被任何风向带偏。"}];document.querySelectorAll(".quiz-opt").forEach(function(b){b.addEventListener("click",function(){var st=parseInt(this.closest(".quiz-step").dataset.step),w=this.dataset.w.split(",").map(Number);for(var i=0;i<6;i++)scores[i]+=w[i];this.parentElement.querySelectorAll(".quiz-opt").forEach(function(x){x.classList.remove("selected")});this.classList.add("selected");setTimeout(function(){var cs=document.querySelector(".quiz-step.active");if(cs)cs.classList.remove("active");if(st<5){var ns=document.querySelector('.quiz-step[data-step="'+(st+1)+'"]');if(ns)ns.classList.add("active")}else{var best=0;for(var i=1;i<6;i++)if(scores[i]>scores[best])best=i;var r=frags[best];qrn.textContent=r.en;qrc.textContent=r.cn;qrd.textContent=r.d;qr.classList.add("active")}},280)})});if(qrx)qrx.addEventListener("click",function(){scores.fill(0);qr.classList.remove("active");document.querySelectorAll(".quiz-opt").forEach(function(b){b.classList.remove("selected")});document.querySelectorAll(".quiz-step").forEach(function(s){s.classList.remove("active")});qs[0].classList.add("active")});
-
-/* Newsletter */
-var nlType="email",nlToggleEmail=document.getElementById("nlToggleEmail"),nlTogglePhone=document.getElementById("nlTogglePhone"),nlInput=document.getElementById("nlInput"),nlForm=document.getElementById("nlForm"),nlMsg=document.getElementById("nlMsg");if(nlToggleEmail)nlToggleEmail.addEventListener("click",function(){nlType="email";nlToggleEmail.classList.add("active");nlTogglePhone.classList.remove("active");nlInput.type="email";nlInput.placeholder="你的邮箱地址";nlInput.value=""});if(nlTogglePhone)nlTogglePhone.addEventListener("click",function(){nlType="phone";nlTogglePhone.classList.add("active");nlToggleEmail.classList.remove("active");nlInput.type="tel";nlInput.placeholder="你的手机号码";nlInput.value=""});if(nlForm)nlForm.addEventListener("submit",function(e){e.preventDefault();var contact=nlInput.value.trim();if(!contact)return;fetch("/api/subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contact:contact,type:nlType})}).then(function(res){return res.json()}).then(function(data){nlMsg.textContent=data.msg;nlMsg.classList.add("show");if(data.ok)nlInput.value="";setTimeout(function(){nlMsg.classList.remove("show")},4000)}).catch(function(){nlMsg.textContent="网络错误，请稍后再试";nlMsg.classList.add("show");setTimeout(function(){nlMsg.classList.remove("show")},4000)})});
-
-console.log("%c[RAIN] Perfume as Rain %c已就绪","color:#b8943e;font-size:1.1em","color:#b8a888");
-</script>
+<script>{JS}</script>
 </body>
-</html>
+</html>'''
+
+output_path = os.path.join(D, 'index.html')
+with open(output_path, 'w', encoding='utf-8') as f:
+    f.write(html)
+
+print(f'Built: {output_path}')
+print(f'Size: {len(html)} chars')
+print(f'Sections: {html.count("<section")}')
+print(f'Cards: {html.count("frag-name-en")}')
+print(f'Tabs: {html.count("series-tab")}')
+print(f'Panels: {html.count("series-panel")}')
+print(f'Narrative btns: {html.count("narr-btn")}')
+print(f'Script tags: {html.count("<script>")} / {html.count("</script>")}')
+print('Done.')
