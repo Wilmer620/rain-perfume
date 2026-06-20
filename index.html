@@ -37,16 +37,15 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .entrance-skip-wrap{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%)}
 .entrance-skip{font-family:'Inter',sans-serif;font-size:.55rem;letter-spacing:.35em;color:var(--ink3);text-transform:uppercase;opacity:0;animation:brandReveal .5s 1.3s ease-out forwards;cursor:none}
 /* 三线雨标 */
-.entrance-rain-mark{position:absolute;top:calc(50% - 70px);left:50%;transform:translateX(-50%);display:flex;justify-content:center;gap:8px;width:48px}
-.entrance-rain-mark .rl{display:block;background:var(--ink);border-radius:1px;transform:translateY(-60px);opacity:0}
-.entrance-rain-mark .rl.r1{width:.7px;height:28px;animation:rlDrop .6s .05s cubic-bezier(.22,0,.36,1) forwards}
-.entrance-rain-mark .rl.r2{width:1px;height:34px;animation:rlDrop .6s .15s cubic-bezier(.22,0,.36,1) forwards}
-.entrance-rain-mark .rl.r3{width:.5px;height:24px;animation:rlDrop .6s .25s cubic-bezier(.22,0,.36,1) forwards}
-@keyframes rlDrop{0%{transform:translateY(-60px);opacity:0}60%{opacity:1}100%{transform:translateY(0);opacity:1}}
-.entrance-gold-dot{position:absolute;top:calc(50% - 18px);left:50%;width:4px;height:4px;border-radius:50%;background:var(--gold);transform:translate(-50%,-50%);opacity:0;animation:dotGlow .4s .4s ease-out forwards;box-shadow:0 0 8px rgba(184,148,62,.5)}
+.entrance-rain-mark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;justify-content:center;gap:10px;width:56px;height:40px;margin-top:-50px}
+.entrance-rain-mark .rl{display:block;background:var(--ink);border-radius:1px;transform:translateY(-80px);opacity:0}
+.entrance-rain-mark .rl.r1{width:.9px;height:34px;animation:rlDrop .6s .05s cubic-bezier(.22,0,.36,1) forwards}
+.entrance-rain-mark .rl.r2{width:1.2px;height:40px;animation:rlDrop .6s .15s cubic-bezier(.22,0,.36,1) forwards}
+.entrance-rain-mark .rl.r3{width:.6px;height:28px;animation:rlDrop .6s .25s cubic-bezier(.22,0,.36,1) forwards}
+@keyframes rlDrop{0%{transform:translateY(-80px);opacity:0}60%{opacity:1}100%{transform:translateY(0);opacity:1}}
+.entrance-gold-dot{position:absolute;top:50%;left:50%;width:5px;height:5px;border-radius:50%;background:var(--gold);transform:translate(-50%,-50%);opacity:0;animation:dotGlow .4s .4s ease-out forwards;box-shadow:0 0 10px rgba(184,148,62,.5);margin-top:-50px}
 @keyframes dotGlow{0%{opacity:0;transform:translate(-50%,-50%) scale(0)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
-.entrance-rain-mark-wrap{position:relative;z-index:1;opacity:1;transition:opacity .6s}
-.entrance.out .entrance-rain-mark-wrap{opacity:0}
+.entrance-rain-mark-wrap{position:absolute;inset:0;z-index:1;opacity:1;transition:opacity .6s;pointer-events:none}
 @keyframes rippleOut{0%{width:0;height:0;opacity:.6}100%{width:360px;height:360px;opacity:0}}@keyframes brandReveal{0%{opacity:0;transform:translateY(16px) scale(.96);filter:blur(8px)}60%{opacity:.7;filter:blur(2px)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
 
 /* ══ Top Navigation ══ */
@@ -94,6 +93,12 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .hero-tag{font-family:'Inter',sans-serif;font-size:.56rem;letter-spacing:.6em;color:var(--gold-d);text-transform:uppercase;position:relative;z-index:1;opacity:0;animation:fUp 1s .15s ease-out forwards}
 .hero-title{font-family:'Cormorant Garamond','Playfair Display',serif;font-size:clamp(5rem,12vw,10rem);font-weight:400;letter-spacing:.22em;color:var(--ink);line-height:.9;margin:.25em 0 .08em;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .4s ease-out forwards}
 .hero-sub{font-family:'Noto Serif SC',serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:300;letter-spacing:.5em;color:var(--ink2);margin-bottom:3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .6s ease-out forwards}
+.hero-rain-mark{display:flex;justify-content:center;gap:10px;margin-bottom:1.2rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .5s ease-out forwards}
+.hero-rain-mark .hrl{display:block;background:var(--ink);border-radius:1px}
+.hero-rain-mark .hrl.h1{width:.9px;height:34px}
+.hero-rain-mark .hrl.h2{width:1.2px;height:40px}
+.hero-rain-mark .hrl.h3{width:.6px;height:28px}
+.hero-gold-dot{display:block;width:5px;height:5px;border-radius:50%;background:var(--gold);margin:-.6rem auto .6rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .55s ease-out forwards;box-shadow:0 0 10px rgba(184,148,62,.4)}
 .hero-vd{width:2px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold-d) 30%,var(--gold-d) 70%,transparent);margin:0 auto 3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .8s ease-out forwards}
 .hero-line{font-family:'Noto Serif SC',serif;font-size:.9rem;font-weight:300;color:var(--ink3);letter-spacing:.07em;line-height:2.4;max-width:460px;position:relative;z-index:1;opacity:0;animation:fUp 1.4s 1s ease-out forwards}
 @keyframes fUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
@@ -102,7 +107,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .hero-scroll-inner span{font-size:.53rem;letter-spacing:.42em;color:var(--ink3);text-transform:uppercase}
 .hero-scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:breathe 3s ease-in-out infinite}
 @keyframes breathe{0%,100%{opacity:.16}50%{opacity:.65}}
-.hero-tag,.hero-title,.hero-sub,.hero-vd,.hero-line{animation-delay:1.8s!important}.hero-scroll-inner{animation-delay:2s!important}
+.hero-tag,.hero-title,.hero-sub,.hero-vd,.hero-line,.hero-rain-mark,.hero-gold-dot{animation-delay:1.8s!important}.hero-scroll-inner{animation-delay:2s!important}
 
 /* ══ Common ══ */
 .glass-panel{backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));border:1px solid rgba(184,148,62,.03);border-radius:var(--radius);box-shadow:0 4px 30px rgba(139,105,30,.02);background:rgba(255,253,250,.1)}
@@ -294,7 +299,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <!-- TOP NAV -->
 <nav class="top-nav" id="topNav">
 <a href="#" class="top-nav-brand">
-<svg viewBox="0 0 260 64" width="140" height="34" class="nav-logo-svg">
+<svg viewBox="0 0 260 64" width="175" height="43" class="nav-logo-svg">
 <line x1="122" y1="4"  x2="122" y2="18" stroke="currentColor" stroke-width=".7" stroke-linecap="round"/>
 <line x1="130" y1="2"  x2="130" y2="20" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/>
 <line x1="138" y1="6"  x2="138" y2="16" stroke="currentColor" stroke-width=".5" stroke-linecap="round"/>
@@ -331,6 +336,10 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="hero-frame"></div>
 <div class="hero-geo" style="position:absolute;top:22%;right:12%;width:140px;height:140px;border:1px solid rgba(184,148,62,.07);transform:rotate(45deg);pointer-events:none;z-index:0"></div>
 <p class="hero-tag">Perfume as Rain · 香水之雨</p>
+<div class="hero-rain-mark">
+<span class="hrl h1"></span><span class="hrl h2"></span><span class="hrl h3"></span>
+</div>
+<span class="hero-gold-dot"></span>
 <h1 class="hero-title">RAIN</h1>
 <p class="hero-sub">每一滴雨都是重生</p>
 <div class="hero-vd"></div>
