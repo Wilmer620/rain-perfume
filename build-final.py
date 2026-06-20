@@ -330,7 +330,7 @@ def narrative_btn(pid, suffix=''):
             subtitle = f'<span class="col-tag">典藏 · {tag}</span><span class="col-en">{en_name}</span>'
         else:
             en_name, cn_name, text = item
-            subtitle = f'<span style="color:var(--ink3)">{en_name}</span>'
+            subtitle = f'<span style="color:var(--gold);font-weight:400;letter-spacing:.06em">{en_name}</span>'
         name_for_notes = cn_name
         notes_html = ''
         product_notes = PRODUCT_NOTES.get(name_for_notes, [])
