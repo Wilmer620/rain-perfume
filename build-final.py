@@ -64,9 +64,9 @@ def world_card(filename, alt, num, en, cn, top, heart, base):
 <p class="frag-accord"><b>Top</b> {top}<br><b>Heart</b> {heart}<br><b>Base</b> {base}</p>
 </div></div></div>'''
 
-def panel(pid, cards_html, default_active=False):
+def panel(pid, cards_html, default_active=False, narrative=''):
     act = ' active' if default_active else ''
-    return f'<div class="series-panel{act}" data-panel="{pid}">\n<div class="frag-grid">\n{cards_html}\n</div>\n</div>'
+    return f'<div class="series-panel{act}" data-panel="{pid}">\n<div class="frag-grid">\n{cards_html}\n</div>\n{narrative}\n</div>'
 
 def narrative_btn(pid):
     pid2 = pid.replace('-','')
@@ -352,16 +352,16 @@ world_cards = '\n'.join([
 
 def series_panel(pid, data, active=False):
     cards_html = '\n'.join(card(*d) for d in data)
-    return panel(pid, cards_html, active) + narrative_btn(pid)
+    return panel(pid, cards_html, active, narrative_btn(pid))
 
 seasons_cards = '\n'.join(
     f'<div class="frag-card reveal rev-d{s[0]}"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">{s[1]}</p><h3 class="frag-name-en">{s[2]}</h3><p class="frag-name-cn">{s[3]}</p><p class="frag-accord">{s[1]}日限定 · 即将呈现</p></div></div></div>'
     for i, s in enumerate([(1,'春','生','破土·呼吸'),(2,'夏','长','疯长·蔓延'),(3,'秋','收','沉淀·入静'),(4,'冬','藏','封存·等待')])
 )
-seasons_panel_html = panel('seasons', seasons_cards) + narrative_btn('seasons')
+seasons_panel_html = panel('seasons', seasons_cards, narrative=narrative_btn('seasons'))
 
 # Series panel with world (uses real images)
-world_panel_html = f'<div class="series-panel" data-panel="world">\n<div class="frag-grid">\n{world_cards}\n</div>\n</div>' + narrative_btn('world')
+world_panel_html = f'<div class="series-panel" data-panel="world">\n<div class="frag-grid">\n{world_cards}\n</div>\n{narrative_btn("world")}\n</div>'
 
 html = f'''<!DOCTYPE html>
 <html lang="zh-CN">
