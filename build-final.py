@@ -669,7 +669,7 @@ document.querySelectorAll(".note-chip").forEach(function(chip){chip.addEventList
 
 /* Tap Ring */
 (function(){
-var WORD="PERFUME AS RAIN",chars=WORD.split(""),n=chars.length,radius=48,gap=360/n;
+var WORD="PERFUME AS RAIN",chars=WORD.split(""),n=chars.length,radius=36,gap=360/n;
 function tapRing(x,y){
 var el=document.createElement("div");
 el.className="tap-ring";
@@ -694,8 +694,13 @@ if(e.target.closest(".top-nav-links a")||e.target.closest(".narr-btn")||e.target
 tapRing(e.clientX,e.clientY)
 });
 document.addEventListener("touchstart",function(e){
-if(!e.touches||!e.touches[0])return;
-var t=e.touches[0];
+var t=e.touches?e.touches[0]:e.changedTouches?e.changedTouches[0]:null;
+if(!t)return;
+tapRing(t.clientX,t.clientY)
+},{passive:true});
+document.addEventListener("touchend",function(e){
+var t=e.changedTouches?e.changedTouches[0]:null;
+if(!t)return;
 tapRing(t.clientX,t.clientY)
 },{passive:true})
 })();
