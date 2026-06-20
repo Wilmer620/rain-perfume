@@ -447,13 +447,12 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .hero-frame{position:absolute;inset:5rem;border:1px solid rgba(184,148,62,.05);pointer-events:none;z-index:0}
 .hero-frame::before{content:'';position:absolute;top:-1px;left:28%;right:28%;height:1px;background:var(--gold);opacity:.1}
 .hero-frame::after{content:'';position:absolute;bottom:-1px;left:38%;right:38%;height:1px;background:var(--gold);opacity:.06}
-.hero-tag{font-family:'Inter',sans-serif;font-size:.56rem;letter-spacing:.6em;color:var(--gold-d);text-transform:uppercase;position:relative;z-index:1;opacity:0;animation:fUp 1s .15s ease-out forwards}
-.hero-title{font-family:'Cormorant Garamond','Playfair Display',serif;font-size:clamp(5rem,12vw,10rem);font-weight:400;letter-spacing:.22em;color:var(--ink);line-height:.9;margin:.25em 0 .08em;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .4s ease-out forwards}
-.hero-sub{font-family:'Noto Serif SC',serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:300;letter-spacing:.5em;color:var(--ink2);margin-bottom:3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .6s ease-out forwards}
-.hero-rain-logo{display:block;margin:0 auto .8rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .5s ease-out forwards}
+.hero-title{font-family:'Cormorant Garamond','Playfair Display',serif;font-size:clamp(5rem,12vw,10rem);font-weight:400;letter-spacing:.22em;color:var(--ink);line-height:.9;margin:0 0 .15em;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .4s ease-out forwards}
+.hero-rain-logo{display:block;margin:0 auto 2rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .5s ease-out forwards}
 .hero-gold-line{width:600px;height:.5px;background:var(--gold);margin:1.2rem auto 1.2rem;position:relative;z-index:1;opacity:0;animation:hlReveal 1.4s .75s ease-out forwards}
 @keyframes hlReveal{0%{opacity:0;transform:translateY(22px)}100%{opacity:.45;transform:translateY(0)}}
-.hero-vd{width:2px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold-d) 30%,var(--gold-d) 70%,transparent);margin:0 auto 3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .8s ease-out forwards}
+.hero-sub-en{font-family:'Inter','Helvetica Neue',sans-serif;font-size:clamp(.5rem,1vw,.55rem);font-weight:300;letter-spacing:.4em;color:var(--ink3);margin-bottom:.2rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .85s ease-out forwards}
+.hero-sub-cn{font-family:'Noto Serif SC',serif;font-size:clamp(.55rem,1.1vw,.6rem);font-weight:200;letter-spacing:.3em;color:var(--ink3);margin-bottom:3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .9s ease-out forwards}
 .hero-line{font-family:'Noto Serif SC',serif;font-size:.9rem;font-weight:300;color:var(--ink3);letter-spacing:.07em;line-height:2.4;max-width:460px;position:relative;z-index:1;opacity:0;animation:fUp 1.4s 1s ease-out forwards}
 @keyframes fUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .hero-scroll-wrap{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;z-index:1}
@@ -461,7 +460,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .hero-scroll-inner span{font-size:.53rem;letter-spacing:.42em;color:var(--ink3);text-transform:uppercase}
 .hero-scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:breathe 3s ease-in-out infinite}
 @keyframes breathe{0%,100%{opacity:.16}50%{opacity:.65}}
-.hero-tag,.hero-title,.hero-sub,.hero-vd,.hero-line,.hero-rain-logo,.hero-gold-line{animation-delay:1.8s!important}.hero-scroll-inner{animation-delay:2s!important}
+.hero-tag,.hero-title,.hero-line,.hero-rain-logo,.hero-gold-line,.hero-sub-en,.hero-sub-cn{animation-delay:1.8s!important}.hero-scroll-inner{animation-delay:2s!important}
 
 /* ══ Common ══ */
 .glass-panel{backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));border:1px solid rgba(184,148,62,.03);border-radius:var(--radius);box-shadow:0 4px 30px rgba(139,105,30,.02);background:rgba(255,253,250,.1)}
@@ -626,8 +625,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 /* ══ Responsive ══ */
 @media (max-width:1080px){.frag-grid{grid-template-columns:1fr 1fr;padding:0 1.5rem;gap:14px}.frag-card{min-height:420px;padding:2.5rem 1.5rem}.craft-grid{grid-template-columns:1fr;gap:14px}}
-@media (max-width:768px){.frag-grid{grid-template-columns:1fr;padding:0 1rem;gap:12px}.frag-card{min-height:360px;padding:2rem 1.2rem}.frag-name-en{font-size:1.3rem}.frag-name-cn{font-size:.8rem}.hero{padding:5rem 1.2rem 3rem;min-height:90vh}.hero-title{font-size:clamp(2.8rem,14vw,5rem)}.hero-sub{font-size:clamp(.9rem,3vw,1.2rem);letter-spacing:.3em}.hero-frame{inset:1.5rem}.hero-vd{height:40px}.phil{padding:3rem 1rem}.phil-inner{padding:2.5rem 1.5rem}.phil-text{font-size:.9rem;line-height:2.5}.quiz-inner{padding:2.5rem 1.5rem}.quiz .title{font-size:1.4rem}.quiz .q{font-size:.88rem}.quiz-opt{font-size:.68rem;padding:.5rem 1.2rem}.nl-inner{padding:2.5rem 1.5rem}.nl-form{flex-direction:column;gap:.8rem}.nl-btn{width:100%}.founders-inner,.man-inner{padding:2.5rem 1.5rem}.craft-card{padding:2rem 1.5rem}.footer{padding:2.5rem 1.5rem}.ft-links{gap:1.5rem}}
-@media (max-width:480px){.hero{padding:4rem 1rem 2.5rem;min-height:85vh}.hero-title{font-size:clamp(2.2rem,12vw,3.5rem)}.hero-sub{font-size:.85rem;letter-spacing:.2em}.hero-line{font-size:.78rem}.hero-tag{font-size:.48rem;letter-spacing:.4em}.hero-frame{display:none}.frag-card{min-height:300px;padding:1.5rem 1rem}.frag-img-wrap{margin-bottom:1.2rem}.phil-inner{padding:2rem 1.2rem}.footer{padding:2rem 1rem}}
+@media (max-width:768px){.frag-grid{grid-template-columns:1fr;padding:0 1rem;gap:12px}.frag-card{min-height:360px;padding:2rem 1.2rem}.frag-name-en{font-size:1.3rem}.frag-name-cn{font-size:.8rem}.hero{padding:5rem 1.2rem 3rem;min-height:90vh}.hero-title{font-size:clamp(2.8rem,14vw,5rem)}.hero-sub-en{font-size:.5rem;letter-spacing:.3em}.hero-sub-cn{font-size:.55rem;letter-spacing:.2em}.hero-frame{inset:1.5rem}.hero-gold-line{width:85%}.phil{padding:3rem 1rem}.phil-inner{padding:2.5rem 1.5rem}.phil-text{font-size:.9rem;line-height:2.5}.quiz-inner{padding:2.5rem 1.5rem}.quiz .title{font-size:1.4rem}.quiz .q{font-size:.88rem}.quiz-opt{font-size:.68rem;padding:.5rem 1.2rem}.nl-inner{padding:2.5rem 1.5rem}.nl-form{flex-direction:column;gap:.8rem}.nl-btn{width:100%}.founders-inner,.man-inner{padding:2.5rem 1.5rem}.craft-card{padding:2rem 1.5rem}.footer{padding:2.5rem 1.5rem}.ft-links{gap:1.5rem}}
+@media (max-width:480px){.hero{padding:4rem 1rem 2.5rem;min-height:85vh}.hero-title{font-size:clamp(2.2rem,12vw,3.5rem)}.hero-sub-en{font-size:.45rem;letter-spacing:.2em}.hero-sub-cn{font-size:.5rem;letter-spacing:.15em}.hero-line{font-size:.78rem}.hero-frame{display:none}.hero-gold-line{width:90%}.frag-card{min-height:300px;padding:1.5rem 1rem}.frag-img-wrap{margin-bottom:1.2rem}.phil-inner{padding:2rem 1.2rem}.footer{padding:2rem 1rem}}
 '''
 
 # =====================================================================
@@ -872,7 +871,6 @@ html = f'''<!DOCTYPE html>
 <section class="hero">
 <div class="hero-frame"></div>
 <div class="hero-geo" style="position:absolute;top:22%;right:12%;width:140px;height:140px;border:1px solid rgba(184,148,62,.07);transform:rotate(45deg);pointer-events:none;z-index:0"></div>
-<p class="hero-tag">Perfume as Rain · 香水之雨</p>
 <svg class="hero-rain-logo" viewBox="0 0 260 48" width="280" height="52">
 <line x1="122" y1="6"  x2="122" y2="30" stroke="var(--ink)" stroke-width=".9" stroke-linecap="round"/>
 <line x1="130" y1="4"  x2="130" y2="34" stroke="var(--ink)" stroke-width="1.2" stroke-linecap="round"/>
@@ -881,8 +879,8 @@ html = f'''<!DOCTYPE html>
 </svg>
 <h1 class="hero-title">RAIN</h1>
 <div class="hero-gold-line"></div>
-<p class="hero-sub">每一滴雨都是重生</p>
-<div class="hero-vd"></div>
+<p class="hero-sub-en">PERFUME AS RAIN</p>
+<p class="hero-sub-cn">香水之雨</p>
 <p class="hero-line">如雨水洗过空气后的片刻澄澈——<br>在每一次呼吸里，找回最初的自己。</p>
 <div class="hero-scroll-wrap"><div class="hero-scroll-inner"><span>探索香气</span><div class="hero-scroll-line"></div></div></div>
 </section>
