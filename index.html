@@ -161,6 +161,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .frag-img-wrap{position:relative;width:100%;aspect-ratio:2800/1840;margin-bottom:2rem;overflow:hidden;border-radius:4px;background:rgba(184,148,62,.02)}
 .frag-img{width:100%;height:100%;object-fit:contain;filter:brightness(.95) saturate(.9);transition:filter .8s,transform .8s}
 .frag-card:hover .frag-img{filter:brightness(1) saturate(.96);transform:scale(1.02)}
+.frag-img-cs{object-fit:contain;opacity:.7}
 .frag-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(184,148,62,.05) 0%,transparent 45%);opacity:0;transition:opacity .5s;pointer-events:none;z-index:3}
 .frag-card:hover::after{opacity:1}
 .frag-card .corner{position:absolute;width:34px;height:34px;pointer-events:none;z-index:4;opacity:0;transition:opacity .5s}
@@ -416,7 +417,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 01</p><h3 class="frag-name-en">Blur</h3><p class="frag-name-cn">花非花·雾非雾</p>
 <p class="frag-accord"><b>Top</b> 白牡丹 · 梨 · 薄雾<br><b>Heart</b> 茉莉 · 桂花 · 蚕丝<br><b>Base</b> 白麝香 · 降龙涎香醚 · 金色木</p>
@@ -424,7 +425,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 02</p><h3 class="frag-name-en">Knot</h3><p class="frag-name-cn">结</p>
 <p class="frag-accord"><b>Top</b> 小豆蔻 · 黑胡椒 · 佛手柑<br><b>Heart</b> 雪松 · 丁香 · 劳丹脂<br><b>Base</b> 沉香 · 皮革 · 桦木焦油</p>
@@ -432,7 +433,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 03</p><h3 class="frag-name-en">Flirt</h3><p class="frag-name-cn">风骚</p>
 <p class="frag-accord"><b>Top</b> 粉红胡椒 · 佛手柑 · 藏红花<br><b>Heart</b> 五月玫瑰 · 牡丹 · 紫罗兰<br><b>Base</b> 麝香 · 檀木 · 香草</p>
@@ -440,7 +441,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 04</p><h3 class="frag-name-en">Peak</h3><p class="frag-name-cn">摩登巅</p>
 <p class="frag-accord"><b>Top</b> 杜松 · 柠檬 · 金属调<br><b>Heart</b> 雪松 · 鸢尾 · 紫罗兰叶<br><b>Base</b> 麝香 · 琥珀 · 水泥调</p>
@@ -448,7 +449,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 05</p><h3 class="frag-name-en">Wall</h3><p class="frag-name-cn">围城</p>
 <p class="frag-accord"><b>Top</b> 焚香 · 榄香 · 佛手柑<br><b>Heart</b> 玫瑰 · 没药 · 广藿香<br><b>Base</b> 乳香 · 檀木 · 安息香</p>
@@ -456,7 +457,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 06</p><h3 class="frag-name-en">Leave</h3><p class="frag-name-cn">再别</p>
 <p class="frag-accord"><b>Top</b> 佛手柑 · 红茶 · 柠檬<br><b>Heart</b> 鸢尾 · 纸莎草 · 紫罗兰<br><b>Base</b> 雪松 · 香草 · 麝香</p>
@@ -464,7 +465,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 07</p><h3 class="frag-name-en">Iris</h3><p class="frag-name-cn">瞳孔</p>
 <p class="frag-accord"><b>Top</b> 胡萝卜籽 · 醛香 · 柑橘<br><b>Heart</b> 鸢尾 · 含羞草 · 紫罗兰<br><b>Base</b> 麝香 · 檀木 · 琥珀种子</p>
@@ -609,7 +610,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 01</p><h3 class="frag-name-en">Face</h3><p class="frag-name-cn">皮囊</p>
 <p class="frag-accord"><b>Top</b> 杜松 · 柠檬皮 · 醛香<br><b>Heart</b> 鸢尾 · 紫罗兰 · 粉感<br><b>Base</b> 白麝香 · 冷琥珀 · 麂皮</p>
@@ -617,7 +618,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 02</p><h3 class="frag-name-en">Gone</h3><p class="frag-name-cn">隐身衣</p>
 <p class="frag-accord"><b>Top</b> 黑胡椒 · 丁香 · 醛香<br><b>Heart</b> 烟熏 · 焚香 · 灰烬<br><b>Base</b> 香根草 · 皮革 · 广藿香</p>
@@ -625,7 +626,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 03</p><h3 class="frag-name-en">Wait</h3><p class="frag-name-cn">等待</p>
 <p class="frag-accord"><b>Top</b> 佛手柑 · 小豆蔻 · 藏红花<br><b>Heart</b> 琥珀 · 劳丹脂 · 蜂蜜<br><b>Base</b> 沉香 · 檀木 · 香草原精</p>
@@ -633,7 +634,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 04</p><h3 class="frag-name-en">Bliss</h3><p class="frag-name-cn">欢愉</p>
 <p class="frag-accord"><b>Top</b> 粉红胡椒 · 柑橘 · 黑加仑<br><b>Heart</b> 玫瑰 · 茉莉 · 水蜜桃皮<br><b>Base</b> 麝香 · 檀木 · 果仁糖</p>
@@ -641,7 +642,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 05</p><h3 class="frag-name-en">Stay</h3><p class="frag-name-cn">侍者</p>
 <p class="frag-accord"><b>Top</b> 绿茶 · 竹叶 · 黄瓜<br><b>Heart</b> 莲花 · 苔藓 · 睡莲<br><b>Base</b> 白麝香 · 雪松 · 大米</p>
@@ -683,10 +684,10 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 </div>
 <div class="series-panel" data-panel="seasons">
 <div class="frag-grid">
-<div class="frag-card reveal rev-d1"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">春</p><h3 class="frag-name-en">生</h3><p class="frag-name-cn">破土·呼吸</p><p class="frag-accord">春日限定 · 即将呈现</p></div></div></div>
-<div class="frag-card reveal rev-d2"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">夏</p><h3 class="frag-name-en">长</h3><p class="frag-name-cn">疯长·蔓延</p><p class="frag-accord">夏日限定 · 即将呈现</p></div></div></div>
-<div class="frag-card reveal rev-d3"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">秋</p><h3 class="frag-name-en">收</h3><p class="frag-name-cn">沉淀·入静</p><p class="frag-accord">秋日限定 · 即将呈现</p></div></div></div>
-<div class="frag-card reveal rev-d4"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">冬</p><h3 class="frag-name-en">藏</h3><p class="frag-name-cn">封存·等待</p><p class="frag-accord">冬日限定 · 即将呈现</p></div></div></div>
+<div class="frag-card reveal rev-d1"><div class="frag-card-inner"><div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div><div class="frag-info"><p class="frag-num">春</p><h3 class="frag-name-en">生</h3><p class="frag-name-cn">破土·呼吸</p><p class="frag-accord">春日限定 · 即将呈现</p></div></div></div>
+<div class="frag-card reveal rev-d2"><div class="frag-card-inner"><div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div><div class="frag-info"><p class="frag-num">夏</p><h3 class="frag-name-en">长</h3><p class="frag-name-cn">疯长·蔓延</p><p class="frag-accord">夏日限定 · 即将呈现</p></div></div></div>
+<div class="frag-card reveal rev-d3"><div class="frag-card-inner"><div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div><div class="frag-info"><p class="frag-num">秋</p><h3 class="frag-name-en">收</h3><p class="frag-name-cn">沉淀·入静</p><p class="frag-accord">秋日限定 · 即将呈现</p></div></div></div>
+<div class="frag-card reveal rev-d4"><div class="frag-card-inner"><div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div><div class="frag-info"><p class="frag-num">冬</p><h3 class="frag-name-en">藏</h3><p class="frag-name-cn">封存·等待</p><p class="frag-accord">冬日限定 · 即将呈现</p></div></div></div>
 </div>
 <div style="text-align:center;margin:1rem 0 2rem">
 <button class="narr-btn" data-target="seasons">展开叙事</button>
@@ -722,7 +723,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 01</p><h3 class="frag-name-en">Fall</h3><p class="frag-name-cn">自天穹</p>
 <p class="frag-accord"><b>Top</b> 臭氧 · 佛手柑 · 银冷杉<br><b>Heart</b> 雨调 · 鸢尾 · 紫罗兰叶<br><b>Base</b> 白麝香 · 雪松 · 矿物调</p>
@@ -730,7 +731,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 02</p><h3 class="frag-name-en">Drift</h3><p class="frag-name-cn">穿云间</p>
 <p class="frag-accord"><b>Top</b> 醛香 · 佛手柑 · 薄荷<br><b>Heart</b> 棉花花 · 木兰花 · 黄瓜<br><b>Base</b> 麝香 · 檀木 · 白琥珀</p>
@@ -738,7 +739,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">NO. 03</p><h3 class="frag-name-en">Shatter</h3><p class="frag-name-cn">碎地霜</p>
 <p class="frag-accord"><b>Top</b> 肉桂 · 红茶 · 大黄<br><b>Heart</b> 桂花 · 广藿香 · 落叶<br><b>Base</b> 香根草 · 橡苔 · 泥土调</p>
@@ -782,7 +783,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">SOJOURN · 驻足苦旅</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">我故臆想</h3>
@@ -793,7 +794,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">WORLD · 世界之色</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">着我之境</h3>
@@ -804,7 +805,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">FEAST · 灵感盛宴</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">今夜唯我</h3>
@@ -815,7 +816,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">SEASONS · 四季所生</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">新时代迁流</h3>
@@ -826,7 +827,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">AFTER · 雨后</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">致新生</h3>

@@ -33,8 +33,13 @@ seasons_labels = [('春','生','破土·呼吸'),('夏','长','疯长·蔓延'),
 # =====================================================================
 # HTML BUILDERS
 # =====================================================================
+COMING_SOON_SVG = 'data:image/svg+xml,' + '%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E'
+
 def card(num, en, cn, top, heart, base, has_img=False):
-    img_html = f'<img class="frag-img" src="images/{num}-{en.lower()}.jpg" alt="{en}" loading="lazy">' if has_img else ''
+    if has_img:
+        img_html = f'<img class="frag-img" src="images/{num}-{en.lower()}.jpg" alt="{en}" loading="lazy">'
+    else:
+        img_html = f'<img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon">'
     return f'''<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
@@ -511,6 +516,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .frag-img-wrap{position:relative;width:100%;aspect-ratio:2800/1840;margin-bottom:2rem;overflow:hidden;border-radius:4px;background:rgba(184,148,62,.02)}
 .frag-img{width:100%;height:100%;object-fit:contain;filter:brightness(.95) saturate(.9);transition:filter .8s,transform .8s}
 .frag-card:hover .frag-img{filter:brightness(1) saturate(.96);transform:scale(1.02)}
+.frag-img-cs{object-fit:contain;opacity:.7}
 .frag-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(184,148,62,.05) 0%,transparent 45%);opacity:0;transition:opacity .5s;pointer-events:none;z-index:3}
 .frag-card:hover::after{opacity:1}
 .frag-card .corner{position:absolute;width:34px;height:34px;pointer-events:none;z-index:4;opacity:0;transition:opacity .5s}
@@ -845,7 +851,7 @@ def series_panel(pid, data, active=False):
     return panel(pid, cards_html, active, narrative_btn(pid))
 
 seasons_cards = '\n'.join(
-    f'<div class="frag-card reveal rev-d{s[0]}"><div class="frag-card-inner"><div class="frag-img-wrap"></div><div class="frag-info"><p class="frag-num">{s[1]}</p><h3 class="frag-name-en">{s[2]}</h3><p class="frag-name-cn">{s[3]}</p><p class="frag-accord">{s[1]}日限定 · 即将呈现</p></div></div></div>'
+    f'<div class="frag-card reveal rev-d{s[0]}"><div class="frag-card-inner"><div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon"></div><div class="frag-info"><p class="frag-num">{s[1]}</p><h3 class="frag-name-en">{s[2]}</h3><p class="frag-name-cn">{s[3]}</p><p class="frag-accord">{s[1]}日限定 · 即将呈现</p></div></div></div>'
     for i, s in enumerate([(1,'春','生','破土·呼吸'),(2,'夏','长','疯长·蔓延'),(3,'秋','收','沉淀·入静'),(4,'冬','藏','封存·等待')])
 )
 seasons_panel_html = panel('seasons', seasons_cards, narrative=narrative_btn('seasons'))
@@ -992,7 +998,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">SOJOURN · 驻足苦旅</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">我故臆想</h3>
@@ -1003,7 +1009,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">WORLD · 世界之色</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">着我之境</h3>
@@ -1014,7 +1020,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">FEAST · 灵感盛宴</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">今夜唯我</h3>
@@ -1025,7 +1031,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">SEASONS · 四季所生</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">新时代迁流</h3>
@@ -1036,7 +1042,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="{COMING_SOON_SVG}" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">AFTER · 雨后</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">致新生</h3>
