@@ -381,19 +381,31 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .entrance-ripple{position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;border:1px solid rgba(184,148,62,.25);transform:translate(-50%,-50%);animation:rippleOut 1.8s .2s ease-out forwards}
 .entrance-ripple:nth-child(2){animation-delay:.4s;border-color:rgba(184,148,62,.15)}
 .entrance-ripple:nth-child(3){animation-delay:.6s;border-color:rgba(184,148,62,.1)}
-.entrance-brand{position:relative;z-index:1;text-align:center;opacity:0;animation:brandReveal .7s .9s cubic-bezier(.25,.1,.25,1) forwards}
+.entrance-brand{position:relative;z-index:1;text-align:center;opacity:0;animation:brandReveal .7s 1.0s cubic-bezier(.25,.1,.25,1) forwards}
 .entrance-brand h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:400;letter-spacing:.3em;color:var(--ink);margin-bottom:.3rem}
 .entrance-brand p{font-family:'Noto Serif SC',serif;font-size:.7rem;font-weight:300;letter-spacing:.5em;color:var(--ink3)}
 .entrance-skip-wrap{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%)}
-.entrance-skip{font-family:'Inter',sans-serif;font-size:.55rem;letter-spacing:.35em;color:var(--ink3);text-transform:uppercase;opacity:0;animation:brandReveal .5s 1.2s ease-out forwards;cursor:none}
-.entrance-drop{position:absolute;top:-40px;left:50%;width:2px;height:20px;background:linear-gradient(to bottom,transparent,var(--gold),var(--gold-d));border-radius:0 0 2px 2px;transform:translateX(-50%);animation:dropFall .7s .05s cubic-bezier(.33,0,.66,1) forwards}
-@keyframes rippleOut{0%{width:0;height:0;opacity:.6}100%{width:360px;height:360px;opacity:0}}@keyframes brandReveal{0%{opacity:0;transform:translateY(16px) scale(.96);filter:blur(8px)}60%{opacity:.7;filter:blur(2px)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}@keyframes dropFall{0%{top:-40px;opacity:0}15%{opacity:1}85%{top:calc(50% - 6px);opacity:1}100%{top:calc(50% - 2px);opacity:0}}
+.entrance-skip{font-family:'Inter',sans-serif;font-size:.55rem;letter-spacing:.35em;color:var(--ink3);text-transform:uppercase;opacity:0;animation:brandReveal .5s 1.3s ease-out forwards;cursor:none}
+/* 三线雨标 */
+.entrance-rain-mark{position:absolute;top:calc(50% - 70px);left:50%;transform:translateX(-50%);display:flex;justify-content:center;gap:8px;width:48px}
+.entrance-rain-mark .rl{display:block;background:var(--ink);border-radius:1px;transform:translateY(-60px);opacity:0}
+.entrance-rain-mark .rl.r1{width:.7px;height:28px;animation:rlDrop .6s .05s cubic-bezier(.22,0,.36,1) forwards}
+.entrance-rain-mark .rl.r2{width:1px;height:34px;animation:rlDrop .6s .15s cubic-bezier(.22,0,.36,1) forwards}
+.entrance-rain-mark .rl.r3{width:.5px;height:24px;animation:rlDrop .6s .25s cubic-bezier(.22,0,.36,1) forwards}
+@keyframes rlDrop{0%{transform:translateY(-60px);opacity:0}60%{opacity:1}100%{transform:translateY(0);opacity:1}}
+.entrance-gold-dot{position:absolute;top:calc(50% - 18px);left:50%;width:4px;height:4px;border-radius:50%;background:var(--gold);transform:translate(-50%,-50%);opacity:0;animation:dotGlow .4s .4s ease-out forwards;box-shadow:0 0 8px rgba(184,148,62,.5)}
+@keyframes dotGlow{0%{opacity:0;transform:translate(-50%,-50%) scale(0)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.entrance-rain-mark-wrap{position:relative;z-index:1;opacity:1;transition:opacity .6s}
+.entrance.out .entrance-rain-mark-wrap{opacity:0}
+@keyframes rippleOut{0%{width:0;height:0;opacity:.6}100%{width:360px;height:360px;opacity:0}}@keyframes brandReveal{0%{opacity:0;transform:translateY(16px) scale(.96);filter:blur(8px)}60%{opacity:.7;filter:blur(2px)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
 
 /* ══ Top Navigation ══ */
 .top-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background .5s,backdrop-filter .5s,box-shadow .5s}
 .top-nav.scrolled{background:rgba(253,249,240,.5);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);box-shadow:0 2px 30px rgba(139,105,30,.04);border-bottom:1px solid rgba(184,148,62,.06)}
-.top-nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:500;letter-spacing:.35em;color:var(--ink);text-transform:uppercase;text-decoration:none;transition:color .4s}
+.top-nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:500;letter-spacing:.35em;color:var(--ink);text-transform:uppercase;text-decoration:none;transition:color .4s;display:flex;align-items:center}
 .top-nav-brand:hover{color:var(--gold)}
+.nav-logo-svg{flex-shrink:0}
+@media (max-width:768px){.nav-logo-svg{width:120px;height:29px}}
 .top-nav-links{display:flex;gap:2.5rem;list-style:none}
 .top-nav-links a{color:var(--ink3);text-decoration:none;font-family:'Inter',sans-serif;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;transition:color .4s;position:relative}
 .top-nav-links a:hover{color:var(--gold)}
@@ -756,9 +768,14 @@ html = f'''<!DOCTYPE html>
 
 <!-- ENTRANCE -->
 <div class="entrance" id="entrance">
-<div class="entrance-drop"></div>
+<div class="entrance-rain-mark-wrap">
+<div class="entrance-rain-mark">
+<span class="rl r1"></span><span class="rl r2"></span><span class="rl r3"></span>
+</div>
+<div class="entrance-gold-dot"></div>
+</div>
 <div class="entrance-ripple"></div><div class="entrance-ripple"></div><div class="entrance-ripple"></div>
-<div class="entrance-brand"><h2>RAIN</h2><p>Perfume as Rain</p></div>
+<div class="entrance-brand"><h2>RAIN</h2><p>PERFUME AS RAIN · 香水之雨</p></div>
 <div class="entrance-skip-wrap"><span class="entrance-skip">每一滴雨都是重生</span></div>
 </div>
 
@@ -769,7 +786,18 @@ html = f'''<!DOCTYPE html>
 
 <!-- TOP NAV -->
 <nav class="top-nav" id="topNav">
-<a href="#" class="top-nav-brand">RAIN</a>
+<a href="#" class="top-nav-brand">
+<svg viewBox="0 0 260 64" width="140" height="34" class="nav-logo-svg">
+<line x1="122" y1="4"  x2="122" y2="18" stroke="currentColor" stroke-width=".7" stroke-linecap="round"/>
+<line x1="130" y1="2"  x2="130" y2="20" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/>
+<line x1="138" y1="6"  x2="138" y2="16" stroke="currentColor" stroke-width=".5" stroke-linecap="round"/>
+<circle cx="130" cy="1" r=".8" fill="#b8943e"/>
+<text x="130" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="10" fill="currentColor">RAIN</text>
+<line x1="28" y1="43.5" x2="232" y2="43.5" stroke="#b8943e" stroke-width=".25" stroke-linecap="round"/>
+<text x="130" y="53" text-anchor="middle" font-family="Inter,Helvetica Neue,sans-serif" font-weight="300" font-size="6" letter-spacing="6" fill="currentColor" opacity=".4">PERFUME AS RAIN</text>
+<text x="130" y="62" text-anchor="middle" font-family="Noto Serif SC,serif" font-weight="200" font-size="7" letter-spacing="4" fill="currentColor" opacity=".3">香水之雨</text>
+</svg>
+</a>
 <ul class="top-nav-links">
 <li><a href="#phil">品牌哲学</a></li>
 <li><a href="#series">产品介绍</a></li>
