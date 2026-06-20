@@ -669,7 +669,7 @@ document.querySelectorAll(".note-chip").forEach(function(chip){chip.addEventList
 
 /* Tap Ring */
 (function(){
-var WORD="PERFUME AS RAIN",chars=WORD.split(""),n=chars.length,radius=window.innerWidth<=768?20:26,gap=360/n,duration=window.innerWidth<=768?400:700;
+var WORD="PERFUME AS RAIN",chars=WORD.split(""),n=chars.length,radius=20,gap=360/n,duration=500;
 function tapRing(x,y){
 var el=document.createElement("div");
 el.className="tap-ring";
@@ -689,10 +689,13 @@ el.appendChild(s)
 document.body.appendChild(el);
 setTimeout(function(){el.remove()},duration)
 }
+/* 仅移动端点击触发 */
+if(window.innerWidth<=768){
 document.addEventListener("click",function(e){
 if(e.target.closest(".top-nav-links a")||e.target.closest(".narr-btn")||e.target.closest(".hamburger")||e.target.closest(".mob-nav a")||e.target.closest(".nl-toggle-btn")||e.target.closest(".nl-btn")||e.target.closest(".quiz-opt")||e.target.closest(".quiz-reset")||e.target.closest(".back-top")||e.target.closest(".music-btn")||e.target.closest(".series-tab"))return;
 tapRing(e.clientX,e.clientY)
 });
+}
 document.addEventListener("touchstart",function(e){
 var t=e.touches?e.touches[0]:e.changedTouches?e.changedTouches[0]:null;
 if(!t)return;
