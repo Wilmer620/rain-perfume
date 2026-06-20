@@ -508,9 +508,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 /* ══ Newsletter ══ */
 .newsletter{position:relative;z-index:2;padding:1rem 2rem 4rem;display:flex;justify-content:center}
 .nl-inner{max-width:540px;width:100%;text-align:center;padding:3rem 2.5rem}
-.nl .kicker{font-family:'Inter',sans-serif;font-size:.54rem;letter-spacing:.5em;color:var(--gold-d);text-transform:uppercase;margin-bottom:1.5rem}
-.nl .title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;letter-spacing:.1em;color:var(--ink);margin-bottom:.5rem}
-.nl .sub{font-family:'Noto Serif SC',serif;font-size:.78rem;font-weight:300;color:var(--ink3);letter-spacing:.06em;margin-bottom:1.8rem}
+.newsletter .kicker{font-family:'Inter',sans-serif;font-size:.54rem;letter-spacing:.5em;color:var(--gold-d);text-transform:uppercase;margin-bottom:1.5rem}
+.newsletter .sub{font-family:'Noto Serif SC',serif;font-size:.85rem;font-weight:300;color:var(--ink2);letter-spacing:.06em;margin-bottom:2rem}
 .nl-toggle{display:flex;justify-content:center;gap:.5rem;margin-bottom:1.5rem}
 .nl-toggle-btn{font-family:'Inter',sans-serif;font-size:.6rem;letter-spacing:.2em;color:var(--ink3);background:rgba(255,253,250,.2);border:1px solid rgba(184,148,62,.05);border-radius:100px;padding:.4rem 1.2rem;cursor:none;text-transform:uppercase;transition:all .35s}
 .nl-toggle-btn.active{color:var(--gold-d);border-color:var(--gold);background:rgba(184,148,62,.08)}.nl-toggle-btn:hover{color:var(--gold-d)}
