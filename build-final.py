@@ -8,25 +8,25 @@ D = os.path.dirname(os.path.abspath(__file__)) if '__file__' in dir() else 'C:/U
 # DATA
 # =====================================================================
 sojourn = [
-    ('01','Blur','花非花·雾非雾','White Peony · Pear · Mist','Jasmine · Osmanthus · Silk','White Musk · Ambroxan · Blonde Woods'),
-    ('02','Knot','结','Cardamom · Black Pepper · Bergamot','Cedar · Clove · Labdanum','Oud · Leather · Birch Tar'),
-    ('03','Flirt','风骚','Pink Pepper · Bergamot · Saffron','Rose de Mai · Peony · Violet','Musk · Sandalwood · Vanilla'),
-    ('04','Peak','摩登巅','Juniper · Lemon · Metal Accord','Cedar · Orris · Violet Leaf','Musk · Amber · Concrete Accord'),
-    ('05','Wall','围城','Incense · Elemi · Bergamot','Rose · Myrrh · Patchouli','Frankincense · Sandalwood · Benzoin'),
-    ('06','Leave','再别','Bergamot · Black Tea · Lemon','Orris · Papyrus · Violet','Cedar · Vanilla · Musk'),
-    ('07','Iris','瞳孔','Carrot Seed · Aldehydes · Mandarin','Orris · Mimosa · Violet','Musk · Sandalwood · Ambrette'),
+    ('01','Blur','花非花·雾非雾','白牡丹 · 梨 · 薄雾','茉莉 · 桂花 · 蚕丝','白麝香 · 降龙涎香醚 · 金色木'),
+    ('02','Knot','结','小豆蔻 · 黑胡椒 · 佛手柑','雪松 · 丁香 · 劳丹脂','沉香 · 皮革 · 桦木焦油'),
+    ('03','Flirt','风骚','粉红胡椒 · 佛手柑 · 藏红花','五月玫瑰 · 牡丹 · 紫罗兰','麝香 · 檀木 · 香草'),
+    ('04','Peak','摩登巅','杜松 · 柠檬 · 金属调','雪松 · 鸢尾 · 紫罗兰叶','麝香 · 琥珀 · 水泥调'),
+    ('05','Wall','围城','焚香 · 榄香 · 佛手柑','玫瑰 · 没药 · 广藿香','乳香 · 檀木 · 安息香'),
+    ('06','Leave','再别','佛手柑 · 红茶 · 柠檬','鸢尾 · 纸莎草 · 紫罗兰','雪松 · 香草 · 麝香'),
+    ('07','Iris','瞳孔','胡萝卜籽 · 醛香 · 柑橘','鸢尾 · 含羞草 · 紫罗兰','麝香 · 檀木 · 琥珀种子'),
 ]
 feast = [
-    ('01','Face','皮囊','Juniper · Lemon Peel · Aldehydes','Orris · Violet · Powder','White Musk · Cool Amber · Suede'),
-    ('02','Gone','隐身衣','Black Pepper · Clove · Aldehydes','Smoke · Incense · Ash','Vetiver · Leather · Patchouli'),
-    ('03','Wait','等待','Bergamot · Cardamom · Saffron','Amber · Labdanum · Honey','Oud · Sandalwood · Vanilla Absolute'),
-    ('04','Bliss','欢愉','Pink Pepper · Mandarin · Cassis','Rose · Jasmine · Peach Skin','Musk · Sandalwood · Praline'),
-    ('05','Stay','侍者','Green Tea · Bamboo · Cucumber','Lotus · Moss · Water Lily','White Musk · Cedar · Rice'),
+    ('01','Face','皮囊','杜松 · 柠檬皮 · 醛香','鸢尾 · 紫罗兰 · 粉感','白麝香 · 冷琥珀 · 麂皮'),
+    ('02','Gone','隐身衣','黑胡椒 · 丁香 · 醛香','烟熏 · 焚香 · 灰烬','香根草 · 皮革 · 广藿香'),
+    ('03','Wait','等待','佛手柑 · 小豆蔻 · 藏红花','琥珀 · 劳丹脂 · 蜂蜜','沉香 · 檀木 · 香草原精'),
+    ('04','Bliss','欢愉','粉红胡椒 · 柑橘 · 黑加仑','玫瑰 · 茉莉 · 水蜜桃皮','麝香 · 檀木 · 果仁糖'),
+    ('05','Stay','侍者','绿茶 · 竹叶 · 黄瓜','莲花 · 苔藓 · 睡莲','白麝香 · 雪松 · 大米'),
 ]
 after = [
-    ('01','Fall','自天穹','Ozone · Bergamot · Silver Fir','Rain Accord · Iris · Violet Leaf','White Musk · Cedar · Mineral Notes'),
-    ('02','Drift','穿云间','Aldehydes · Bergamot · Mint','Cotton Flower · Magnolia · Cucumber','Musk · Sandalwood · White Amber'),
-    ('03','Shatter','碎地霜','Cassia · Black Tea · Rhubarb','Osmanthus · Patchouli · Leaves','Vetiver · Oakmoss · Earth Accord'),
+    ('01','Fall','自天穹','臭氧 · 佛手柑 · 银冷杉','雨调 · 鸢尾 · 紫罗兰叶','白麝香 · 雪松 · 矿物调'),
+    ('02','Drift','穿云间','醛香 · 佛手柑 · 薄荷','棉花花 · 木兰花 · 黄瓜','麝香 · 檀木 · 白琥珀'),
+    ('03','Shatter','碎地霜','肉桂 · 红茶 · 大黄','桂花 · 广藿香 · 落叶','香根草 · 橡苔 · 泥土调'),
 ]
 seasons_labels = [('春','生','破土·呼吸'),('夏','长','疯长·蔓延'),('秋','收','沉淀·入静'),('冬','藏','封存·等待')]
 
@@ -121,15 +121,181 @@ NARRATIVES = {
     },
 }
 
+PRODUCT_NOTES = {
+    # ══ 驻足苦旅 ══
+    'Blur': [
+        ('白牡丹','晨露未干时采下的花瓣，清甜中带着一丝凉意，香气像雾一样没有边界。'),
+        ('桂花','秋天从很远的地方先飘过来，才看见树——细小到几乎看不见的花，却能香透整条街。'),
+        ('蚕丝','柔滑如指尖拂过绸缎，轻到几乎不存在，却让周围的一切变得柔软。'),
+        ('白麝香','像刚洗过的棉布贴在皮肤上——干净、温暖、不争不抢，是所有香气的底床。'),
+    ],
+    'Knot': [
+        ('黑胡椒','碾碎时迸发的尖锐辛辣，瞬间激活所有感官——像一句没有预警的真话。'),
+        ('雪松','高海拔森林中砍下的木材，干燥而安静，带着树脂的微甜与岁月的重量。'),
+        ('沉香','树木被真菌感染后分泌的黑色树脂——千年沉水，万物归一，是最昂贵的香料之一。'),
+        ('桦木焦油','烟熏火燎的焦木气味，像篝火燃尽后的余烬——粗粝、诚实、不留余地。'),
+    ],
+    'Flirt': [
+        ('藏红花','世界上最昂贵的香料——金属感与蜂蜜甜交织，像一句低声说了很久才说出口的话。'),
+        ('五月玫瑰','一年只在五月盛开一次——香气如丝绒裹住手腕，浓而不艳，近而不逼。'),
+        ('檀木','寺庙里燃了多年的香火记忆——木质、乳感、让人想把呼吸放慢。'),
+        ('香草','剖开豆荚时飘出的甜——不是糖的甜，是植物的甜，温暖到让人闭上眼睛。'),
+    ],
+    'Peak': [
+        ('杜松','金酒的核心原料——清冽如冬日松林间穿过的冷风，干净到几乎没有温度。'),
+        ('金属调','冰冷的无机感——像不锈钢台面反射出的光，或是摩天楼玻璃幕墙的触感。'),
+        ('鸢尾','根茎需陈化数年才能提取——气味如粉状紫罗兰，却更深邃，像一段被时间打磨过的记忆。'),
+        ('水泥调','雨后水泥地面蒸发的气息——城市的体温，坚硬之下藏着被太阳晒过的暖。'),
+    ],
+    'Wall': [
+        ('焚香','点燃的树脂在空气中划出的烟迹——连接天与地，是千百年来人类与神明对话的语言。'),
+        ('没药','比乳香更苦、更深——古埃及人用来保存永恒的材料，带着药感与神圣的暗色。'),
+        ('乳香','东方三博士的礼物之一——燃烧后升起白色的烟，被古人称作神的呼吸。'),
+        ('安息香','树脂中的暖甜担当——像香草与焦糖的拥抱，是所有棱角被抚平之后的样子。'),
+    ],
+    'Leave': [
+        ('红茶','发酵过的茶叶在热水中缓缓展开——醇厚、微涩、回甘，像一段需要时间才能读懂的文字。'),
+        ('纸莎草','干燥的纸张与灯芯草的气息——像一本翻到一半的旧书，每个字都见过光。'),
+        ('雪松','高海拔森林中砍下的木材，干燥而安静，带着树脂的微甜与岁月的重量。'),
+        ('麝香','最初的动物性已被时间磨去——剩下的是皮肤的暖意，像拥抱之后留在衣服上的温度。'),
+    ],
+    'Iris': [
+        ('胡萝卜籽','来自土壤深处的根茎——带着泥土与微甜的坚果香，原始却不粗糙。'),
+        ('醛香','人工合成的第一缕明亮——像刚熨过的白衬衫，干净到发出声响。'),
+        ('鸢尾','根茎需陈化数年才能提取——气味如粉状紫罗兰，却更深邃，像一段被时间打磨过的记忆。'),
+        ('琥珀种子','麝香与植物琥珀的变体——比麝香更轻，像晨光里的绒毛，落在皮肤上就化了。'),
+    ],
+    # ══ 世界之色 ══
+    'Respiration': [
+        ('绿叶','揉碎一片叶子后留在指腹上的青绿汁液——最直接的生命力，不加任何修饰。'),
+        ('铃兰','山谷里最早开的花——细小、洁白，香气却可以穿透整片森林，清而不淡。'),
+        ('白茶','最少人为干预的茶——自然萎凋，泡出最温和的汤色，像春天清晨的第一缕光。'),
+        ('露水','凌晨五点凝结在草尖上的水珠——没有任何味道，却是一切味道的起点。'),
+    ],
+    'Last Word': [
+        ('杜松','金酒的核心原料——清冽如冬日松林间穿过的冷风，干净到几乎没有温度。'),
+        ('柏树','墓地与园林共有的树种——庄严却不沉重，像时间本身，沉默地向上生长。'),
+        ('苔藓','森林深处石头上覆盖的绿绒——湿润、阴暗、原始，是时间最慢的注脚。'),
+        ('香根草','从地底拔出的草根——带着泥土、青草与烟熏的复杂层次，是最诚实的木质调。'),
+    ],
+    'Our Melody': [
+        ('荔枝','剥开粗糙外皮后的半透明果肉——甜得不讲道理，汁水顺着指尖流到手腕。'),
+        ('土耳其玫瑰','产自安纳托利亚高原——香气比普通玫瑰更浓郁、更持久，像一首写不完的诗。'),
+        ('沉香','树木被真菌感染后分泌的黑色树脂——千年沉水，万物归一，是最昂贵的香料之一。'),
+        ('乳香','东方三博士的礼物之一——燃烧后升起白色的烟，被古人称作神的呼吸。'),
+    ],
+    'Rising Sunset': [
+        ('海盐','不是调味——是海水蒸发后在皮肤上留下的白色印记，带着风和日晒的记忆。'),
+        ('龙涎香','抹香鲸的馈赠——在海上漂浮数十年后被冲上岸，咸、甜、不可复制，是海洋最后的秘密。'),
+        ('浮木','在海水中漂了不知多久的木头——咸的、晒干的、有故事的，每一道纹理都是一段漂流。'),
+        ('鼠尾草','被焚烧时会释放净化一切的白烟——但它的香气本身是安静的，像一位不说话的智者。'),
+    ],
+    'Past Dream': [
+        ('焚香','点燃的树脂在空气中划出的烟迹——连接天与地，是千百年来人类与神明对话的语言。'),
+        ('纸莎草','干燥的纸张与灯芯草的气息——像一本翻到一半的旧书，每个字都见过光。'),
+        ('檀木','寺庙里燃了多年的香火记忆——木质、乳感、让人想把呼吸放慢。'),
+        ('香草','剖开豆荚时飘出的甜——不是糖的甜，是植物的甜，温暖到让人闭上眼睛。'),
+    ],
+    'Prejudice': [
+        ('藏红花','世界上最昂贵的香料——金属感与蜂蜜甜交织，像一句低声说了很久才说出口的话。'),
+        ('孜然','最原始、最不加修饰的辛香——像大地深处直接讲出来的话，不讨好任何人。'),
+        ('大马士革玫瑰','玫瑰中的玫瑰——必须在天亮前手工采摘，香气如丝绒裹住心脏，是玫瑰最本真的样子。'),
+        ('皮革','鞣制过的皮面气息——粗粝、干燥，带着动物性的体温，是反叛与优雅的共同底色。'),
+    ],
+    # ══ 灵感盛宴 ══
+    'Face': [
+        ('醛香','人工合成的第一缕明亮——像刚熨过的白衬衫，干净到发出声响。'),
+        ('鸢尾','根茎需陈化数年才能提取——气味如粉状紫罗兰，却更深邃，像一段被时间打磨过的记忆。'),
+        ('粉感','如粉扑轻轻拍过皮肤——留下看不见的柔软痕迹，是香气中最接近触觉的存在。'),
+        ('麂皮','打磨过的柔软皮革——比皮革少了粗粝，多了绒感，像用指尖轻轻划过绒面。'),
+    ],
+    'Gone': [
+        ('烟熏','篝火已灭，烟还在空气中飘——干燥、灰质、来自过去，是不可挽回的见证。'),
+        ('焚香','点燃的树脂在空气中划出的烟迹——连接天与地，是千百年来人类与神明对话的语言。'),
+        ('灰烬','一切燃尽之后的样子——最安静的存在，是所有热烈最终的底色。'),
+        ('香根草','从地底拔出的草根——带着泥土、青草与烟熏的复杂层次，是最诚实的木质调。'),
+    ],
+    'Wait': [
+        ('藏红花','世界上最昂贵的香料——金属感与蜂蜜甜交织，像一句低声说了很久才说出口的话。'),
+        ('蜂蜜','不是工业的甜——是蜂巢里流淌出来的金色液体，带着花与阳光的共同记忆。'),
+        ('沉香','树木被真菌感染后分泌的黑色树脂——千年沉水，万物归一，是最昂贵的香料之一。'),
+        ('香草原精','比普通香草更浓郁、更复杂——像剖开豆荚后最深处的秘密，只向最耐心的人敞开。'),
+    ],
+    'Bliss': [
+        ('粉红胡椒','比黑胡椒更温柔——像粉色的闪电，来得快、去得也快，留下一阵微麻的暖意。'),
+        ('黑加仑','紫色浆果破裂时溅出的汁液——酸甜交织、带着叶子的青，像夏天突然的笑声。'),
+        ('水蜜桃皮','桃子表面那一层绒毛——柔软到让人想起婴儿的耳垂，是触觉翻译成嗅觉的结果。'),
+        ('果仁糖','焦糖化后碾碎的坚果——甜得坦荡、脆得刚好，是快乐最具体的形态。'),
+    ],
+    'Stay': [
+        ('绿茶','杀青后的茶叶保留了最多的鲜味——像春天第一泡龙井，澄澈、回甘、不打扰。'),
+        ('莲花','从淤泥里升起却不沾染任何——清高到没有重量，却让整个水面都安静下来。'),
+        ('苔藓','森林深处石头上覆盖的绿绒——湿润、阴暗、原始，是时间最慢的注脚。'),
+        ('大米','刚蒸熟的米饭升起的热气——最朴素的安全感，不需要解释，每个人都认得。'),
+    ],
+    # ══ 四季所生 ══
+    '春 · 生': [
+        ('种子','所有可能性中最小的一个——不声不响，却藏着破开土壤的全部力量。'),
+        ('土壤','黑暗、湿润、沉默——却是一切向上的起点，包容所有坠落与上升。'),
+        ('氧气','无色、无味、无处不在——只有当它稀缺时你才记起，它是每一次呼吸的理由。'),
+        ('破土','第一片叶子刺穿地面的那个瞬间——没有观众，却是最伟大的抵达。'),
+    ],
+    '夏 · 长': [
+        ('藤蔓','不在乎边界，不计算方向——唯一的目标是向前。绿得不管不顾，活得理直气壮。'),
+        ('失控','不是灾难——是力量溢出边界的样子，是生命不愿意被约束的回答。'),
+        ('热烈','不需要降温——就像夏天不需要解释自己的温度。存在本身就是全部的理由。'),
+        ('阳光','最古老的能量来源——不偏袒任何一朵花，却让所有花都朝它转过去。'),
+    ],
+    '秋 · 收': [
+        ('落叶','不是告别——是把养分还给根，给明天的自己留出空间。是秋天最安静的承诺。'),
+        ('沉淀','让所有的声音沉到底部——浮在上面的不一定是真相，沉下去的才是。'),
+        ('选择','树木收回养分——不是因为枯竭，是因为知道哪些值得保留。'),
+        ('频率','当你调低外界的噪音——你会听见自己血液流动的声音。那是你本来的节奏。'),
+    ],
+    '冬 · 藏': [
+        ('封存','不是放弃——是把力量收进核心，在冰冷中保持最后一点体温。'),
+        ('等待','不是被动——等待的人决定了自己的位置，然后让时间来。等待本身也是生长。'),
+        ('冻土','最硬的地面之下——种子还活着。不呼吸、不回应、不证明——只是保持。'),
+        ('春天','还未到来——但已经被承诺。每一颗被封存的种子都知道：春天不会失约。'),
+    ],
+    # ══ 雨后 ══
+    'Fall': [
+        ('臭氧','雷雨前空气被电离的味道——干净到刺鼻，像天空在深呼吸，是坠落之前的最后一口空气。'),
+        ('银冷杉','最接近天空的针叶树——针叶碾碎后散发出柑橘与松脂的冷香，是降落时的风向标。'),
+        ('雨调','不是任何一种原料——是雨后空气、湿土、绿叶的共同记忆，是被翻译成气味的天气。'),
+        ('矿物调','岩石、燧石、无机盐——像山泉流过石壁留下的一层薄膜，是大地最原始的味道。'),
+    ],
+    'Drift': [
+        ('薄荷','不甜、不暖、不纠缠——只是一阵干净的风穿过鼻腔，然后离开。'),
+        ('棉花花','刚摘下的棉铃——带着阳光的余温与植物的微甜，是云在田间的倒影。'),
+        ('木兰花','先开花后长叶的树——花瓣厚实，香气像柠檬与蜂蜜的和解，从容不迫。'),
+        ('白琥珀','琥珀家族中最轻盈的一支——像阳光穿过薄纱，不是暖，是暖的暗示。'),
+    ],
+    'Shatter': [
+        ('肉桂','温暖、辛辣、微甜——最容易让人想起冬天的香料，是地面迎接你的第一层温度。'),
+        ('桂花','秋天从很远的地方先飘过来，才看见树——细小到几乎看不见的花，却能香透整条街。'),
+        ('橡苔','橡树根部生长的地衣——深色的森林气息，像雨后密林的地面，湿润而充满生机。'),
+        ('泥土调','湿润土壤升起的蒸汽——原始、诚实、不加修饰，是所有生命最终回到的地方。'),
+    ],
+}
+
 def narrative_btn(pid):
     pid2 = pid.replace('-','')
     data = NARRATIVES.get(pid, {'intro': '深度叙事即将呈现。', 'items': []})
     items_html = ''
     for name, cn, text in data.get('items', []):
+        notes_html = ''
+        product_notes = PRODUCT_NOTES.get(name, [])
+        if product_notes:
+            chips = ''
+            for note_name, note_desc in product_notes:
+                chips += f'<span class="note-chip"><span class="note-chip-name">{note_name}</span><span class="note-chip-tip">{note_desc}</span></span>'
+            notes_html = f'<div class="note-chips">{chips}</div>'
         items_html += f'''<div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">{name}</h4>
 <p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem">{cn}</p>
 <p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">{text}</p>
+{notes_html}
 </div>'''
     return f'''<div style="text-align:center;margin:1rem 0 2rem">
 <button class="narr-btn" data-target="{pid2}">展开叙事</button>
@@ -273,6 +439,15 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .narr-body.collapsed{max-height:0!important;opacity:0}
 .narr-body em,.narr-body .gold{font-style:normal;color:var(--gold);font-weight:500}
 
+/* Note Chips */
+.note-chips{display:flex;justify-content:center;gap:.45rem;flex-wrap:wrap;margin-top:.8rem}
+.note-chip{position:relative;display:inline-flex;align-items:center;padding:.22rem .75rem;font-family:'Inter','Noto Serif SC',sans-serif;font-size:.56rem;letter-spacing:.08em;color:var(--ink3);background:rgba(255,253,250,.18);border:1px solid rgba(184,148,62,.06);border-radius:100px;cursor:none;transition:all .4s}
+.note-chip:hover{color:var(--gold-d);border-color:var(--gold);background:rgba(184,148,62,.07);box-shadow:0 2px 12px rgba(184,148,62,.06)}
+.note-chip .note-chip-name{pointer-events:none}
+.note-chip .note-chip-tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);width:220px;padding:.7rem .9rem;font-family:'Noto Serif SC',serif;font-size:.62rem;font-weight:300;line-height:1.8;color:var(--ink2);background:rgba(253,249,240,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(184,148,62,.1);border-radius:var(--radius);box-shadow:0 8px 32px rgba(139,105,30,.06);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility .3s;text-align:center;z-index:10;white-space:normal}
+.note-chip:hover .note-chip-tip{opacity:1;visibility:visible}
+@media (max-width:768px){.note-chip .note-chip-tip{width:180px;font-size:.58rem}}
+
 /* ══ Craft ══ */
 .craft{position:relative;z-index:2;padding:1rem 3rem 4rem;max-width:1100px;margin:0 auto}
 .craft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -366,7 +541,7 @@ var entranceEl=document.getElementById("entrance");if(entranceEl){setTimeout(fun
 (function(){var stops=[{p:0,r:253,g:251,b:245},{p:.18,r:253,g:247,b:232},{p:.36,r:251,g:249,b:242},{p:.54,r:250,g:250,b:244},{p:.72,r:253,g:246,b:228},{p:1,r:253,g:251,b:245}];function lerp(a,b,t){return a+(b-a)*t}function updateBg(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h<=0)return;var t=Math.min(1,Math.max(0,window.scrollY/h));for(var i=0;i<stops.length-1;i++){if(t>=stops[i].p&&t<=stops[i+1].p){var lt=(t-stops[i].p)/(stops[i+1].p-stops[i].p);var r=Math.round(lerp(stops[i].r,stops[i+1].r,lt));var g=Math.round(lerp(stops[i].g,stops[i+1].g,lt));var b=Math.round(lerp(stops[i].b,stops[i+1].b,lt));document.body.style.backgroundColor="rgb("+r+","+g+","+b+")";return}}}window.addEventListener("scroll",updateBg,{passive:true});updateBg()})();
 
 /* Cursor */
-var dot=document.getElementById("cursorDot"),ring=document.getElementById("cursorRing"),mx=-200,my=-200,rx=-200,ry=-200;document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});document.addEventListener("touchstart",function(){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"},{once:true});if(window.matchMedia("(pointer:coarse)").matches){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"}var intEls=document.querySelectorAll("a,.frag-card,.back-top,.quiz-opt,.nl-toggle-btn,.music-btn,.top-nav-links a,.series-tab,.narr-btn");for(var i=0;i<intEls.length;i++){(function(el){el.addEventListener("mouseenter",function(){dot.classList.add("expand");ring.classList.add("expand")});el.addEventListener("mouseleave",function(){dot.classList.remove("expand");ring.classList.remove("expand")})})(intEls[i])}(function L(){dot.style.left=mx+"px";dot.style.top=my+"px";rx+=(mx-rx)*0.2;ry+=(my-ry)*0.2;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(L)})();
+var dot=document.getElementById("cursorDot"),ring=document.getElementById("cursorRing"),mx=-200,my=-200,rx=-200,ry=-200;document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});document.addEventListener("touchstart",function(){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"},{once:true});if(window.matchMedia("(pointer:coarse)").matches){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"}var intEls=document.querySelectorAll("a,.frag-card,.back-top,.quiz-opt,.nl-toggle-btn,.music-btn,.top-nav-links a,.series-tab,.narr-btn,.note-chip");for(var i=0;i<intEls.length;i++){(function(el){el.addEventListener("mouseenter",function(){dot.classList.add("expand");ring.classList.add("expand")});el.addEventListener("mouseleave",function(){dot.classList.remove("expand");ring.classList.remove("expand")})})(intEls[i])}(function L(){dot.style.left=mx+"px";dot.style.top=my+"px";rx+=(mx-rx)*0.2;ry+=(my-ry)*0.2;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(L)})();
 
 /* Reveal */
 var revealEls=document.querySelectorAll(".reveal");revealEls.forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in-view")})},{threshold:0.08,rootMargin:"0px 0px -20px 0px"}).observe(el)});
@@ -382,6 +557,8 @@ var seriesTabs=document.querySelectorAll(".series-tab"),seriesPanels=document.qu
 
 /* Narrative buttons */
 document.querySelectorAll(".narr-btn").forEach(function(btn){var body=document.getElementById(btn.dataset.target),open=false;if(!body)return;body.style.maxHeight="0";body.classList.add("collapsed");btn.addEventListener("click",function(){if(open){body.style.maxHeight="0";body.classList.add("collapsed");btn.textContent="展开叙事";open=false}else{body.style.maxHeight=body.scrollHeight+"px";body.classList.remove("collapsed");btn.textContent="收起叙事";open=true}})});
+/* Note chip tooltip edge detection */
+document.querySelectorAll(".note-chip").forEach(function(chip){chip.addEventListener("mouseenter",function(){var tip=chip.querySelector(".note-chip-tip");if(!tip)return;requestAnimationFrame(function(){var r=tip.getBoundingClientRect();if(r.left<12)tip.style.transform="translateX(calc(-50% + "+(12-r.left)+"px))";else if(r.right>window.innerWidth-12)tip.style.transform="translateX(calc(-50% - "+(r.right-window.innerWidth+12)+"px))";else tip.style.transform="translateX(-50%)"})})});
 
 /* Card tilt */
 function cardTilt(card,e){if(window.innerWidth<=768)return;var r=card.getBoundingClientRect(),cx=e.clientX-r.left,cy=e.clientY-r.top,rx2=((cy/r.height)-0.5)*7,ry2=((cx/r.width)-0.5)*-7;card.style.setProperty("--mx",cx+"px");card.style.setProperty("--my",cy+"px");var inner=card.querySelector(".frag-card-inner");if(inner)inner.style.transform="rotateX("+rx2+"deg) rotateY("+ry2+"deg)"}
@@ -406,12 +583,12 @@ console.log("%c[RAIN] Perfume as Rain %c已就绪","color:#b8943e;font-size:1.1e
 # BUILD HTML
 # =====================================================================
 world_cards = '\n'.join([
-    world_card('', 'Respiration', '01', 'Respiration', '光合', 'Green Leaves · Bergamot · Dew', 'Lily of the Valley · White Tea · Fern', 'White Musk · Cedarwood'),
-    world_card('', 'Last Word', '02', 'Last Word', '明日', 'Juniper · Cypress · Lemon Peel', 'Cedar · Moss · Fir Balsam', 'Sandalwood · Vetiver · Ambrette'),
-    world_card('', 'Our Melody', '03', 'Our Melody', '共鸣', 'Rose de Mai · Saffron · Lychee', 'Turkish Rose · Oud · Patchouli', 'Amber · Musk · Frankincense'),
-    world_card('', 'Rising Sunset', '04', 'Rising Sunset', '潮汐', 'Sea Salt · Mandarin · Pink Pepper', 'Violet Leaf · Iris · Sage', 'Driftwood · Ambergris · Oakmoss'),
-    world_card('', 'Past Dream', '05', 'Past Dream', '旧心事', 'Incense · Bergamot · Black Tea', 'Orris · Papyrus · Violet', 'Sandalwood · Vanilla · Musk'),
-    world_card('', 'Prejudice', '06', 'Prejudice', '我独我', 'Saffron · Pink Pepper · Cumin', 'Damask Rose · Oud · Myrrh', 'Leather · Amber · Labdanum'),
+    world_card('', 'Respiration', '01', 'Respiration', '光合', '绿叶 · 佛手柑 · 露水', '铃兰 · 白茶 · 蕨类', '白麝香 · 雪松木'),
+    world_card('', 'Last Word', '02', 'Last Word', '明日', '杜松 · 柏树 · 柠檬皮', '雪松 · 苔藓 · 冷杉香脂', '檀木 · 香根草 · 琥珀种子'),
+    world_card('', 'Our Melody', '03', 'Our Melody', '共鸣', '五月玫瑰 · 藏红花 · 荔枝', '土耳其玫瑰 · 沉香 · 广藿香', '琥珀 · 麝香 · 乳香'),
+    world_card('', 'Rising Sunset', '04', 'Rising Sunset', '潮汐', '海盐 · 柑橘 · 粉红胡椒', '紫罗兰叶 · 鸢尾 · 鼠尾草', '浮木 · 龙涎香 · 橡苔'),
+    world_card('', 'Past Dream', '05', 'Past Dream', '旧心事', '焚香 · 佛手柑 · 红茶', '鸢尾 · 纸莎草 · 紫罗兰', '檀木 · 香草 · 麝香'),
+    world_card('', 'Prejudice', '06', 'Prejudice', '我独我', '藏红花 · 粉红胡椒 · 孜然', '大马士革玫瑰 · 沉香 · 没药', '皮革 · 琥珀 · 劳丹脂'),
 ])
 
 def series_panel(pid, data, active=False):
