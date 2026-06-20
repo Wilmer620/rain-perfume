@@ -761,7 +761,7 @@ html = f'''<!DOCTYPE html>
 <!-- 02 · 雨的衍生 -->
 <div class="sec-label reveal"><p class="num">02</p><h2 class="title">雨的衍生</h2><p class="sec-en">The Rain Derivatives</p></div>
 <section class="series-hub reveal" id="series">
-<p class="kicker">The Rain Derivatives</p>
+<p class="kicker">Our Collections</p>
 <h2 class="en-title">Product Lines</h2>
 <p class="cn-sub">产品主题介绍</p>
 <p class="desc">每一场雨都有自己的性格，不同种进入自己的方式。</p>
@@ -799,7 +799,7 @@ html = f'''<!DOCTYPE html>
 <div class="sec-label reveal"><p class="num">04</p><h2 class="title">主理人手记</h2><p class="sec-en">A Letter from the Founder</p></div>
 <section class="founders reveal" id="founders">
 <div class="founders-inner glass-panel">
-<p class="kicker">A Letter from the Founder</p>
+<p class="kicker">From the Founder's Desk</p>
 <p class="text"><em>我一直在找一种气味。</em><br>不是那种走进房间就能被认出来的——<br>而是你在雨天窗边发呆时，<br>自己都不确定自己闻到了什么的那种。<br><br>2025 年冬天，我们做了 RAIN。<br>不是想做一个香水品牌。我们只是想：<br>如果有人能把<em>雨停之后那一分钟的安静</em>收集起来，<br>世界上会不会多一种温柔。<br><br>我们没有答案。但我们会一直做下去。</p>
 <p class="sign">— RAIN 主理人</p>
 </div>
@@ -810,7 +810,7 @@ html = f'''<!DOCTYPE html>
 <!-- 05 · 寻雨之路 -->
 <div class="sec-label reveal"><p class="num">05</p><h2 class="title">寻雨之路</h2><p class="sec-en">Find Your Rain</p></div>
 <section class="quiz reveal" id="quiz"><div class="quiz-inner glass-panel">
-<p class="kicker">Find Your Rain</p><h2 class="title">寻找属于你的那场雨</h2>
+<p class="kicker">The Rain Quiz</p><h2 class="title">寻找属于你的那场雨</h2>
 <div class="quiz-step active" data-step="1"><p class="q">闻到雨即将落下时空气里的气味，你会想起——</p><div class="quiz-opts"><button class="quiz-opt" data-s="0">一段走了很久才走到这里的路</button><button class="quiz-opt" data-s="1">某个黄昏天边铺开的颜色</button><button class="quiz-opt" data-s="2">一场从傍晚喝到天亮的酒</button><button class="quiz-opt" data-s="3">一棵老树的叶子从嫩绿到金黄</button><button class="quiz-opt" data-s="4">一滴水从云层坠落到地面的全部过程</button></div></div>
 <div class="quiz-step" data-step="2"><p class="q">大雨滂沱时，你最想待在哪里？</p><div class="quiz-opts"><button class="quiz-opt" data-s="0">老图书馆的窗边，玻璃上全是水痕</button><button class="quiz-opt" data-s="1">空旷海岸的悬崖上，看雨打进海里</button><button class="quiz-opt" data-s="2">热闹的酒吧里，雨声被喧哗盖过去</button><button class="quiz-opt" data-s="3">林中小木屋的屋檐下，木头被雨水浸成深色</button><button class="quiz-opt" data-s="4">什么都没有的空房间里，只听见雨打屋顶</button></div></div>
 <div class="quiz-step" data-step="3"><p class="q">雨停之后，第一缕光穿过云层。你闻到的是什么？</p><div class="quiz-opts"><button class="quiz-opt" data-s="0">被雨水洗过的青石板路</button><button class="quiz-opt" data-s="1">湿漉漉的草叶和泥土蒸腾的绿意</button><button class="quiz-opt" data-s="2">茶杯里剩下最后一点余温</button><button class="quiz-opt" data-s="3">松针上滴落的雨珠挥发成薄雾</button><button class="quiz-opt" data-s="4">空气里只剩下干净——干净到透明</button></div></div>
