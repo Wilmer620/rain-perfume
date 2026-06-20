@@ -412,6 +412,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <button class="series-tab active" data-panel="sojourn">驻足苦旅</button>
 <button class="series-tab" data-panel="world">世界之色</button>
 <button class="series-tab" data-panel="feast">灵感盛宴</button>
+<button class="series-tab" data-panel="cosmos">宙宇寰星</button>
 <button class="series-tab" data-panel="seasons">四季所生</button>
 <button class="series-tab" data-panel="after">雨后</button>
 </div>
@@ -474,6 +475,14 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <p class="frag-num">NO. 07</p><h3 class="frag-name-en">Iris</h3><p class="frag-name-cn">瞳孔</p>
 <p class="frag-accord"><b>Top</b> 胡萝卜籽 · 醛香 · 柑橘<br><b>Heart</b> 鸢尾 · 含羞草 · 紫罗兰<br><b>Base</b> 麝香 · 檀木 · 琥珀种子</p>
 </div></div></div>
+<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
+<div class="frag-info">
+<p class="frag-num">NO. 08</p><h3 class="frag-name-en">Sun&Moon</h3><p class="frag-name-cn">日月煎</p>
+<p class="frag-accord"><b>Top</b> 当归 · 苦橙叶 · 佛手柑<br><b>Heart</b> 没药 · 纸莎草 · 沉香<br><b>Base</b> 安息香 · 檀木 · 琥珀</p>
+</div></div></div>
 </div>
 <div style="text-align:center;margin:1rem 0 2rem">
 <button class="narr-btn" data-target="sojourn">展开叙事</button>
@@ -516,6 +525,11 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Iris</span></p>
 <p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>瞳孔</em>里可以装下整个天空，也可以只装一个人。Iris 的胡萝卜籽与醛香前调像瞳孔遇到光那一瞬的收缩——警觉而敏感；鸢尾与含羞草的中调是你注视某人时，<em>时间</em>变得很慢很慢的那几秒；而琥珀种子的尾调——是闭上眼之后，留在视网膜上的<em>残像</em>。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">胡萝卜籽</span><span class="note-chip-tip">来自土壤深处的根茎——带着泥土与微甜的坚果香，原始却不粗糙。</span></span><span class="note-chip"><span class="note-chip-name">醛香</span><span class="note-chip-tip">人工合成的第一缕明亮——像刚熨过的白衬衫，干净到发出声响。</span></span><span class="note-chip"><span class="note-chip-name">鸢尾</span><span class="note-chip-tip">根茎需陈化数年才能提取——气味如粉状紫罗兰，却更深邃，像一段被时间打磨过的记忆。</span></span><span class="note-chip"><span class="note-chip-name">琥珀种子</span><span class="note-chip-tip">麝香与植物琥珀的变体——比麝香更轻，像晨光里的绒毛，落在皮肤上就化了。</span></span></div>
+</div><div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">日月煎</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Sun&Moon</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">日出和月升不能同时发生——但它们共用<em>同一片天空</em>。Sun&Moon 的当归与苦橙叶前调像凌晨四点——夜还没走，天已经开始发白；没药与沉香的中调是白天和黑夜的<em>交接仪式</em>；安息香的尾调把这两种相反的力量<em>煎熬成一味</em>——它有太阳的烈，也有月亮的凉。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">当归</span><span class="note-chip-tip">根部最深的泥土气息——苦中带着回甘，像一段走了很远才理解的路。</span></span><span class="note-chip"><span class="note-chip-name">没药</span><span class="note-chip-tip">比乳香更深、更古老——古埃及人用它保存永恒，带着药感与神圣的暗色。</span></span><span class="note-chip"><span class="note-chip-name">沉香</span><span class="note-chip-tip">树木被真菌感染后分泌的黑色树脂——千年沉水，万物归一，是最昂贵的香料之一。</span></span><span class="note-chip"><span class="note-chip-name">安息香</span><span class="note-chip-tip">琥珀色的树脂——温暖到让人闭上眼睛，是所有故事最温柔的句号。</span></span></div>
 </div>
 </div></div></div>
 </div>
@@ -524,33 +538,41 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img" src="images/01-respiraton.png" alt="Respiration" loading="lazy"></div>
+<div class="frag-img-wrap"><img class="frag-img" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Pulse" loading="lazy"></div>
 <div class="frag-info">
-<p class="frag-num">NO. 01</p><h3 class="frag-name-en">Respiration</h3><p class="frag-name-cn">光合</p>
-<p class="frag-accord"><b>Top</b> 绿叶 · 佛手柑 · 露水<br><b>Heart</b> 铃兰 · 白茶 · 蕨类<br><b>Base</b> 白麝香 · 雪松木</p>
-</div></div></div>
-<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img" src="images/02-last-word.jpg" alt="Last Word" loading="lazy"></div>
-<div class="frag-info">
-<p class="frag-num">NO. 02</p><h3 class="frag-name-en">Last Word</h3><p class="frag-name-cn">明日</p>
-<p class="frag-accord"><b>Top</b> 杜松 · 柏树 · 柠檬皮<br><b>Heart</b> 雪松 · 苔藓 · 冷杉香脂<br><b>Base</b> 檀木 · 香根草 · 琥珀种子</p>
+<p class="frag-num">NO. 01</p><h3 class="frag-name-en">Pulse</h3><p class="frag-name-cn">脉搏</p>
+<p class="frag-accord"><b>Top</b> 粉红胡椒 · 藏红花 · 柑橘<br><b>Heart</b> 土耳其玫瑰 · 五月玫瑰 · 番红花<br><b>Base</b> 麝香 · 琥珀 · 檀木</p>
 </div></div></div>
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
 <div class="frag-img-wrap"><img class="frag-img" src="images/03-our-melody.png" alt="Our Melody" loading="lazy"></div>
 <div class="frag-info">
-<p class="frag-num">NO. 03</p><h3 class="frag-name-en">Our Melody</h3><p class="frag-name-cn">共鸣</p>
+<p class="frag-num">NO. 02</p><h3 class="frag-name-en">Our Melody</h3><p class="frag-name-cn">共鸣</p>
 <p class="frag-accord"><b>Top</b> 五月玫瑰 · 藏红花 · 荔枝<br><b>Heart</b> 土耳其玫瑰 · 沉香 · 广藿香<br><b>Base</b> 琥珀 · 麝香 · 乳香</p>
+</div></div></div>
+<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img" src="images/02-last-word.jpg" alt="Last Word" loading="lazy"></div>
+<div class="frag-info">
+<p class="frag-num">NO. 03</p><h3 class="frag-name-en">Last Word</h3><p class="frag-name-cn">明日</p>
+<p class="frag-accord"><b>Top</b> 杜松 · 柏树 · 柠檬皮<br><b>Heart</b> 雪松 · 苔藓 · 冷杉香脂<br><b>Base</b> 檀木 · 香根草 · 琥珀种子</p>
+</div></div></div>
+<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img" src="images/01-respiraton.png" alt="Respiration" loading="lazy"></div>
+<div class="frag-info">
+<p class="frag-num">NO. 04</p><h3 class="frag-name-en">Respiration</h3><p class="frag-name-cn">光合</p>
+<p class="frag-accord"><b>Top</b> 绿叶 · 佛手柑 · 露水<br><b>Heart</b> 铃兰 · 白茶 · 蕨类<br><b>Base</b> 白麝香 · 雪松木</p>
 </div></div></div>
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
 <div class="frag-img-wrap"><img class="frag-img" src="images/04-rising-sunset.png" alt="Rising Sunset" loading="lazy"></div>
 <div class="frag-info">
-<p class="frag-num">NO. 04</p><h3 class="frag-name-en">Rising Sunset</h3><p class="frag-name-cn">潮汐</p>
+<p class="frag-num">NO. 05</p><h3 class="frag-name-en">Rising Sunset</h3><p class="frag-name-cn">潮汐</p>
 <p class="frag-accord"><b>Top</b> 海盐 · 柑橘 · 粉红胡椒<br><b>Heart</b> 紫罗兰叶 · 鸢尾 · 鼠尾草<br><b>Base</b> 浮木 · 龙涎香 · 橡苔</p>
 </div></div></div>
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
@@ -558,7 +580,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card-inner">
 <div class="frag-img-wrap"><img class="frag-img" src="images/05-past-dream.png" alt="Past Dream" loading="lazy"></div>
 <div class="frag-info">
-<p class="frag-num">NO. 05</p><h3 class="frag-name-en">Past Dream</h3><p class="frag-name-cn">旧心事</p>
+<p class="frag-num">NO. 06</p><h3 class="frag-name-en">Past Dream</h3><p class="frag-name-cn">旧心事</p>
 <p class="frag-accord"><b>Top</b> 焚香 · 佛手柑 · 红茶<br><b>Heart</b> 鸢尾 · 纸莎草 · 紫罗兰<br><b>Base</b> 檀木 · 香草 · 麝香</p>
 </div></div></div>
 <div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
@@ -566,7 +588,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="frag-card-inner">
 <div class="frag-img-wrap"><img class="frag-img" src="images/06-prejudice.png" alt="Prejudice" loading="lazy"></div>
 <div class="frag-info">
-<p class="frag-num">NO. 06</p><h3 class="frag-name-en">Prejudice</h3><p class="frag-name-cn">我独我</p>
+<p class="frag-num">NO. 07</p><h3 class="frag-name-en">Prejudice</h3><p class="frag-name-cn">我独我</p>
 <p class="frag-accord"><b>Top</b> 藏红花 · 粉红胡椒 · 孜然<br><b>Heart</b> 大马士革玫瑰 · 沉香 · 没药<br><b>Base</b> 皮革 · 琥珀 · 劳丹脂</p>
 </div></div></div>
 </div>
@@ -574,37 +596,42 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <button class="narr-btn" data-target="world">展开叙事</button>
 <div class="narr-body" id="world" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
 <div class="glass-panel" style="padding:3rem 2.5rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
-<p style="font-family:'Noto Serif SC',serif;font-size:.92rem;font-weight:300;color:var(--ink2);line-height:2.6;max-width:640px;margin:0 auto 2.5rem;letter-spacing:.04em">世界不是用眼睛看见的——是用<em>气味</em>记下的。<br>每一座城市、每一片海域、每一次日出和每一次沉默，<br>都有属于自己的<em>颜色</em>。<br>世界之色，六支香气，六种观看世界的方式。</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.92rem;font-weight:300;color:var(--ink2);line-height:2.6;max-width:640px;margin:0 auto 2.5rem;letter-spacing:.04em">世界之色——<em>红橙黄绿青蓝紫</em>。<br>当你把世界分解成不同波长的光，<br>你会发现每一种颜色都有自己的<em>心跳</em>。<br>七支香气，七种观看世界的方式。</p>
 <div style="width:36px;height:1px;background:var(--gold-d);opacity:.2;margin:0 auto 2.5rem"></div>
 <div style="margin-bottom:2.2rem">
-<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">光合</h4>
-<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Respiration</span></p>
-<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>光合作用</em>是人类最古老的语言——吸进去，呼出来，就成为自己的一部分。Respiration 的绿叶与露水前调像清晨草叶上凝结的第一滴水珠，铃兰与白茶的中调是阳光穿过叶片的<em>透明绿意</em>，而白雪松的尾调——是大地在你走后，慢慢吐出的那口气。</p>
-<div class="note-chips"><span class="note-chip"><span class="note-chip-name">绿叶</span><span class="note-chip-tip">揉碎一片叶子后留在指腹上的青绿汁液——最直接的生命力，不加任何修饰。</span></span><span class="note-chip"><span class="note-chip-name">铃兰</span><span class="note-chip-tip">山谷里最早开的花——细小、洁白，香气却可以穿透整片森林，清而不淡。</span></span><span class="note-chip"><span class="note-chip-name">白茶</span><span class="note-chip-tip">最少人为干预的茶——自然萎凋，泡出最温和的汤色，像春天清晨的第一缕光。</span></span><span class="note-chip"><span class="note-chip-name">露水</span><span class="note-chip-tip">凌晨五点凝结在草尖上的水珠——没有任何味道，却是一切味道的起点。</span></span></div>
-</div><div style="margin-bottom:2.2rem">
-<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">明日</h4>
-<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Last Word</span></p>
-<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>明日</em>，永远在来的路上。Last Word 的杜松与柏树前调像清晨五点——天还没亮，你<em>已经醒了</em>；雪松与苔藓的中调是一种不确定的笃定，而香根草的尾调提醒你：有些话，今晚<em>说不出口</em>也没关系。</p>
-<div class="note-chips"><span class="note-chip"><span class="note-chip-name">杜松</span><span class="note-chip-tip">金酒的核心原料——清冽如冬日松林间穿过的冷风，干净到几乎没有温度。</span></span><span class="note-chip"><span class="note-chip-name">柏树</span><span class="note-chip-tip">墓地与园林共有的树种——庄严却不沉重，像时间本身，沉默地向上生长。</span></span><span class="note-chip"><span class="note-chip-name">苔藓</span><span class="note-chip-tip">森林深处石头上覆盖的绿绒——湿润、阴暗、原始，是时间最慢的注脚。</span></span><span class="note-chip"><span class="note-chip-name">香根草</span><span class="note-chip-tip">从地底拔出的草根——带着泥土、青草与烟熏的复杂层次，是最诚实的木质调。</span></span></div>
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">脉搏</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Pulse</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>脉搏</em>——世界之色中代表<em>红</em>的那一支。它关于爱情，但不是甜蜜的、温暖的、包裹的——而是<em>跳动的</em>。Pulse 的粉红胡椒与藏红花前调像两颗心脏各自跳动时忽然听见了彼此的频率；土耳其玫瑰的中调不是浪漫——是<em>共振</em>，是两个独立的节拍偶然撞在一起之后再也分不开；琥珀的尾调把这种同步封存在最深的节点上。爱情不是找到完美的人——是找到那个让你的脉搏<em>多跳一拍</em>的人。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">粉红胡椒</span><span class="note-chip-tip">比黑胡椒更温柔——像粉色的闪电，来得快、去得也快，留下一阵微麻的暖意。</span></span><span class="note-chip"><span class="note-chip-name">藏红花</span><span class="note-chip-tip">世界上最昂贵的香料——金属感与蜂蜜甜交织，像一句低声说了很久才说出口的话。</span></span><span class="note-chip"><span class="note-chip-name">土耳其玫瑰</span><span class="note-chip-tip">必须在天亮前手工采摘——玫瑰中的玫瑰，浓而不艳，近而不逼。</span></span><span class="note-chip"><span class="note-chip-name">琥珀</span><span class="note-chip-tip">松脂历经千万年而成——把时间封存在金色的透明里，是大地最古老的记忆。</span></span></div>
 </div><div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">共鸣</h4>
 <p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Our Melody</span></p>
-<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">两个人不一定认识，却可能在同一个<em>频率</em>上共振。Our Melody 的玫瑰与荔枝前调像第一次听到某首歌的前三秒——你停住了；土耳其玫瑰与沉香的中调像两个声音撞在一起，变成第三种声音；而琥珀与乳香的尾调——是音乐停了之后，房间里的<em>寂静</em>。</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>共鸣</em>——世界之色中代表<em>橙</em>的那一支。两个人不一定认识，却可能在同一个<em>频率</em>上共振。Our Melody 的玫瑰与荔枝前调像第一次听到某首歌的前三秒——你停住了；土耳其玫瑰与沉香的中调像两个声音撞在一起，变成第三种声音；而琥珀与乳香的尾调——是音乐停了之后，房间里的<em>寂静</em>。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">荔枝</span><span class="note-chip-tip">剥开粗糙外皮后的半透明果肉——甜得不讲道理，汁水顺着指尖流到手腕。</span></span><span class="note-chip"><span class="note-chip-name">土耳其玫瑰</span><span class="note-chip-tip">产自安纳托利亚高原——香气比普通玫瑰更浓郁、更持久，像一首写不完的诗。</span></span><span class="note-chip"><span class="note-chip-name">沉香</span><span class="note-chip-tip">树木被真菌感染后分泌的黑色树脂——千年沉水，万物归一，是最昂贵的香料之一。</span></span><span class="note-chip"><span class="note-chip-name">乳香</span><span class="note-chip-tip">东方三博士的礼物之一——燃烧后升起白色的烟，被古人称作神的呼吸。</span></span></div>
+</div><div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">明日</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Last Word</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>明日</em>——世界之色中代表<em>黄</em>的那一支。它永远在来的路上。Last Word 的杜松与柏树前调像清晨五点——天还没亮，你<em>已经醒了</em>；雪松与苔藓的中调是一种不确定的笃定，而香根草的尾调提醒你：有些话，今晚<em>说不出口</em>也没关系。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">杜松</span><span class="note-chip-tip">金酒的核心原料——清冽如冬日松林间穿过的冷风，干净到几乎没有温度。</span></span><span class="note-chip"><span class="note-chip-name">柏树</span><span class="note-chip-tip">墓地与园林共有的树种——庄严却不沉重，像时间本身，沉默地向上生长。</span></span><span class="note-chip"><span class="note-chip-name">苔藓</span><span class="note-chip-tip">森林深处石头上覆盖的绿绒——湿润、阴暗、原始，是时间最慢的注脚。</span></span><span class="note-chip"><span class="note-chip-name">香根草</span><span class="note-chip-tip">从地底拔出的草根——带着泥土、青草与烟熏的复杂层次，是最诚实的木质调。</span></span></div>
+</div><div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">光合</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Respiration</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>光合</em>——世界之色中代表<em>绿</em>的那一支。光合作用是人类最古老的语言——吸进去，呼出来，就成为自己的一部分。Respiration 的绿叶与露水前调像清晨草叶上凝结的第一滴水珠，铃兰与白茶的中调是阳光穿过叶片的<em>透明绿意</em>，而白雪松的尾调——是大地在你走后，慢慢吐出的那口气。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">绿叶</span><span class="note-chip-tip">揉碎一片叶子后留在指腹上的青绿汁液——最直接的生命力，不加任何修饰。</span></span><span class="note-chip"><span class="note-chip-name">铃兰</span><span class="note-chip-tip">山谷里最早开的花——细小、洁白，香气却可以穿透整片森林，清而不淡。</span></span><span class="note-chip"><span class="note-chip-name">白茶</span><span class="note-chip-tip">最少人为干预的茶——自然萎凋，泡出最温和的汤色，像春天清晨的第一缕光。</span></span><span class="note-chip"><span class="note-chip-name">露水</span><span class="note-chip-tip">凌晨五点凝结在草尖上的水珠——没有任何味道，却是一切味道的起点。</span></span></div>
 </div><div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">潮汐</h4>
 <p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Rising Sunset</span></p>
-<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">月亮拉动着地球的<em>呼吸</em>。Rising Sunset 的海盐与柑橘前调像涨潮时浪花打在脚踝上那一秒冰冷，紫罗兰叶与鼠尾草的中调是海水退去后留在沙滩上的泡沫，而浮木与龙涎香的尾调——是你在海边坐了很久很久之后，风吹在脸上的<em>温度</em>。</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>潮汐</em>——世界之色中代表<em>青</em>的那一支。月亮拉动着地球的<em>呼吸</em>。Rising Sunset 的海盐与柑橘前调像涨潮时浪花打在脚踝上那一秒冰冷，紫罗兰叶与鼠尾草的中调是海水退去后留在沙滩上的泡沫，而浮木与龙涎香的尾调——是你在海边坐了很久很久之后，风吹在脸上的<em>温度</em>。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">海盐</span><span class="note-chip-tip">不是调味——是海水蒸发后在皮肤上留下的白色印记，带着风和日晒的记忆。</span></span><span class="note-chip"><span class="note-chip-name">龙涎香</span><span class="note-chip-tip">抹香鲸的馈赠——在海上漂浮数十年后被冲上岸，咸、甜、不可复制，是海洋最后的秘密。</span></span><span class="note-chip"><span class="note-chip-name">浮木</span><span class="note-chip-tip">在海水中漂了不知多久的木头——咸的、晒干的、有故事的，每一道纹理都是一段漂流。</span></span><span class="note-chip"><span class="note-chip-name">鼠尾草</span><span class="note-chip-tip">被焚烧时会释放净化一切的白烟——但它的香气本身是安静的，像一位不说话的智者。</span></span></div>
 </div><div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">旧心事</h4>
 <p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Past Dream</span></p>
-<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>旧心事</em>不是要你来解决——是要你来陪着。Past Dream 的焚香与红茶前调像一个多年没打开的抽屉，鸢尾与纸莎草的中调是里面那封写了又没寄的<em>信</em>，而檀木与香草的尾调——是你把抽屉轻轻<em>合上</em>，而不是关上。</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>旧心事</em>——世界之色中代表<em>蓝</em>的那一支。它不是要你来解决——是要你来陪着。Past Dream 的焚香与红茶前调像一个多年没打开的抽屉，鸢尾与纸莎草的中调是里面那封写了又没寄的<em>信</em>，而檀木与香草的尾调——是你把抽屉轻轻<em>合上</em>，而不是关上。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">焚香</span><span class="note-chip-tip">点燃的树脂在空气中划出的烟迹——连接天与地，是千百年来人类与神明对话的语言。</span></span><span class="note-chip"><span class="note-chip-name">纸莎草</span><span class="note-chip-tip">干燥的纸张与灯芯草的气息——像一本翻到一半的旧书，每个字都见过光。</span></span><span class="note-chip"><span class="note-chip-name">檀木</span><span class="note-chip-tip">寺庙里燃了多年的香火记忆——木质、乳感、让人想把呼吸放慢。</span></span><span class="note-chip"><span class="note-chip-name">香草</span><span class="note-chip-tip">剖开豆荚时飘出的甜——不是糖的甜，是植物的甜，温暖到让人闭上眼睛。</span></span></div>
 </div><div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">我独我</h4>
 <p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Prejudice</span></p>
-<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>我独我</em>——不是孤独，是不需要被定义。Prejudice 的藏红花与孜然前调像一句别人听不懂的口头禅，大马士革玫瑰与沉香的中调是你给自己的<em>沉默</em>打了一个结，而皮革与琥珀的尾调——是一个人走在夜晚的街上，影子被路灯拉到<em>很长</em>。</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>我独我</em>——世界之色中代表<em>紫</em>的那一支。它不是孤独，是不需要被定义。Prejudice 的藏红花与孜然前调像一句别人听不懂的口头禅，大马士革玫瑰与沉香的中调是你给自己的<em>沉默</em>打了一个结，而皮革与琥珀的尾调——是一个人走在夜晚的街上，影子被路灯拉到<em>很长</em>。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">藏红花</span><span class="note-chip-tip">世界上最昂贵的香料——金属感与蜂蜜甜交织，像一句低声说了很久才说出口的话。</span></span><span class="note-chip"><span class="note-chip-name">孜然</span><span class="note-chip-tip">最原始、最不加修饰的辛香——像大地深处直接讲出来的话，不讨好任何人。</span></span><span class="note-chip"><span class="note-chip-name">大马士革玫瑰</span><span class="note-chip-tip">玫瑰中的玫瑰——必须在天亮前手工采摘，香气如丝绒裹住心脏，是玫瑰最本真的样子。</span></span><span class="note-chip"><span class="note-chip-name">皮革</span><span class="note-chip-tip">鞣制过的皮面气息——粗粝、干燥，带着动物性的体温，是反叛与优雅的共同底色。</span></span></div>
 </div>
 </div></div></div>
@@ -651,12 +678,20 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <p class="frag-num">NO. 05</p><h3 class="frag-name-en">Stay</h3><p class="frag-name-cn">侍者</p>
 <p class="frag-accord"><b>Top</b> 绿茶 · 竹叶 · 黄瓜<br><b>Heart</b> 莲花 · 苔藓 · 睡莲<br><b>Base</b> 白麝香 · 雪松 · 大米</p>
 </div></div></div>
+<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
+<div class="frag-info">
+<p class="frag-num">NO. 06</p><h3 class="frag-name-en">Decree</h3><p class="frag-name-cn">号令</p>
+<p class="frag-accord"><b>Top</b> 藏红花 · 乳香 · 粉红胡椒<br><b>Heart</b> 土耳其玫瑰 · 沉香 · 没药<br><b>Base</b> 劳丹脂 · 皮革 · 琥珀</p>
+</div></div></div>
 </div>
 <div style="text-align:center;margin:1rem 0 2rem">
 <button class="narr-btn" data-target="feast">展开叙事</button>
 <div class="narr-body" id="feast" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
 <div class="glass-panel" style="padding:3rem 2.5rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
-<p style="font-family:'Noto Serif SC',serif;font-size:.92rem;font-weight:300;color:var(--ink2);line-height:2.6;max-width:640px;margin:0 auto 2.5rem;letter-spacing:.04em">灵感不是被找到的——是在一顿<em>盛宴</em>中被唤醒的。<br>五个瞬间、五种角色、五种不同的沉醉方式。<br>你不必是其中任何一个——<br>你只需要闻到它们，然后想起自己<em>曾经是谁</em>。</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.92rem;font-weight:300;color:var(--ink2);line-height:2.6;max-width:640px;margin:0 auto 2.5rem;letter-spacing:.04em">灵感不是被找到的——是在一顿<em>盛宴</em>中被唤醒的。<br>六个瞬间、六种角色、六种不同的沉醉方式。<br>你不必是其中任何一个——<br>你只需要闻到它们，然后想起自己<em>曾经是谁</em>。</p>
 <div style="width:36px;height:1px;background:var(--gold-d);opacity:.2;margin:0 auto 2.5rem"></div>
 <div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">皮囊</h4>
@@ -683,6 +718,88 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Stay</span></p>
 <p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify"><em>侍者</em>从不走在前面，也从不在你不需要的时候出现。Stay 的绿茶与竹叶前调像一壶刚沏好的碧螺春放在你手边，莲花与水苔的中调是安静的<em>陪伴</em>，而白麝香与大米的尾调——是你喝完最后一口茶，杯底还有<em>温度</em>的安心。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">绿茶</span><span class="note-chip-tip">杀青后的茶叶保留了最多的鲜味——像春天第一泡龙井，澄澈、回甘、不打扰。</span></span><span class="note-chip"><span class="note-chip-name">莲花</span><span class="note-chip-tip">从淤泥里升起却不沾染任何——清高到没有重量，却让整个水面都安静下来。</span></span><span class="note-chip"><span class="note-chip-name">苔藓</span><span class="note-chip-tip">森林深处石头上覆盖的绿绒——湿润、阴暗、原始，是时间最慢的注脚。</span></span><span class="note-chip"><span class="note-chip-name">大米</span><span class="note-chip-tip">刚蒸熟的米饭升起的热气——最朴素的安全感，不需要解释，每个人都认得。</span></span></div>
+</div><div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">号令</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Decree</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">号令——灵感盛宴中唯一的<em>指挥者</em>。在所有沉醉和狂欢之外，有一个人必须保持清醒——不是不能醉，是选择<em>最后再醉</em>。Decree 的藏红花与乳香前调像交响乐团指挥举起指挥棒的那一瞬间——所有混乱被<em>凝聚成方向</em>；土耳其玫瑰与沉香的中调不是温柔——是<em>权威</em>，是方向被确立之后的肃穆；而皮革与劳丹脂的尾调——是全场安静下来之后，第一声定音鼓。你不是命令别人——你是在所有噪音中第一个<em>做出决定</em>的人。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">乳香</span><span class="note-chip-tip">东方三博士的礼物之一——燃烧后升起白色的烟，被古人称作神的呼吸。</span></span><span class="note-chip"><span class="note-chip-name">沉香</span><span class="note-chip-tip">树木被真菌感染后分泌的黑色树脂——千年沉水，万物归一，是最昂贵的香料之一。</span></span><span class="note-chip"><span class="note-chip-name">劳丹脂</span><span class="note-chip-tip">地中海岩蔷薇的树脂——温暖到近乎琥珀，却多了一层干燥的药感。</span></span><span class="note-chip"><span class="note-chip-name">皮革</span><span class="note-chip-tip">鞣制过的皮面气息——粗粝、干燥、带着体温，是所有远方统一的底色。</span></span></div>
+</div>
+</div></div></div>
+</div>
+<div class="series-panel" data-panel="cosmos">
+<div class="frag-grid">
+<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
+<div class="frag-info">
+<p class="frag-num">NO. 01</p><h3 class="frag-name-en">Flash</h3><p class="frag-name-cn">瞬息</p>
+<p class="frag-accord"><b>Top</b> 臭氧 · 醛香 · 薄荷<br><b>Heart</b> 闪电调 · 紫罗兰叶 · 银冷杉<br><b>Base</b> 白麝香 · 矿物调 · 雪松</p>
+</div></div></div>
+<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
+<div class="frag-info">
+<p class="frag-num">NO. 02</p><h3 class="frag-name-en">Present</h3><p class="frag-name-cn">此刻</p>
+<p class="frag-accord"><b>Top</b> 佛手柑 · 绿叶 · 粉红胡椒<br><b>Heart</b> 铃兰 · 白茶 · 蕨类<br><b>Base</b> 白麝香 · 雪松木 · 琥珀</p>
+</div></div></div>
+<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
+<div class="frag-info">
+<p class="frag-num">NO. 03</p><h3 class="frag-name-en">Bygone</h3><p class="frag-name-cn">彼时</p>
+<p class="frag-accord"><b>Top</b> 焚香 · 红茶 · 纸莎草<br><b>Heart</b> 鸢尾 · 檀木 · 沉香<br><b>Base</b> 安息香 · 香草 · 琥珀</p>
+</div></div></div>
+<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
+<div class="frag-info">
+<p class="frag-num">NO. 04</p><h3 class="frag-name-en">Lightyear</h3><p class="frag-name-cn">光年</p>
+<p class="frag-accord"><b>Top</b> 杜松 · 臭氧 · 金属调<br><b>Heart</b> 鸢尾 · 麝香 · 琥珀种子<br><b>Base</b> 雪松 · 檀木 · 矿物调</p>
+</div></div></div>
+<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
+<div class="frag-info">
+<p class="frag-num">NO. 05</p><h3 class="frag-name-en">Origin</h3><p class="frag-name-cn">起源</p>
+<p class="frag-accord"><b>Top</b> 黑胡椒 · 焚香 · 醛香<br><b>Heart</b> 没药 · 沉香 · 广藿香<br><b>Base</b> 劳丹脂 · 皮革 · 香根草</p>
+</div></div></div>
+</div>
+<div style="text-align:center;margin:1rem 0 2rem">
+<button class="narr-btn" data-target="cosmos">展开叙事</button>
+<div class="narr-body" id="cosmos" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
+<div class="glass-panel" style="padding:3rem 2.5rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
+<p style="font-family:'Noto Serif SC',serif;font-size:.92rem;font-weight:300;color:var(--ink2);line-height:2.6;max-width:640px;margin:0 auto 2.5rem;letter-spacing:.04em">宙宇寰星——五支香，五种丈量<em>时空</em>的方式。<br>从最小的一瞬，到最大的起源——<br>在这些香气里，时间不是流逝的，而是<em>展开的</em>。<br>你不再站在时间之外观看——你<em>成为</em>时间本身。</p>
+<div style="width:36px;height:1px;background:var(--gold-d);opacity:.2;margin:0 auto 2.5rem"></div>
+<div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">瞬息</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Flash</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">一切开始之前的那个<em>空拍</em>——比心跳短，比闪电快。Flash 的臭氧与薄荷前调像一道白光切开黑暗——你还没来得及辨认，它已经结束了。但<em>结束的这一瞬间</em>已经足够打开一切。这不是遗忘——这是<em>引子</em>。在没有意义的地方，它创造了意义的第一推动。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">臭氧</span><span class="note-chip-tip">雷雨前空气被电离的味道——干净到刺鼻，像天空在深呼吸，是一切开始之前的空白页。</span></span><span class="note-chip"><span class="note-chip-name">薄荷</span><span class="note-chip-tip">不甜、不暖、不纠缠——只是一阵干净的风穿过鼻腔，然后离开。</span></span><span class="note-chip"><span class="note-chip-name">银冷杉</span><span class="note-chip-tip">最接近天空的针叶树——针叶碾碎后散发出柑橘与松脂的冷香。</span></span><span class="note-chip"><span class="note-chip-name">矿物调</span><span class="note-chip-tip">岩石、燧石、无机盐——像山泉流过石壁留下的一层薄膜，是大地最原始的味道。</span></span></div>
+</div><div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">此刻</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Present</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">没什么比<em>现在</em>更奢侈——因为过去和未来都在排队占用你的注意力。Present 的佛手柑与绿叶前调像把一扇窗<em>打开</em>——不是看出去，是让此刻的空气进来；铃兰与白茶的中调是这一秒的<em>全部内容</em>：没有回忆、没有计划、没有任何不在场的事物。白麝香的尾调把所有多余的时间轻轻推开——只留下<em>现在</em>。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">佛手柑</span><span class="note-chip-tip">柑橘家族中最优雅的一员——明亮但不刺眼，像清晨第一道穿过窗帘的光。</span></span><span class="note-chip"><span class="note-chip-name">铃兰</span><span class="note-chip-tip">山谷里最早开的花——细小、洁白，香气却可以穿透整片森林，清而不淡。</span></span><span class="note-chip"><span class="note-chip-name">白茶</span><span class="note-chip-tip">最少人为干预的茶——自然萎凋，泡出最温和的汤色，像春天清晨的第一缕光。</span></span><span class="note-chip"><span class="note-chip-name">雪松</span><span class="note-chip-tip">高海拔森林中砍下的木材——干燥而安静，带着树脂的微甜与岁月的重量。</span></span></div>
+</div><div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">彼时</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Bygone</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">不是缅怀——是<em>指认</em>。Bygone 的焚香与纸莎草前调像在一间很久没人进来的房间里认出旧日的光线；鸢尾与檀木的中调不试图重现过去——它只是<em>承认</em>：那个时刻存在过，那个决定发生过，那个人来过。香草的尾调不是甜——是<em>接受</em>。接受一切已经发生的事物，在不可更改的距离之外，安静地成为你的一部分。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">焚香</span><span class="note-chip-tip">点燃的树脂在空气中划出的烟迹——连接天与地，是千百年来人类与神明对话的语言。</span></span><span class="note-chip"><span class="note-chip-name">纸莎草</span><span class="note-chip-tip">干燥的书写材料——每个字都见过光，每个字都在等一个人来读。</span></span><span class="note-chip"><span class="note-chip-name">鸢尾</span><span class="note-chip-tip">根茎需陈化数年才能提取——气味如粉状紫罗兰，却更深邃，像一段被时间打磨过的记忆。</span></span><span class="note-chip"><span class="note-chip-name">香草</span><span class="note-chip-tip">剖开豆荚时飘出的甜——不是糖的甜，是植物的甜，温暖到让人闭上眼睛。</span></span></div>
+</div><div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">光年</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Lightyear</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">丈量距离的最终单位——光走一年的距离。不是你走得有多快——是你的<em>目光</em>能够触及多远。Lightyear 的杜松与臭氧前调是不带温度的<em>远眺</em>——像哈勃望远镜凝视深空；金属调的冷感中调不是无感情——而是<em>超越了情感距离</em>之后的澄明；矿物调的尾调留下最后一行数据：你不是宇宙的中心——但你是宇宙唯一<em>能够看见自己</em>的观测者。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">杜松</span><span class="note-chip-tip">金酒的核心原料——清冽如冬日松林间穿过的冷风，干净到几乎没有温度。</span></span><span class="note-chip"><span class="note-chip-name">金属调</span><span class="note-chip-tip">冰冷的无机感——像不锈钢台面反射出的光，或是太空望远镜冰冷的镜片。</span></span><span class="note-chip"><span class="note-chip-name">麝香</span><span class="note-chip-tip">最初的动物性已被时间磨去——剩下的是皮肤的暖意，像拥抱之后留在衣服上的温度。</span></span><span class="note-chip"><span class="note-chip-name">琥珀种子</span><span class="note-chip-tip">麝香与植物琥珀的变体——比麝香更轻，像晨光里的绒毛，落在皮肤上就化了。</span></span></div>
+</div><div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">起源</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span style="color:var(--gold);font-weight:400;letter-spacing:.06em">Origin</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">一切来自哪里。不是历史书的答案——是你<em>身体</em>记得的那个起点。Origin 的黑胡椒与焚香前调是<em>第一个火花</em>——不是温柔的，是粗粝的、灼热的、不可阻挡的；没药与沉香的中调是最初的<em>黑暗</em>——在所有光出现之前，在所有秩序形成之前；香根草与皮革的尾调是<em>大地</em>本身——不是被规整过的土壤，是最原始的、没有被任何人命名过的世界的初稿。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">黑胡椒</span><span class="note-chip-tip">碾碎时迸发的尖锐辛辣——是最原始的语言，第一声叫喊。</span></span><span class="note-chip"><span class="note-chip-name">没药</span><span class="note-chip-tip">比乳香更深、更古老——古埃及人用它保存永恒，带着药感与神圣的暗色。</span></span><span class="note-chip"><span class="note-chip-name">广藿香</span><span class="note-chip-tip">几乎可以触摸的深沉木质——在所有的文明里都被用作保存与净化的香料。</span></span><span class="note-chip"><span class="note-chip-name">香根草</span><span class="note-chip-tip">从地底拔出的草根——带着泥土、青草与烟熏的复杂层次，是最诚实的木质调。</span></span></div>
 </div>
 </div></div></div>
 </div>
@@ -839,13 +956,24 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <p class="frag-name-cn">To What Comes Next</p>
 <p class="frag-accord"><b>Top</b> 绿叶 · 佛手柑 · 薄荷<br><b>Heart</b> 铃兰 · 白茶 · 蕨类<br><b>Base</b> 白麝香 · 雪松 · 琥珀</p>
 </div></div></div>
+
+<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E" alt="Coming Soon"></div>
+<div class="frag-info">
+<p class="frag-num">COSMOS · 宙宇寰星</p>
+<h3 class="frag-name-en" style="font-size:1.75rem">熵增时</h3>
+<p class="frag-name-cn">The Hour of Entropy</p>
+<p class="frag-accord"><b>Top</b> 醛香 · 臭氧 · 薄荷<br><b>Heart</b> 鸢尾 · 没药 · 焚香<br><b>Base</b> 白麝香 · 琥珀 · 矿物调</p>
+</div></div></div>
 </div>
 
 <div style="text-align:center;margin:1rem 0 2rem">
 <button class="narr-btn" data-target="collectionNarr">展开叙事</button>
 <div class="narr-body" id="collectionNarr" style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center">
 <div class="glass-panel" style="padding:3rem 2.5rem;font-family:Noto Serif SC,serif;font-size:.9rem;font-weight:300;color:var(--ink3);line-height:2.5">
-<p style="font-family:'Noto Serif SC',serif;font-size:.92rem;font-weight:300;color:var(--ink2);line-height:2.6;max-width:640px;margin:0 auto 2.5rem;letter-spacing:.04em">有些气味只在你停留得足够久之后才会显现——<br>像雨水渗透进最深的土层，<br>在不可见处汇聚成一道<em>地下暗河</em>。<br>臻品雨酿，五支在主题尽头等待的<em>典藏之雨</em>。</p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.92rem;font-weight:300;color:var(--ink2);line-height:2.6;max-width:640px;margin:0 auto 2.5rem;letter-spacing:.04em">有些气味只在你停留得足够久之后才会显现——<br>像雨水渗透进最深的土层，<br>在不可见处汇聚成一道<em>地下暗河</em>。<br>臻品雨酿，六支在主题尽头等待的<em>典藏之雨</em>。</p>
 <div style="width:36px;height:1px;background:var(--gold-d);opacity:.2;margin:0 auto 2.5rem"></div>
 <div style="margin-bottom:2.2rem">
 <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">我故臆想</h4>
@@ -872,6 +1000,11 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span class="col-tag">典藏 · 雨后</span><span class="col-en">To What Comes Next</span></p>
 <p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">最重要的时刻不是结束——是<em>结束之后的第一个瞬间</em>。雨停了。你不确定接下来会发生什么——但你已经在<em>准备吸气</em>了。致新生守在一个模棱两可的临界点上：旧的一页尚未完全翻过，新的一行还没写下。它不是写给过去的悼词——它是写给空气里<em>即将到来的事物</em>的第一句问候。你不需要知道那是什么。你只需要<em>推开窗户</em>。</p>
 <div class="note-chips"><span class="note-chip"><span class="note-chip-name">铃兰</span><span class="note-chip-tip">山谷里最早开的花——细小、洁白，香气却可以穿透整片森林，清而不淡。</span></span><span class="note-chip"><span class="note-chip-name">蕨类</span><span class="note-chip-tip">森林底层的古老植物——比花更安静，比树更久远，是所有新生的底床。</span></span><span class="note-chip"><span class="note-chip-name">白麝香</span><span class="note-chip-tip">干净的棉布贴在皮肤上——是所有香气最终回归的地方，不争不抢。</span></span><span class="note-chip"><span class="note-chip-name">琥珀</span><span class="note-chip-tip">松脂历经千万年而成——把时间封存在金色的透明里，是大地最古老的记忆。</span></span></div>
+</div><div style="margin-bottom:2.2rem">
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">熵增时</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem"><span class="col-tag">典藏 · 宙宇寰星</span><span class="col-en">The Hour of Entropy</span></p>
+<p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">一切秩序的尽头不是<em>毁灭</em>——是<em>散落</em>。当所有结构被温和地松开，当每一个曾经聚拢的瞬间回到它们各自的轨道——这不是终结，是<em>归还</em>。熵增时捕捉的是宙宇寰星五支各自抵达<em>热力学终点</em>之后的形态：瞬息不再是一个空拍，而是<em>永恒中的第一个毫秒</em>；此刻不再抓紧现在，而是允许一切的<em>流逝</em>；彼时将记忆交还给时间；光年把目光收回闭上；起源回到未命名的混沌。所有的事物回归它们<em>未被整理</em>的样子——不是混乱，是<em>自由</em>。</p>
+<div class="note-chips"><span class="note-chip"><span class="note-chip-name">醛香</span><span class="note-chip-tip">人工合成的第一缕明亮——像刚熨过的白衬衫，干净到发出声响。</span></span><span class="note-chip"><span class="note-chip-name">鸢尾</span><span class="note-chip-tip">根茎需陈化数年才能提取——气味如粉状紫罗兰，却更深邃，像一段被时间打磨过的记忆。</span></span><span class="note-chip"><span class="note-chip-name">白麝香</span><span class="note-chip-tip">干净的棉布贴在皮肤上——是所有香气最终回归的地方，不争不抢。</span></span><span class="note-chip"><span class="note-chip-name">琥珀</span><span class="note-chip-tip">松脂历经千万年而成——把时间封存在金色的透明里，是大地最古老的记忆。</span></span></div>
 </div>
 </div></div></div>
 
