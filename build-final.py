@@ -406,6 +406,12 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .top-nav-brand:hover{color:var(--gold)}
 .nav-logo-svg{flex-shrink:0}
 @media (max-width:768px){.nav-logo-svg{width:120px;height:29px}}
+/* Logo Rain Surge */
+.rain-surge{position:fixed;inset:0;z-index:195;pointer-events:none;opacity:0;transition:opacity .6s ease}
+.rain-surge.active{opacity:1}
+.rain-surge canvas{position:absolute;inset:0;width:100%;height:100%}
+.rain-surge-txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Noto Serif SC',serif;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:200;letter-spacing:.35em;color:var(--ink);opacity:0;transition:opacity .8s ease;white-space:nowrap}
+.rain-surge.active .rain-surge-txt{opacity:.18}
 .top-nav-links{display:flex;gap:2.5rem;list-style:none}
 .top-nav-links a{color:var(--ink3);text-decoration:none;font-family:'Inter',sans-serif;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;transition:color .4s;position:relative}
 .top-nav-links a:hover{color:var(--gold)}
@@ -667,6 +673,39 @@ try{(function(){var c=document.getElementById("cssRainLayer"),n=100;var t=["thin
 (function(){var btn=document.getElementById("musicBtn");if(!btn)return;
 var ctx=null,master=null,playing=true,started=false;
 
+/* Logo Rain Surge */
+(function(){
+var surge=document.getElementById("rainSurge"),canvas=document.getElementById("surgeCanvas"),surgeCtx=null,drops=[],raf=0,active=false;
+if(!surge||!canvas)return;
+function resize(){var dpr=window.devicePixelRatio||1;canvas.width=window.innerWidth*dpr;canvas.height=window.innerHeight*dpr;surgeCtx=canvas.getContext("2d");surgeCtx.scale(dpr,dpr)}
+function initDrops(){drops=[];for(var i=0;i<400;i++){drops.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight*-1,speed:18+Math.random()*35,length:30+Math.random()*70,thick:.6+Math.random()*1.8,op:.08+Math.random()*.18})}}
+function drawRain(){
+if(!surgeCtx)return;
+var w=window.innerWidth,h=window.innerHeight;
+surgeCtx.clearRect(0,0,w,h);
+for(var i=0;i<drops.length;i++){
+var d=drops[i];
+surgeCtx.beginPath();
+surgeCtx.moveTo(d.x,d.y);
+surgeCtx.lineTo(d.x-2,d.y+d.length);
+surgeCtx.strokeStyle="rgba(139,105,30,"+d.op+")";
+surgeCtx.lineWidth=d.thick;
+surgeCtx.lineCap="round";
+surgeCtx.stroke();
+d.y+=d.speed;
+if(d.y>h+20){d.y=-20-Math.random()*200;d.x=Math.random()*w}
+}
+}
+function loop(){drawRain();if(active)raf=requestAnimationFrame(loop)}
+function start(){if(active)return;active=true;if(!surgeCtx){resize();initDrops()}surge.classList.add("active");loop()}
+function stop(){active=false;cancelAnimationFrame(raf);surge.classList.remove("active")}
+/* hover logo */
+var logoEl=document.querySelector(".top-nav-brand");
+if(logoEl){logoEl.addEventListener("mouseenter",start);logoEl.addEventListener("mouseleave",stop)}
+/* resize */
+window.addEventListener("resize",function(){if(active){resize();initDrops()}})
+})();
+
 /* build one filtered noise layer */
 function mkLayer(type,fc,q,vol){
   var len=ctx.sampleRate*6,buf=ctx.createBuffer(1,len,ctx.sampleRate),d=buf.getChannelData(0);
@@ -825,6 +864,9 @@ html = f'''<!DOCTYPE html>
 <a href="#quiz">寻雨之路</a>
 <a href="#newsletter">降雨预报</a>
 </div>
+
+<!-- 雨幕 -->
+<div class="rain-surge" id="rainSurge"><canvas id="surgeCanvas"></canvas><div class="rain-surge-txt">在雨中 我们畅游 我们新生</div></div>
 
 <!-- HERO -->
 <section class="hero">
