@@ -119,6 +119,16 @@ NARRATIVES = {
             ('Shatter', '碎地霜', '触地的那一瞬间，你不会痛——你会<em>碎</em>成更多个自己。Shatter 是旅程的终点，也是无数个新的<em>起点</em>。肉桂与红茶的前调像地面迎接你的温度，桂花与广藿香的中调是你碎裂之后释放出的最后一声叹息——不是悲叹，是一种终于<em>抵达</em>的释然。而泥土与橡苔的尾调——是你的碎片渗入土地，成为明天某颗种子的一部分。'),
         ]
     },
+    'collection': {
+        'intro': '臻品雨酿——五支<em>典藏之作</em>，<br>从每个系列的深处提取最极致的那一滴。<br>它们是雨的精华——不是稀释，是<em>蒸馏</em>。<br>每一支都将一个主题<em>推向极致</em>。',
+        'items': [
+            ('我故臆想', 'The Fable I Tell Myself', '驻足苦旅', '旅途不是向外走——是向内走。所有的记忆都是一场<em>精致的虚构</em>：你以为回到了过去，其实是现在的自己写给过去的一封信。我故臆想不做还原——它做<em>创造</em>。因为每个人讲述的「我记得」，从来不是重复，是<em>重新活一次</em>。'),
+            ('着我之境', 'The World Through Me', '世界之色', '不是我去看世界，是世界<em>穿过</em>我——像光线穿过彩色玻璃，每一片都改变了颜色。你站在拥挤的广场上，却觉得自己同时站在<em>所有去过的地方</em>。你不是观看者——你是一座移动的<em>美术馆</em>，所有的风景都陈列在你的皮肤上。'),
+            ('今夜唯我', 'Tonight, Only I Remain', '灵感盛宴', '午夜两点，最后一个客人走了。你脱下外套，倒了一杯水，坐在沙发上——<em>不说话、不思考、不证明</em>。这不是孤独——这是所有社交结束后最奢侈的款待：今夜，你只需要做<em>自己</em>。'),
+            ('新时代迁流', 'The River of Seasons', '四季所生', '时间不是直线——是<em>河流</em>。春天在你左手边发芽，夏天从右肩流过，秋天在脚边堆积，冬天从头顶落下。但你站在河中央，<em>不增不减</em>。四季流过你，你成了四季。新时代迁流不是一支香——是一个<em>坐标</em>：此刻，此身，此在。'),
+            ('致新生', 'To What Comes Next', '雨后', '雨停之后的第一行字。不是写给过去的<em>告别信</em>——是写给未来的第一句话。你站在刚被洗过的空气里，不确定接下来会发生什么——但你已经准备<em>呼吸</em>了。所有的重生都不需要宣言——它只需要雨停之后，你推开窗户。'),
+        ]
+    },
 }
 
 PRODUCT_NOTES = {
@@ -277,23 +287,61 @@ PRODUCT_NOTES = {
         ('橡苔','橡树根部生长的地衣——深色的森林气息，像雨后密林的地面，湿润而充满生机。'),
         ('泥土调','湿润土壤升起的蒸汽——原始、诚实、不加修饰，是所有生命最终回到的地方。'),
     ],
+    # ══ 臻品雨酿 ══
+    '我故臆想': [
+        ('当归','根部最深的泥土气息——苦中带着回甘，像一段走了很远才理解的路。'),
+        ('没药','比乳香更深、更古老——古埃及人用它保存永恒，带着药感与神圣的暗色。'),
+        ('纸莎草','干燥的书写材料——每个字都见过光，每个字都在等一个人来读。'),
+        ('安息香','琥珀色的树脂——温暖到让人闭上眼睛，是所有故事最温柔的句号。'),
+    ],
+    '着我之境': [
+        ('苦橙叶','橙花树下被碾碎的叶——青绿、微苦、清醒，像第一次独自出远门时吸入的第一口空气。'),
+        ('土耳其玫瑰','必须在天亮前手工采摘——玫瑰中的玫瑰，浓而不艳，近而不逼。'),
+        ('苏合香','来自东方的树脂——甜中带辛，像一段跨越大洲的记忆，熟悉又陌生。'),
+        ('皮革','鞣制过的皮面气息——粗粝、干燥、带着体温，是所有远方统一的底色。'),
+    ],
+    '今夜唯我': [
+        ('香槟调','气泡破裂时释放的微醺——欢庆的开场但不喧哗，是克制后的自由。'),
+        ('烟草','烟叶在指尖揉碎时的气息——干燥、微甜、带着成年人的安静与克制。'),
+        ('黑巧克力','可可含量80%以上的苦甜——复杂的愉悦，不是每个人都懂，但懂的人会笑。'),
+        ('愈创木','南美洲密度最大的硬木——沉于水，是所有轻浮的反面，是最安静的坚定。'),
+    ],
+    '新时代迁流': [
+        ('竹叶','清晨竹叶上的露水被风吹散——清、冷、一直向上，不争不抢却从不停止。'),
+        ('紫藤','春夏之交悬挂的花穗——淡紫到几乎透明，香气却让你走过时一定回头。'),
+        ('米浆','石磨碾过米粒时溢出的白色液体——最朴素的安全感，每个人都认得。'),
+        ('檀木','寺庙里多年的香火记忆——是时间最温柔的证明，让人想把呼吸放慢。'),
+    ],
+    '致新生': [
+        ('铃兰','山谷里最早开的花——细小、洁白，香气却可以穿透整片森林，清而不淡。'),
+        ('蕨类','森林底层的古老植物——比花更安静，比树更久远，是所有新生的底床。'),
+        ('白麝香','干净的棉布贴在皮肤上——是所有香气最终回归的地方，不争不抢。'),
+        ('琥珀','松脂历经千万年而成——把时间封存在金色的透明里，是大地最古老的记忆。'),
+    ],
 }
 
 def narrative_btn(pid):
     pid2 = pid.replace('-','')
     data = NARRATIVES.get(pid, {'intro': '深度叙事即将呈现。', 'items': []})
     items_html = ''
-    for name, cn, text in data.get('items', []):
+    for item in data.get('items', []):
+        if len(item) == 4:
+            cn_name, en_name, tag, text = item
+            subtitle = f'{en_name}  ·  {tag}'
+        else:
+            en_name, cn_name, text = item
+            subtitle = cn_name
+        name_for_notes = cn_name
         notes_html = ''
-        product_notes = PRODUCT_NOTES.get(name, [])
+        product_notes = PRODUCT_NOTES.get(name_for_notes, [])
         if product_notes:
             chips = ''
             for note_name, note_desc in product_notes:
                 chips += f'<span class="note-chip"><span class="note-chip-name">{note_name}</span><span class="note-chip-tip">{note_desc}</span></span>'
             notes_html = f'<div class="note-chips">{chips}</div>'
         items_html += f'''<div style="margin-bottom:2.2rem">
-<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">{name}</h4>
-<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem">{cn}</p>
+<h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.1rem;letter-spacing:.08em">{cn_name}</h4>
+<p style="font-family:'Noto Serif SC',serif;font-size:.66rem;color:var(--gold-d);letter-spacing:.2em;margin-bottom:.5rem">{subtitle}</p>
 <p style="font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink2);line-height:2.4;letter-spacing:.04em;max-width:680px;margin:0 auto;text-align:justify">{text}</p>
 {notes_html}
 </div>'''
@@ -420,7 +468,12 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .series-hub .kicker{font-family:'Inter',sans-serif;font-size:.54rem;letter-spacing:.5em;color:var(--gold-d);text-transform:uppercase;margin-bottom:1.2rem}
 .series-hub .en-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:400;letter-spacing:.1em;color:var(--ink);margin-bottom:.3rem}
 .series-hub .cn-sub{font-family:'Inter',sans-serif;font-size:.52rem;letter-spacing:.4em;color:var(--gold-d);text-transform:uppercase;margin-top:.3rem}
-.series-hub .desc{font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink3);letter-spacing:.06em;line-height:2.2;max-width:500px;margin:1rem auto 0}
+.series-hub .desc,.collection-hub .desc{font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink3);letter-spacing:.06em;line-height:2.2;max-width:500px;margin:1rem auto 0}
+.collection-hub{position:relative;z-index:2;text-align:center;padding:1rem 2rem 1rem}
+.collection-hub .kicker{font-family:'Inter',sans-serif;font-size:.54rem;letter-spacing:.5em;color:var(--gold-d);text-transform:uppercase;margin-bottom:1.2rem}
+.collection-hub .en-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:400;letter-spacing:.1em;color:var(--ink);margin-bottom:.3rem}
+.collection-hub .cn-sub{font-family:'Inter',sans-serif;font-size:.52rem;letter-spacing:.4em;color:var(--gold-d);text-transform:uppercase;margin-top:.3rem}
+.collection-card .frag-num{font-size:.48rem!important;letter-spacing:.5em!important;color:var(--ink3)!important}
 
 /* ══ Series Tabs ══ */
 .series-tabs{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin:2rem 0 .5rem;padding:0 1rem}
@@ -717,6 +770,7 @@ html = f'''<!DOCTYPE html>
 <ul class="top-nav-links">
 <li><a href="#phil">品牌哲学</a></li>
 <li><a href="#series">产品介绍</a></li>
+<li><a href="#collection">臻品雨酿</a></li>
 <li><a href="#craft">制香之道</a></li>
 <li><a href="#founders">主理人手记</a></li>
 <li><a href="#quiz">寻雨之路</a></li>
@@ -782,8 +836,78 @@ html = f'''<!DOCTYPE html>
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 03 · 制香之道 -->
-<div class="sec-label reveal"><p class="num">03</p><h2 class="title">制香之道</h2><p class="sec-en">The Art of Perfumery</p></div>
+<!-- 03 · 臻品雨酿 -->
+<div class="sec-label reveal"><p class="num">03</p><h2 class="title">臻品雨酿</h2><p class="sec-en">The Rain Collection</p></div>
+<section class="collection-hub reveal" id="collection">
+<p class="kicker">The Rain Collection</p>
+<h2 class="en-title">臻品雨酿</h2>
+<p class="cn-sub">典藏级 · 每系列一支</p>
+<p class="desc">五支香，五个极点——每一支都代表一个主题被推到<em>最远</em>的地方。</p>
+</section>
+
+<div class="frag-grid reveal">
+<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-info">
+<p class="frag-num">SOJOURN · 驻足苦旅</p>
+<h3 class="frag-name-en" style="font-size:1.75rem">我故臆想</h3>
+<p class="frag-name-cn">The Fable I Tell Myself</p>
+<p class="frag-accord"><b>Top</b> 当归 · 没药 · 粉红胡椒<br><b>Heart</b> 鸢尾 · 紫罗兰 · 纸莎草<br><b>Base</b> 檀木 · 香草 · 安息香</p>
+</div></div></div>
+
+<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-info">
+<p class="frag-num">WORLD · 世界之色</p>
+<h3 class="frag-name-en" style="font-size:1.75rem">着我之境</h3>
+<p class="frag-name-cn">The World Through Me</p>
+<p class="frag-accord"><b>Top</b> 苦橙叶 · 白松香 · 粉红胡椒<br><b>Heart</b> 土耳其玫瑰 · 沉香 · 番红花<br><b>Base</b> 皮革 · 琥珀 · 苏合香</p>
+</div></div></div>
+
+<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-info">
+<p class="frag-num">FEAST · 灵感盛宴</p>
+<h3 class="frag-name-en" style="font-size:1.75rem">今夜唯我</h3>
+<p class="frag-name-cn">Tonight, Only I Remain</p>
+<p class="frag-accord"><b>Top</b> 香槟调 · 杜松 · 柑橘皮<br><b>Heart</b> 鸢尾 · 烟草 · 黑巧克力<br><b>Base</b> 愈创木 · 皮革 · 麝香</p>
+</div></div></div>
+
+<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-info">
+<p class="frag-num">SEASONS · 四季所生</p>
+<h3 class="frag-name-en" style="font-size:1.75rem">新时代迁流</h3>
+<p class="frag-name-cn">The River of Seasons</p>
+<p class="frag-accord"><b>Top</b> 竹叶 · 薄荷 · 柑橘<br><b>Heart</b> 桂花 · 白茶 · 紫藤<br><b>Base</b> 白麝香 · 檀木 · 米浆</p>
+</div></div></div>
+
+<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
+<span class="corner c-tl"></span><span class="corner c-br"></span>
+<div class="frag-card-inner">
+<div class="frag-img-wrap" style="background:linear-gradient(135deg,rgba(184,148,62,.04),rgba(196,167,110,.08))"></div>
+<div class="frag-info">
+<p class="frag-num">AFTER · 雨后</p>
+<h3 class="frag-name-en" style="font-size:1.75rem">致新生</h3>
+<p class="frag-name-cn">To What Comes Next</p>
+<p class="frag-accord"><b>Top</b> 绿叶 · 佛手柑 · 薄荷<br><b>Heart</b> 铃兰 · 白茶 · 蕨类<br><b>Base</b> 白麝香 · 雪松 · 琥珀</p>
+</div></div></div>
+</div>
+
+{narrative_btn('collection')}
+
+<section class="section-divider reveal"><div class="section-divider-inner"></div></section>
+
+<!-- 04 · 制香之道 -->
+<div class="sec-label reveal"><p class="num">04</p><h2 class="title">制香之道</h2><p class="sec-en">The Art of Perfumery</p></div>
 <section class="craft reveal" id="craft">
 <div class="craft-grid">
 <div class="craft-card"><span class="num">01</span><h4>冷萃 · 锁住第一缕气息</h4><p>植物的灵魂储存在清晨五点的水分里。我们将原料在 4°C 下浸入有机甘蔗酒精，持续 72 小时——让前调最脆弱的分子在低温中完整保留，不急不躁，像雨前酝酿的云。</p></div>
@@ -794,8 +918,8 @@ html = f'''<!DOCTYPE html>
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 04 · 主理人手记 -->
-<div class="sec-label reveal"><p class="num">04</p><h2 class="title">主理人手记</h2></div>
+<!-- 05 · 主理人手记 -->
+<div class="sec-label reveal"><p class="num">05</p><h2 class="title">主理人手记</h2></div>
 <section class="founders reveal" id="founders">
 <div class="founders-inner glass-panel">
 <p class="kicker">A Letter from the Founder</p>
@@ -806,8 +930,8 @@ html = f'''<!DOCTYPE html>
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 05 · 寻雨之路 -->
-<div class="sec-label reveal"><p class="num">05</p><h2 class="title">寻雨之路</h2></div>
+<!-- 06 · 寻雨之路 -->
+<div class="sec-label reveal"><p class="num">06</p><h2 class="title">寻雨之路</h2></div>
 <section class="quiz reveal" id="quiz"><div class="quiz-inner glass-panel">
 <p class="kicker">Find Your Rain</p><h2 class="title">寻找属于你的那场雨</h2>
 <div class="quiz-step active" data-step="1"><p class="q">闻到雨即将落下时空气里的气味，你会想起——</p><div class="quiz-opts"><button class="quiz-opt" data-s="0">一段走了很久才走到这里的路</button><button class="quiz-opt" data-s="1">某个黄昏天边铺开的颜色</button><button class="quiz-opt" data-s="2">一场从傍晚喝到天亮的酒</button><button class="quiz-opt" data-s="3">一棵老树的叶子从嫩绿到金黄</button><button class="quiz-opt" data-s="4">一滴水从云层坠落到地面的全部过程</button></div></div>
@@ -820,8 +944,8 @@ html = f'''<!DOCTYPE html>
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 06 · 降雨预报 -->
-<div class="sec-label reveal"><p class="num">06</p><h2 class="title">降雨预报</h2><p class="sec-en">Rain Forecast</p></div>
+<!-- 07 · 降雨预报 -->
+<div class="sec-label reveal"><p class="num">07</p><h2 class="title">降雨预报</h2><p class="sec-en">Rain Forecast</p></div>
 <section class="newsletter reveal" id="newsletter"><div class="nl-inner glass-panel">
 <p class="kicker">Stay in the Rain</p>
 <p class="sub">新香发布、限定复刻、品牌叙事——来自 RAIN 的不定期来信。</p>

@@ -4,3 +4,4 @@ Warning: Permanently added '[a.pinggy.io]:443' (RSA) to the list of known hosts.
 ** This session may be vulnerable to "store now, decrypt later" attacks.
 ** The server may need to be upgraded. See https://openssh.com/pq.html
 Allocated port 3 for remote forward to localhost:3000
+Connection to a.pinggy.io closed by remote host.
