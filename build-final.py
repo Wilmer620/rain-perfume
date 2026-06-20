@@ -669,7 +669,7 @@ document.querySelectorAll(".note-chip").forEach(function(chip){chip.addEventList
 
 /* Tap Ring */
 (function(){
-var WORD="PERFUME AS RAIN",chars=WORD.split(""),n=chars.length,radius=28,gap=360/n;
+var WORD="PERFUME AS RAIN",chars=WORD.split(""),n=chars.length,radius=window.innerWidth<=768?20:26,gap=360/n,duration=window.innerWidth<=768?400:700;
 function tapRing(x,y){
 var el=document.createElement("div");
 el.className="tap-ring";
@@ -680,14 +680,14 @@ if(ch===" "){continue}
 var s=document.createElement("span");
 s.className="tr-char";
 s.textContent=ch;
-s.style.animationDelay=(i*.02)+"s, "+(.3+i*.02)+"s";
+s.style.animationDelay=(i*.015)+"s, "+(.2+i*.015)+"s";
 var angle=(gap*i-90)*(Math.PI/180);
 var cx=Math.cos(angle)*radius,cy=Math.sin(angle)*radius;
 s.style.left=cx+"px";s.style.top=cy+"px";
 el.appendChild(s)
 }
 document.body.appendChild(el);
-setTimeout(function(){el.remove()},700)
+setTimeout(function(){el.remove()},duration)
 }
 document.addEventListener("click",function(e){
 if(e.target.closest(".top-nav-links a")||e.target.closest(".narr-btn")||e.target.closest(".hamburger")||e.target.closest(".mob-nav a")||e.target.closest(".nl-toggle-btn")||e.target.closest(".nl-btn")||e.target.closest(".quiz-opt")||e.target.closest(".quiz-reset")||e.target.closest(".back-top")||e.target.closest(".music-btn")||e.target.closest(".series-tab"))return;
