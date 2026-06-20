@@ -385,16 +385,16 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .entrance-logo .el1{animation:elDrop .5s .1s cubic-bezier(.22,0,.36,1) forwards}
 .entrance-logo .el2{animation:elDrop .5s .18s cubic-bezier(.22,0,.36,1) forwards}
 .entrance-logo .el3{animation:elDrop .5s .26s cubic-bezier(.22,0,.36,1) forwards}
-.entrance-logo .el4{animation:elDot .35s .35s ease-out forwards}
+.entrance-logo .el4{animation:elDot .25s .35s ease-out forwards}
 .entrance-logo .el5{animation:elFade .7s .5s ease-out forwards}
 .entrance-logo .el6{animation:elFade .7s .65s ease-out forwards}
 @keyframes elDrop{0%{transform:translateY(-60px);opacity:0}60%{opacity:1}100%{transform:translateY(0);opacity:1}}
-@keyframes elDot{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:scale(1)}}
+@keyframes elDot{0%{opacity:0}100%{opacity:1}}
 @keyframes elFade{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
 /* 入场涟漪 */
-.entrance-ripple{position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;border:1.5px solid rgba(184,148,62,.18);transform:translate(-50%,-50%);z-index:0;animation:rippleOut 2.2s .15s ease-out forwards}
-.entrance-ripple:nth-child(2){animation-delay:.38s;border-color:rgba(184,148,62,.10)}
-.entrance-ripple:nth-child(3){animation-delay:.6s;border-color:rgba(184,148,62,.06)}
+.entrance-ripple{position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;border:2px solid rgba(184,148,62,.35);transform:translate(-50%,-50%);z-index:0;animation:rippleOut 2.2s .15s ease-out forwards}
+.entrance-ripple:nth-child(2){animation-delay:.4s;border-color:rgba(184,148,62,.22)}
+.entrance-ripple:nth-child(3){animation-delay:.65s;border-color:rgba(184,148,62,.12)}
 @keyframes rippleOut{0%{width:0;height:0;opacity:.6}100%{width:800px;height:800px;opacity:0;border-width:0}}
 .entrance-skip-wrap{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);z-index:1}
 .entrance-skip{font-family:'Inter',sans-serif;font-size:.55rem;letter-spacing:.35em;color:var(--ink3);text-transform:uppercase;opacity:0;animation:elFade .5s 1.5s ease-out forwards;cursor:none}
@@ -445,6 +445,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .hero-title{font-family:'Cormorant Garamond','Playfair Display',serif;font-size:clamp(5rem,12vw,10rem);font-weight:400;letter-spacing:.22em;color:var(--ink);line-height:.9;margin:.25em 0 .08em;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .4s ease-out forwards}
 .hero-sub{font-family:'Noto Serif SC',serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:300;letter-spacing:.5em;color:var(--ink2);margin-bottom:3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .6s ease-out forwards}
 .hero-rain-logo{display:block;margin:0 auto .8rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .5s ease-out forwards}
+.hero-gold-line{width:120px;height:1px;background:var(--gold);margin:1.2rem auto 1.2rem;position:relative;z-index:1;opacity:0;animation:hlReveal 1.4s .75s ease-out forwards}
+@keyframes hlReveal{0%{opacity:0;transform:translateY(22px)}100%{opacity:.45;transform:translateY(0)}}
 .hero-vd{width:2px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold-d) 30%,var(--gold-d) 70%,transparent);margin:0 auto 3rem;position:relative;z-index:1;opacity:0;animation:fUp 1.4s .8s ease-out forwards}
 .hero-line{font-family:'Noto Serif SC',serif;font-size:.9rem;font-weight:300;color:var(--ink3);letter-spacing:.07em;line-height:2.4;max-width:460px;position:relative;z-index:1;opacity:0;animation:fUp 1.4s 1s ease-out forwards}
 @keyframes fUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
@@ -453,7 +455,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .hero-scroll-inner span{font-size:.53rem;letter-spacing:.42em;color:var(--ink3);text-transform:uppercase}
 .hero-scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:breathe 3s ease-in-out infinite}
 @keyframes breathe{0%,100%{opacity:.16}50%{opacity:.65}}
-.hero-tag,.hero-title,.hero-sub,.hero-vd,.hero-line,.hero-rain-logo{animation-delay:1.8s!important}.hero-scroll-inner{animation-delay:2s!important}
+.hero-tag,.hero-title,.hero-sub,.hero-vd,.hero-line,.hero-rain-logo,.hero-gold-line{animation-delay:1.8s!important}.hero-scroll-inner{animation-delay:2s!important}
 
 /* ══ Common ══ */
 .glass-panel{backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));border:1px solid rgba(184,148,62,.03);border-radius:var(--radius);box-shadow:0 4px 30px rgba(139,105,30,.02);background:rgba(255,253,250,.1)}
@@ -836,6 +838,7 @@ html = f'''<!DOCTYPE html>
 <circle cx="130" cy="2.5" r="1.2" fill="var(--gold-d)"/>
 </svg>
 <h1 class="hero-title">RAIN</h1>
+<div class="hero-gold-line"></div>
 <p class="hero-sub">每一滴雨都是重生</p>
 <div class="hero-vd"></div>
 <p class="hero-line">如雨水洗过空气后的片刻澄澈——<br>在每一次呼吸里，找回最初的自己。</p>
