@@ -762,7 +762,7 @@ var dot=document.getElementById("cursorDot"),ring=document.getElementById("curso
 var revealEls=document.querySelectorAll(".reveal");revealEls.forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in-view")})},{threshold:0.08,rootMargin:"0px 0px -20px 0px"}).observe(el)});
 /* Hero Typewriter */
 (function(){var hl=document.getElementById("heroLine");if(!hl)return;
-var allSets=[["如雨水洗过空气后的片刻澄澈——","在每一次呼吸里，找回最初的自己。"],["有些痕迹永远不会消失——","它们只是被雨水洗得更清晰了。"],["不是所有的坠落都是坠落——","有些是选择了一个方向。"],["最安静的时刻——","是雨停了之后你却还没离开窗边。"],["你不必知道要去哪里——","你只需要知道此刻你是哪滴雨。"],["一颗种子在冻土下等待——","它不是在等春天，它是在成为春天。"],["每一次呼吸都是一场小雨——","在你看不见的地方，它已经落下了。"]];
+var L='\\u201C',R='\\u201D';var allSets=[[L+'如雨水洗过空气后的片刻澄澈——','在每一次呼吸里，找回最初的自己。'+R],[L+'有些痕迹永远不会消失——','它们只是被雨水洗得更清晰了。'+R],[L+'不是所有的坠落都是坠落——','有些是选择了一个方向。'+R],[L+'最安静的时刻——','是雨停了之后你却还没离开窗边。'+R],[L+'你不必知道要去哪里——','你只需要知道此刻你是哪滴雨。'+R],[L+'一颗种子在冻土下等待——','它不是在等春天，它是在成为春天。'+R],[L+'每一次呼吸都是一场小雨——','在你看不见的地方，它已经落下了。'+R]];
 var used=[],cursor='<span class="cursor-blink"></span>',typing=false,lines,timer,done,lIdx,cIdx;
 function pickSet(){var pool=[];for(var i=0;i<allSets.length;i++){if(used.indexOf(i)<0)pool.push(i)}if(pool.length===0){used=[];for(var j=0;j<allSets.length;j++)pool.push(j)}var pick=pool[Math.floor(Math.random()*pool.length)];used.push(pick);return allSets[pick].slice()}
 function clearType(){if(timer)clearTimeout(timer);typing=false}
