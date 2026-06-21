@@ -1129,20 +1129,6 @@ html = f'''<!DOCTYPE html>
 <p class="desc">每一场雨都有自己的性格，不同种进入自己的方式。</p>
 </section>
 
-<div class="narr-hub reveal">
-<h2 class="narr-hub-title">展开叙事</h2>
-<p class="narr-hub-sub">Read the Stories</p>
-<p class="narr-hub-desc">每一场雨都有一个名字。点击以下主题，<br>阅读每款香气背后的<em>叙事</em>。</p>
-<div class="narr-tabs">
-<button class="narr-tab active" data-sid="sojourn">驻足苦旅</button>
-<button class="narr-tab" data-sid="world">世界之色</button>
-<button class="narr-tab" data-sid="feast">灵感盛宴</button>
-<button class="narr-tab" data-sid="cosmos">宙宇寰星</button>
-<button class="narr-tab" data-sid="seasons">四季所生</button>
-<button class="narr-tab" data-sid="after">雨后</button>
-</div>
-</div>
-
 <div class="prod-area" id="prodArea">
 <div class="series-tabs reveal">
 <button class="series-tab active" data-panel="sojourn">驻足苦旅</button>
@@ -1160,6 +1146,20 @@ html = f'''<!DOCTYPE html>
 {seasons_panel_html}
 {series_panel('after', after)}
 
+</div>
+
+<div class="narr-hub reveal">
+<h2 class="narr-hub-title">展开叙事</h2>
+<p class="narr-hub-sub">Read the Stories</p>
+<p class="narr-hub-desc">每一场雨都有一个名字。点击以下主题，<br>阅读每款香气背后的<em>叙事</em>。</p>
+<div class="narr-tabs">
+<button class="narr-tab active" data-sid="sojourn">驻足苦旅</button>
+<button class="narr-tab" data-sid="world">世界之色</button>
+<button class="narr-tab" data-sid="feast">灵感盛宴</button>
+<button class="narr-tab" data-sid="cosmos">宙宇寰星</button>
+<button class="narr-tab" data-sid="seasons">四季所生</button>
+<button class="narr-tab" data-sid="after">雨后</button>
+</div>
 </div>
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
