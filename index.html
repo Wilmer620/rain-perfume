@@ -1171,7 +1171,7 @@ function startType(set){clearType();done="";lIdx=0;cIdx=0;lines=set;hl.innerHTML
 function wipeOut(cb){clearType();hl.style.opacity="0";setTimeout(function(){hl.innerHTML="";cb()},400)}
 function cycle(){wipeOut(function(){startType(pickSet())})}
 // 首次
-setTimeout(function(){lines=allSets[0].slice();used.push(0);type()},2600);
+setTimeout(function(){startType(allSets[0].slice());used.push(0)},2600);
 // 每8s 循环
 setInterval(function(){if(!typing)cycle()},8000);
 })();
