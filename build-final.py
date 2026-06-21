@@ -822,6 +822,7 @@ setTimeout(function(){
   var first=document.querySelector('.narr-tab[data-sid=\"sojourn\"]');
   if(first)first.click();
 },300);
+	}
 
 /* Narrative buttons */
 document.querySelectorAll(".narr-btn").forEach(function(btn){var body=document.getElementById(btn.dataset.target),open=false;if(!body)return;body.style.maxHeight="0";body.classList.add("collapsed");btn.addEventListener("click",function(){if(open){body.style.maxHeight="0";body.classList.add("collapsed");btn.textContent="展开叙事";open=false}else{body.style.maxHeight=body.scrollHeight+"px";body.classList.remove("collapsed");btn.textContent="收起叙事";open=true}})});
