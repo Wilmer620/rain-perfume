@@ -164,6 +164,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .rt-info{min-height:3em}
 .rt-info .rt-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;letter-spacing:.12em;color:var(--ink);margin-bottom:.15rem}
 .rt-info .rt-cn{font-family:'Noto Serif SC',serif;font-size:.75rem;font-weight:300;color:var(--ink3);letter-spacing:.1em}
+.rt-info .rt-one{font-family:'Noto Serif SC',serif;font-size:.62rem;font-weight:300;color:var(--gold-d);letter-spacing:.06em;line-height:1.8;max-width:360px;margin:.3rem auto 0;min-height:1.2em;transition:opacity .3s}
 .rt-info .rt-tag{display:inline-block;font-family:'Inter',sans-serif;font-size:.42rem;letter-spacing:.25em;color:var(--gold-d);background:rgba(184,148,62,.05);border:1px solid rgba(184,148,62,.08);border-radius:100px;padding:.12rem .6rem;margin-bottom:.4rem;text-transform:uppercase}
 .rt-tabs{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
 .rt-tab{font-family:'Noto Serif SC',serif;font-size:.62rem;font-weight:300;letter-spacing:.06em;color:var(--ink3);background:rgba(255,253,250,.15);border:1px solid rgba(184,148,62,.04);border-radius:100px;padding:.25rem .75rem;cursor:none;transition:all .3s}
@@ -458,7 +459,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <img class="rt-img" id="rtImg" src="" alt="">
 <button class="rt-arrow rt-next" id="rtNext"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
 </div>
-<div class="rt-info"><span class="rt-tag" id="rtTag"></span><h3 class="rt-name" id="rtName"></h3><p class="rt-cn" id="rtCn"></p></div>
+<div class="rt-info"><span class="rt-tag" id="rtTag"></span><h3 class="rt-name" id="rtName"></h3><p class="rt-cn" id="rtCn"></p><p class="rt-one" id="rtOne"></p></div>
 <div class="rt-tabs" id="rtTabs">
 <button class="rt-tab active" data-si="0">驻足苦旅</button>
 <button class="rt-tab" data-si="1">世界之色</button>
@@ -1254,20 +1255,20 @@ var revealEls=document.querySelectorAll(".reveal");revealEls.forEach(function(el
 (function(){
 var cs='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E';
 var seriesImgs=[
-  [{n:'Blur',c:'花非花·雾非雾',t:'驻足苦旅',i:cs},{n:'Knot',c:'结',t:'驻足苦旅',i:cs},{n:'Flirt',c:'风骚',t:'驻足苦旅',i:cs},{n:'Peak',c:'摩登巅',t:'驻足苦旅',i:cs},{n:'Wall',c:'围城',t:'驻足苦旅',i:cs},{n:'Leave',c:'再别',t:'驻足苦旅',i:cs},{n:'Iris',c:'瞳孔',t:'驻足苦旅',i:cs},{n:'Sun&Moon',c:'日月煎',t:'驻足苦旅',i:cs}],
-  [{n:'Pulse',c:'脉搏',t:'世界之色',i:cs},{n:'Our Melody',c:'共鸣',t:'世界之色',i:'images/03-our-melody.webp'},{n:'Last Word',c:'明日',t:'世界之色',i:'images/02-last-word.webp'},{n:'Respiration',c:'光合',t:'世界之色',i:'images/01-respiraton.webp'},{n:'Rising Sunset',c:'潮汐',t:'世界之色',i:'images/04-rising-sunset.webp'},{n:'Past Dream',c:'旧心事',t:'世界之色',i:'images/05-past-dream.webp'},{n:'Prejudice',c:'我独我',t:'世界之色',i:'images/06-prejudice.webp'}],
-  [{n:'Face',c:'皮囊',t:'灵感盛宴',i:cs},{n:'Gone',c:'隐身衣',t:'灵感盛宴',i:cs},{n:'Wait',c:'等待',t:'灵感盛宴',i:cs},{n:'Bliss',c:'欢愉',t:'灵感盛宴',i:cs},{n:'Stay',c:'侍者',t:'灵感盛宴',i:cs},{n:'Decree',c:'号令',t:'灵感盛宴',i:cs}],
-  [{n:'Flash',c:'瞬息',t:'宙宇寰星',i:cs},{n:'Present',c:'此刻',t:'宙宇寰星',i:cs},{n:'Bygone',c:'彼时',t:'宙宇寰星',i:cs},{n:'Lightyear',c:'光年',t:'宙宇寰星',i:cs},{n:'Origin',c:'起源',t:'宙宇寰星',i:cs}],
-  [{n:'Spring',c:'破土·呼吸',t:'四季所生',i:cs},{n:'Summer',c:'疯长·蔓延',t:'四季所生',i:cs},{n:'Autumn',c:'沉淀·入静',t:'四季所生',i:cs},{n:'Winter',c:'封存·等待',t:'四季所生',i:cs}],
-  [{n:'Fall',c:'自天穹',t:'雨后',i:cs},{n:'Drift',c:'穿云间',t:'雨后',i:cs},{n:'Shatter',c:'碎地霜',t:'雨后',i:cs}]
+  [{n:'Blur',d:'雾散了一点点，就一点点。',c:'花非花·雾非雾',t:'驻足苦旅',i:cs},{n:'Knot',d:'被拉紧又被松开的，不只是绳。',c:'结',t:'驻足苦旅',i:cs},{n:'Flirt',d:'逆风而行的人，风里都是她的味道。',c:'风骚',t:'驻足苦旅',i:cs},{n:'Peak',d:'冷不是温度，是距离。',c:'摩登巅',t:'驻足苦旅',i:cs},{n:'Wall',d:'每一道墙都有一道缝，放光进来。',c:'围城',t:'驻足苦旅',i:cs},{n:'Leave',d:'诀别是下一次重逢的序章。',c:'再别',t:'驻足苦旅',i:cs},{n:'Iris',d:'瞳孔里装得下整个天空。',c:'瞳孔',t:'驻足苦旅',i:cs},{n:'Sun&Moon',d:'用最慢的火，熬白昼与黑夜。',c:'日月煎',t:'驻足苦旅',i:cs}],
+  [{n:'Pulse',d:'心脏忽然听见另一颗心脏的频率。',c:'脉搏',t:'世界之色',i:cs},{n:'Our Melody',d:'两个声音撞成了第三种声音。',c:'共鸣',t:'世界之色',i:'images/03-our-melody.webp'},{n:'Last Word',d:'天还没亮，你已经醒了。',c:'明日',t:'世界之色',i:'images/02-last-word.webp'},{n:'Respiration',d:'吸进去，呼出来，就是自己。',c:'光合',t:'世界之色',i:'images/01-respiraton.webp'},{n:'Rising Sunset',d:'涨和落，你跟从某种更古老的节拍。',c:'潮汐',t:'世界之色',i:'images/04-rising-sunset.webp'},{n:'Past Dream',d:'抽屉里有封写了又没寄的信。',c:'旧心事',t:'世界之色',i:'images/05-past-dream.webp'},{n:'Prejudice',d:'站在重心上，不被任何风向带偏。',c:'我独我',t:'世界之色',i:'images/06-prejudice.webp'}],
+  [{n:'Face',d:'脸埋进枕头之后剩下的自己。',c:'皮囊',t:'灵感盛宴',i:cs},{n:'Gone',d:'别人还在找你，你已经在别处了。',c:'隐身衣',t:'灵感盛宴',i:cs},{n:'Wait',d:'等待是一个决定——你决定了，你就在。',c:'等待',t:'灵感盛宴',i:cs},{n:'Bliss',d:'不讲道理的快乐，像夏天的太阳雨。',c:'欢愉',t:'灵感盛宴',i:cs},{n:'Stay',d:'杯底的最后一抹温度。',c:'侍者',t:'灵感盛宴',i:cs},{n:'Decree',d:'在喧嚣中第一个做出决定的人。',c:'号令',t:'灵感盛宴',i:cs}],
+  [{n:'Flash',d:'比心跳短，比闪电快。',c:'瞬息',t:'宙宇寰星',i:cs},{n:'Present',d:'推开一扇窗，让此刻进来。',c:'此刻',t:'宙宇寰星',i:cs},{n:'Bygone',d:'承认那个人来过，然后在安静中继续。',c:'彼时',t:'宙宇寰星',i:cs},{n:'Lightyear',d:'你不是宇宙的中心，你是目击者。',c:'光年',t:'宙宇寰星',i:cs},{n:'Origin',d:'最初的火花——在所有光出现之前。',c:'起源',t:'宙宇寰星',i:cs}],
+  [{n:'Spring',d:'种子裂开，第一口氧气。',c:'破土·呼吸',t:'四季所生',i:cs},{n:'Summer',d:'热烈本身。不降温，不解释。',c:'疯长·蔓延',t:'四季所生',i:cs},{n:'Autumn',d:'把声音调低，听见血液流动。',c:'沉淀·入静',t:'四季所生',i:cs},{n:'Winter',d:'冻土下的种子，等待也是生长。',c:'封存·等待',t:'四季所生',i:cs}],
+  [{n:'Fall',d:'坠落也是飞翔的一种。',c:'自天穹',t:'雨后',i:cs},{n:'Drift',d:'不急着落地，再飘一会儿。',c:'穿云间',t:'雨后',i:cs},{n:'Shatter',d:'碎成更多的自己，渗入明天的土壤。',c:'碎地霜',t:'雨后',i:cs}]
 ];
-var img=document.getElementById('rtImg'),name=document.getElementById('rtName'),cn=document.getElementById('rtCn'),tag=document.getElementById('rtTag'),tabs=document.querySelectorAll('.rt-tab');
+var img=document.getElementById('rtImg'),name=document.getElementById('rtName'),cn=document.getElementById('rtCn'),tag=document.getElementById('rtTag'),one=document.getElementById('rtOne'),tabs=document.querySelectorAll('.rt-tab');
 var si=Math.floor(Math.random()*6),pi=0,timer=null;
 function show(){
   var s=seriesImgs[si],p=s[pi];
   img.src=p.i;img.classList.add('fade');img.alt=p.n;
   setTimeout(function(){img.classList.remove('fade')},50);
-  name.textContent=p.n;cn.textContent=p.c;tag.textContent=p.t;
+  name.textContent=p.n;cn.textContent=p.c;tag.textContent=p.t;one.textContent=p.d||'';
   tabs.forEach(function(t){t.classList.toggle('active',parseInt(t.dataset.si)===si)});
 }
 function next(){
