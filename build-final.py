@@ -568,7 +568,13 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 /* ══ Rain Time ══ */
 .rain-time{position:relative;z-index:2;text-align:center;padding:2.5rem 2rem 3rem;overflow:hidden}
 .rain-time-inner{max-width:700px;margin:0 auto}
+.rt-desc{font-family:'Noto Serif SC',serif;font-size:.72rem;font-weight:300;color:var(--ink3);letter-spacing:.06em;line-height:2;max-width:450px;margin:0 auto 1.5rem}
+.rt-desc em{font-style:normal;color:var(--gold);font-weight:500}
 .rt-img-wrap{position:relative;width:100%;aspect-ratio:3/2;margin:0 auto 1.2rem;overflow:hidden;border-radius:4px;background:rgba(184,148,62,.02);display:flex;align-items:center;justify-content:center}
+.rt-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(253,249,240,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(184,148,62,.08);border-radius:50%;cursor:none;transition:all .3s}
+.rt-arrow:hover{background:rgba(253,249,240,.65);border-color:rgba(184,148,62,.18)}
+.rt-arrow svg{width:14px;height:14px;stroke:var(--gold-d);stroke-width:2;fill:none}
+.rt-prev{left:10px}.rt-next{right:10px}
 .rt-img{width:100%;height:100%;object-fit:contain;transition:opacity .4s ease,transform .4s ease}
 .rt-img.fade{opacity:0;transform:scale(1.03)}
 .rt-info{min-height:3em}
@@ -816,10 +822,16 @@ function next(){
   if(pi<s.length-1){pi++}else{si=(si+1)%6;pi=0}
   show();
 }
-function startTimer(){clearInterval(timer);timer=setInterval(next,2000)}
+function prev(){
+  if(pi>0){pi--}else{si=(si+5)%6;pi=seriesImgs[si].length-1}
+  show();
+}
+function startTimer(){clearInterval(timer);timer=setInterval(next,2500)}
 tabs.forEach(function(t){
   t.addEventListener('click',function(){si=parseInt(this.dataset.si);pi=0;show();startTimer()})
 });
+document.getElementById('rtPrev').addEventListener('click',function(e){e.preventDefault();prev();startTimer()});
+document.getElementById('rtNext').addEventListener('click',function(e){e.preventDefault();next();startTimer()});
 show();startTimer();
 })();
 
@@ -1127,8 +1139,7 @@ html = f'''<!DOCTYPE html>
 </a>
 <ul class="top-nav-links">
 <li><a href="#rainTime">雨时</a></li>
-<li><a href="#rainTime">雨时</a>
-<a href="#phil">雨之思</a></li>
+<li><a href="#phil">雨之思</a></li>
 <li><a href="#series">雨的衍生</a></li>
 <li><a href="#collection">臻品雨酿</a></li>
 <li><a href="#craft">雨的贮存指南</a></li>
@@ -1139,6 +1150,7 @@ html = f'''<!DOCTYPE html>
 <button class="hamburger" id="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob-nav" id="mobNav">
+<a href="#rainTime">雨时</a>
 <a href="#phil">雨之思</a>
 <a href="#series">雨的衍生</a>
 <a href="#collection">臻品雨酿</a>
@@ -1173,7 +1185,12 @@ html = f'''<!DOCTYPE html>
 <div class="sec-label reveal"><p class="num">01</p><h2 class="title">雨时</h2><p class="sec-en">Moments of Rain</p></div>
 <section class="rain-time reveal" id="rainTime">
 <div class="rain-time-inner glass-panel" style="padding:2rem 2.5rem">
-<div class="rt-img-wrap"><img class="rt-img" id="rtImg" src="" alt=""></div>
+<p class="rt-desc">雨滴坠落之前的那一刻——捕捉每个系列每款香气的<em>瞬间</em>。</p>
+<div class="rt-img-wrap">
+<button class="rt-arrow rt-prev" id="rtPrev"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<img class="rt-img" id="rtImg" src="" alt="">
+<button class="rt-arrow rt-next" id="rtNext"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
 <div class="rt-info"><span class="rt-tag" id="rtTag"></span><h3 class="rt-name" id="rtName"></h3><p class="rt-cn" id="rtCn"></p></div>
 <div class="rt-tabs" id="rtTabs">
 <button class="rt-tab active" data-si="0">驻足苦旅</button>
