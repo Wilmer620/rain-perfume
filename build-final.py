@@ -575,12 +575,16 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .series-hub .en-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;letter-spacing:.15em;color:var(--ink);margin-bottom:.15rem}
 .series-hub .cn-sub{font-family:'Inter',sans-serif;font-size:.48rem;letter-spacing:.35em;color:var(--gold-d);text-transform:uppercase;margin-top:.1rem}
 .series-hub .desc,.collection-hub .desc{font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink3);letter-spacing:.06em;line-height:2.2;max-width:500px;margin:1rem auto 0}
-/* 叙事切换标签 */
-.narr-tabs{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0 .5rem;padding:0 1rem}
+/* 叙事切换 */
+.narr-hub{text-align:center;padding:1rem 2rem 1.5rem}
+.narr-hub-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;letter-spacing:.15em;color:var(--ink);margin-bottom:.1rem}
+.narr-hub-sub{font-family:'Inter',sans-serif;font-size:.48rem;letter-spacing:.35em;color:var(--gold-d);text-transform:uppercase;margin-bottom:1rem}
+.narr-hub-desc{font-family:'Noto Serif SC',serif;font-size:.72rem;font-weight:300;color:var(--ink3);letter-spacing:.05em;line-height:2;max-width:400px;margin:0 auto 1.2rem}
+.narr-tabs{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin:0 0 .5rem;padding:0 1rem}
 .narr-tab{font-family:'Noto Serif SC',serif;font-size:.7rem;font-weight:300;letter-spacing:.08em;color:var(--ink3);background:rgba(255,253,250,.2);backdrop-filter:blur(8px);border:1px solid rgba(184,148,62,.05);border-radius:100px;padding:.35rem 1.1rem;cursor:none;transition:all .35s}
 .narr-tab:hover{color:var(--ink2);border-color:rgba(184,148,62,.12)}
 .narr-tab.active{color:var(--gold-d);border-color:var(--gold);background:rgba(184,148,62,.06)}
-@media (max-width:768px){.narr-tabs{gap:.35rem}.narr-tab{font-size:.62rem;padding:.3rem .7rem}}
+@media (max-width:768px){.narr-hub{padding:1rem 1rem 1.5rem}.narr-tabs{gap:.35rem}.narr-tab{font-size:.62rem;padding:.3rem .7rem}}
 .prod-area{display:block}.prod-area.hide{display:none}
 .narr-full-area{padding:0 3rem 2rem;max-width:1100px;margin:0 auto;text-align:center}
 .narr-full-area .narr-full-inner{padding:3rem 2.5rem}
@@ -979,7 +983,7 @@ world_cards = '\n'.join([
 
 def series_panel(pid, data, active=False):
     cards_html = '\n'.join(card(*d) for d in data)
-    return panel(pid, cards_html, active, narrative_btn(pid))
+    return panel(pid, cards_html, active, '')
 
 seasons_data = [
     ('01','Spring','破土·呼吸','橙花 · 佛手柑 · 绿叶','铃兰 · 白茶 · 蕨类','白麝香 · 雪松 · 泥土调'),
@@ -988,13 +992,13 @@ seasons_data = [
     ('04','Winter','封存·等待','焚香 · 榄香 · 醛香','没药 · 檀木 · 乳香','劳丹脂 · 皮革 · 琥珀'),
 ]
 seasons_cards = '\n'.join(card(*d) for d in seasons_data)
-seasons_panel_html = panel('seasons', seasons_cards, narrative=narrative_btn('seasons'))
+seasons_panel_html = panel('seasons', seasons_cards)
 
 cosmos_cards = '\n'.join(card(*d) for d in cosmos)
-cosmos_panel_html = panel('cosmos', cosmos_cards, narrative=narrative_btn('cosmos'))
+cosmos_panel_html = panel('cosmos', cosmos_cards)
 
 # Series panel with world (uses real images)
-world_panel_html = f'<div class="series-panel" data-panel="world">\n<div class="frag-grid">\n{world_cards}\n</div>\n{narrative_btn("world")}\n</div>'
+world_panel_html = f'<div class="series-panel" data-panel="world">\n<div class="frag-grid">\n{world_cards}\n</div>\n</div>'
 
 html = f'''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -1125,13 +1129,18 @@ html = f'''<!DOCTYPE html>
 <p class="desc">每一场雨都有自己的性格，不同种进入自己的方式。</p>
 </section>
 
-<div class="narr-tabs reveal">
-<button class="narr-tab" data-sid="sojourn">驻足苦旅</button>
+<div class="narr-hub reveal">
+<h2 class="narr-hub-title">展开叙事</h2>
+<p class="narr-hub-sub">Read the Stories</p>
+<p class="narr-hub-desc">每一场雨都有一个名字。点击以下主题，<br>阅读每款香气背后的<em>叙事</em>。</p>
+<div class="narr-tabs">
+<button class="narr-tab active" data-sid="sojourn">驻足苦旅</button>
 <button class="narr-tab" data-sid="world">世界之色</button>
 <button class="narr-tab" data-sid="feast">灵感盛宴</button>
 <button class="narr-tab" data-sid="cosmos">宙宇寰星</button>
 <button class="narr-tab" data-sid="seasons">四季所生</button>
 <button class="narr-tab" data-sid="after">雨后</button>
+</div>
 </div>
 
 <div class="prod-area" id="prodArea">
