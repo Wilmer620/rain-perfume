@@ -1237,7 +1237,7 @@ nt.addEventListener("click",function(){
   if(target){
     var clone=target.cloneNode(!0);clone.style.maxHeight="none";clone.classList.remove("collapsed");clone.style.opacity="1";
     var btn=clone.querySelector(".narr-btn");if(btn)btn.style.display="none";
-    narrFullInner.innerHTML='<button class="narr-back" id="narrBackBtn">← 返回产品</button>';narrFullInner.appendChild(clone);
+    narrFullInner.innerHTML='<button class="narr-back" id="narrBackBtn">← 收起叙事</button>';narrFullInner.appendChild(clone);
     narrFull.style.display="block";
     var back=narrFullInner.querySelector("#narrBackBtn");
     if(back)back.addEventListener("click",function(){narrFull.style.display="none";narrTabs.forEach(function(t){t.classList.remove("active")})});
