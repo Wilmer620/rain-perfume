@@ -1164,6 +1164,15 @@ html = f'''<!DOCTYPE html>
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
+<div style="display:none" aria-hidden="true">
+{narrative_btn('sojourn')}
+{narrative_btn('world')}
+{narrative_btn('feast')}
+{narrative_btn('cosmos')}
+{narrative_btn('seasons')}
+{narrative_btn('after')}
+</div>
+
 <div class="narr-full-area" id="narrFullArea" style="display:none">
 <div class="glass-panel narr-full-inner"></div>
 </div>
