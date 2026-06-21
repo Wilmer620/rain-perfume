@@ -106,6 +106,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .mob-nav a:nth-child(5){transition-delay:.30s}
 .mob-nav a:nth-child(6){transition-delay:.36s}
 .mob-nav a:nth-child(7){transition-delay:.42s}
+.mob-nav a:nth-child(8){transition-delay:.48s}
 .mob-nav a:hover{color:var(--gold)}
 .mob-nav a.active{color:var(--gold-d)}
 
@@ -147,6 +148,22 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .sec-label .num{font-family:'Inter',sans-serif;font-size:.54rem;letter-spacing:.5em;color:var(--gold-d);text-transform:uppercase;margin-bottom:.6rem}
 .sec-label .title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:400;letter-spacing:.1em;color:var(--ink);margin-bottom:.2rem}
 .sec-label .sec-en{font-family:'Inter',sans-serif;font-size:.5rem;letter-spacing:.35em;color:var(--ink3);text-transform:uppercase;opacity:.55}
+
+/* ══ Rain Time ══ */
+.rain-time{position:relative;z-index:2;text-align:center;padding:2.5rem 2rem 3rem;overflow:hidden}
+.rain-time-inner{max-width:700px;margin:0 auto}
+.rt-img-wrap{position:relative;width:100%;aspect-ratio:3/2;margin:0 auto 1.2rem;overflow:hidden;border-radius:4px;background:rgba(184,148,62,.02);display:flex;align-items:center;justify-content:center}
+.rt-img{width:100%;height:100%;object-fit:contain;transition:opacity .4s ease,transform .4s ease}
+.rt-img.fade{opacity:0;transform:scale(1.03)}
+.rt-info{min-height:3em}
+.rt-info .rt-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;letter-spacing:.12em;color:var(--ink);margin-bottom:.15rem}
+.rt-info .rt-cn{font-family:'Noto Serif SC',serif;font-size:.75rem;font-weight:300;color:var(--ink3);letter-spacing:.1em}
+.rt-info .rt-tag{display:inline-block;font-family:'Inter',sans-serif;font-size:.42rem;letter-spacing:.25em;color:var(--gold-d);background:rgba(184,148,62,.05);border:1px solid rgba(184,148,62,.08);border-radius:100px;padding:.12rem .6rem;margin-bottom:.4rem;text-transform:uppercase}
+.rt-tabs{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
+.rt-tab{font-family:'Noto Serif SC',serif;font-size:.62rem;font-weight:300;letter-spacing:.06em;color:var(--ink3);background:rgba(255,253,250,.15);border:1px solid rgba(184,148,62,.04);border-radius:100px;padding:.25rem .75rem;cursor:none;transition:all .3s}
+.rt-tab:hover{color:var(--ink2);border-color:rgba(184,148,62,.1)}
+.rt-tab.active{color:var(--gold-d);border-color:var(--gold);background:rgba(184,148,62,.05)}
+@media (max-width:768px){.rain-time{padding:2rem 1rem 2.5rem}.rt-tab{font-size:.55rem;padding:.2rem .6rem}}
 
 /* ══ Philosophy ══ */
 .phil{position:relative;z-index:2;padding:3rem 2rem 5rem;display:flex;justify-content:center}
@@ -382,7 +399,9 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 </svg>
 </a>
 <ul class="top-nav-links">
-<li><a href="#phil">雨之思</a></li>
+<li><a href="#rainTime">雨时</a></li>
+<li><a href="#rainTime">雨时</a>
+<a href="#phil">雨之思</a></li>
 <li><a href="#series">雨的衍生</a></li>
 <li><a href="#collection">臻品雨酿</a></li>
 <li><a href="#craft">雨的贮存指南</a></li>
@@ -423,8 +442,27 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="hero-scroll-wrap"><div class="hero-scroll-inner"><span>探索香气</span><div class="hero-scroll-line"></div></div></div>
 </section>
 
-<!-- 01 · 雨之思 -->
-<div class="sec-label reveal"><p class="num">01</p><h2 class="title">雨之思</h2><p class="sec-en">Reflections on Rain</p></div>
+<!-- 01 · 雨时 -->
+<div class="sec-label reveal"><p class="num">01</p><h2 class="title">雨时</h2><p class="sec-en">Moments of Rain</p></div>
+<section class="rain-time reveal" id="rainTime">
+<div class="rain-time-inner glass-panel" style="padding:2rem 2.5rem">
+<div class="rt-img-wrap"><img class="rt-img" id="rtImg" src="" alt=""></div>
+<div class="rt-info"><span class="rt-tag" id="rtTag"></span><h3 class="rt-name" id="rtName"></h3><p class="rt-cn" id="rtCn"></p></div>
+<div class="rt-tabs" id="rtTabs">
+<button class="rt-tab active" data-si="0">驻足苦旅</button>
+<button class="rt-tab" data-si="1">世界之色</button>
+<button class="rt-tab" data-si="2">灵感盛宴</button>
+<button class="rt-tab" data-si="3">宙宇寰星</button>
+<button class="rt-tab" data-si="4">四季所生</button>
+<button class="rt-tab" data-si="5">雨后</button>
+</div>
+</div>
+</section>
+
+<section class="section-divider reveal"><div class="section-divider-inner"></div></section>
+
+<!-- 02 · 雨之思 -->
+<div class="sec-label reveal"><p class="num">02</p><h2 class="title">雨之思</h2><p class="sec-en">Reflections on Rain</p></div>
 <section class="phil" id="phil">
 <div class="phil-inner glass-panel reveal">
 <p class="phil-text">每一场雨都是一次轻微的洗涤。<br>我们不做香水。<br>我们只是将雨停之后那一分钟的澄澈，<br>翻译成你皮肤上<em>可以呼吸</em>的诗。<br><br>有些气味不需要被认出——<br>它只需要被你在某个雨天偶然想起。<br>每一滴雨都是<em>重生</em>，<br>在你看不见的地方，它已经落下了。</p>
@@ -433,8 +471,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 02 · 雨的衍生 -->
-<div class="sec-label reveal"><p class="num">02</p><h2 class="title">雨的衍生</h2></div>
+<!-- 03 · 雨的衍生 -->
+<div class="sec-label reveal"><p class="num">03</p><h2 class="title">雨的衍生</h2></div>
 <section class="series-hub reveal" id="series">
 <p class="kicker">The Rain Derivatives</p>
 <h2 class="en-title">产品主题介绍</h2>
@@ -984,8 +1022,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="glass-panel narr-full-inner"></div>
 </div>
 
-<!-- 03 · 臻品雨酿 -->
-<div class="sec-label reveal"><p class="num">03</p><h2 class="title">臻品雨酿</h2></div>
+<!-- 04 · 臻品雨酿 -->
+<div class="sec-label reveal"><p class="num">04</p><h2 class="title">臻品雨酿</h2></div>
 <section class="collection-hub reveal" id="collection">
 <p class="kicker">The Rain Collection</p>
 <p class="desc">每场雨落到深处，都会凝结出一滴最重的<em>精华</em>——它不会蒸发，只在你准备好承接它的那一刻落进你掌心。</p>
@@ -1101,8 +1139,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 04 · 雨的贮存指南 -->
-<div class="sec-label reveal"><p class="num">04</p><h2 class="title">雨的贮存指南</h2><p class="sec-en">How to Keep the Rain</p></div>
+<!-- 05 · 雨的贮存指南 -->
+<div class="sec-label reveal"><p class="num">05</p><h2 class="title">雨的贮存指南</h2><p class="sec-en">How to Keep the Rain</p></div>
 <section class="craft reveal" id="craft">
 <div class="craft-grid">
 <div class="craft-card"><span class="num">01</span><h4>接雨 · 在雨滴落下的前一秒</h4><p>贮存雨水的最佳时机——<em>不是下雨时，而是雨即将落下时</em>。空气里的湿度达到临界点，每一寸缝隙都充满了即将成为雨的水分子。在这一刻捕捉到的气息，保留了云层的冷冽和天空的记忆。<br><br>这就像<em>驻足苦旅·Blur</em>的白牡丹——还挂着晨露就被采下；像<em>世界之色·Respiration</em>的绿叶——揉碎之前已经记住了整片森林；像<em>雨后·Fall</em>的臭氧——闪电劈开空气后那一秒的干净。我们称之为<em>「云的前调」</em>——它还没来得及落地，就已经被保存下来。</p></div>
@@ -1113,8 +1151,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 05 · 雨的观察日记 -->
-<div class="sec-label reveal"><p class="num">05</p><h2 class="title">雨的观察日记</h2></div>
+<!-- 06 · 雨的观察日记 -->
+<div class="sec-label reveal"><p class="num">06</p><h2 class="title">雨的观察日记</h2></div>
 <section class="founders reveal" id="founders">
 <div class="founders-inner glass-panel">
 <p class="kicker">Diary of Rain</p>
@@ -1125,8 +1163,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 06 · 寻雨之路 -->
-<div class="sec-label reveal"><p class="num">06</p><h2 class="title">寻雨之路</h2></div>
+<!-- 07 · 寻雨之路 -->
+<div class="sec-label reveal"><p class="num">07</p><h2 class="title">寻雨之路</h2></div>
 <section class="quiz reveal" id="quiz"><div class="quiz-inner glass-panel">
 <p class="kicker">Find Your Rain</p><h2 class="title">寻找属于你的那场雨</h2>
 <div class="quiz-step active" data-step="1"><p class="q">你走在一场雨里，脑海中浮现的是——</p><div class="quiz-opts"><button class="quiz-opt" data-s="0" data-p="0">一条走了很久、不太确定方向但一直在走的路</button><button class="quiz-opt" data-s="1" data-p="6">一束穿过教堂彩色玻璃后变了颜色的光</button><button class="quiz-opt" data-s="2" data-p="4">一杯喝到夜深还剩下最后一口的酒</button><button class="quiz-opt" data-s="3" data-p="1">一道劈开天空、亮了一瞬间之后让你失语的白光</button><button class="quiz-opt" data-s="4" data-p="2">一棵从泥土里慢慢撑开自己的种子</button><button class="quiz-opt" data-s="5" data-p="0">一滴从云层坠落到叶片上用了整整一秒钟的雨</button><button class="quiz-opt" data-s="0" data-p="7">一个熬了很久很久的夜晚——日与月同时在头顶</button><button class="quiz-opt" data-s="1" data-p="0">一次手腕被握住之后忽然意识到自己的心跳</button></div></div>
@@ -1150,8 +1188,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
-<!-- 07 · 降雨预报 -->
-<div class="sec-label reveal"><p class="num">07</p><h2 class="title">降雨预报</h2><p class="sec-en">Rain Forecast</p></div>
+<!-- 08 · 降雨预报 -->
+<div class="sec-label reveal"><p class="num">08</p><h2 class="title">降雨预报</h2><p class="sec-en">Rain Forecast</p></div>
 <section class="newsletter reveal" id="newsletter"><div class="nl-inner glass-panel">
 <p class="kicker">Stay in the Rain</p>
 <p class="sub">新香发布、限定复刻、品牌叙事——来自 RAIN 的不定期来信。</p>
@@ -1201,6 +1239,38 @@ var dot=document.getElementById("cursorDot"),ring=document.getElementById("curso
 
 /* Reveal */
 var revealEls=document.querySelectorAll(".reveal");revealEls.forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in-view")})},{threshold:0.08,rootMargin:"0px 0px -20px 0px"}).observe(el)});
+/* Rain Time Carousel */
+(function(){
+var cs='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Crect fill=%22%23fdf9ef%22 width=%22280%22 height=%22184%22/%3E%3Cline x1=%22122%22 y1=%2268%22 x2=%22122%22 y2=%2296%22 stroke=%22%231a1815%22 stroke-width=%22.6%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22130%22 y1=%2264%22 x2=%22130%22 y2=%22100%22 stroke=%22%231a1815%22 stroke-width=%22.8%22 stroke-linecap=%22round%22 opacity=%22.3%22/%3E%3Cline x1=%22138%22 y1=%2270%22 x2=%22138%22 y2=%2294%22 stroke=%22%231a1815%22 stroke-width=%22.45%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Ccircle cx=%22130%22 cy=%2262%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.5%22/%3E%3Ctext x=%22140%22 y=%22122%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%228%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.25%22%3ECOMING SOON%3C/text%3E%3C/svg%3E';
+var seriesImgs=[
+  [{n:'Blur',c:'花非花·雾非雾',t:'驻足苦旅',i:cs},{n:'Knot',c:'结',t:'驻足苦旅',i:cs},{n:'Flirt',c:'风骚',t:'驻足苦旅',i:cs},{n:'Peak',c:'摩登巅',t:'驻足苦旅',i:cs},{n:'Wall',c:'围城',t:'驻足苦旅',i:cs},{n:'Leave',c:'再别',t:'驻足苦旅',i:cs},{n:'Iris',c:'瞳孔',t:'驻足苦旅',i:cs},{n:'Sun&Moon',c:'日月煎',t:'驻足苦旅',i:cs}],
+  [{n:'Pulse',c:'脉搏',t:'世界之色',i:cs},{n:'Our Melody',c:'共鸣',t:'世界之色',i:'images/03-our-melody.webp'},{n:'Last Word',c:'明日',t:'世界之色',i:'images/02-last-word.webp'},{n:'Respiration',c:'光合',t:'世界之色',i:'images/01-respiraton.webp'},{n:'Rising Sunset',c:'潮汐',t:'世界之色',i:'images/04-rising-sunset.webp'},{n:'Past Dream',c:'旧心事',t:'世界之色',i:'images/05-past-dream.webp'},{n:'Prejudice',c:'我独我',t:'世界之色',i:'images/06-prejudice.webp'}],
+  [{n:'Face',c:'皮囊',t:'灵感盛宴',i:cs},{n:'Gone',c:'隐身衣',t:'灵感盛宴',i:cs},{n:'Wait',c:'等待',t:'灵感盛宴',i:cs},{n:'Bliss',c:'欢愉',t:'灵感盛宴',i:cs},{n:'Stay',c:'侍者',t:'灵感盛宴',i:cs},{n:'Decree',c:'号令',t:'灵感盛宴',i:cs}],
+  [{n:'Flash',c:'瞬息',t:'宙宇寰星',i:cs},{n:'Present',c:'此刻',t:'宙宇寰星',i:cs},{n:'Bygone',c:'彼时',t:'宙宇寰星',i:cs},{n:'Lightyear',c:'光年',t:'宙宇寰星',i:cs},{n:'Origin',c:'起源',t:'宙宇寰星',i:cs}],
+  [{n:'Spring',c:'破土·呼吸',t:'四季所生',i:cs},{n:'Summer',c:'疯长·蔓延',t:'四季所生',i:cs},{n:'Autumn',c:'沉淀·入静',t:'四季所生',i:cs},{n:'Winter',c:'封存·等待',t:'四季所生',i:cs}],
+  [{n:'Fall',c:'自天穹',t:'雨后',i:cs},{n:'Drift',c:'穿云间',t:'雨后',i:cs},{n:'Shatter',c:'碎地霜',t:'雨后',i:cs}]
+];
+var img=document.getElementById('rtImg'),name=document.getElementById('rtName'),cn=document.getElementById('rtCn'),tag=document.getElementById('rtTag'),tabs=document.querySelectorAll('.rt-tab');
+var si=Math.floor(Math.random()*6),pi=0,timer=null;
+function show(){
+  var s=seriesImgs[si],p=s[pi];
+  img.src=p.i;img.classList.add('fade');img.alt=p.n;
+  setTimeout(function(){img.classList.remove('fade')},50);
+  name.textContent=p.n;cn.textContent=p.c;tag.textContent=p.t;
+  tabs.forEach(function(t){t.classList.toggle('active',parseInt(t.dataset.si)===si)});
+}
+function next(){
+  var s=seriesImgs[si];
+  if(pi<s.length-1){pi++}else{si=(si+1)%6;pi=0}
+  show();
+}
+function startTimer(){clearInterval(timer);timer=setInterval(next,2000)}
+tabs.forEach(function(t){
+  t.addEventListener('click',function(){si=parseInt(this.dataset.si);pi=0;show();startTimer()})
+});
+show();startTimer();
+})();
+
 /* Hero Typewriter */
 (function(){var hl=document.getElementById("heroLine");if(!hl)return;
 var L='\u201C',R='\u201D';var allSets=[[L+'如雨水洗过空气后的片刻澄澈——','在每一次呼吸里，找回最初的自己。'+R],[L+'有些痕迹永远不会消失——','它们只是被雨水洗得更清晰了。'+R],[L+'不是所有的坠落都是坠落——','有些是选择了一个方向。'+R],[L+'最安静的时刻——','是雨停了之后你却还没离开窗边。'+R],[L+'你不必知道要去哪里——','你只需要知道此刻你是哪滴雨。'+R],[L+'一颗种子在冻土下等待——','它不是在等春天，它是在成为春天。'+R],[L+'每一次呼吸都是一场小雨——','在你看不见的地方，它已经落下了。'+R]];
