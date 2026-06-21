@@ -1317,17 +1317,19 @@ show();startTimer();
 (function(){var hl=document.getElementById("heroLine");if(!hl)return;
 var L='\u201C',R='\u201D';var allSets=[[L+'若今日无雨——','以我们的香气，为你下一场。'+R],[L+'若今日有雨——','以我们的香气，为雨染上颜色。'+R],[L+'如雨水洗过空气后的片刻澄澈——','在每一次呼吸里，找回最初的自己。'+R],[L+'有些痕迹永远不会消失——','它们只是被雨水洗得更清晰了。'+R],[L+'不是所有的坠落都是坠落——','有些是选择了一个方向。'+R],[L+'最安静的时刻——','是雨停了之后你却还没离开窗边。'+R],[L+'你不必知道要去哪里——','你只需要知道此刻你是哪滴雨。'+R],[L+'一颗种子在冻土下等待——','它不是在等春天，它是在成为春天。'+R],[L+'每一次呼吸都是一场小雨——','在你看不见的地方，它已经落下了。'+R]];
 var used=[],cursor='<span class="cursor-blink"></span>',typing=false,lines,timer,done,lIdx,cIdx;
-function pickSet(){var pool=[];for(var i=0;i<allSets.length;i++){if(used.indexOf(i)<0)pool.push(i)}if(pool.length===0){used=[];for(var j=0;j<allSets.length;j++)pool.push(j)}var pick=pool[Math.floor(Math.random()*pool.length)];used.push(pick);return pick}
+function pickSet(){var pool=[];for(var i=2;i<allSets.length;i++){if(used.indexOf(i)<0)pool.push(i)}if(pool.length===0){used=[];for(var j=2;j<allSets.length;j++)pool.push(j)}var pick=pool[Math.floor(Math.random()*pool.length)];used.push(pick);return pick}
 function clearType(){if(timer)clearTimeout(timer);typing=false}
 function type(){typing=true;if(lIdx>=lines.length){typing=false;if(onFinish)onFinish();return}if(cIdx<lines[lIdx].length){var current=lIdx===0?"":done+"<br>";hl.innerHTML=current+lines[lIdx].substring(0,cIdx+1)+cursor;cIdx++;timer=setTimeout(type,60+Math.random()*40)}else{done=lIdx===0?lines[0]:done+"<br>"+lines[lIdx];hl.innerHTML=done+cursor;lIdx++;cIdx=0;if(lIdx<lines.length)timer=setTimeout(type,300);else{typing=false;if(onFinish)onFinish()}}}
-var onFinish=null;
+var onFinish=null,cycleTimer=null;
 function startType(set,cb){clearType();done="";lIdx=0;cIdx=0;lines=set;onFinish=cb||null;hl.style.opacity="1";hl.innerHTML="";type()}
 function wipeOut(cb){clearType();onFinish=null;hl.style.opacity="0";setTimeout(function(){hl.innerHTML="";cb()},400)}
-function cycle(){var idx=pickSet();if(idx===0){wipeOut(function(){startType(allSets[0].slice(),function(){setTimeout(function(){startType(allSets[1].slice())},800)})})}else{wipeOut(function(){startType(allSets[idx].slice())})}}
+function scheduleCycle(){clearTimeout(cycleTimer);cycleTimer=setTimeout(function(){if(!typing)cycle()},8000)}
+function cycle(){var idx=pickSet();wipeOut(function(){startType(allSets[idx].slice(),scheduleCycle)})}
+function cycleStart(){wipeOut(function(){startType(allSets[0].slice(),function(){setTimeout(function(){startType(allSets[1].slice(),scheduleCycle)},800)})})}
 // 首次
-setTimeout(function(){used.push(0);startType(allSets[0].slice(),function(){setTimeout(function(){startType(allSets[1].slice())},800)})},2600);
-// 每8s 循环
-setInterval(function(){if(!typing)cycle()},8000);
+setTimeout(function(){used.push(0);startType(allSets[0].slice(),function(){setTimeout(function(){startType(allSets[1].slice(),scheduleCycle)},800)})},2600);
+// 点击切换
+hl.addEventListener("click",function(){cycleStart()});
 // 点击立即切换
 hl.addEventListener("click",function(){cycle()});
 })();
