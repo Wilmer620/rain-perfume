@@ -143,22 +143,34 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .rev-d1{transition-delay:.03s}.rev-d2{transition-delay:.09s}.rev-d3{transition-delay:.15s}.rev-d4{transition-delay:.21s}.rev-d5{transition-delay:.27s}.rev-d6{transition-delay:.33s}.rev-d7{transition-delay:.38s}
 
 /* ══ Section Label ══ */
-.sec-label{text-align:center;padding:2.5rem 2rem 0}
+.sec-label{text-align:center;padding:1.5rem 2rem 0}
 .sec-label .num{font-family:'Inter',sans-serif;font-size:.54rem;letter-spacing:.5em;color:var(--gold-d);text-transform:uppercase;margin-bottom:.6rem}
 .sec-label .title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:400;letter-spacing:.1em;color:var(--ink);margin-bottom:.2rem}
 .sec-label .sec-en{font-family:'Inter',sans-serif;font-size:.5rem;letter-spacing:.35em;color:var(--ink3);text-transform:uppercase;opacity:.55}
 
 /* ══ Philosophy ══ */
 .phil{position:relative;z-index:2;padding:3rem 2rem 5rem;display:flex;justify-content:center}
-.phil-inner{max-width:640px;text-align:center;padding:3.5rem 3rem}
+.phil-inner{max-width:640px;text-align:center;padding:2.5rem 3rem 3.5rem}
 .phil-text{font-family:'Noto Serif SC',serif;font-size:1.02rem;font-weight:300;line-height:2.8;color:var(--ink2);letter-spacing:.05em}
 .phil-text em{font-style:normal;color:var(--gold);font-weight:500}
 /* ══ Series Hub ══ */
 .series-hub{position:relative;z-index:2;text-align:center;padding:1rem 2rem 1rem}
 .series-hub .kicker{font-family:'Inter',sans-serif;font-size:.54rem;letter-spacing:.5em;color:var(--gold-d);text-transform:uppercase;margin-bottom:1.2rem}
-.series-hub .en-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:400;letter-spacing:.1em;color:var(--ink);margin-bottom:.3rem}
-.series-hub .cn-sub{font-family:'Inter',sans-serif;font-size:.52rem;letter-spacing:.4em;color:var(--gold-d);text-transform:uppercase;margin-top:.3rem}
+.series-hub .en-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;letter-spacing:.15em;color:var(--ink);margin-bottom:.15rem}
+.series-hub .cn-sub{font-family:'Inter',sans-serif;font-size:.48rem;letter-spacing:.35em;color:var(--gold-d);text-transform:uppercase;margin-top:.1rem}
 .series-hub .desc,.collection-hub .desc{font-family:'Noto Serif SC',serif;font-size:.8rem;font-weight:300;color:var(--ink3);letter-spacing:.06em;line-height:2.2;max-width:500px;margin:1rem auto 0}
+/* 叙事切换标签 */
+.narr-tabs{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0 .5rem;padding:0 1rem}
+.narr-tab{font-family:'Noto Serif SC',serif;font-size:.7rem;font-weight:300;letter-spacing:.08em;color:var(--ink3);background:rgba(255,253,250,.2);backdrop-filter:blur(8px);border:1px solid rgba(184,148,62,.05);border-radius:100px;padding:.35rem 1.1rem;cursor:none;transition:all .35s}
+.narr-tab:hover{color:var(--ink2);border-color:rgba(184,148,62,.12)}
+.narr-tab.active{color:var(--gold-d);border-color:var(--gold);background:rgba(184,148,62,.06)}
+@media (max-width:768px){.narr-tabs{gap:.35rem}.narr-tab{font-size:.62rem;padding:.3rem .7rem}}
+.prod-area{display:block}.prod-area.hide{display:none}
+.narr-full-area{padding:0 3rem 2rem;max-width:1100px;margin:0 auto;text-align:center}
+.narr-full-area .narr-full-inner{padding:3rem 2.5rem}
+.narr-full-area .narr-back{font-family:'Inter',sans-serif;font-size:.52rem;letter-spacing:.25em;color:var(--gold-d);text-transform:uppercase;background:none;border:1px solid rgba(184,148,62,.12);border-radius:100px;padding:.35rem 1.2rem;cursor:none;margin-bottom:2rem;transition:all .35s}
+.narr-full-area .narr-back:hover{border-color:var(--gold);color:var(--gold);background:rgba(184,148,62,.04)}
+@media (max-width:768px){.narr-full-area{padding:0 1rem 2rem}}
 .collection-hub{position:relative;z-index:2;text-align:center;padding:1rem 2rem 1rem}
 .collection-hub .kicker{font-family:'Inter',sans-serif;font-size:.54rem;letter-spacing:.5em;color:var(--gold-d);text-transform:uppercase;margin-bottom:1.2rem}
 .collection-hub .en-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:400;letter-spacing:.1em;color:var(--ink);margin-bottom:.3rem}
@@ -426,6 +438,16 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <p class="desc">每一场雨都有自己的性格，不同种进入自己的方式。</p>
 </section>
 
+<div class="narr-tabs reveal">
+<button class="narr-tab" data-sid="sojourn">驻足苦旅</button>
+<button class="narr-tab" data-sid="world">世界之色</button>
+<button class="narr-tab" data-sid="feast">灵感盛宴</button>
+<button class="narr-tab" data-sid="cosmos">宙宇寰星</button>
+<button class="narr-tab" data-sid="seasons">四季所生</button>
+<button class="narr-tab" data-sid="after">雨后</button>
+</div>
+
+<div class="prod-area" id="prodArea">
 <div class="series-tabs reveal">
 <button class="series-tab active" data-panel="sojourn">驻足苦旅</button>
 <button class="series-tab" data-panel="world">世界之色</button>
@@ -937,7 +959,13 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 </div></div></div>
 </div>
 
+</div>
+
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
+
+<div class="narr-full-area" id="narrFullArea" style="display:none">
+<div class="glass-panel narr-full-inner"></div>
+</div>
 
 <!-- 03 · 臻品雨酿 -->
 <div class="sec-label reveal"><p class="num">03</p><h2 class="title">臻品雨酿</h2></div>
@@ -1182,6 +1210,24 @@ var backTop=document.getElementById("backTop");window.addEventListener("scroll",
 
 /* Series tabs */
 var seriesTabs=document.querySelectorAll(".series-tab"),seriesPanels=document.querySelectorAll(".series-panel");seriesTabs.forEach(function(tab){tab.addEventListener("click",function(){seriesTabs.forEach(function(t){t.classList.remove("active")});tab.classList.add("active");seriesPanels.forEach(function(p){p.classList.remove("active")});var target=document.querySelector('.series-panel[data-panel="'+tab.dataset.panel+'"]');if(target)target.classList.add("active")})});
+/* Narrative tabs */
+var narrTabs=document.querySelectorAll(".narr-tab"),prodArea=document.getElementById("prodArea"),narrFull=document.getElementById("narrFullArea"),narrFullInner=narrFull?narrFull.querySelector(".narr-full-inner"):null,narrMode=!1;
+if(narrTabs.length&&prodArea&&narrFull){
+narrTabs.forEach(function(nt){
+nt.addEventListener("click",function(){
+  narrTabs.forEach(function(t){t.classList.remove("active")});nt.classList.add("active");
+  var sid=nt.dataset.sid,target=document.querySelector('.narr-body[id="'+sid+'"]');
+  if(target){
+    var clone=target.cloneNode(!0);clone.style.maxHeight="none";clone.classList.remove("collapsed");clone.style.opacity="1";
+    var btn=clone.querySelector(".narr-btn");if(btn)btn.style.display="none";
+    narrFullInner.innerHTML='<button class="narr-back" id="narrBackBtn">← 返回产品</button>';narrFullInner.appendChild(clone);
+    prodArea.classList.add("hide");narrFull.style.display="block";
+    var back=narrFullInner.querySelector("#narrBackBtn");
+    if(back)back.addEventListener("click",function(){prodArea.classList.remove("hide");narrFull.style.display="none";narrTabs.forEach(function(t){t.classList.remove("active")})});
+  }
+})
+});
+}
 
 /* Narrative buttons */
 document.querySelectorAll(".narr-btn").forEach(function(btn){var body=document.getElementById(btn.dataset.target),open=false;if(!body)return;body.style.maxHeight="0";body.classList.add("collapsed");btn.addEventListener("click",function(){if(open){body.style.maxHeight="0";body.classList.add("collapsed");btn.textContent="展开叙事";open=false}else{body.style.maxHeight=body.scrollHeight+"px";body.classList.remove("collapsed");btn.textContent="收起叙事";open=true}})});
