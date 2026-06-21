@@ -569,8 +569,6 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .phil-inner{max-width:640px;text-align:center;padding:3.5rem 3rem}
 .phil-text{font-family:'Noto Serif SC',serif;font-size:1.02rem;font-weight:300;line-height:2.8;color:var(--ink2);letter-spacing:.05em}
 .phil-text em{font-style:normal;color:var(--gold);font-weight:500}
-.phil-divider{width:48px;height:1px;background:var(--gold-d);opacity:.3;margin:3rem auto}
-
 /* ══ Series Hub ══ */
 .series-hub{position:relative;z-index:2;text-align:center;padding:1rem 2rem 1rem}
 .series-hub .kicker{font-family:'Inter',sans-serif;font-size:.54rem;letter-spacing:.5em;color:var(--gold-d);text-transform:uppercase;margin-bottom:1.2rem}
@@ -1082,9 +1080,7 @@ html = f'''<!DOCTYPE html>
 <div class="sec-label reveal"><p class="num">01</p><h2 class="title">雨之思</h2><p class="sec-en">Reflections on Rain</p></div>
 <section class="phil" id="phil">
 <div class="phil-inner glass-panel reveal">
-<p class="phil-text">雨是天空写给大地的<em>诗</em>。<br>在 RAIN，每一支香气都不是配方，<br>而是一场<em>小型的降雨</em>——<br>它洗净杂音，唤醒沉睡的感官，<br>在你皮肤上留下<em>转瞬即逝的印记</em>。</p>
-<div class="phil-divider"></div>
-<p class="phil-text">我们不去定义你应该闻起来像什么。<br>我们只是创造一场<em>属于你的雨</em>，<br>然后静静等待——<br>等待它在你的体温中<em>重新活过来</em>。</p>
+<p class="phil-text">每一场雨都是一次轻微的洗涤。<br>我们不做香水。<br>我们只是将雨停之后那一分钟的澄澈，<br>翻译成你皮肤上<em>可以呼吸</em>的诗。</p>
 </div>
 </section>
 
