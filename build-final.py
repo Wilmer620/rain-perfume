@@ -861,9 +861,9 @@ function type(){typing=true;if(lIdx>=lines.length){typing=false;if(onFinish)onFi
 var onFinish=null;
 function startType(set,cb){clearType();done="";lIdx=0;cIdx=0;lines=set;onFinish=cb||null;hl.style.opacity="1";hl.innerHTML="";type()}
 function wipeOut(cb){clearType();onFinish=null;hl.style.opacity="0";setTimeout(function(){hl.innerHTML="";cb()},400)}
-function cycle(){var idx=pickSet();if(idx===0){wipeOut(function(){startType(allSets[0].slice(),function(){setTimeout(function(){startType(allSets[1].slice())},500)})})}else{wipeOut(function(){startType(allSets[idx].slice())})}}
+function cycle(){var idx=pickSet();if(idx===0){wipeOut(function(){startType(allSets[0].slice(),function(){setTimeout(function(){startType(allSets[1].slice())},800)})})}else{wipeOut(function(){startType(allSets[idx].slice())})}}
 // 首次
-setTimeout(function(){used.push(0);startType(allSets[0].slice(),function(){setTimeout(function(){startType(allSets[1].slice())},500)})},2600);
+setTimeout(function(){used.push(0);startType(allSets[0].slice(),function(){setTimeout(function(){startType(allSets[1].slice())},800)})},2600);
 // 每8s 循环
 setInterval(function(){if(!typing)cycle()},8000);
 // 点击立即切换
