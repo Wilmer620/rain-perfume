@@ -1323,7 +1323,7 @@ function type(){typing=true;if(lIdx>=lines.length){typing=false;if(onFinish)onFi
 var onFinish=null,cycleTimer=null;
 function startType(set,cb){clearType();done="";lIdx=0;cIdx=0;lines=set;onFinish=cb||null;hl.style.opacity="1";hl.innerHTML="";type()}
 function wipeOut(cb){clearType();onFinish=null;hl.style.opacity="0";setTimeout(function(){hl.innerHTML="";cb()},400)}
-function scheduleCycle(){clearTimeout(cycleTimer);cycleTimer=setTimeout(function(){if(!typing)cycle()},8000)}
+function scheduleCycle(){clearTimeout(cycleTimer);cycleTimer=setTimeout(function(){if(!typing)cycle()},6500)}
 function cycle(){var idx=pickSet();wipeOut(function(){startType(allSets[idx].slice(),scheduleCycle)})}
 function cycleStart(){wipeOut(function(){startType(allSets[0].slice(),function(){setTimeout(function(){startType(allSets[1].slice(),scheduleCycle)},800)})})}
 // 首次
