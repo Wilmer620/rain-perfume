@@ -1161,7 +1161,20 @@ var dot=document.getElementById("cursorDot"),ring=document.getElementById("curso
 /* Reveal */
 var revealEls=document.querySelectorAll(".reveal");revealEls.forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in-view")})},{threshold:0.08,rootMargin:"0px 0px -20px 0px"}).observe(el)});
 /* Hero Typewriter */
-(function(){var hl=document.getElementById("heroLine");if(!hl)return;var lines=["如雨水洗过空气后的片刻澄澈——","在每一次呼吸里，找回最初的自己。"];var done="",lIdx=0,cIdx=0,cursor='<span class="cursor-blink"></span>';function type(){if(lIdx>=lines.length)return;if(cIdx<lines[lIdx].length){var current=lIdx===0?"":done+"<br>";hl.innerHTML=current+lines[lIdx].substring(0,cIdx+1)+cursor;cIdx++;setTimeout(type,60+Math.random()*40)}else{done=lIdx===0?lines[0]:done+"<br>"+lines[lIdx];hl.innerHTML=done+cursor;lIdx++;cIdx=0;if(lIdx<lines.length)setTimeout(type,300)}}setTimeout(type,2600)})();
+(function(){var hl=document.getElementById("heroLine");if(!hl)return;
+var allSets=[["如雨水洗过空气后的片刻澄澈——","在每一次呼吸里，找回最初的自己。"],["有些痕迹永远不会消失——","它们只是被雨水洗得更清晰了。"],["不是所有的坠落都是坠落——","有些是选择了一个方向。"],["最安静的时刻——","是雨停了之后你却还没离开窗边。"],["你不必知道要去哪里——","你只需要知道此刻你是哪滴雨。"],["一颗种子在冻土下等待——","它不是在等春天，它是在成为春天。"],["每一次呼吸都是一场小雨——","在你看不见的地方，它已经落下了。"]];
+var used=[],cursor='<span class="cursor-blink"></span>',typing=false,lines,timer,done,lIdx,cIdx;
+function pickSet(){var pool=[];for(var i=0;i<allSets.length;i++){if(used.indexOf(i)<0)pool.push(i)}if(pool.length===0){used=[];for(var j=0;j<allSets.length;j++)pool.push(j)}var pick=pool[Math.floor(Math.random()*pool.length)];used.push(pick);return allSets[pick].slice()}
+function clearType(){if(timer)clearTimeout(timer);typing=false}
+function type(){typing=true;if(lIdx>=lines.length){typing=false;return}if(cIdx<lines[lIdx].length){var current=lIdx===0?"":done+"<br>";hl.innerHTML=current+lines[lIdx].substring(0,cIdx+1)+cursor;cIdx++;timer=setTimeout(type,60+Math.random()*40)}else{done=lIdx===0?lines[0]:done+"<br>"+lines[lIdx];hl.innerHTML=done+cursor;lIdx++;cIdx=0;if(lIdx<lines.length)timer=setTimeout(type,300);else typing=false}}
+function startType(set){clearType();done="";lIdx=0;cIdx=0;lines=set;hl.innerHTML="";hl.style.opacity="1";type()}
+function wipeOut(cb){clearType();hl.style.opacity="0";setTimeout(function(){hl.innerHTML="";cb()},400)}
+function cycle(){wipeOut(function(){startType(pickSet())})}
+// 首次
+setTimeout(function(){lines=allSets[0].slice();used.push(0);type()},2600);
+// 每8s 循环
+setInterval(function(){if(!typing)cycle()},8000);
+})();
 
 /* Top Nav */
 var topNav=document.getElementById("topNav"),navLinks=document.querySelectorAll(".top-nav-links a"),allSecs=document.querySelectorAll("section[id]");function updateNav(){var y=window.scrollY+window.innerHeight/3,cur="";allSecs.forEach(function(s){if(y>=s.offsetTop)cur=s.getAttribute("id")});navLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+cur)});if(typeof mobNavLinks!=="undefined")mobNavLinks.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+cur)});topNav.classList.toggle("scrolled",window.scrollY>80)}window.addEventListener("scroll",updateNav,{passive:true});
