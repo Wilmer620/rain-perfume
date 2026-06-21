@@ -370,11 +370,11 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .music-btn svg{width:15px;height:15px;fill:none;stroke:var(--gold-d);stroke-width:1.5;transition:all .4s}.music-btn:hover svg{stroke:var(--gold)}
 .music-btn.playing svg{fill:rgba(184,148,62,.15)}.music-btn.playing:hover svg{fill:rgba(184,148,62,.25)}
 /* 雨声涟漪提示 */
-.rain-hint{position:fixed;bottom:7rem;right:2.5rem;z-index:160;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
-.rain-hint.show{opacity:1;transform:translateY(0)}
-.rain-hint-ripple{position:absolute;bottom:-8px;right:0;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(184,148,62,.4);animation:hintRipple 1.2s ease-out infinite}
-@keyframes hintRipple{0%{transform:scale(.8);opacity:.6}100%{transform:scale(3);opacity:0}}
-.rain-hint-txt{font-family:'Noto Serif SC',serif;font-size:.52rem;font-weight:300;color:var(--gold-d);letter-spacing:.08em;text-align:right;line-height:1.6;margin-right:.5rem}
+/* 音乐提示 */
+.hero-hint{text-align:center;margin-top:1.2rem;opacity:0;transform:translateY(6px);transition:opacity .5s,transform .5s}
+.hero-hint.show{opacity:1;transform:translateY(0)}
+.hero-hint span{display:inline-block;font-family:'Noto Serif SC',serif;font-size:.6rem;font-weight:300;color:var(--gold-d);letter-spacing:.1em;animation:heroHintPulse 2s ease-in-out infinite}
+@keyframes heroHintPulse{0%,100%{opacity:.5}50%{opacity:1}}
 
 /* ══ Mobile Tap Ring ══ */
 .tap-ring{position:fixed;z-index:9999;pointer-events:none;transform:translate(-50%,-50%)}
@@ -467,6 +467,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <p class="hero-sub-en">PERFUME AS RAIN</p>
 <p class="hero-sub-cn">香水之雨</p>
 <p class="hero-line" id="heroLine"></p>
+<div class="hero-hint" id="heroHint"><span>轻触任意处 · 聆听雨声</span></div>
 <div class="hero-scroll-wrap"><div class="hero-scroll-inner"><span>探索香气</span><div class="hero-scroll-line"></div></div></div>
 </section>
 
@@ -1250,7 +1251,6 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 </div></section>
 
 <!-- BUTTONS -->
-<div class="rain-hint" id="rainHint"><span class="rain-hint-txt">轻触开启<br>细雨声景</span><span class="rain-hint-ripple"></span></div>
 <button class="music-btn" id="musicBtn"><svg viewBox="0 0 24 24"><path d="M12 2C9.5 2 7 4 7 10c0 3 1.2 5 2.5 6l-1.5 4h8l-1.5-4c1.3-1 2.5-3 2.5-6 0-6-2.5-8-5-8z"/></svg></button>
 <button class="back-top" id="backTop"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
@@ -1479,22 +1479,27 @@ function mkLayer(type,fc,q,vol){
   return src;
 }
 
+function setupAudioNodes(){
+  master=ctx.createGain();
+  master.gain.value=0.06;
+  master.connect(ctx.destination);
+
+  mkLayer('lowpass',280,0.5,0.06);
+  mkLayer('bandpass',1100,0.25,0.08);
+  mkLayer('highpass',4500,0.4,0.03);
+  mkLayer('lowpass',150,2.5,0.10);
+
+  master.gain.linearRampToValueAtTime(0.14,ctx.currentTime+1.0);
+  btn.classList.add('playing');
+}
+
 function startAmbient(){
   if(started)return;started=true;
   ctx=new(window.AudioContext||window.webkitAudioContext)();
-  if(ctx.state==='suspended')ctx.resume();
-  master=ctx.createGain();
-  master.gain.value=0.06; /* 轻声起步 */
-  master.connect(ctx.destination);
-
-  mkLayer('lowpass',280,0.5,0.06);   // 远雷低吟
-  mkLayer('bandpass',1100,0.25,0.08); // 细雨主体
-  mkLayer('highpass',4500,0.4,0.03);  // 叶面碎珠
-  mkLayer('lowpass',150,2.5,0.10);    // 檐下滴水
-
-  /* 短渐入，1s 到位 */
-  master.gain.linearRampToValueAtTime(0.14,ctx.currentTime+1.0);
-  btn.classList.add('playing');
+  ctx.resume().then(function(){
+    setupAudioNodes();
+    var h=document.getElementById("heroHint");if(h)h.classList.remove("show");
+  }).catch(function(){setupAudioNodes()});
 }
 
 /* 入场幕布点击即启动 */
@@ -1503,21 +1508,25 @@ function startAmbient(){
   if(e)e.addEventListener("click",function(){startAmbient()},{once:true});
 })();
 
-/* 其他任意点击兜底 */
-function tryStartAmbient(){
-  startAmbient();
-  // 显示涟漪提示
-  var hint=document.getElementById("rainHint");
-  if(hint){hint.classList.add("show");setTimeout(function(){hint.classList.remove("show")},4000)}
-}
-document.body.addEventListener("click",tryStartAmbient,{once:true});
-document.body.addEventListener("touchstart",tryStartAmbient,{once:true});
+/* 任意点击兜底 */
+document.body.addEventListener("click",function(){startAmbient()},{once:true});
+document.body.addEventListener("touchstart",function(){startAmbient()},{once:true});
+
+/* 5s 后显示提示 */
+setTimeout(function(){
+  if(!started){
+    var h=document.getElementById("heroHint");
+    if(h)h.classList.add("show");
+  }
+},5000);
 
 /* 按钮切换静音/恢复 */
 btn.addEventListener('click',function(e){
   e.stopPropagation();
-  var hint=document.getElementById("rainHint");if(hint)hint.classList.remove("show");
-  if(!ctx){startAmbient();return;}
+  if(!ctx){
+    startAmbient();
+    return;
+  }
   if(playing){
     master.gain.linearRampToValueAtTime(0,ctx.currentTime+0.8);
     btn.classList.remove('playing');playing=false;
