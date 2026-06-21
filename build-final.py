@@ -785,6 +785,12 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .music-btn{position:fixed;bottom:6rem;right:2.5rem;z-index:150;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(253,249,240,.4);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(184,148,62,.08);border-radius:50%;cursor:none;transition:all .4s}.music-btn:hover{background:rgba(253,249,240,.55);border-color:rgba(184,148,62,.14)}
 .music-btn svg{width:15px;height:15px;fill:none;stroke:var(--gold-d);stroke-width:1.5;transition:all .4s}.music-btn:hover svg{stroke:var(--gold)}
 .music-btn.playing svg{fill:rgba(184,148,62,.15)}.music-btn.playing:hover svg{fill:rgba(184,148,62,.25)}
+/* 雨声涟漪提示 */
+.rain-hint{position:fixed;bottom:7rem;right:2.5rem;z-index:160;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.rain-hint.show{opacity:1;transform:translateY(0)}
+.rain-hint-ripple{position:absolute;bottom:-8px;right:0;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(184,148,62,.4);animation:hintRipple 1.2s ease-out infinite}
+@keyframes hintRipple{0%{transform:scale(.8);opacity:.6}100%{transform:scale(3);opacity:0}}
+.rain-hint-txt{font-family:'Noto Serif SC',serif;font-size:.52rem;font-weight:300;color:var(--gold-d);letter-spacing:.08em;text-align:right;line-height:1.6;margin-right:.5rem}
 
 /* ══ Mobile Tap Ring ══ */
 .tap-ring{position:fixed;z-index:9999;pointer-events:none;transform:translate(-50%,-50%)}
@@ -1035,12 +1041,19 @@ function startAmbient(){
 })();
 
 /* 其他任意点击兜底 */
-document.body.addEventListener("click",function(){startAmbient()},{once:true});
-document.body.addEventListener("touchstart",function(){startAmbient()},{once:true});
+function tryStartAmbient(){
+  startAmbient();
+  // 显示涟漪提示
+  var hint=document.getElementById("rainHint");
+  if(hint){hint.classList.add("show");setTimeout(function(){hint.classList.remove("show")},4000)}
+}
+document.body.addEventListener("click",tryStartAmbient,{once:true});
+document.body.addEventListener("touchstart",tryStartAmbient,{once:true});
 
 /* 按钮切换静音/恢复 */
 btn.addEventListener('click',function(e){
   e.stopPropagation();
+  var hint=document.getElementById("rainHint");if(hint)hint.classList.remove("show");
   if(!ctx){startAmbient();return;}
   if(playing){
     master.gain.linearRampToValueAtTime(0,ctx.currentTime+0.8);
@@ -1454,6 +1467,7 @@ html = f'''<!DOCTYPE html>
 </div></section>
 
 <!-- BUTTONS -->
+<div class="rain-hint" id="rainHint"><span class="rain-hint-txt">轻触开启<br>细雨声景</span><span class="rain-hint-ripple"></span></div>
 <button class="music-btn" id="musicBtn"><svg viewBox="0 0 24 24"><path d="M12 2C9.5 2 7 4 7 10c0 3 1.2 5 2.5 6l-1.5 4h8l-1.5-4c1.3-1 2.5-3 2.5-6 0-6-2.5-8-5-8z"/></svg></button>
 <button class="back-top" id="backTop"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
