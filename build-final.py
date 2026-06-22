@@ -1184,7 +1184,7 @@ html = f'''<!DOCTYPE html>
 </svg>
 </a>
 <ul class="top-nav-links">
-<li><a href="#rainTime">雨时</a></li>
+<li><a href="#rainTime">眼前雨云</a></li>
 <li><a href="#series">雨的衍生</a></li>
 <li><a href="#collection">臻品雨酿</a></li>
 <li><a href="#quiz">寻雨之路</a></li>
@@ -1196,7 +1196,7 @@ html = f'''<!DOCTYPE html>
 <button class="hamburger" id="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob-nav" id="mobNav">
-<a href="#rainTime">雨时</a>
+<a href="#rainTime">眼前雨云</a>
 <a href="#series">雨的衍生</a>
 <a href="#collection">臻品雨酿</a>
 <a href="#quiz">寻雨之路</a>
@@ -1228,11 +1228,11 @@ html = f'''<!DOCTYPE html>
 <div class="hero-scroll-wrap"><div class="hero-scroll-inner"><span>探索香气</span><div class="hero-scroll-line"></div></div></div>
 </section>
 
-<!-- 01 · 雨时 -->
-<div class="sec-label reveal"><p class="num">01</p><h2 class="title">雨时</h2><p class="sec-en">Moments of Rain</p></div>
+<!-- 01 · 眼前雨云 -->
+<div class="sec-label reveal"><p class="num">01</p><h2 class="title">眼前雨云</h2><p class="sec-en">The Clouds Before You</p></div>
 <section class="rain-time reveal" id="rainTime">
 <div class="rain-time-inner glass-panel" style="padding:2rem 2.5rem">
-<p class="rt-desc">每一秒，都有一滴雨在世界的<em>某处</em>落下。<br>雨时——将六条雨线、四十一滴雨水，<br>在你眼前<em>逐帧滑过</em>。<br>左右切换寻找属于你的那一滴，<br>或让它找到你。</p>
+<p class="rt-desc">每一秒，都有一滴雨在世界的<em>某处</em>落下。<br>眼前雨云——将六条雨线、四十一滴雨水，<br>在你眼前<em>逐帧滑过</em>。<br>左右切换寻找属于你的那一滴，<br>或让它找到你。</p>
 <div class="rt-img-wrap">
 <button class="rt-arrow rt-prev" id="rtPrev"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
 <img class="rt-img" id="rtImg" src="" alt="">
@@ -1428,7 +1428,7 @@ html = f'''<!DOCTYPE html>
 <div class="sec-label reveal"><p class="num">06</p><h2 class="title">雨的贮存指南</h2><p class="sec-en">How to Keep the Rain</p></div>
 <section class="craft reveal" id="craft">
 <div class="craft-grid">
-<div class="craft-card"><span class="num">01</span><h4>接雨 · 在雨滴落下的前一秒</h4><p>贮存雨水的最佳时机——<em>不是下雨时，而是雨即将落下时</em>。空气里的湿度达到临界点，每一寸缝隙都充满了即将成为雨的水分子。在这一刻捕捉到的气息，保留了云层的冷冽和天空的记忆。<br><br>这就像<em>驻足苦旅·Blur</em>的白牡丹——还挂着晨露就被采下；像<em>世界之色·Respiration</em>的绿叶——揉碎之前已经记住了整片森林；像<em>雨后·Fall</em>的臭氧——闪电劈开空气后那一秒的干净。我们称之为<em>「云的前调」</em>——它还没来得及落地，就已经被保存下来。</p></div>
+<div class="craft-card"><span class="num">01</span><h4>接雨 · 在雨滴落下的前一秒</h4><p>贮存雨水的最佳时机——<em>不是下眼前雨云，而是雨即将落下时</em>。空气里的湿度达到临界点，每一寸缝隙都充满了即将成为雨的水分子。在这一刻捕捉到的气息，保留了云层的冷冽和天空的记忆。<br><br>这就像<em>驻足苦旅·Blur</em>的白牡丹——还挂着晨露就被采下；像<em>世界之色·Respiration</em>的绿叶——揉碎之前已经记住了整片森林；像<em>雨后·Fall</em>的臭氧——闪电劈开空气后那一秒的干净。我们称之为<em>「云的前调」</em>——它还没来得及落地，就已经被保存下来。</p></div>
 <div class="craft-card"><span class="num">02</span><h4>藏雨 · 让时间做唯一容器</h4><p>收集到的雨水不能立刻封存——它需要<em>呼吸</em>。我们将其置于恒温玻璃容器中，在暗处静置 4–8 周。每一天，水分子都在重组。这不是等待——这是<em>一场无声的对话</em>，雨在讲述它从哪片云来、经过了多少米的高度。<br><br>这个阶段决定了香气的<em>中调</em>——是<em>灵感盛宴·Wait</em>里蜂蜜慢慢变甜的过程；是<em>驻足苦旅·Knot</em>里雪松从尖锐到柔软的转身；是<em>臻品雨酿·着我之境</em>里土耳其玫瑰从清晨等到黄昏的全部耐心。我们不能催促，只能旁听。</p></div>
 <div class="craft-card"><span class="num">03</span><h4>释雨 · 回到最初的形态</h4><p>封存雨水的最终目的——<em>不是占有，是让它重新蒸发</em>。经过五层微米级滤膜，去除一切杂质，却保留雨的一切记忆。最终的液体应如雨滴初落在叶片上那一刻——澄澈、透明、随时准备回到天空。<br><br>这是香气落在皮肤上的<em>尾调</em>——是<em>四季所生·冬藏</em>里檀木在体温中缓缓升起的暖意；是<em>灵感盛宴·Stay</em>里大米蒸熟后的朴素安心；是<em>雨后·Shatter</em>里泥土调渗入土地后成为明天某颗种子的一部分。我们不是一个香水品牌——我们是<em>雨的翻译者</em>。</p></div>
 </div>
