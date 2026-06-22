@@ -45,32 +45,39 @@ seasons_labels = [('春','生','春之生'),('夏','长','夏之长'),('秋','�
 COMING_SOON_SVG = 'data:image/svg+xml,' + '%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 280 184%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 stop-color=%22%23fdf9ef%22/%3E%3Cstop offset=%2260%25%22 stop-color=%22%23f8f2e8%22/%3E%3Cstop offset=%22100%25%22 stop-color=%22%23f3ece0%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=%22url(%23g)%22 width=%22280%22 height=%22184%22/%3E%3Ccircle cx=%22140%22 cy=%2292%22 r=%2280%22 fill=%22none%22 stroke=%22%23b8943e%22 stroke-width=%22.1%22 opacity=%22.04%22/%3E%3Ccircle cx=%22140%22 cy=%2292%22 r=%2250%22 fill=%22none%22 stroke=%22%23b8943e%22 stroke-width=%22.15%22 opacity=%22.06%22/%3E%3Ccircle cx=%22140%22 cy=%2292%22 r=%2220%22 fill=%22none%22 stroke=%22%23b8943e%22 stroke-width=%22.2%22 opacity=%22.08%22/%3E%3Cline x1=%22122%22 y1=%2274%22 x2=%22122%22 y2=%22104%22 stroke=%22%231a1815%22 stroke-width=%22.5%22 stroke-linecap=%22round%22 opacity=%22.2%22/%3E%3Cline x1=%22130%22 y1=%2270%22 x2=%22130%22 y2=%22110%22 stroke=%22%231a1815%22 stroke-width=%22.7%22 stroke-linecap=%22round%22 opacity=%22.25%22/%3E%3Cline x1=%22138%22 y1=%2276%22 x2=%22138%22 y2=%22102%22 stroke=%22%231a1815%22 stroke-width=%22.4%22 stroke-linecap=%22round%22 opacity=%22.18%22/%3E%3Ccircle cx=%22130%22 cy=%2268%22 r=%22.7%22 fill=%22%23b8943e%22 opacity=%22.4%22/%3E%3Ctext x=%22140%22 y=%22138%22 text-anchor=%22middle%22 font-family=%22Inter,Helvetica,sans-serif%22 font-size=%226.5%22 letter-spacing=%223%22 fill=%22%231a1815%22 opacity=%22.18%22%3ECOMING SOON%3C/text%3E%3C/svg%3E'
 
 POSTER_TAGS = {
-    'Blur': '臻选限定 · 长路未央',
-    'Knot': '臻选限定 · 长路未央',
-    'Flirt': '臻选限定 · 长路未央',
-    'Peak': '臻选限定 · 长路未央',
-    'Wall': '臻选限定 · 长路未央',
-    'Leave': '臻选限定 · 长路未央',
-    'Iris': '臻选限定 · 长路未央',
-    'Sun&Moon': '臻选限定 · 长路未央',
-    'Face': '珍品限定 · 盛宴未散',
-    'Gone': '珍品限定 · 盛宴未散',
-    'Wait': '珍品限定 · 盛宴未散',
-    'Bliss': '珍品限定 · 盛宴未散',
-    'Stay': '珍品限定 · 盛宴未散',
-    'Decree': '珍品限定 · 盛宴未散',
-    'Flash': '太初限定 · 星云初稿',
-    'Present': '太初限定 · 星云初稿',
-    'Bygone': '太初限定 · 星云初稿',
-    'Lightyear': '太初限定 · 星云初稿',
-    'Origin': '太初限定 · 星云初稿',
-    'Spring': '典藏限定 · 岁时不居',
-    'Summer': '典藏限定 · 岁时不居',
-    'Autumn': '典藏限定 · 岁时不居',
-    'Winter': '典藏限定 · 岁时不居',
-    'Fall': '至珍限定 · 雨后一滴',
-    'Drift': '至珍限定 · 雨后一滴',
-    'Shatter': '至珍限定 · 雨后一滴',
+    'Blur': '长路未央 · 于此时',
+    'Knot': '长路未央 · 于此时',
+    'Flirt': '长路未央 · 于此时',
+    'Peak': '长路未央 · 于此时',
+    'Wall': '长路未央 · 于此时',
+    'Leave': '长路未央 · 于此时',
+    'Iris': '长路未央 · 于此时',
+    'Sun&Moon': '长路未央 · 于此时',
+    'Face': '本我珍藏 · 面具',
+    'Gone': '本我珍藏 · 面具',
+    'Wait': '本我珍藏 · 面具',
+    'Bliss': '本我珍藏 · 面具',
+    'Stay': '本我珍藏 · 面具',
+    'Decree': '本我珍藏 · 面具',
+    'Flash': '太初之道 · 星云',
+    'Present': '太初之道 · 星云',
+    'Bygone': '太初之道 · 星云',
+    'Lightyear': '太初之道 · 星云',
+    'Origin': '太初之道 · 星云',
+    'Spring': '季节限定 · 时节',
+    'Summer': '季节限定 · 时节',
+    'Autumn': '季节限定 · 时节',
+    'Winter': '季节限定 · 时节',
+    'Pause': '七彩琉光 · 雨亦棱镜',
+    'Our Melody': '七彩琉光 · 雨亦棱镜',
+    'Last Word': '七彩琉光 · 雨亦棱镜',
+    'Respiration': '七彩琉光 · 雨亦棱镜',
+    'Rising Sunset': '七彩琉光 · 雨亦棱镜',
+    'Past Dream': '七彩琉光 · 雨亦棱镜',
+    'Prejudice': '七彩琉光 · 雨亦棱镜',
+    'Fall': '永恒佳作 · 净尘',
+    'Drift': '永恒佳作 · 净尘',
+    'Shatter': '永恒佳作 · 净尘',
     '我故臆想': '典藏臻酿 · 忆中虚构',
     '着我之境': '典藏臻酿 · 身体美术馆',
     '今夜唯我': '典藏臻酿 · 午夜款待',
@@ -141,10 +148,13 @@ def world_card(filename, alt, num, en, cn, top, heart, base):
     }
     mapped = img_map.get(en, '')
     src = COMING_SOON_SVG if mapped == '__coming__' else f'images/{mapped}' if mapped else COMING_SOON_SVG
+    tag_html = ''
+    if en in POSTER_TAGS:
+        tag_html = f'<span class="poster-badge">{POSTER_TAGS[en]}</span>'
     return f'''<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img" src="{src}" alt="{en}" loading="lazy"></div>
+<div class="frag-img-wrap">{tag_html}<img class="frag-img" src="{src}" alt="{en}" loading="lazy"></div>
 <div class="frag-info">
 <p class="frag-num">NO. {num}</p><h3 class="frag-name-en">{en}</h3><p class="frag-name-cn">{cn}</p>
 <p class="frag-accord"><b>Top</b> {top}<br><b>Heart</b> {heart}<br><b>Base</b> {base}</p>
@@ -1392,7 +1402,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWNlNmRlIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjY0IiBjeT0iNzQiIHI9IjY0IiBmaWxsPSJub25lIiBzdHJva2U9IiNhMDk4OGMiIHN0cm9rZS13aWR0aD0iMC4xNSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjE4MyIgY3k9IjExOSIgcj0iMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M0YjhhMiIgc3Ryb2tlLXdpZHRoPSIwLjE3IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9IjczIiB5MT0iMTE2IiB4Mj0iMjQ5IiB5Mj0iMTE2IiBzdHJva2U9IiM5YzhjNzQiIHN0cm9rZS13aWR0aD0iMC4xMiIgb3BhY2l0eT0iMC4xIi8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iNTUiIHI9IjUzIiBmaWxsPSJub25lIiBzdHJva2U9IiNhMDk4OGMiIHN0cm9rZS13aWR0aD0iMC4wOCIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLWRhc2hhcnJheT0iNiA4Ii8+PHRleHQgeD0iMTQwIiB5PSIxNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJJbnRlcixIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSI4LjMiIGxldHRlci1zcGFjaW5nPSIzIiBmaWxsPSIjOWM4Yzc0IiBvcGFjaXR5PSIwLjM1Ij7miJHmlYXoh4bmg7M8L3RleHQ+PGxpbmUgeDE9IjY2IiB5MT0iMTQ3IiB4Mj0iMjEzIiB5Mj0iMTQ3IiBzdHJva2U9IiNiODk0M2UiIHN0cm9rZS13aWR0aD0iMC4xNSIgb3BhY2l0eT0iMC4yIi8+Cjwvc3ZnPg==" alt="Coming Soon"></div>
+<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 忆中虚构</span> <img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWNlNmRlIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjY0IiBjeT0iNzQiIHI9IjY0IiBmaWxsPSJub25lIiBzdHJva2U9IiNhMDk4OGMiIHN0cm9rZS13aWR0aD0iMC4xNSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjE4MyIgY3k9IjExOSIgcj0iMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M0YjhhMiIgc3Ryb2tlLXdpZHRoPSIwLjE3IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9IjczIiB5MT0iMTE2IiB4Mj0iMjQ5IiB5Mj0iMTE2IiBzdHJva2U9IiM5YzhjNzQiIHN0cm9rZS13aWR0aD0iMC4xMiIgb3BhY2l0eT0iMC4xIi8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iNTUiIHI9IjUzIiBmaWxsPSJub25lIiBzdHJva2U9IiNhMDk4OGMiIHN0cm9rZS13aWR0aD0iMC4wOCIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLWRhc2hhcnJheT0iNiA4Ii8+PHRleHQgeD0iMTQwIiB5PSIxNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJJbnRlcixIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSI4LjMiIGxldHRlci1zcGFjaW5nPSIzIiBmaWxsPSIjOWM4Yzc0IiBvcGFjaXR5PSIwLjM1Ij7miJHmlYXoh4bmg7M8L3RleHQ+PGxpbmUgeDE9IjY2IiB5MT0iMTQ3IiB4Mj0iMjEzIiB5Mj0iMTQ3IiBzdHJva2U9IiNiODk0M2UiIHN0cm9rZS13aWR0aD0iMC4xNSIgb3BhY2l0eT0iMC4yIi8+Cjwvc3ZnPg==" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">SOJOURN · 驻足苦旅</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">我故臆想</h3>
@@ -1403,7 +1413,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZjVlZGUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjczIiBjeT0iNzkiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiNkNGE4NGIiIHN0cm9rZS13aWR0aD0iMC4yMSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjE5NyIgY3k9Ijg3IiByPSIyMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzQ5NjNhIiBzdHJva2Utd2lkdGg9IjAuMTMiIG9wYWNpdHk9IjAuMTIiLz48bGluZSB4MT0iMzMiIHkxPSIxMDgiIHgyPSIyMTciIHkyPSIxMDgiIHN0cm9rZT0iIzhiNjkxNCIgc3Ryb2tlLXdpZHRoPSIwLjEyIiBvcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIxNzkiIGN5PSI2MiIgcj0iNTQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q0YTg0YiIgc3Ryb2tlLXdpZHRoPSIwLjA4IiBvcGFjaXR5PSIwLjA4IiBzdHJva2UtZGFzaGFycmF5PSI5IDYiLz48dGV4dCB4PSIxNDAiIHk9IjE0MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjcuNyIgbGV0dGVyLXNwYWNpbmc9IjYiIGZpbGw9IiM4YjY5MTQiIG9wYWNpdHk9IjAuMzUiPuedgOaIkeS5i+WigzwvdGV4dD48bGluZSB4MT0iNjkiIHkxPSIxNDciIHgyPSIyMTEiIHkyPSIxNDciIHN0cm9rZT0iI2I4OTQzZSIgc3Ryb2tlLXdpZHRoPSIwLjE1IiBvcGFjaXR5PSIwLjIiLz4KPC9zdmc+" alt="Coming Soon"></div>
+<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 身体美术馆</span><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZjVlZGUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjczIiBjeT0iNzkiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiNkNGE4NGIiIHN0cm9rZS13aWR0aD0iMC4yMSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjE5NyIgY3k9Ijg3IiByPSIyMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzQ5NjNhIiBzdHJva2Utd2lkdGg9IjAuMTMiIG9wYWNpdHk9IjAuMTIiLz48bGluZSB4MT0iMzMiIHkxPSIxMDgiIHgyPSIyMTciIHkyPSIxMDgiIHN0cm9rZT0iIzhiNjkxNCIgc3Ryb2tlLXdpZHRoPSIwLjEyIiBvcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIxNzkiIGN5PSI2MiIgcj0iNTQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q0YTg0YiIgc3Ryb2tlLXdpZHRoPSIwLjA4IiBvcGFjaXR5PSIwLjA4IiBzdHJva2UtZGFzaGFycmF5PSI5IDYiLz48dGV4dCB4PSIxNDAiIHk9IjE0MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjcuNyIgbGV0dGVyLXNwYWNpbmc9IjYiIGZpbGw9IiM4YjY5MTQiIG9wYWNpdHk9IjAuMzUiPuedgOaIkeS5i+WigzwvdGV4dD48bGluZSB4MT0iNjkiIHkxPSIxNDciIHgyPSIyMTEiIHkyPSIxNDciIHN0cm9rZT0iI2I4OTQzZSIgc3Ryb2tlLXdpZHRoPSIwLjE1IiBvcGFjaXR5PSIwLjIiLz4KPC9zdmc+" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">WORLD · 世界之色</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">着我之境</h3>
@@ -1414,7 +1424,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZjJlNWQzIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjkzIiBjeT0iNjQiIHI9IjY5IiBmaWxsPSJub25lIiBzdHJva2U9IiNlMGI4NWMiIHN0cm9rZS13aWR0aD0iMC4xMSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjIxOCIgY3k9IjgzIiByPSIzOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmE4ZTMyIiBzdHJva2Utd2lkdGg9IjAuMTciIG9wYWNpdHk9IjAuMTIiLz48bGluZSB4MT0iNzUiIHkxPSIxMDIiIHgyPSIyMjYiIHkyPSIxMDIiIHN0cm9rZT0iIzhiNjkxNCIgc3Ryb2tlLXdpZHRoPSIwLjEyIiBvcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIxODkiIGN5PSIxMDUiIHI9IjMyIiBmaWxsPSJub25lIiBzdHJva2U9IiNlMGI4NWMiIHN0cm9rZS13aWR0aD0iMC4wOCIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLWRhc2hhcnJheT0iNSAxMSIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4xIiBsZXR0ZXItc3BhY2luZz0iNSIgZmlsbD0iIzhiNjkxNCIgb3BhY2l0eT0iMC4zNSI+5LuK5aSc5ZSv5oiRPC90ZXh0PjxsaW5lIHgxPSI2NyIgeTE9IjE0NyIgeDI9IjE4MyIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=" alt="Coming Soon"></div>
+<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 午夜款待</span><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZjJlNWQzIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjkzIiBjeT0iNjQiIHI9IjY5IiBmaWxsPSJub25lIiBzdHJva2U9IiNlMGI4NWMiIHN0cm9rZS13aWR0aD0iMC4xMSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjIxOCIgY3k9IjgzIiByPSIzOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmE4ZTMyIiBzdHJva2Utd2lkdGg9IjAuMTciIG9wYWNpdHk9IjAuMTIiLz48bGluZSB4MT0iNzUiIHkxPSIxMDIiIHgyPSIyMjYiIHkyPSIxMDIiIHN0cm9rZT0iIzhiNjkxNCIgc3Ryb2tlLXdpZHRoPSIwLjEyIiBvcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIxODkiIGN5PSIxMDUiIHI9IjMyIiBmaWxsPSJub25lIiBzdHJva2U9IiNlMGI4NWMiIHN0cm9rZS13aWR0aD0iMC4wOCIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLWRhc2hhcnJheT0iNSAxMSIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4xIiBsZXR0ZXItc3BhY2luZz0iNSIgZmlsbD0iIzhiNjkxNCIgb3BhY2l0eT0iMC4zNSI+5LuK5aSc5ZSv5oiRPC90ZXh0PjxsaW5lIHgxPSI2NyIgeTE9IjE0NyIgeDI9IjE4MyIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">FEAST · 灵感盛宴</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">今夜唯我</h3>
@@ -1425,7 +1435,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWJlZWY0IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjgwIiBjeT0iNzYiIHI9IjcxIiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTZhOGMiIHN0cm9rZS13aWR0aD0iMC4yMiIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjIwNiIgY3k9IjEwOCIgcj0iMjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhNWE3YyIgc3Ryb2tlLXdpZHRoPSIwLjE2IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9IjU0IiB5MT0iMTEzIiB4Mj0iMjE1IiB5Mj0iMTEzIiBzdHJva2U9IiMzYTRhNmMiIHN0cm9rZS13aWR0aD0iMC4xMiIgb3BhY2l0eT0iMC4xIi8+PGNpcmNsZSBjeD0iMTEwIiBjeT0iOTUiIHI9IjQ5IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTZhOGMiIHN0cm9rZS13aWR0aD0iMC4wOCIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLWRhc2hhcnJheT0iNCA2Ii8+PHRleHQgeD0iMTQwIiB5PSIxNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJJbnRlcixIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSI4LjEiIGxldHRlci1zcGFjaW5nPSI2IiBmaWxsPSIjM2E0YTZjIiBvcGFjaXR5PSIwLjM1Ij7nhrXlop7ml7Y8L3RleHQ+PGxpbmUgeDE9IjkxIiB5MT0iMTQ3IiB4Mj0iMTk5IiB5Mj0iMTQ3IiBzdHJva2U9IiNiODk0M2UiIHN0cm9rZS13aWR0aD0iMC4xNSIgb3BhY2l0eT0iMC4yIi8+Cjwvc3ZnPg==" alt="Coming Soon"></div>
+<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 秩序散落</span><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWJlZWY0IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjgwIiBjeT0iNzYiIHI9IjcxIiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTZhOGMiIHN0cm9rZS13aWR0aD0iMC4yMiIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjIwNiIgY3k9IjEwOCIgcj0iMjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhNWE3YyIgc3Ryb2tlLXdpZHRoPSIwLjE2IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9IjU0IiB5MT0iMTEzIiB4Mj0iMjE1IiB5Mj0iMTEzIiBzdHJva2U9IiMzYTRhNmMiIHN0cm9rZS13aWR0aD0iMC4xMiIgb3BhY2l0eT0iMC4xIi8+PGNpcmNsZSBjeD0iMTEwIiBjeT0iOTUiIHI9IjQ5IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTZhOGMiIHN0cm9rZS13aWR0aD0iMC4wOCIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLWRhc2hhcnJheT0iNCA2Ii8+PHRleHQgeD0iMTQwIiB5PSIxNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJJbnRlcixIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSI4LjEiIGxldHRlci1zcGFjaW5nPSI2IiBmaWxsPSIjM2E0YTZjIiBvcGFjaXR5PSIwLjM1Ij7nhrXlop7ml7Y8L3RleHQ+PGxpbmUgeDE9IjkxIiB5MT0iMTQ3IiB4Mj0iMTk5IiB5Mj0iMTQ3IiBzdHJva2U9IiNiODk0M2UiIHN0cm9rZS13aWR0aD0iMC4xNSIgb3BhY2l0eT0iMC4yIi8+Cjwvc3ZnPg==" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">COSMOS · 宙宇寰星</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">熵增时</h3>
@@ -1436,7 +1446,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWRmMmU4IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTciIHI9IjQzIiBmaWxsPSJub25lIiBzdHJva2U9IiM4YTljN2EiIHN0cm9rZS13aWR0aD0iMC4xMSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjE3MCIgY3k9IjEyMSIgcj0iMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzlhYWM4YSIgc3Ryb2tlLXdpZHRoPSIwLjE1IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9Ijg0IiB5MT0iODAiIHgyPSIyMjkiIHkyPSI4MCIgc3Ryb2tlPSIjNWE3YzRmIiBzdHJva2Utd2lkdGg9IjAuMTIiIG9wYWNpdHk9IjAuMSIvPjxjaXJjbGUgY3g9IjE0MCIgY3k9IjQ4IiByPSIzNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOGE5YzdhIiBzdHJva2Utd2lkdGg9IjAuMDgiIG9wYWNpdHk9IjAuMDgiIHN0cm9rZS1kYXNoYXJyYXk9IjggNyIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4wIiBsZXR0ZXItc3BhY2luZz0iNiIgZmlsbD0iIzVhN2M0ZiIgb3BhY2l0eT0iMC4zNSI+5paw5pe25Luj6L+B5rWBPC90ZXh0PjxsaW5lIHgxPSI3MiIgeTE9IjE0NyIgeDI9IjIxMiIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=" alt="Coming Soon"></div>
+<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 岁时坐标</span><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWRmMmU4IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTciIHI9IjQzIiBmaWxsPSJub25lIiBzdHJva2U9IiM4YTljN2EiIHN0cm9rZS13aWR0aD0iMC4xMSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjE3MCIgY3k9IjEyMSIgcj0iMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzlhYWM4YSIgc3Ryb2tlLXdpZHRoPSIwLjE1IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9Ijg0IiB5MT0iODAiIHgyPSIyMjkiIHkyPSI4MCIgc3Ryb2tlPSIjNWE3YzRmIiBzdHJva2Utd2lkdGg9IjAuMTIiIG9wYWNpdHk9IjAuMSIvPjxjaXJjbGUgY3g9IjE0MCIgY3k9IjQ4IiByPSIzNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOGE5YzdhIiBzdHJva2Utd2lkdGg9IjAuMDgiIG9wYWNpdHk9IjAuMDgiIHN0cm9rZS1kYXNoYXJyYXk9IjggNyIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4wIiBsZXR0ZXItc3BhY2luZz0iNiIgZmlsbD0iIzVhN2M0ZiIgb3BhY2l0eT0iMC4zNSI+5paw5pe25Luj6L+B5rWBPC90ZXh0PjxsaW5lIHgxPSI3MiIgeTE9IjE0NyIgeDI9IjIxMiIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">SEASONS · 四季所生</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">新时代迁流</h3>
@@ -1447,7 +1457,7 @@ html = f'''<!DOCTYPE html>
 <div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
 <span class="corner c-tl"></span><span class="corner c-br"></span>
 <div class="frag-card-inner">
-<div class="frag-img-wrap"><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWRmMGY1IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjY5IiBjeT0iNzkiIHI9IjU0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5MGEwYWMiIHN0cm9rZS13aWR0aD0iMC4xOCIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjEwNiIgcj0iMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2IwYmNjOCIgc3Ryb2tlLXdpZHRoPSIwLjE4IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9IjEwNSIgeTE9IjEyMiIgeDI9IjIwNyIgeTI9IjEyMiIgc3Ryb2tlPSIjNzU4NTk1IiBzdHJva2Utd2lkdGg9IjAuMTIiIG9wYWNpdHk9IjAuMSIvPjxjaXJjbGUgY3g9IjE3NyIgY3k9IjY5IiByPSI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOTBhMGFjIiBzdHJva2Utd2lkdGg9IjAuMDgiIG9wYWNpdHk9IjAuMDgiIHN0cm9rZS1kYXNoYXJyYXk9IjcgNSIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4yIiBsZXR0ZXItc3BhY2luZz0iNSIgZmlsbD0iIzc1ODU5NSIgb3BhY2l0eT0iMC4zNSI+6Ie05paw55SfPC90ZXh0PjxsaW5lIHgxPSI4MyIgeTE9IjE0NyIgeDI9IjE5MCIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=" alt="Coming Soon"></div>
+<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 未来首句</span><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWRmMGY1IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjY5IiBjeT0iNzkiIHI9IjU0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5MGEwYWMiIHN0cm9rZS13aWR0aD0iMC4xOCIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjEwNiIgcj0iMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2IwYmNjOCIgc3Ryb2tlLXdpZHRoPSIwLjE4IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9IjEwNSIgeTE9IjEyMiIgeDI9IjIwNyIgeTI9IjEyMiIgc3Ryb2tlPSIjNzU4NTk1IiBzdHJva2Utd2lkdGg9IjAuMTIiIG9wYWNpdHk9IjAuMSIvPjxjaXJjbGUgY3g9IjE3NyIgY3k9IjY5IiByPSI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOTBhMGFjIiBzdHJva2Utd2lkdGg9IjAuMDgiIG9wYWNpdHk9IjAuMDgiIHN0cm9rZS1kYXNoYXJyYXk9IjcgNSIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4yIiBsZXR0ZXItc3BhY2luZz0iNSIgZmlsbD0iIzc1ODU5NSIgb3BhY2l0eT0iMC4zNSI+6Ie05paw55SfPC90ZXh0PjxsaW5lIHgxPSI4MyIgeTE9IjE0NyIgeDI9IjE5MCIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=" alt="Coming Soon"></div>
 <div class="frag-info">
 <p class="frag-num">AFTER · 雨后</p>
 <h3 class="frag-name-en" style="font-size:1.75rem">致新生</h3>
