@@ -953,6 +953,10 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-digi-btn{display:inline-flex;align-items:center;padding:.3rem .65rem;border-radius:100px;border:1px solid rgba(184,148,62,.12);background:rgba(255,253,250,.2);color:var(--ink3);font-family:'Noto Serif SC',serif;font-size:.52rem;cursor:none;transition:all .35s;letter-spacing:.04em;pointer-events:none;opacity:.45}
 .blend-digi-btn.ready{pointer-events:auto;opacity:1;color:var(--gold);border-color:rgba(184,148,62,.25);background:rgba(255,253,250,.35);cursor:none}
 .blend-digi-btn.ready:hover{color:var(--gold-d);border-color:var(--gold);background:rgba(255,253,250,.5)}
+.blend-name-row{max-width:500px;margin:0 auto;padding:.3rem 0}
+.blend-name-input{width:100%;padding:.45rem .8rem;font-family:"Noto Serif SC",serif;font-size:.68rem;color:var(--ink);background:rgba(255,253,250,.35);border:1px solid rgba(184,148,62,.12);border-radius:100px;outline:none;text-align:center;letter-spacing:.05em;transition:all .3s}
+.blend-name-input:focus{border-color:var(--gold);background:rgba(255,253,250,.5)}
+.blend-name-input::placeholder{color:var(--ink3);opacity:.4;letter-spacing:.03em}
 
 /* ══ 下雨动画 ══ */
 .blend-rain-cloud{position:absolute;top:-60px;left:50%;transform:translateX(-50%);z-index:10;pointer-events:none;opacity:0;transition:opacity .3s}
@@ -1734,7 +1738,7 @@ origUpdateDisplay2();
 var cnt=Object.keys(selected).length;
 var ready=totalPercent===100&&cnt>=2&&cnt<=8;
 if(digitalSaveBtn){if(ready)digitalSaveBtn.classList.add('ready');else digitalSaveBtn.classList.remove('ready');}
-if(digitalLoadBtn){if(ready)digitalLoadBtn.classList.add('ready');else digitalLoadBtn.classList.remove('ready');}
+
 };
 
 // Save: encode & copy (no name required)
@@ -2224,7 +2228,7 @@ html = f'''<!DOCTYPE html>
 </div>
 <div class="blend-wrap" id="blendWrap">
 <div class="blend-ingredient-table" id="blendCatContainer"></div>
-<div class="blend-total-strip"><div class="blend-total-pct-wrap"><span class="blend-total-label">瓶中</span><span class="blend-total" id="blendTotal">0%</span></div><div class="blend-digi-btns"><button class="blend-digi-btn" id="blendDigitalSaveBtn"><span>弥留数码雨</span></button><button class="blend-digi-btn" id="blendDigitalLoadBtn"><span>共淋数码雨</span></button></div></div>
+<div class="blend-total-strip"><div class="blend-total-pct-wrap"><span class="blend-total-label">瓶中</span><span class="blend-total" id="blendTotal">0%</span></div><div class="blend-digi-btns"><button class="blend-digi-btn" id="blendDigitalSaveBtn"><span>弥留数码雨</span></button><button class="blend-digi-btn ready" id="blendDigitalLoadBtn"><span>共淋数码雨</span></button></div></div>
 <div class="blend-bottle-section">
 <div class="blend-bottle">
 <div class="blend-rain-cloud" id="blendRainCloud"><svg viewBox="0 0 70 40"><ellipse cx="22" cy="22" rx="14" ry="9" fill="rgba(184,148,62,.15)"/><ellipse cx="35" cy="18" rx="18" ry="11" fill="rgba(184,148,62,.2)"/><ellipse cx="50" cy="23" rx="13" ry="8" fill="rgba(184,148,62,.12)"/><line x1="18" y1="28" x2="17" y2="36" stroke="rgba(212,182,96,.4)" stroke-width=".8" stroke-linecap="round"/><line x1="28" y1="26" x2="28" y2="38" stroke="rgba(212,182,96,.5)" stroke-width="1" stroke-linecap="round"/><line x1="35" y1="24" x2="35" y2="37" stroke="rgba(212,182,96,.6)" stroke-width="1.2" stroke-linecap="round"/><line x1="42" y1="26" x2="43" y2="36" stroke="rgba(212,182,96,.4)" stroke-width=".9" stroke-linecap="round"/><line x1="52" y1="28" x2="51" y2="35" stroke="rgba(212,182,96,.35)" stroke-width=".7" stroke-linecap="round"/></svg></div>
@@ -2251,6 +2255,7 @@ html = f'''<!DOCTYPE html>
 <button class="blend-method-btn" data-method="conc">浓缩<span class="mh-en">Concentrate</span></button>
 </div>
 
+<div class="blend-name-row"><input class="blend-name-input" id="blendNameInput" placeholder="为你的雨命名..." maxlength="20"></div>
 <div class="blend-submit-wrap"><button class="blend-submit" id="blendSubmit">降下这场雨</button></div>
 </div>
 </div>
