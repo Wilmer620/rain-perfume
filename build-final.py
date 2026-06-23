@@ -1744,7 +1744,9 @@ if(digitalSaveBtn){if(ready)digitalSaveBtn.classList.add('ready');else digitalSa
 // Save: encode & copy (no name required)
 if(digitalSaveBtn){digitalSaveBtn.addEventListener('click',function(){
 if(!this.classList.contains('ready'))return;
+var blendName=document.getElementById('blendNameInput');
 var data={i:{},m:savedMethods||[]};
+if(blendName&&blendName.value.trim())data.n=blendName.value.trim();
 Object.keys(selected).forEach(function(k){data.i[parseInt(k)]=selected[parseInt(k)];});
 var code=btoa(unescape(encodeURIComponent(JSON.stringify(data))));
 navigator.clipboard.writeText(code).then(function(){
@@ -1776,6 +1778,7 @@ Object.keys(data.i).forEach(function(k){selected[parseInt(k)]=data.i[k];});
 document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.remove('active');});
 if(selectedMethods){selectedMethods.forEach(function(m){var btn=document.querySelector('.blend-method-btn[data-method="'+m+'"]');if(btn)btn.classList.add('active');});}
 buildCatGrid();renderFormula();
+var bn2=document.getElementById('blendNameInput');if(bn2&&data.n)bn2.value=data.n;
 resultEl.classList.remove('show');resultShown=false;
 readDialog.classList.remove('open');
 var sr=document.getElementById('simRain');if(sr)window.scrollTo({top:sr.offsetTop-80,behavior:'smooth'});
@@ -1795,6 +1798,7 @@ else{selectedMethods=[];}
 document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.remove('active');});
 if(savedMethods){savedMethods.forEach(function(m){var btn=document.querySelector('.blend-method-btn[data-method="'+m+'"]');if(btn)btn.classList.add('active');});}
 buildCatGrid();renderFormula();
+var bn2=document.getElementById('blendNameInput');if(bn2&&data.n)bn2.value=data.n;
 resultEl.classList.remove('show');resultShown=false;
 resetBtn.classList.remove('show');
 var sr=document.getElementById('simRain');if(sr)window.scrollTo({top:sr.offsetTop-80,behavior:'smooth'});
