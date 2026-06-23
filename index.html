@@ -474,6 +474,13 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-slot-del{width:26px;height:26px;border:none;background:transparent;color:var(--ink3);font-size:.9rem;cursor:none;border-radius:50%;transition:all .3s;display:flex;align-items:center;justify-content:center}
 .blend-slot-del:hover{color:#c0392b;background:rgba(192,57,43,.06)}
 .blend-empty{text-align:center;color:var(--ink3);font-size:.62rem;padding:1.5rem;letter-spacing:.05em;font-family:'Noto Serif SC',serif}
+.blend-methods{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;padding:.6rem 0}
+.blend-methods-label{width:100%;text-align:center;font-family:'Noto Serif SC',serif;font-size:.6rem;color:var(--ink3);letter-spacing:.06em;margin-bottom:.2rem}
+.blend-method-btn{padding:.35rem .75rem;border-radius:100px;border:1px solid rgba(184,148,62,.12);background:rgba(255,253,250,.2);color:var(--ink3);font-family:'Noto Serif SC',serif;font-size:.6rem;cursor:none;transition:all .3s;letter-spacing:.04em}
+.blend-method-btn:hover{border-color:rgba(184,148,62,.3);color:var(--ink)}
+.blend-method-btn.active{border-color:var(--gold);background:rgba(184,148,62,.08);color:var(--gold-d)}
+.blend-method-btn .mh-en{display:block;font-family:'Inter',sans-serif;font-size:.42rem;opacity:.4;letter-spacing:.03em}
+
 
 /* ══ 提交按钮 ══ */
 .blend-submit-wrap{display:flex;justify-content:center;padding:.5rem 0}
@@ -1412,6 +1419,15 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 </div>
 <div class="blend-formula-strip">
 <div class="blend-formula" id="blendFormula"></div>
+<div class="blend-methods" id="blendMethods">
+<div class="blend-methods-label">制雨之法（可选，不影响结果）</div>
+<button class="blend-method-btn" data-method="roast">煎炒<span class="mh-en">Roast</span></button>
+<button class="blend-method-btn" data-method="distill">蒸馏<span class="mh-en">Distill</span></button>
+<button class="blend-method-btn" data-method="filter">过滤<span class="mh-en">Filter</span></button>
+<button class="blend-method-btn" data-method="purify">提纯<span class="mh-en">Purify</span></button>
+<button class="blend-method-btn" data-method="conc">浓缩<span class="mh-en">Concentrate</span></button>
+</div>
+
 <div class="blend-submit-wrap"><button class="blend-submit" id="blendSubmit">降下这场雨</button></div>
 </div>
 </div>
@@ -1751,7 +1767,7 @@ var THEMES=[
 {name:"雨后",en:"After Rain",desc:"坠落、漂流、触地——雨的生命只有三秒，但雨的<em>意义</em>在触地之后才开始。",scene:"雨停了。你低头看见地上的水洼——里面倒映着刚才那朵云、刚才那道闪电、刚才那个在雨里没有跑的人。雨已经结束了，但雨<em>做过的每一件事</em>都还留在这里。",rain:"这是一场<em>已完成</em>的雨。它落完了，但它改变的一切——还在继续。"},
 ];
 
-var selected={},selectedOrder=[],lastModifiedIdx=null,totalPercent=0,resultShown=false;
+var selected={},selectedOrder=[],lastModifiedIdx=null,totalPercent=0,resultShown=false;var selectedMethods=[];
 var catContainer=document.getElementById("blendCatContainer");
 var bottleFill=document.getElementById("blendBottleFill");
 var bottlePct=document.getElementById("blendBottlePct");
@@ -1928,6 +1944,14 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeOverla
 
 // Guide
 if(guideBtn)guideBtn.addEventListener('click',function(){guideEl.classList.toggle('open');});
+// Method toggle
+var methodBtns=document.querySelectorAll('.blend-method-btn');
+methodBtns.forEach(function(btn){btn.addEventListener('click',function(){
+var m=this.dataset.method;this.classList.toggle('active');
+if(this.classList.contains('active')){if(selectedMethods.indexOf(m)<0)selectedMethods.push(m);}
+else{selectedMethods=selectedMethods.filter(function(x){return x!==m;});}
+});});
+
 
 // ====== EVALUATION ENGINE v3 ======
 submitBtn.addEventListener('click',function(){
@@ -1962,9 +1986,13 @@ rTone.textContent=tone;
 var sorted=Object.entries(selected).sort(function(a,b){return b[1]-a[1];}).slice(0,3);
 var topIngs=sorted.map(function(e){return INGREDIENTS[parseInt(e[0])].cn;});
 var topDesc=sorted.map(function(e){var d=INGREDIENTS[parseInt(e[0])].desc;return d.replace(/[，。；]/g,'').slice(0,28);});
+var methodNames={roast:"煎炒",distill:"蒸馏",filter:"过滤",purify:"提纯",conc:"浓缩"};
+var methodDesc={roast:"以火<em>煎炒</em>——唤醒香料中最原始的能量",distill:"以蒸汽<em>蒸馏</em>——只取最纯净的那一滴",filter:"以层层纱布<em>过滤</em>——滤去杂质留下灵魂",purify:"以时间<em>提纯</em>——让每一味都回到自己的本质",conc:"以慢火<em>浓缩</em>——将多余的雨蒸发让香气更密集"};
+var methodText='';if(selectedMethods.length>0){methodText='。制雨之法：';selectedMethods.forEach(function(m,i){methodText+=methodDesc[m];if(i<selectedMethods.length-1)methodText+='，';else methodText+='。';});}
+
 var moodWords=["清澈","温和","锐利","醇厚","轻盈","暗沉","明亮","深邃","柔软","坚定","清冷","温暖","湿润","干燥","透明","稠密"];
 var mood=moodWords[Math.floor(Math.random()*moodWords.length)];
-var copy='以<em>'+tone+'</em>为骨。「'+topIngs[0]+'」在前——'+topDesc[0]+'；「'+topIngs[1]+'」在中——'+topDesc[1]+'；「'+topIngs[2]+'」在最后——'+topDesc[2]+'。它是一场<em>'+mood+'</em>的雨，属于<em>'+theme.name+'</em>的天地。';
+var copy='以<em>'+tone+'</em>为骨。「'+topIngs[0]+'」在前——'+topDesc[0]+'；「'+topIngs[1]+'」在中——'+topDesc[1]+'；「'+topIngs[2]+'」在最后——'+topDesc[2]+methodText+'。它是一场<em>'+mood+'</em>的雨，属于<em>'+theme.name+'</em>的天地。';
 rText.innerHTML=copy;
 
 // --- Step D: Theme scene ---
