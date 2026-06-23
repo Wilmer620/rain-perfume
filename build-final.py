@@ -1373,7 +1373,7 @@ var THEMES=[
 ];
 
 var selected={},selectedOrder=[],lastModifiedIdx=null,totalPercent=0,resultShown=false;var selectedMethods=[];
-var catContainer=document.getElementById("blendCatContainer");
+var wrap=document.getElementById("blendWrap");var catContainer=document.getElementById("blendCatContainer");
 var bottleFill=document.getElementById("blendBottleFill");
 var totalEl=document.getElementById("blendTotal");
 var formulaEl=document.getElementById("blendFormula");
