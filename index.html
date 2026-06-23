@@ -494,10 +494,10 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-r-scene{font-family:'Noto Serif SC',serif;font-size:.72rem;color:var(--ink);line-height:2;letter-spacing:.04em;text-align:center;font-style:italic;padding:.8rem 1rem;border-top:1px solid rgba(184,148,62,.06);margin-top:.6rem}
 
 /* ══ 操作指引 ══ */
-.blend-guide-btn{position:absolute;top:0;right:0;padding:.38rem .8rem;border-radius:100px;border:1px solid rgba(184,148,62,.25);background:rgba(255,253,250,.45);color:var(--gold);font-size:.6rem;cursor:none;display:flex;align-items:center;gap:.35rem;transition:all .3s;z-index:2;font-family:'Noto Serif SC',serif;letter-spacing:.05em}
-.blend-guide-btn:hover{border-color:var(--gold-d);color:var(--gold-d);background:rgba(255,253,250,.55);transform:translateY(-1px);box-shadow:0 2px 10px rgba(184,148,62,.12)}
-.blend-guide-icon{font-weight:700;font-size:.75rem;line-height:1}
-.blend-guide{display:none;position:absolute;top:44px;right:0;width:280px;background:rgba(255,253,250,.96);backdrop-filter:blur(14px);border:1px solid rgba(184,148,62,.12);border-radius:10px;padding:1rem 1.2rem;z-index:10;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.blend-guide-btn{position:fixed;bottom:2rem;right:1.5rem;padding:.35rem .7rem;border-radius:100px;border:1px solid rgba(184,148,62,.2);background:rgba(253,249,239,.85);backdrop-filter:blur(10px);color:var(--gold);font-size:.55rem;cursor:none;display:flex;align-items:center;gap:.3rem;transition:all .3s;z-index:99;font-family:'Noto Serif SC',serif;letter-spacing:.04em}
+.blend-guide-btn:hover{border-color:var(--gold-d);color:var(--gold-d);background:rgba(253,249,239,.95);transform:translateY(-2px);box-shadow:0 4px 14px rgba(184,148,62,.15)}
+.blend-guide-icon{font-weight:700;font-size:.7rem;line-height:1}
+.blend-guide{display:none;position:fixed;bottom:5.5rem;right:1.5rem;width:260px;background:rgba(253,249,239,.97);backdrop-filter:blur(14px);border:1px solid rgba(184,148,62,.12);border-radius:10px;padding:.9rem 1.1rem;z-index:99;box-shadow:0 8px 30px rgba(0,0,0,.06)}
 .blend-guide.open{display:block}
 .blend-guide h4{font-family:'Noto Serif SC',serif;font-size:.7rem;color:var(--gold);margin:0 0 .5rem;letter-spacing:.06em}
 .blend-guide ol{margin:0;padding:0 0 0 1rem;font-size:.58rem;color:var(--ink2);line-height:2.2;letter-spacing:.03em}
@@ -517,7 +517,8 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-overlay-header{padding:2.5rem 1rem 1rem}
 .blend-result{flex-direction:column;align-items:center}
 .blend-r-row{flex-direction:column}
-.blend-guide{width:240px;right:auto;left:0}
+.blend-guide{width:220px;bottom:5rem;right:.8rem}
+.blend-guide-btn{bottom:1.2rem;right:.5rem;padding:.3rem .55rem;font-size:.5rem}
 }
 </style>
 </head>
@@ -1382,7 +1383,6 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="sec-label reveal"><p class="num">09</p><h2 class="title">模拟降雨</h2><p class="sec-en">Simulate Rain</p></div>
 <section class="blend-studio" id="simRain">
 <p class="blend-intro reveal">雨是天地间最古老的<em>调香师</em>——它将花香从枝头打落、将树脂从树皮泡出、将泥土的呼吸蒸成蒸汽。<br>在这里，我们开展<em>模拟降雨</em>测试。从十类香料中挑选你的原料，为每一味设定比例，<br>直到瓶中恰好是<em>百分之一百</em>——然后降下这场只属于你的雨。</p>
-<div class="blend-wrap" id="blendWrap" style="position:relative">
 <button class="blend-guide-btn" id="blendGuideBtn"><span class="blend-guide-icon">?</span><span class="blend-guide-label">如何调配</span></button>
 <div class="blend-guide" id="blendGuide">
 <h4>如何调配你的雨</h4>
@@ -1392,6 +1392,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <li>总比例恰好<em style="color:var(--gold);font-style:normal">100%</em>后点击「降下这场雨」</li>
 </ol>
 </div>
+<div class="blend-wrap" id="blendWrap">
 <div class="blend-ingredient-table" id="blendCatContainer"></div>
 <div class="blend-bottle-section">
 <div class="blend-bottle">
@@ -1415,7 +1416,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="blend-r-card"><p class="blend-r-label">香气描摹</p><p class="blend-r-text" id="blendRText"></p></div>
 </div>
 <div class="blend-r-card"><p class="blend-r-label">雨落场景</p><p class="blend-r-scene" id="blendRScene"></p></div>
-<div class="blend-r-card"><p class="blend-r-label">最接近的 RAIN 产品</p><p class="blend-r-match" id="blendRMatch"></p><p class="blend-r-why" id="blendRWhy"></p></div>
+<div class="blend-r-card"><p class="blend-r-label">RAIN 中与之最近的那场雨</p><p class="blend-r-match" id="blendRMatch"></p><p class="blend-r-why" id="blendRWhy"></p></div>
 </div>
 </div>
 </section>
@@ -1965,7 +1966,7 @@ rScene.innerHTML=theme.rain+'<br><br>'+theme.scene;
 // --- Step E: Best product match ---
 var bestProd=null,bestProdSim=-1;
 PRODUCTS.forEach(function(prod){var dot=0,nU2=0,nP=0;for(var i=0;i<10;i++){dot+=userVec[i]*prod.vec[i];nU2+=userVec[i]*userVec[i];nP+=prod.vec[i]*prod.vec[i];}nU2=Math.sqrt(nU2);nP=Math.sqrt(nP);if(nU2>0&&nP>0){var sim=dot/(nU2*nP);if(sim>bestProdSim){bestProdSim=sim;bestProd=prod;}}});
-if(bestProd){rMatch.innerHTML='<span class="bm-en">最接近的 RAIN 产品</span>'+bestProd.cn+' · <em>'+bestProd.en+'</em><br><small style="color:var(--ink3);font-size:.55rem">'+bestProd.series+'</small>';rWhy.innerHTML=bestProd.desc;}
+if(bestProd){rMatch.innerHTML=bestProd.cn+' · <em>'+bestProd.en+'</em><br><small style="color:var(--ink3);font-size:.55rem">'+bestProd.series+'</small>';rWhy.innerHTML=bestProd.desc;}
 
 resultEl.classList.add('show');resultShown=true;
 setTimeout(function(){resultEl.scrollIntoView({behavior:'smooth',block:'center'});},200);
