@@ -954,7 +954,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-bottle-fill::after{content:'';position:absolute;top:-8px;left:-20%;width:140%;height:16px;background:rgba(255,253,250,.2);border-radius:50%;animation:waveSlosh 2.6s ease-in-out infinite}
 @keyframes waveSlosh{0%,100%{transform:translateY(0) rotate(-1deg)}25%{transform:translateY(-4px) rotate(2deg)}50%{transform:translateY(0) rotate(1deg)}75%{transform:translateY(-3px) rotate(-2deg)}}
 .blend-bottle-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;opacity:.35;pointer-events:none}
-.blend-bottle-logo svg{width:70px;height:auto}
+.blend-bottle-logo svg{width:280px;height:auto}
 
 .blend-bottle-label{text-align:center;margin-top:.8rem;font-family:'Noto Serif SC',serif;font-size:.7rem;color:var(--ink3);letter-spacing:.08em}
 
@@ -1018,7 +1018,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-bottle-body{width:110px;height:200px;border-radius:20px 20px 30px 30px}
 .blend-bottle-neck{width:30px;height:34px}
 .blend-bottle-cap{width:40px;height:20px}
-.blend-bottle-logo svg{width:50px}
+.blend-bottle-logo svg{width:200px}
 .blend-cat-grid{grid-template-columns:repeat(auto-fill,minmax(75px,1fr));gap:.35rem}
 .blend-cat-card-head{padding:.5rem .25rem}
 .blend-cat-card-head .cat-cn{font-size:.65rem}
@@ -1411,7 +1411,7 @@ document.querySelector('.dl-minus').addEventListener('click',function(){if(pct>1
 document.querySelector('.dl-plus').addEventListener('click',function(){if(pct<100){pct+=1;if(pct>100)pct=100;}updatePct();});
 document.getElementById('dlConfirm').addEventListener('click',function(){
 var cnt=Object.keys(selected).length;
-if(cnt>=8){closeDialog();return;}
+if(cnt>=8){closeDialog();closeOverlay();return;}
 selected[dialogIngIdx]=pct;
 if(selectedOrder.indexOf(dialogIngIdx)<0)selectedOrder.push(dialogIngIdx);
 closeDialog();
@@ -1419,7 +1419,7 @@ renderFormula();
 buildCatGrid();
 if(resultShown){resultEl.classList.remove('show');resultShown=false;}
 });
-document.getElementById('dlCancel').addEventListener('click',closeDialog);
+document.getElementById('dlCancel').addEventListener('click',function(){closeDialog();closeOverlay();});
 }
 
 function closeDialog(){
@@ -1981,7 +1981,7 @@ html = f'''<!DOCTYPE html>
 <div class="blend-bottle-neck"></div>
 <div class="blend-bottle-body">
 <div class="blend-bottle-fill" id="blendBottleFill" style="height:0%"></div>
-<div class="blend-bottle-logo"><svg viewBox="0 0 260 64" width="100" height="auto"><line x1="122" y1="4" x2="122" y2="18" stroke="var(--gold)" stroke-width=".7" stroke-linecap="round"/><line x1="130" y1="2" x2="130" y2="20" stroke="var(--gold)" stroke-width=".9" stroke-linecap="round"/><line x1="138" y1="6" x2="138" y2="16" stroke="var(--gold)" stroke-width=".5" stroke-linecap="round"/><circle cx="130" cy="1" r=".8" fill="var(--gold)"/><text x="130" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="10" fill="var(--gold)">RAIN</text><line x1="28" y1="43.5" x2="232" y2="43.5" stroke="var(--gold)" stroke-width=".25" stroke-linecap="round"/><text x="130" y="53" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-weight="300" font-size="6" letter-spacing="6" fill="var(--gold)" opacity=".4">PERFUME AS RAIN</text></svg></div>
+<div class="blend-bottle-logo"><svg viewBox="0 0 260 64" width="400" height="auto"><line x1="122" y1="4" x2="122" y2="18" stroke="var(--gold)" stroke-width=".7" stroke-linecap="round"/><line x1="130" y1="2" x2="130" y2="20" stroke="var(--gold)" stroke-width=".9" stroke-linecap="round"/><line x1="138" y1="6" x2="138" y2="16" stroke="var(--gold)" stroke-width=".5" stroke-linecap="round"/><circle cx="130" cy="1" r=".8" fill="var(--gold)"/><text x="130" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="10" fill="var(--gold)">RAIN</text><line x1="28" y1="43.5" x2="232" y2="43.5" stroke="var(--gold)" stroke-width=".25" stroke-linecap="round"/><text x="130" y="53" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-weight="300" font-size="6" letter-spacing="6" fill="var(--gold)" opacity=".4">PERFUME AS RAIN</text></svg></div>
 </div>
 <div class="blend-bottle-label">你的雨</div>
 </div>
