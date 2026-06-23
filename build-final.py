@@ -1604,13 +1604,13 @@ savedSelectedOrder=selectedOrder.slice();
 savedMethods=selectedMethods.slice();
 
 // === Step 1: Clear UI ===
-formulaEl.innerHTML='';
-submitBtn.classList.remove('ready');
+formulaEl.style.opacity='0';formulaEl.style.transition='opacity .5s ease';
+submitBtn.style.opacity='0';submitBtn.style.transition='opacity .4s ease';
+setTimeout(function(){formulaEl.innerHTML='';submitBtn.classList.remove('ready');},500);
 
-// === Step 2: Center bottle + enlarge ===
 wrap.classList.add('ritual-active');
 
-// === Step 3: Vortex swirl — liquid mixes in bottle (1.5s) ===
+// === Step 2: Vortex swirl — liquid mixes in bottle (1.5s) ===
 var blendVortex=document.getElementById('blendVortex');
 blendVortex.style.animation='none';
 blendVortex.offsetHeight;
@@ -1625,34 +1625,46 @@ blendVortex.style.opacity='0';
 var rainOverlay=document.getElementById('blendRainOverlay');
 var rainCanvas=document.getElementById('blendRainCanvas');
 if(rainOverlay&&rainCanvas){
+rainOverlay.style.transition='opacity 1.5s ease-in';
 rainOverlay.classList.add('active');
 rainCanvas.width=window.innerWidth;rainCanvas.height=window.innerHeight;
 var rctx=rainCanvas.getContext('2d');
-var rDrops=[];for(var i=0;i<200;i++){rDrops.push({x:Math.random()*rainCanvas.width,y:Math.random()*rainCanvas.height,speed:8+Math.random()*18,len:15+Math.random()*30,opacity:.15+Math.random()*.35});}
-function drawHeavyRain(){
+var rDrops=[];var maxDrops=200;for(var i=0;i<maxDrops;i++){rDrops.push({x:Math.random()*rainCanvas.width,y:Math.random()*rainCanvas.height,speed:3+Math.random()*6,len:25+Math.random()*45,opacity:0,targetOpacity:.06+Math.random()*.14,phase:Math.random()*Math.PI*2,wobble:(Math.random()-.5)*.5});}
+var rainT0=performance.now();
+function drawRain(now){
+var tr=(now-rainT0)/1000;
+var fade=Math.min(1,tr/2);
 rctx.clearRect(0,0,rainCanvas.width,rainCanvas.height);
-rctx.strokeStyle='rgba(184,148,62,.3)';
-rDrops.forEach(function(d){rctx.beginPath();rctx.moveTo(d.x,d.y);rctx.lineTo(d.x-1,d.y+d.len);rctx.lineWidth=1;rctx.stroke();d.y+=d.speed;if(d.y>rainCanvas.height+30){d.y=-30;d.x=Math.random()*rainCanvas.width;}});
-window._blendRainFrame=requestAnimationFrame(drawHeavyRain);
+rDrops.forEach(function(d){
+d.opacity=Math.min(d.targetOpacity,d.targetOpacity*fade);
+var wx=Math.sin(now*.0008+d.phase)*d.wobble;
+rctx.beginPath();
+rctx.strokeStyle='rgba(184,148,62,'+d.opacity+')';
+rctx.moveTo(d.x+wx,d.y);
+rctx.lineTo(d.x+wx-.4,d.y+d.len);
+rctx.lineWidth=.7;
+rctx.stroke();
+d.y+=d.speed;
+if(d.y>rainCanvas.height+d.len){d.y=-d.len-10;d.x=Math.random()*rainCanvas.width;}
+});
+window._blendRainFrame=requestAnimationFrame(drawRain);
 }
-drawHeavyRain();
+window._blendRainFrame=requestAnimationFrame(drawRain);
 }
 
 // === Step 5: Drain bottle liquid over 2-4s ===
-var drainTime=2000+Math.random()*2000;
+var totalDrain=2500+Math.random()*1000;
+var drainSteps=50;
+var stepInterval=totalDrain/drainSteps;
 var startPct=totalPercent;
-var startTime=performance.now();
-function drainLoop(now){
-var elapsed=now-startTime;
-var progress=Math.min(1,elapsed/drainTime);
-var eased=1-Math.pow(1-progress,2);
-var currentPct=Math.round(startPct*(1-eased));
+var stepsDone=0;
+var drainTimer=setInterval(function(){
+stepsDone++;
+var currentPct=Math.round(startPct*(1-stepsDone/drainSteps));
 bottleFill.style.height=currentPct+'%';
 totalEl.textContent=currentPct+'%';
-if(progress<1){requestAnimationFrame(drainLoop);}
-else{finishRitual();}
-}
-requestAnimationFrame(drainLoop);
+if(stepsDone>=drainSteps){clearInterval(drainTimer);finishRitual();}
+},stepInterval);
 
 window._blendEvalData={totalPercent:totalPercent,selected:JSON.parse(JSON.stringify(selected))};
 },1500);
@@ -1718,7 +1730,11 @@ rScene.innerHTML=theme.rain+'<br><br>'+theme.scene;
 // --- Step E: Best product match ---
 var bestProd=null,bestProdSim=-1;
 PRODUCTS.forEach(function(prod){var dot=0,nU2=0,nP=0;for(var i=0;i<10;i++){dot+=userVec[i]*prod.vec[i];nU2+=userVec[i]*userVec[i];nP+=prod.vec[i]*prod.vec[i];}nU2=Math.sqrt(nU2);nP=Math.sqrt(nP);if(nU2>0&&nP>0){var sim=dot/(nU2*nP);if(sim>bestProdSim){bestProdSim=sim;bestProd=prod;}}});
-if(bestProd){rMatch.innerHTML=bestProd.cn+' · <em>'+bestProd.en+'</em><br><small style="color:var(--ink3);font-size:.55rem">'+bestProd.series+'</small>';rWhy.innerHTML=bestProd.desc;}
+if(bestProd){rMatch.innerHTML=bestProd.cn+' · <em>'+bestProd.en+'</em><br><small style="color:var(--ink3);font-size:.55rem">'+bestProd.series+'</small>';
+var matchingIngs=[];Object.keys(data).forEach(function(k){var idx=parseInt(k);var ing=INGREDIENTS[idx];if(prod.vec[catMap[ing.cat]]>0)matchingIngs.push(ing.cn);});
+var whyText=bestProd.desc;
+if(matchingIngs.length>0){whyText+='<br><br><span style="font-size:.55rem;color:var(--gold);letter-spacing:.03em">你们共享的香料：</span><br><span style="font-size:.58rem;color:var(--ink2)">'+matchingIngs.slice(0,6).join(' · ')+'</span>';}
+rWhy.innerHTML=whyText;}
 resultEl.classList.add('show');resultShown=true;
 }
 
