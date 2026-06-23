@@ -1039,6 +1039,27 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 
 /* ══ 提交按钮 ══ */
+
+/* ══ 命名 & 数码雨 ══ */
+.blend-name-row{max-width:500px;margin:0 auto;display:flex;gap:.5rem;align-items:center;padding:.3rem 0}
+.blend-name-input{flex:1;padding:.45rem .8rem;font-family:'Noto Serif SC',serif;font-size:.68rem;color:var(--ink);background:rgba(255,253,250,.35);border:1px solid rgba(184,148,62,.12);border-radius:100px;outline:none;text-align:center;letter-spacing:.05em;transition:all .3s}
+.blend-name-input:focus{border-color:var(--gold);background:rgba(255,253,250,.5)}
+.blend-name-input::placeholder{color:var(--ink3);opacity:.4;letter-spacing:.03em}
+.blend-digital-btn{padding:.55rem 1.2rem;font-family:'Noto Serif SC',serif;font-size:.6rem;letter-spacing:.06em;color:var(--gold);background:transparent;border:1px solid rgba(184,148,62,.15);border-radius:100px;cursor:none;transition:all .3s;display:none;white-space:nowrap}
+.blend-digital-btn.show{display:inline-block}
+.blend-digital-btn:hover{color:var(--gold-d);border-color:var(--gold);background:rgba(184,148,62,.06)}
+.blend-read-digital-wrap{display:flex;justify-content:flex-end;padding:0 0 .5rem}
+.blend-read-digital-btn{padding:.35rem .8rem;font-family:'Noto Serif SC',serif;font-size:.55rem;letter-spacing:.05em;color:var(--ink3);background:transparent;border:1px solid rgba(184,148,62,.08);border-radius:100px;cursor:none;transition:all .3s}
+.blend-read-digital-btn:hover{color:var(--gold);border-color:rgba(184,148,62,.2);background:rgba(184,148,62,.04)}
+.blend-read-digital-dialog{display:none;position:fixed;inset:0;z-index:1002;background:rgba(0,0,0,.12);backdrop-filter:blur(6px);align-items:center;justify-content:center}
+.blend-read-digital-dialog.open{display:flex}
+.blend-read-digital-dialog .dialog-card{background:rgba(253,249,239,.98);border:1px solid rgba(184,148,62,.15);border-radius:16px;padding:2rem;text-align:center;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.blend-read-digital-dialog h4{font-family:'Noto Serif SC',serif;font-size:.85rem;color:var(--ink);margin:0 0 .5rem;letter-spacing:.05em}
+.blend-read-digital-dialog textarea{width:100%;height:70px;padding:.6rem;font-family:'Courier New',monospace;font-size:.55rem;color:var(--ink);background:rgba(255,253,250,.5);border:1px solid rgba(184,148,62,.15);border-radius:8px;outline:none;resize:none;margin-bottom:.8rem}
+.blend-read-digital-dialog textarea:focus{border-color:var(--gold)}
+.blend-read-digital-dialog .dl-err{font-size:.55rem;color:#c0392b;margin-bottom:.4rem;display:none}
+.blend-read-digital-dialog .dl-err.show{display:block}
+
 .blend-submit-wrap{display:flex;justify-content:center;padding:.5rem 0}
 .blend-submit{padding:.65rem 3rem;font-family:'Noto Serif SC',serif;font-size:.75rem;letter-spacing:.15em;color:var(--bg);background:var(--gold);border:none;border-radius:100px;cursor:none;transition:all .4s;opacity:.35;pointer-events:none}
 .blend-submit.ready{opacity:1;pointer-events:auto}
@@ -1683,6 +1704,72 @@ rWhy.innerHTML=w;}
 resultEl.classList.add('show');resultShown=true;
 }
 
+
+// ══ 命名 & 数码雨 ══
+var blendName=document.getElementById('blendNameInput');
+var digitalBtn=document.getElementById('blendDigitalBtn');
+
+// Show digital rain button when ready + named
+var origUpdateDisplay=updateDisplay;
+updateDisplay=function(){
+origUpdateDisplay();
+var cnt=Object.keys(selected).length;
+if(totalPercent===100&&cnt>=2&&cnt<=8&&blendName&&blendName.value.trim().length>0){
+digitalBtn.classList.add('show');
+}else{
+digitalBtn.classList.remove('show');
+}
+};
+if(blendName){blendName.addEventListener('input',function(){updateDisplay();});}
+
+// Digital rain: encode and copy
+if(digitalBtn){digitalBtn.addEventListener('click',function(){
+var name=blendName.value.trim();if(!name)return;
+var data={n:name,i:{},m:savedMethods||[]};
+Object.keys(selected).forEach(function(k){data.i[parseInt(k)]=selected[parseInt(k)];});
+var json=JSON.stringify(data);
+var code=btoa(unescape(encodeURIComponent(json)));
+navigator.clipboard.writeText(code).then(function(){
+digitalBtn.textContent='已复制';digitalBtn.style.color='var(--gold-d)';
+setTimeout(function(){digitalBtn.textContent='数码雨';digitalBtn.style.color='';},2000);
+}).catch(function(){
+// Fallback
+var ta=document.createElement('textarea');ta.value=code;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+digitalBtn.textContent='已复制';setTimeout(function(){digitalBtn.textContent='数码雨';},2000);
+});
+});}
+
+// Read digital rain
+var readDialog=document.getElementById('blendReadDigitalDialog');
+var readBtn=document.getElementById('blendReadDigitalBtn');
+var codeTextarea=document.getElementById('blendDigitalCode');
+var codeErr=document.getElementById('blendDigitalError');
+var confirmRead=document.getElementById('blendDigitalConfirm');
+var cancelRead=document.getElementById('blendDigitalCancel');
+if(readBtn){readBtn.addEventListener('click',function(){readDialog.classList.add('open');codeTextarea.value='';codeErr.classList.remove('show');});}
+if(cancelRead){cancelRead.addEventListener('click',function(){readDialog.classList.remove('open');});}
+if(confirmRead){confirmRead.addEventListener('click',function(){
+try{
+var json=decodeURIComponent(escape(atob(codeTextarea.value.trim())));
+var data=JSON.parse(json);
+if(!data.n||!data.i||typeof data.i!=='object')throw new Error();
+// Restore
+selected={};selectedOrder=[];lastModifiedIdx=null;totalPercent=0;
+selectedMethods=data.m||[];
+Object.keys(data.i).forEach(function(k){selected[parseInt(k)]=data.i[k];});
+// Set name
+if(blendName)blendName.value=data.n||'';
+// Restore methods
+document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.remove('active');});
+if(selectedMethods){selectedMethods.forEach(function(m){var btn=document.querySelector('.blend-method-btn[data-method="'+m+'"]');if(btn)btn.classList.add('active');});}
+buildCatGrid();renderFormula();
+resultEl.classList.remove('show');resultShown=false;
+readDialog.classList.remove('open');
+var sr=document.getElementById('simRain');if(sr)window.scrollTo({top:sr.offsetTop-80,behavior:'smooth'});
+}catch(e){codeErr.classList.add('show');}
+});}
+
+
 // RESET BUTTON — simple, direct
 var resetBtn=document.getElementById('blendResetBtn');
 if(resetBtn){resetBtn.addEventListener('click',function(){
@@ -2130,6 +2217,7 @@ html = f'''<!DOCTYPE html>
 <div class="blend-guide-step"><span class="gstep-num">3</span><span>总比例恰好<em>100%</em>时，按下「降下这场雨」</span></div>
 </div>
 </div>
+<div class="blend-read-digital-wrap"><button class="blend-read-digital-btn" id="blendReadDigitalBtn">读取数码雨</button></div>
 <div class="blend-wrap" id="blendWrap">
 <div class="blend-ingredient-table" id="blendCatContainer"></div>
 <div class="blend-total-strip"><span class="blend-total-label">瓶中</span><span class="blend-total" id="blendTotal">0%</span></div>
@@ -2159,6 +2247,7 @@ html = f'''<!DOCTYPE html>
 <button class="blend-method-btn" data-method="conc">浓缩<span class="mh-en">Concentrate</span></button>
 </div>
 
+<div class="blend-name-row"><input class="blend-name-input" id="blendNameInput" placeholder="为你的雨命名..." maxlength="20"><button class="blend-digital-btn" id="blendDigitalBtn">数码雨</button></div>
 <div class="blend-submit-wrap"><button class="blend-submit" id="blendSubmit">降下这场雨</button></div>
 </div>
 </div>
@@ -2177,6 +2266,18 @@ html = f'''<!DOCTYPE html>
 
 <!-- 降雨仪式雨幕 -->
 <div class="blend-rain-overlay" id="blendRainOverlay"><canvas id="blendRainCanvas"></canvas></div>
+
+
+<!-- 读取数码雨对话框 -->
+<div class="blend-read-digital-dialog" id="blendReadDigitalDialog">
+<div class="dialog-card">
+<h4>读取数码雨</h4>
+<p style="font-size:.55rem;color:var(--ink3);margin:0 0 .8rem;letter-spacing:.03em">将你收到的数码雨代码粘贴至下方，即可恢复那场雨的配方。</p>
+<textarea id="blendDigitalCode" placeholder="粘贴数码雨代码..."></textarea>
+<p class="dl-err" id="blendDigitalError">代码无效，请检查后重试。</p>
+<div class="dl-actions"><button class="dl-btn confirm" id="blendDigitalConfirm">读取并恢复</button><button class="dl-btn cancel" id="blendDigitalCancel">取消</button></div>
+</div>
+</div>
 
 <!-- 全屏分类浮层 -->
 <div class="blend-overlay" id="blendOverlay"></div>
