@@ -2135,17 +2135,17 @@ if(rainOverlay)rainOverlay.classList.remove('active');
 wrap.classList.remove('ritual-active');
 bottleFill.style.height='0%';
 totalEl.textContent='0%';
-buildCatGrid();renderFormula();
+// Clear selected BEFORE rebuilding UI
+selected={};selectedOrder=[];lastModifiedIdx=null;totalPercent=0;
+formulaEl.innerHTML='<div class="blend-empty">瓶中雨已降下——配方已清空<br>点击下方「重新模拟」可恢复你刚才的配方</div>';
+buildCatGrid();
 var rb2=document.getElementById('blendResetBtn');
 if(rb2)rb2.classList.add('show');
 if(window._blendEvalData){
-// Clone eval data BEFORE clearing selected (runEvaluation needs it for matching display)
 runEvaluation(window._blendEvalData.selected);
 }
-selected={};selectedOrder=[];lastModifiedIdx=null;totalPercent=0;
 resultEl.scrollIntoView({behavior:'smooth',block:'center'});
 }
-
 function runEvaluation(data){
 if(!data||Object.keys(data).length===0)return;
 var userVec=[0,0,0,0,0,0,0,0,0,0];var catMap={citrus:0,floral:1,fruity:2,green:3,spicy:4,woody:5,resin:6,musk:7,gourmand:8,aquatic:9};
@@ -2199,39 +2199,33 @@ rWhy.innerHTML=whyText;}
 resultEl.classList.add('show');resultShown=true;
 }
 
-// Reset handler - single attachment in IIFE scope
-(function(){
+// Reset handler — inline binding after DOM ready
 var rb=document.getElementById('blendResetBtn');
-if(!rb)return;
+if(rb){
 rb.addEventListener('click',function(){
-if(!savedSelected||Object.keys(savedSelected).length===0)return;
-// Restore formula
+console.log('[RAIN] Reset clicked, savedSelected:',savedSelected);
+if(!savedSelected||Object.keys(savedSelected).length===0){console.log('[RAIN] Reset aborted: no saved data');return;}
 selected=JSON.parse(JSON.stringify(savedSelected));
 selectedOrder=savedSelectedOrder.slice();
 lastModifiedIdx=null;
 totalPercent=0;
-// Restore methods
 if(savedMethods&&savedMethods.length>0){
 selectedMethods=savedMethods.slice();
 document.querySelectorAll('.blend-method-btn').forEach(function(btn){
 if(savedMethods.indexOf(btn.dataset.method)>=0)btn.classList.add('active');
 else btn.classList.remove('active');
 });
-}else{
-selectedMethods=[];
-document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.remove('active');});
-}
-// Rebuild UI
+}else{selectedMethods=[];document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.remove('active');});}
 buildCatGrid();
 renderFormula();
-// Hide results, show form
 resultEl.classList.remove('show');resultShown=false;
 rb.classList.remove('show');
-// Scroll to top of blend section
 var simRain=document.getElementById('simRain');
 if(simRain)window.scrollTo({top:simRain.offsetTop-80,behavior:'smooth'});
+console.log('[RAIN] Reset done, formula restored');
 });
-})();
+console.log('[RAIN] Reset listener attached');
+}else{console.log('[RAIN] Reset button NOT FOUND');}
 
 
 function triggerRainCloud(ingName){
