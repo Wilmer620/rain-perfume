@@ -457,6 +457,21 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-bottle-fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(212,182,96,.7) 0%,rgba(184,148,62,.35) 60%,rgba(152,120,50,.15) 100%);transition:height .6s cubic-bezier(.4,0,.2,1);border-radius:0 0 38px 38px;box-shadow:inset 0 2px 8px rgba(255,253,250,.2);overflow:hidden}
 .blend-bottle-fill::after{content:'';position:absolute;top:-8px;left:-20%;width:140%;height:16px;background:rgba(255,253,250,.2);border-radius:50%;animation:waveSlosh 2.6s ease-in-out infinite}
 @keyframes waveSlosh{0%,100%{transform:translateY(0) rotate(-1deg)}25%{transform:translateY(-4px) rotate(2deg)}50%{transform:translateY(0) rotate(1deg)}75%{transform:translateY(-3px) rotate(-2deg)}}
+.blend-layer-divider{position:absolute;left:0;right:0;height:1px;z-index:5;pointer-events:none;transition:opacity .5s}
+.blend-layer-divider::before{content:'';position:absolute;left:8px;right:8px;top:0;height:1px;background:rgba(184,148,62,.2)}
+.blend-layer-divider.top{top:30%}
+.blend-layer-divider.mid{top:70%}
+.blend-layer-label{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:'Noto Serif SC',serif;font-size:.42rem;color:var(--gold);opacity:.6;letter-spacing:.04em;white-space:nowrap}
+.blend-layer-label.ltop{top:15%}
+.blend-layer-label.lmid{top:50%}
+.blend-layer-label.lbase{top:85%}
+.blend-slot.top-note{border-left:3px solid rgba(212,182,96,.5)}
+.blend-slot.mid-note{border-left:3px solid rgba(184,148,62,.45)}
+.blend-slot.base-note{border-left:3px solid rgba(152,120,50,.4)}
+.blend-slot-layer-tag{font-size:.4rem;font-family:'Noto Serif SC',serif;padding:.08rem .35rem;border-radius:100px;letter-spacing:.04em;display:inline-block;margin-top:.15rem}
+.top-note .blend-slot-layer-tag{color:#b8943e;background:rgba(212,182,96,.1)}
+.mid-note .blend-slot-layer-tag{color:#8b691e;background:rgba(184,148,62,.1)}
+.base-note .blend-slot-layer-tag{color:#6b4e15;background:rgba(152,120,50,.1)}
 .blend-bottle-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;opacity:.35;pointer-events:none}
 .blend-bottle-logo svg{width:280px;height:auto}
 
@@ -522,6 +537,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-bottle-body{width:110px;height:200px;border-radius:20px 20px 30px 30px}
 .blend-bottle-neck{width:30px;height:34px}
 .blend-bottle-cap{width:40px;height:20px}
+.blend-layer-label{font-size:.36rem}
 .blend-bottle-logo svg{width:200px}
 .blend-cat-grid{grid-template-columns:repeat(auto-fill,minmax(75px,1fr));gap:.35rem}
 .blend-cat-card-head{padding:.5rem .25rem}
@@ -1415,7 +1431,10 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="blend-bottle-neck"></div>
 <div class="blend-bottle-body">
 <div class="blend-bottle-fill" id="blendBottleFill" style="height:0%"></div>
-<div class="blend-bottle-logo"><svg viewBox="0 0 260 64" width="400" height="auto"><line x1="122" y1="4" x2="122" y2="18" stroke="var(--gold)" stroke-width=".7" stroke-linecap="round"/><line x1="130" y1="2" x2="130" y2="20" stroke="var(--gold)" stroke-width=".9" stroke-linecap="round"/><line x1="138" y1="6" x2="138" y2="16" stroke="var(--gold)" stroke-width=".5" stroke-linecap="round"/><circle cx="130" cy="1" r=".8" fill="var(--gold)"/><text x="130" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="10" fill="var(--gold)">RAIN</text><line x1="28" y1="43.5" x2="232" y2="43.5" stroke="var(--gold)" stroke-width=".25" stroke-linecap="round"/><text x="130" y="53" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-weight="300" font-size="6" letter-spacing="6" fill="var(--gold)" opacity=".4">PERFUME AS RAIN</text></svg></div>
+<div class="blend-bottle-logo"><svg viewBox="0 0 260 64" width="400" height="auto"><line x1="122" y1="4" x2="122" y2="18" stroke="var(--gold)" stroke-width=".7" stroke-linecap="round"/><line x1="130" y1="2" x2="130" y2="20" stroke="var(--gold)" stroke-width=".9" stroke-linecap="round"/><line x1="138" y1="6" x2="138" y2="16" stroke="var(--gold)" stroke-width=".5" stroke-linecap="round"/><circle cx="130" cy="1" r=".8" fill="var(--gold)"/><text x="130" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="10" fill="var(--gold)">RAIN</text><line x1="28" y1="43.5" x2="232" y2="43.5" stroke="var(--gold)" stroke-width=".25" stroke-linecap="round"/><text x="130" y="53" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-weight="300" font-size="6" letter-spacing="6" fill="var(--gold)" opacity=".4">PERFUME AS RAIN</text></svg><div class="blend-layer-divider top"><span class="blend-layer-label ltop">前 调</span></div>
+<div class="blend-layer-divider mid"><span class="blend-layer-label lmid">中 调</span></div>
+<span class="blend-layer-label lbase">尾 调</span>
+</div>
 </div>
 <div class="blend-bottle-label">你的雨</div>
 </div>
@@ -1858,7 +1877,8 @@ var cnt=Object.keys(selected).length;
 if(cnt>=8){closeDialog();closeOverlay();return;}
 selected[dialogIngIdx]=pct;
 if(selectedOrder.indexOf(dialogIngIdx)<0)selectedOrder.push(dialogIngIdx);
-closeDialog();
+closeDialog();closeOverlay();
+setTimeout(function(){var bottle=document.querySelector('.blend-bottle-section');if(bottle){bottle.scrollIntoView({behavior:'smooth',block:'center'});}},400);
 renderFormula();
 buildCatGrid();
 if(resultShown){resultEl.classList.remove('show');resultShown=false;}
@@ -1876,7 +1896,12 @@ function renderFormula(){
 var slots=[];
 Object.keys(selected).forEach(function(k){
 var idx=parseInt(k);var ing=INGREDIENTS[idx];var p=selected[idx];
-slots.push('<div class="blend-slot"><div class="blend-slot-name">'+ing.cn+'<small>'+ing.en+'</small></div><div class="blend-slot-ctrl"><button class="blend-step-btn s-minus" data-idx="'+idx+'">-</button><span class="s-pct">'+p+'%</span><button class="blend-step-btn s-plus" data-idx="'+idx+'">+</button></div><button class="blend-slot-del" data-idx="'+idx+'">x</button></div>');
+var cumFromBottom=0;var layer='';var idxOrder=selectedOrder.indexOf(idx);
+if(idxOrder>=0){for(var oi=0;oi<=idxOrder;oi++){cumFromBottom+=selected[selectedOrder[oi]];}}
+if(cumFromBottom<=30){layer='base-note';var layerTag='尾调';}
+else if(cumFromBottom<=70){layer='mid-note';var layerTag='中调';}
+else{layer='top-note';var layerTag='前调';}
+slots.push('<div class="blend-slot '+layer+'"><div class="blend-slot-name">'+ing.cn+'<span class="blend-slot-layer-tag">'+layerTag+'</span><small>'+ing.en+'</small></div><div class="blend-slot-ctrl"><button class="blend-step-btn s-minus" data-idx="'+idx+'">-</button><span class="s-pct">'+p+'%</span><button class="blend-step-btn s-plus" data-idx="'+idx+'">+</button></div><button class="blend-slot-del" data-idx="'+idx+'">x</button></div>');
 });
 if(slots.length===0){
 formulaEl.innerHTML='<div class="blend-empty">点击上方香料分类——挑选原料——设定比例<br>最少 2 味，最多 8 味</div>';
