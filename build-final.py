@@ -1934,7 +1934,7 @@ html = f'''<!DOCTYPE html>
 <!-- 09 · 模拟降雨 -->
 <div class="sec-label reveal"><p class="num">09</p><h2 class="title">模拟降雨</h2><p class="sec-en">Simulate Rain</p></div>
 <section class="blend-studio" id="simRain">
-<p class="blend-intro reveal">雨是天地间最古老的<em>调香师</em>——它将花香从枝头打落、将树脂从树皮泡出、将泥土的呼吸蒸成蒸汽。<br>在这里，你是雨的<em>学徒</em>。从十类香料中挑选你的原料，为每一味设定比例，<br>直到瓶中恰好是<em>百分之一百</em>——然后降下这场只属于你的雨。</p>
+<p class="blend-intro reveal">雨是天地间最古老的<em>调香师</em>——它将花香从枝头打落、将树脂从树皮泡出、将泥土的呼吸蒸成蒸汽。<br>在这里，我们开展<em>模拟降雨</em>测试。从十类香料中挑选你的原料，为每一味设定比例，<br>直到瓶中恰好是<em>百分之一百</em>——然后降下这场只属于你的雨。</p>
 <div class="blend-wrap" id="blendWrap" style="position:relative">
 <button class="blend-guide-btn" id="blendGuideBtn"><span class="blend-guide-icon">?</span><span class="blend-guide-label">如何调配</span></button>
 <div class="blend-guide" id="blendGuide">
