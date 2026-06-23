@@ -1551,6 +1551,13 @@ var entranceEl=document.getElementById("entrance");if(entranceEl){setTimeout(fun
 /* Cursor */
 var dot=document.getElementById("cursorDot"),ring=document.getElementById("cursorRing"),mx=-200,my=-200,rx=-200,ry=-200;document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});document.addEventListener("touchstart",function(){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"},{once:true});if(window.matchMedia("(pointer:coarse)").matches){dot.style.opacity="0";ring.style.opacity="0";document.body.style.cursor="auto"}var intEls=document.querySelectorAll("a,.frag-card,.back-top,.quiz-opt,.nl-toggle-btn,.music-btn,.top-nav-links a,.series-tab,.narr-btn,.note-chip,.hamburger,.mob-nav a");for(var i=0;i<intEls.length;i++){(function(el){el.addEventListener("mouseenter",function(){dot.classList.add("expand");ring.classList.add("expand")});el.addEventListener("mouseleave",function(){dot.classList.remove("expand");ring.classList.remove("expand")})})(intEls[i])}(function L(){dot.style.left=mx+"px";dot.style.top=my+"px";rx+=(mx-rx)*0.2;ry+=(my-ry)*0.2;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(L)})();
 
+/* Blend cursor enlargement */
+document.querySelectorAll('.blend-cat-card,.blend-overlay-item,.blend-slot,.blend-submit,.blend-overlay-close,.blend-dialog .dl-btn,.blend-method-btn,.blend-ing-item,.blend-step-btn,.blend-slot-del,.blend-guide-step,.blend-reset-btn').forEach(function(el){
+el.addEventListener('mouseenter',function(){ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(184,148,62,.5)';ring.style.borderWidth='1.5px';ring.style.background='rgba(212,182,96,.08)';});
+el.addEventListener('mouseleave',function(){ring.style.width='';ring.style.height='';ring.style.borderColor='';ring.style.borderWidth='';ring.style.background='';});
+});
+
+
 /* Reveal */
 var revealEls=document.querySelectorAll(".reveal");revealEls.forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in-view")})},{threshold:0.08,rootMargin:"0px 0px -20px 0px"}).observe(el)});
 /* Rain Time Carousel */
@@ -2184,7 +2191,7 @@ PRODUCTS.forEach(function(prod){var dot=0,nU2=0,nP=0;for(var i=0;i<10;i++){dot+=
 if(bestProd){rMatch.innerHTML=bestProd.cn+' · <em>'+bestProd.en+'</em><br><small style="color:var(--ink3);font-size:.55rem">'+bestProd.series+'</small>';
 var matchingIngs=[];Object.keys(data).forEach(function(k){var idx=parseInt(k);var ing=INGREDIENTS[idx];if(bestProd.vec[catMap[ing.cat]]>0)matchingIngs.push(ing.cn);});
 var whyText=bestProd.desc;
-if(matchingIngs.length>0){whyText+='<br><br><span style="font-size:.55rem;color:var(--gold);letter-spacing:.03em">你们共享的香料：</span><br><span style="font-size:.58rem;color:var(--ink2)">'+matchingIngs.slice(0,6).join(' · ')+'</span>';}
+if(matchingIngs.length>0){whyText+='<br><br><span style="font-size:.55rem;color:var(--gold);letter-spacing:.03em">雨中共有的气息：</span><br><span style="font-size:.58rem;color:var(--ink2)">'+matchingIngs.slice(0,6).join(' · ')+'</span>';}
 rWhy.innerHTML=whyText;}
 resultEl.classList.add('show');resultShown=true;
 }
