@@ -491,6 +491,14 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-bottle-fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(212,182,96,.7) 0%,rgba(184,148,62,.35) 60%,rgba(152,120,50,.15) 100%);transition:height .6s cubic-bezier(.4,0,.2,1);border-radius:0 0 38px 38px;box-shadow:inset 0 2px 8px rgba(255,253,250,.2);overflow:hidden}
 .blend-bottle-fill::after{content:'';position:absolute;top:-8px;left:-20%;width:140%;height:16px;background:rgba(255,253,250,.2);border-radius:50%;animation:waveSlosh 2.6s ease-in-out infinite}
 @keyframes waveSlosh{0%,100%{transform:translateY(0) rotate(-1deg)}25%{transform:translateY(-4px) rotate(2deg)}50%{transform:translateY(0) rotate(1deg)}75%{transform:translateY(-3px) rotate(-2deg)}}
+.blend-vortex{position:absolute;top:12%;left:12%;right:12%;bottom:12%;z-index:6;pointer-events:none;opacity:0;border-radius:50%;border:2px solid transparent;transition:opacity .3s}
+.blend-vortex.swirling{animation:blendVortexAnim 1.5s ease-in-out forwards}
+@keyframes blendVortexAnim{0%{transform:rotate(0deg);opacity:0;border-color:transparent;box-shadow:none}
+20%{opacity:.8;border-color:rgba(212,182,96,.3);box-shadow:inset 0 0 30px rgba(212,182,96,.08),0 0 15px rgba(184,148,62,.05)}
+50%{transform:rotate(360deg);opacity:1;border-color:rgba(212,182,96,.5);box-shadow:inset 0 0 50px rgba(212,182,96,.12),0 0 25px rgba(184,148,62,.1)}
+80%{transform:rotate(720deg);opacity:.7;border-color:rgba(212,182,96,.2)}
+100%{transform:rotate(1080deg);opacity:0;border-color:transparent;box-shadow:none}
+}
 .blend-layer-divider{position:absolute;left:0;right:0;height:1px;z-index:5;pointer-events:none;transition:opacity .5s}
 .blend-layer-divider::before{content:'';position:absolute;left:8px;right:8px;top:0;height:1px;background:rgba(184,148,62,.2)}
 .blend-layer-divider.top{top:30%}
@@ -1461,6 +1469,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="blend-bottle-neck"></div>
 <div class="blend-bottle-body">
 <div class="blend-bottle-fill" id="blendBottleFill" style="height:0%"></div>
+<div class="blend-vortex" id="blendVortex"></div>
 <div class="blend-bottle-logo"><svg viewBox="0 0 260 64" width="400" height="auto"><line x1="122" y1="4" x2="122" y2="18" stroke="var(--gold)" stroke-width=".7" stroke-linecap="round"/><line x1="130" y1="2" x2="130" y2="20" stroke="var(--gold)" stroke-width=".9" stroke-linecap="round"/><line x1="138" y1="6" x2="138" y2="16" stroke="var(--gold)" stroke-width=".5" stroke-linecap="round"/><circle cx="130" cy="1" r=".8" fill="var(--gold)"/><text x="130" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="10" fill="var(--gold)">RAIN</text><line x1="28" y1="43.5" x2="232" y2="43.5" stroke="var(--gold)" stroke-width=".25" stroke-linecap="round"/><text x="130" y="53" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-weight="300" font-size="6" letter-spacing="6" fill="var(--gold)" opacity=".4">PERFUME AS RAIN</text></svg><div class="blend-layer-divider top"><span class="blend-layer-label ltop">前 调</span></div>
 <div class="blend-layer-divider mid"><span class="blend-layer-label lmid">中 调</span></div>
 <span class="blend-layer-label lbase">尾 调</span>
@@ -2041,7 +2050,6 @@ var savedSelected=null,savedSelectedOrder=null,savedMethods=null;
 submitBtn.addEventListener('click',function(){
 if(totalPercent!==100)return;var cnt=Object.keys(selected).length;if(cnt<2||cnt>8)return;
 
-// Save state
 savedSelected=JSON.parse(JSON.stringify(selected));
 savedSelectedOrder=selectedOrder.slice();
 savedMethods=selectedMethods.slice();
@@ -2053,7 +2061,18 @@ submitBtn.classList.remove('ready');
 // === Step 2: Center bottle + enlarge ===
 wrap.classList.add('ritual-active');
 
-// === Step 3: Intensify background rain ===
+// === Step 3: Vortex swirl — liquid mixes in bottle (1.5s) ===
+var blendVortex=document.getElementById('blendVortex');
+blendVortex.style.animation='none';
+blendVortex.offsetHeight;
+blendVortex.classList.add('swirling');
+blendVortex.style.opacity='1';
+
+setTimeout(function(){
+blendVortex.classList.remove('swirling');
+blendVortex.style.opacity='0';
+
+// === Step 4: Intensify background rain ===
 var rainOverlay=document.getElementById('blendRainOverlay');
 var rainCanvas=document.getElementById('blendRainCanvas');
 if(rainOverlay&&rainCanvas){
@@ -2070,7 +2089,7 @@ window._blendRainFrame=requestAnimationFrame(drawHeavyRain);
 drawHeavyRain();
 }
 
-// === Step 4: Drain bottle liquid over 2-4s ===
+// === Step 5: Drain bottle liquid over 2-4s ===
 var drainTime=2000+Math.random()*2000;
 var startPct=totalPercent;
 var startTime=performance.now();
@@ -2087,6 +2106,7 @@ else{finishRitual();}
 requestAnimationFrame(drainLoop);
 
 window._blendEvalData={totalPercent:totalPercent,selected:JSON.parse(JSON.stringify(selected))};
+},1500);
 });
 
 function finishRitual(){
