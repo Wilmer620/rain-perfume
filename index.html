@@ -2056,176 +2056,100 @@ var savedSelected=null,savedSelectedOrder=null,savedMethods=null;
 
 submitBtn.addEventListener('click',function(){
 if(totalPercent!==100)return;var cnt=Object.keys(selected).length;if(cnt<2||cnt>8)return;
-
+// Save
 savedSelected=JSON.parse(JSON.stringify(selected));
 savedSelectedOrder=selectedOrder.slice();
 savedMethods=selectedMethods.slice();
 
-// === Step 1: Clear UI ===
+// Fade UI
 formulaEl.style.opacity='0';formulaEl.style.transition='opacity .5s ease';
 submitBtn.style.opacity='0';submitBtn.style.transition='opacity .4s ease';
 setTimeout(function(){formulaEl.innerHTML='';submitBtn.classList.remove('ready');},500);
-
 wrap.classList.add('ritual-active');
 
-// === Step 2: Vortex swirl — liquid mixes in bottle (1.5s) ===
-var blendVortex=document.getElementById('blendVortex');
-blendVortex.style.animation='none';
-blendVortex.offsetHeight;
-blendVortex.classList.add('swirling');
-blendVortex.style.opacity='1';
+// Vortex
+var vx=document.getElementById('blendVortex');vx.style.animation='none';vx.offsetHeight;vx.classList.add('swirling');vx.style.opacity='1';
 
+// Rain
+var ro=document.getElementById('blendRainOverlay'),rc=document.getElementById('blendRainCanvas');
+if(ro&&rc){ro.style.transition='opacity 1.5s ease-in';ro.classList.add('active');rc.width=window.innerWidth;rc.height=window.innerHeight;
+var rtx=rc.getContext('2d');var rD=[];for(var i=0;i<200;i++){rD.push({x:Math.random()*rc.width,y:Math.random()*rc.height,s:3+Math.random()*6,l:25+Math.random()*45,o:0,to:.06+Math.random()*.14,ph:Math.random()*Math.PI*2,wb:(Math.random()-.5)*.5});}
+var rT0=performance.now();(function dr(now){var tr=(now-rT0)/1000,f=Math.min(1,tr/2);rtx.clearRect(0,0,rc.width,rc.height);rD.forEach(function(d){d.o=Math.min(d.to,d.to*f);var wx=Math.sin(now*.0008+d.ph)*d.wb;rtx.beginPath();rtx.strokeStyle='rgba(184,148,62,'+d.o+')';rtx.moveTo(d.x+wx,d.y);rtx.lineTo(d.x+wx-.4,d.y+d.l);rtx.lineWidth=.7;rtx.stroke();d.y+=d.s;if(d.y>rc.height+d.l){d.y=-d.l-10;d.x=Math.random()*rc.width;}});window._brf=requestAnimationFrame(dr);})(rT0);}
+
+// After vortex: drain then finish
 setTimeout(function(){
-blendVortex.classList.remove('swirling');
-blendVortex.style.opacity='0';
-
-// === Step 4: Intensify background rain ===
-var rainOverlay=document.getElementById('blendRainOverlay');
-var rainCanvas=document.getElementById('blendRainCanvas');
-if(rainOverlay&&rainCanvas){
-rainOverlay.style.transition='opacity 1.5s ease-in';
-rainOverlay.classList.add('active');
-rainCanvas.width=window.innerWidth;rainCanvas.height=window.innerHeight;
-var rctx=rainCanvas.getContext('2d');
-var rDrops=[];var maxDrops=200;for(var i=0;i<maxDrops;i++){rDrops.push({x:Math.random()*rainCanvas.width,y:Math.random()*rainCanvas.height,speed:3+Math.random()*6,len:25+Math.random()*45,opacity:0,targetOpacity:.06+Math.random()*.14,phase:Math.random()*Math.PI*2,wobble:(Math.random()-.5)*.5});}
-var rainT0=performance.now();
-function drawRain(now){
-var tr=(now-rainT0)/1000;
-var fade=Math.min(1,tr/2);
-rctx.clearRect(0,0,rainCanvas.width,rainCanvas.height);
-rDrops.forEach(function(d){
-d.opacity=Math.min(d.targetOpacity,d.targetOpacity*fade);
-var wx=Math.sin(now*.0008+d.phase)*d.wobble;
-rctx.beginPath();
-rctx.strokeStyle='rgba(184,148,62,'+d.opacity+')';
-rctx.moveTo(d.x+wx,d.y);
-rctx.lineTo(d.x+wx-.4,d.y+d.len);
-rctx.lineWidth=.7;
-rctx.stroke();
-d.y+=d.speed;
-if(d.y>rainCanvas.height+d.len){d.y=-d.len-10;d.x=Math.random()*rainCanvas.width;}
-});
-window._blendRainFrame=requestAnimationFrame(drawRain);
-}
-window._blendRainFrame=requestAnimationFrame(drawRain);
-}
-
-// === Step 5: Drain bottle liquid over 2-4s ===
-var totalDrain=2500+Math.random()*1000;
-var drainSteps=50;
-var stepInterval=totalDrain/drainSteps;
-var startPct=totalPercent;
-var stepsDone=0;
-var drainTimer=setInterval(function(){
-stepsDone++;
-var currentPct=Math.round(startPct*(1-stepsDone/drainSteps));
-bottleFill.style.height=currentPct+'%';
-totalEl.textContent=currentPct+'%';
-if(stepsDone>=drainSteps){clearInterval(drainTimer);finishRitual();}
-},stepInterval);
-
-window._blendEvalData={totalPercent:totalPercent,selected:JSON.parse(JSON.stringify(selected))};
+vx.classList.remove('swirling');vx.style.opacity='0';
+var td=2500+Math.random()*1000,ns=50,iv=td/ns,sp=totalPercent,sd=0;
+var ti=setInterval(function(){
+sd++;var cp=Math.round(sp*(1-sd/ns));bottleFill.style.height=cp+'%';totalEl.textContent=cp+'%';
+if(sd>=ns){clearInterval(ti);
+if(window._brf){cancelAnimationFrame(window._brf);}ro=document.getElementById('blendRainOverlay');if(ro)ro.classList.remove('active');
+wrap.classList.remove('ritual-active');
+bottleFill.style.height='0%';totalEl.textContent='0%';
+// CLEAR ALL STATE
+selected={};selectedOrder=[];lastModifiedIdx=null;totalPercent=0;selectedMethods=[];
+formulaEl.innerHTML='';formulaEl.style.opacity='1';
+document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.remove('active');});
+buildCatGrid();renderFormula();
+// Show reset button
+var rb=document.getElementById('blendResetBtn');if(rb)rb.classList.add('show');
+// Evaluate
+if(savedSelected&&Object.keys(savedSelected).length>0){doEvaluate(savedSelected);}
+resultEl.scrollIntoView({behavior:'smooth',block:'center'});
+}},iv);
 },1500);
 });
 
-function finishRitual(){
-if(window._blendRainFrame){cancelAnimationFrame(window._blendRainFrame);}
-var rainOverlay=document.getElementById('blendRainOverlay');
-if(rainOverlay)rainOverlay.classList.remove('active');
-wrap.classList.remove('ritual-active');
-bottleFill.style.height='0%';
-totalEl.textContent='0%';
-// Clear selected BEFORE rebuilding UI
-selected={};selectedOrder=[];lastModifiedIdx=null;totalPercent=0;
-formulaEl.innerHTML='<div class="blend-empty">瓶中雨已降下——配方已清空<br>点击下方「重新模拟」可恢复你刚才的配方</div>';
-buildCatGrid();
-var rb2=document.getElementById('blendResetBtn');
-if(rb2)rb2.classList.add('show');
-if(window._blendEvalData){
-runEvaluation(window._blendEvalData.selected);
-}
-resultEl.scrollIntoView({behavior:'smooth',block:'center'});
-}
-function runEvaluation(data){
+// EVALUATION
+function doEvaluate(data){
 if(!data||Object.keys(data).length===0)return;
-var userVec=[0,0,0,0,0,0,0,0,0,0];var catMap={citrus:0,floral:1,fruity:2,green:3,spicy:4,woody:5,resin:6,musk:7,gourmand:8,aquatic:9};
-Object.keys(data).forEach(function(k){var idx=parseInt(k);var ci=catMap[INGREDIENTS[idx].cat];userVec[ci]+=data[idx];});
-var sum=0;userVec.forEach(function(v){sum+=v;});if(sum>0)userVec=userVec.map(function(v){return v/sum;});
-
-// --- Step A: Map to best-matching RAIN theme ---
-// Each theme has a representative vector (average of its products)
-var themeVecs=[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
-var themeCounts=[0,0,0,0,0,0];
-PRODUCTS.forEach(function(p){if(p.theme<0)return;var t=p.theme;themeCounts[t]++;for(var i=0;i<10;i++){themeVecs[t][i]+=p.vec[i];}});
-for(var t=0;t<6;t++){for(var i=0;i<10;i++){if(themeCounts[t]>0)themeVecs[t][i]/=themeCounts[t];}}
-
-var bestTheme=0,bestThemeSim=-1;
-for(var t=0;t<6;t++){var dot=0,nU=0,nT=0;for(var i=0;i<10;i++){dot+=userVec[i]*themeVecs[t][i];nU+=userVec[i]*userVec[i];nT+=themeVecs[t][i]*themeVecs[t][i];}nU=Math.sqrt(nU);nT=Math.sqrt(nT);if(nU>0&&nT>0){var sim=dot/(nU*nT);if(sim>bestThemeSim){bestThemeSim=sim;bestTheme=t;}}}
-
-var theme=THEMES[bestTheme];
-rTheme.innerHTML='瓶中雨属于 <em>'+theme.name+'</em> · '+theme.en;
-
-// --- Step B: Tone analysis ---
-var maxCat=0,maxVal=0;userVec.forEach(function(v,i){if(v>maxVal){maxVal=v;maxCat=i;}});
-var domCats=[];userVec.forEach(function(v,i){if(v>0.15)domCats.push(CATEGORIES[i].cn);});
-var toneNames=["柑橘调","花香调","果香调","绿叶调","辛香调","木质调","树脂调","麝香调","美食调","海洋调"];
-var tone=toneNames[maxCat];if(domCats.length>=3&&maxVal<0.35)tone=domCats.slice(0,3).join(" · ");
-rTone.textContent=tone;
-
-// --- Step C: Personalized copy with theme context ---
-var sorted=Object.entries(data).sort(function(a,b){return b[1]-a[1];}).slice(0,3);
-var topIngs=sorted.map(function(e){return INGREDIENTS[parseInt(e[0])].cn;});
-var topDesc=sorted.map(function(e){var d=INGREDIENTS[parseInt(e[0])].desc;return d.replace(/[，。；]/g,'').slice(0,28);});
-var methodNames={roast:"煎炒",distill:"蒸馏",filter:"过滤",purify:"提纯",conc:"浓缩"};
-var methodDesc={roast:"以火<em>煎炒</em>——唤醒香料中最原始的能量",distill:"以蒸汽<em>蒸馏</em>——只取最纯净的那一滴",filter:"以层层纱布<em>过滤</em>——滤去杂质留下灵魂",purify:"以时间<em>提纯</em>——让每一味都回到自己的本质",conc:"以慢火<em>浓缩</em>——将多余的雨蒸发让香气更密集"};
-var methodText='';if(selectedMethods.length>0){methodText='。制雨之法：';selectedMethods.forEach(function(m,i){methodText+=methodDesc[m];if(i<selectedMethods.length-1)methodText+='，';else methodText+='。';});}
-
-var moodWords=["清澈","温和","锐利","醇厚","轻盈","暗沉","明亮","深邃","柔软","坚定","清冷","温暖","湿润","干燥","透明","稠密"];
-var mood=moodWords[Math.floor(Math.random()*moodWords.length)];
-var copy='以<em>'+tone+'</em>为骨。「'+topIngs[0]+'」在前——'+topDesc[0]+'；「'+topIngs[1]+'」在中——'+topDesc[1]+'；「'+topIngs[2]+'」在最后——'+topDesc[2]+methodText+'。它是一场<em>'+mood+'</em>的雨，属于<em>'+theme.name+'</em>的天地。';
-rText.innerHTML=copy;
-
-// --- Step D: Theme scene ---
-rScene.innerHTML=theme.rain+'<br><br>'+theme.scene;
-
-// --- Step E: Best product match ---
-var bestProd=null,bestProdSim=-1;
-PRODUCTS.forEach(function(prod){var dot=0,nU2=0,nP=0;for(var i=0;i<10;i++){dot+=userVec[i]*prod.vec[i];nU2+=userVec[i]*userVec[i];nP+=prod.vec[i]*prod.vec[i];}nU2=Math.sqrt(nU2);nP=Math.sqrt(nP);if(nU2>0&&nP>0){var sim=dot/(nU2*nP);if(sim>bestProdSim){bestProdSim=sim;bestProd=prod;}}});
-if(bestProd){rMatch.innerHTML=bestProd.cn+' · <em>'+bestProd.en+'</em><br><small style="color:var(--ink3);font-size:.55rem">'+bestProd.series+'</small>';
-var matchingIngs=[];Object.keys(data).forEach(function(k){var idx=parseInt(k);var ing=INGREDIENTS[idx];if(bestProd.vec[catMap[ing.cat]]>0)matchingIngs.push(ing.cn);});
-var whyText=bestProd.desc;
-if(matchingIngs.length>0){whyText+='<br><br><span style="font-size:.55rem;color:var(--gold);letter-spacing:.03em">雨中共有的气息：</span><br><span style="font-size:.58rem;color:var(--ink2)">'+matchingIngs.slice(0,6).join(' · ')+'</span>';}
-rWhy.innerHTML=whyText;}
+var uv=[0,0,0,0,0,0,0,0,0,0],cm={citrus:0,floral:1,fruity:2,green:3,spicy:4,woody:5,resin:6,musk:7,gourmand:8,aquatic:9};
+Object.keys(data).forEach(function(k){var i=parseInt(k);uv[cm[INGREDIENTS[i].cat]]+=data[k];});
+var s=0;uv.forEach(function(v){s+=v;});if(s>0)uv=uv.map(function(v){return v/s;});
+var tv=[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]],tc=[0,0,0,0,0,0];
+PRODUCTS.forEach(function(p){if(p.theme<0)return;var t=p.theme;tc[t]++;for(var i=0;i<10;i++){tv[t][i]+=p.vec[i];}});
+for(var t=0;t<6;t++){for(var i=0;i<10;i++){if(tc[t]>0)tv[t][i]/=tc[t];}}
+var bt=0,bs=-1;for(var t=0;t<6;t++){var d=0,nu=0,nt=0;for(var i=0;i<10;i++){d+=uv[i]*tv[t][i];nu+=uv[i]*uv[i];nt+=tv[t][i]*tv[t][i];}nu=Math.sqrt(nu);nt=Math.sqrt(nt);if(nu>0&&nt>0){var si=d/(nu*nt);if(si>bs){bs=si;bt=t;}}}
+var th=THEMES[bt];rTheme.innerHTML='瓶中雨属于 <em>'+th.name+'</em> · '+th.en;
+var mc=0,mv=0;uv.forEach(function(v,i){if(v>mv){mv=v;mc=i;}});
+var dc=[];uv.forEach(function(v,i){if(v>.15)dc.push(CATEGORIES[i].cn);});
+var tn=["柑橘调","花香调","果香调","绿叶调","辛香调","木质调","树脂调","麝香调","美食调","海洋调"];
+var to=tn[mc];if(dc.length>=3&&mv<.35)to=dc.slice(0,3).join(" · ");rTone.textContent=to;
+var ss=Object.entries(data).sort(function(a,b){return b[1]-a[1];}).slice(0,3);
+var ti2=ss.map(function(e){return INGREDIENTS[parseInt(e[0])].cn;});
+var td2=ss.map(function(e){return INGREDIENTS[parseInt(e[0])].desc.replace(/[，。；]/g,'').slice(0,28);});
+var mn={roast:"煎炒",distill:"蒸馏",filter:"过滤",purify:"提纯",conc:"浓缩"};
+var md={roast:"以火<em>煎炒</em>——唤醒香料中最原始的能量",distill:"以蒸汽<em>蒸馏</em>——只取最纯净的那一滴",filter:"以层层纱布<em>过滤</em>——滤去杂质留下灵魂",purify:"以时间<em>提纯</em>——让每一味都回到自己的本质",conc:"以慢火<em>浓缩</em>——将多余的雨蒸发让香气更密集"};
+var mt='';if(savedMethods&&savedMethods.length>0){mt='。制雨之法：';savedMethods.forEach(function(m,i){mt+=md[m];if(i<savedMethods.length-1)mt+='，';else mt+='。';});}
+var mw=["清澈","温和","锐利","醇厚","轻盈","暗沉","明亮","深邃","柔软","坚定","清冷","温暖","湿润","干燥","透明","稠密"];
+var mm=mw[Math.floor(Math.random()*mw.length)];
+var cp='以<em>'+to+'</em>为骨。「'+ti2[0]+'」在前——'+td2[0]+'；「'+ti2[1]+'」在中——'+td2[1]+'；「'+ti2[2]+'」在最后——'+td2[2]+mt+'。它是一场<em>'+mm+'</em>的雨，属于<em>'+th.name+'</em>的天地。';
+rText.innerHTML=cp;rScene.innerHTML=th.rain+'<br><br>'+th.scene;
+var bp=null,bps=-1;
+PRODUCTS.forEach(function(p){var d=0,nu=0,np=0;for(var i=0;i<10;i++){d+=uv[i]*p.vec[i];nu+=uv[i]*uv[i];np+=p.vec[i]*p.vec[i];}nu=Math.sqrt(nu);np=Math.sqrt(np);if(nu>0&&np>0){var si=d/(nu*np);if(si>bps){bps=si;bp=p;}}});
+if(bp){rMatch.innerHTML=bp.cn+' · <em>'+bp.en+'</em><br><small style="color:var(--ink3);font-size:.55rem">'+bp.series+'</small>';
+var mi=[];Object.keys(data).forEach(function(k){var i=parseInt(k);if(bp.vec[cm[INGREDIENTS[i].cat]]>0)mi.push(INGREDIENTS[i].cn);});
+var w=bp.desc;if(mi.length>0){w+='<br><br><span style="font-size:.55rem;color:var(--gold);letter-spacing:.03em">雨中共有的气息：</span><br><span style="font-size:.58rem;color:var(--ink2)">'+mi.slice(0,6).join(' · ')+'</span>';}
+rWhy.innerHTML=w;}
 resultEl.classList.add('show');resultShown=true;
 }
 
-// Reset handler — inline binding after DOM ready
-var rb=document.getElementById('blendResetBtn');
-if(rb){
-rb.addEventListener('click',function(){
-console.log('[RAIN] Reset clicked, savedSelected:',savedSelected);
-if(!savedSelected||Object.keys(savedSelected).length===0){console.log('[RAIN] Reset aborted: no saved data');return;}
+// RESET BUTTON — simple, direct
+var resetBtn=document.getElementById('blendResetBtn');
+if(resetBtn){resetBtn.addEventListener('click',function(){
+if(!savedSelected||Object.keys(savedSelected).length===0)return;
 selected=JSON.parse(JSON.stringify(savedSelected));
 selectedOrder=savedSelectedOrder.slice();
-lastModifiedIdx=null;
-totalPercent=0;
-if(savedMethods&&savedMethods.length>0){
-selectedMethods=savedMethods.slice();
-document.querySelectorAll('.blend-method-btn').forEach(function(btn){
-if(savedMethods.indexOf(btn.dataset.method)>=0)btn.classList.add('active');
-else btn.classList.remove('active');
-});
-}else{selectedMethods=[];document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.remove('active');});}
-buildCatGrid();
-renderFormula();
+lastModifiedIdx=null;totalPercent=0;
+if(savedMethods&&savedMethods.length>0){selectedMethods=savedMethods.slice();}
+else{selectedMethods=[];}
+document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.remove('active');});
+if(savedMethods){savedMethods.forEach(function(m){var btn=document.querySelector('.blend-method-btn[data-method="'+m+'"]');if(btn)btn.classList.add('active');});}
+buildCatGrid();renderFormula();
 resultEl.classList.remove('show');resultShown=false;
-rb.classList.remove('show');
-var simRain=document.getElementById('simRain');
-if(simRain)window.scrollTo({top:simRain.offsetTop-80,behavior:'smooth'});
-console.log('[RAIN] Reset done, formula restored');
-});
-console.log('[RAIN] Reset listener attached');
-}else{console.log('[RAIN] Reset button NOT FOUND');}
+resetBtn.classList.remove('show');
+var sr=document.getElementById('simRain');if(sr)window.scrollTo({top:sr.offsetTop-80,behavior:'smooth'});
+});}
 
 
 function triggerRainCloud(ingName){
