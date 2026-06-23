@@ -2135,11 +2135,14 @@ if(rainOverlay)rainOverlay.classList.remove('active');
 wrap.classList.remove('ritual-active');
 bottleFill.style.height='0%';
 totalEl.textContent='0%';
-selected={};selectedOrder=[];lastModifiedIdx=null;totalPercent=0;
 buildCatGrid();renderFormula();
-var resetBtn=document.getElementById('blendResetBtn');
-if(resetBtn)resetBtn.classList.add('show');
-if(window._blendEvalData){runEvaluation(window._blendEvalData.selected);}
+var rb2=document.getElementById('blendResetBtn');
+if(rb2)rb2.classList.add('show');
+if(window._blendEvalData){
+// Clone eval data BEFORE clearing selected (runEvaluation needs it for matching display)
+runEvaluation(window._blendEvalData.selected);
+}
+selected={};selectedOrder=[];lastModifiedIdx=null;totalPercent=0;
 resultEl.scrollIntoView({behavior:'smooth',block:'center'});
 }
 
@@ -2196,21 +2199,39 @@ rWhy.innerHTML=whyText;}
 resultEl.classList.add('show');resultShown=true;
 }
 
-var resetBtn=document.getElementById('blendResetBtn');
-if(resetBtn){resetBtn.addEventListener('click',function(){
-if(savedSelected){selected=JSON.parse(JSON.stringify(savedSelected));}else{selected={};}
-if(savedSelectedOrder){selectedOrder=savedSelectedOrder.slice();}else{selectedOrder=[];}
-if(savedMethods){selectedMethods=savedMethods.slice();
-var methodBtns=document.querySelectorAll('.blend-method-btn');
-methodBtns.forEach(function(btn){if(savedMethods.indexOf(btn.dataset.method)>=0){btn.classList.add('active');}else{btn.classList.remove('active');}});
+// Reset handler - single attachment in IIFE scope
+(function(){
+var rb=document.getElementById('blendResetBtn');
+if(!rb)return;
+rb.addEventListener('click',function(){
+if(!savedSelected||Object.keys(savedSelected).length===0)return;
+// Restore formula
+selected=JSON.parse(JSON.stringify(savedSelected));
+selectedOrder=savedSelectedOrder.slice();
+lastModifiedIdx=null;
+totalPercent=0;
+// Restore methods
+if(savedMethods&&savedMethods.length>0){
+selectedMethods=savedMethods.slice();
+document.querySelectorAll('.blend-method-btn').forEach(function(btn){
+if(savedMethods.indexOf(btn.dataset.method)>=0)btn.classList.add('active');
+else btn.classList.remove('active');
+});
+}else{
+selectedMethods=[];
+document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.remove('active');});
 }
-buildCatGrid();renderFormula();
+// Rebuild UI
+buildCatGrid();
+renderFormula();
+// Hide results, show form
 resultEl.classList.remove('show');resultShown=false;
-resetBtn.classList.remove('show');
-totalEl.textContent='0%';
-bottleFill.style.height='0%';
-window.scrollTo({top:document.getElementById('simRain').offsetTop-80,behavior:'smooth'});
-});}
+rb.classList.remove('show');
+// Scroll to top of blend section
+var simRain=document.getElementById('simRain');
+if(simRain)window.scrollTo({top:simRain.offsetTop-80,behavior:'smooth'});
+});
+})();
 
 
 function triggerRainCloud(ingName){
