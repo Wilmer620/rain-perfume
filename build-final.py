@@ -941,18 +941,21 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-dialog .dl-btn.cancel:hover{border-color:var(--gold);color:var(--ink)}
 
 /* ══ 调香瓶 ══ */
+.blend-total-strip{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.5rem 0}
+.blend-total-strip .blend-total-label{font-family:'Noto Serif SC',serif;font-size:.65rem;color:var(--ink3);letter-spacing:.06em}
+.blend-total-strip .blend-total{font-family:'Noto Serif SC',serif;font-size:2.4rem;font-weight:200;color:var(--gold);transition:color .3s}
+.blend-total-strip .blend-total.warn{color:#c0392b}
 .blend-bottle-section{display:flex;align-items:center;justify-content:center;gap:3rem;padding:1.5rem 0}
-.blend-bottle{position:relative;width:160px;height:320px;display:flex;flex-direction:column;align-items:center}
-.blend-bottle-body{position:relative;width:140px;height:230px;border-radius:24px 24px 36px 36px;border:2px solid rgba(184,148,62,.25);background:rgba(255,253,250,.08);overflow:hidden;backdrop-filter:blur(4px)}
-.blend-bottle-neck{width:36px;height:40px;border:2px solid rgba(184,148,62,.25);border-bottom:none;border-radius:8px 8px 0 0;background:rgba(255,253,250,.08)}
-.blend-bottle-cap{width:48px;height:22px;border-radius:8px 8px 3px 3px;border:2px solid rgba(184,148,62,.3);background:rgba(184,148,62,.1);margin-top:-1px}
-.blend-bottle-fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(212,182,96,.7) 0%,rgba(184,148,62,.35) 60%,rgba(152,120,50,.15) 100%);transition:height .6s cubic-bezier(.4,0,.2,1);border-radius:0 0 34px 34px;box-shadow:inset 0 2px 8px rgba(255,253,250,.2);overflow:hidden}
+.blend-bottle{position:relative;width:200px;height:380px;display:flex;flex-direction:column;align-items:center}
+.blend-bottle-body{position:relative;width:170px;height:280px;border-radius:28px 28px 40px 40px;border:2px solid rgba(184,148,62,.25);background:rgba(255,253,250,.08);overflow:hidden;backdrop-filter:blur(4px)}
+.blend-bottle-neck{width:40px;height:44px;border:2px solid rgba(184,148,62,.25);border-bottom:none;border-radius:8px 8px 0 0;background:rgba(255,253,250,.08)}
+.blend-bottle-cap{width:56px;height:26px;border-radius:8px 8px 3px 3px;border:2px solid rgba(184,148,62,.3);background:rgba(184,148,62,.1);margin-top:-1px}
+.blend-bottle-fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(212,182,96,.7) 0%,rgba(184,148,62,.35) 60%,rgba(152,120,50,.15) 100%);transition:height .6s cubic-bezier(.4,0,.2,1);border-radius:0 0 38px 38px;box-shadow:inset 0 2px 8px rgba(255,253,250,.2);overflow:hidden}
 .blend-bottle-fill::after{content:'';position:absolute;top:-8px;left:-20%;width:140%;height:16px;background:rgba(255,253,250,.2);border-radius:50%;animation:waveSlosh 2.6s ease-in-out infinite}
 @keyframes waveSlosh{0%,100%{transform:translateY(0) rotate(-1deg)}25%{transform:translateY(-4px) rotate(2deg)}50%{transform:translateY(0) rotate(1deg)}75%{transform:translateY(-3px) rotate(-2deg)}}
 .blend-bottle-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;opacity:.35;pointer-events:none}
-.blend-bottle-logo svg{width:50px;height:auto}
-.blend-bottle-pct{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Noto Serif SC',serif;font-size:2.6rem;font-weight:200;color:var(--gold);z-index:2;transition:color .3s}
-.blend-bottle-pct.warn{color:#c0392b}
+.blend-bottle-logo svg{width:70px;height:auto}
+
 .blend-bottle-label{text-align:center;margin-top:.8rem;font-family:'Noto Serif SC',serif;font-size:.7rem;color:var(--ink3);letter-spacing:.08em}
 
 /* ══ 配方条 + 滑杆修复 ══ */
@@ -1011,12 +1014,11 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 @media(max-width:900px){
 .blend-bottle-section{flex-direction:column;gap:1.5rem}
-.blend-bottle{width:110px;height:240px}
-.blend-bottle-body{width:96px;height:170px;border-radius:18px 18px 28px 28px}
-.blend-bottle-neck{width:26px;height:30px}
-.blend-bottle-cap{width:36px;height:18px}
-.blend-bottle-pct{font-size:1.8rem}
-.blend-bottle-logo svg{width:38px}
+.blend-bottle{width:130px;height:280px}
+.blend-bottle-body{width:110px;height:200px;border-radius:20px 20px 30px 30px}
+.blend-bottle-neck{width:30px;height:34px}
+.blend-bottle-cap{width:40px;height:20px}
+.blend-bottle-logo svg{width:50px}
 .blend-cat-grid{grid-template-columns:repeat(auto-fill,minmax(75px,1fr));gap:.35rem}
 .blend-cat-card-head{padding:.5rem .25rem}
 .blend-cat-card-head .cat-cn{font-size:.65rem}
@@ -1326,7 +1328,7 @@ var THEMES=[
 var selected={},selectedOrder=[],lastModifiedIdx=null,totalPercent=0,resultShown=false;var selectedMethods=[];
 var catContainer=document.getElementById("blendCatContainer");
 var bottleFill=document.getElementById("blendBottleFill");
-var bottlePct=document.getElementById("blendBottlePct");
+var totalEl=document.getElementById("blendTotal");
 var formulaEl=document.getElementById("blendFormula");
 var submitBtn=document.getElementById("blendSubmit");
 var resultEl=document.getElementById("blendResult");
@@ -1445,12 +1447,12 @@ function updateDisplay(){
 totalPercent=0;Object.values(selected).forEach(function(v){totalPercent+=v;});
 var cnt=Object.keys(selected).length;
 if(bottleFill){bottleFill.style.height=totalPercent+'%';}
-if(bottlePct){bottlePct.textContent=totalPercent+'%';}
+if(totalEl){totalEl.textContent=totalPercent+'%';}
 if(totalPercent===100&&cnt>=2&&cnt<=8){
-if(bottlePct)bottlePct.classList.remove('warn');
+if(totalEl)totalEl.classList.remove('warn');
 submitBtn.classList.add('ready');
 }else{
-if(bottlePct)bottlePct.classList.add('warn');
+if(totalEl)totalEl.classList.add('warn');
 submitBtn.classList.remove('ready');
 }
 }
@@ -1972,14 +1974,14 @@ html = f'''<!DOCTYPE html>
 </div>
 <div class="blend-wrap" id="blendWrap">
 <div class="blend-ingredient-table" id="blendCatContainer"></div>
+<div class="blend-total-strip"><span class="blend-total-label">瓶中</span><span class="blend-total" id="blendTotal">0%</span></div>
 <div class="blend-bottle-section">
 <div class="blend-bottle">
 <div class="blend-bottle-cap"></div>
 <div class="blend-bottle-neck"></div>
 <div class="blend-bottle-body">
 <div class="blend-bottle-fill" id="blendBottleFill" style="height:0%"></div>
-<div class="blend-bottle-logo"><svg viewBox="0 0 64 64"><line x1="28" y1="10" x2="28" y2="38" stroke="var(--gold)" stroke-width=".5" stroke-linecap="round"/><line x1="32" y1="6" x2="32" y2="42" stroke="var(--gold)" stroke-width=".6" stroke-linecap="round"/><line x1="36" y1="12" x2="36" y2="36" stroke="var(--gold)" stroke-width=".35" stroke-linecap="round"/><circle cx="32" cy="5" r=".6" fill="var(--gold)"/></svg></div>
-<div class="blend-bottle-pct" id="blendBottlePct">0%</div>
+<div class="blend-bottle-logo"><svg viewBox="0 0 260 64" width="100" height="auto"><line x1="122" y1="4" x2="122" y2="18" stroke="var(--gold)" stroke-width=".7" stroke-linecap="round"/><line x1="130" y1="2" x2="130" y2="20" stroke="var(--gold)" stroke-width=".9" stroke-linecap="round"/><line x1="138" y1="6" x2="138" y2="16" stroke="var(--gold)" stroke-width=".5" stroke-linecap="round"/><circle cx="130" cy="1" r=".8" fill="var(--gold)"/><text x="130" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="10" fill="var(--gold)">RAIN</text><line x1="28" y1="43.5" x2="232" y2="43.5" stroke="var(--gold)" stroke-width=".25" stroke-linecap="round"/><text x="130" y="53" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-weight="300" font-size="6" letter-spacing="6" fill="var(--gold)" opacity=".4">PERFUME AS RAIN</text></svg></div>
 </div>
 <div class="blend-bottle-label">你的雨</div>
 </div>
