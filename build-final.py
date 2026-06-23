@@ -969,7 +969,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-wrap.ritual-active .blend-formula-strip{opacity:0;pointer-events:none;transition:opacity .4s}
 .blend-wrap.ritual-active .blend-submit-wrap{opacity:0;pointer-events:none;transition:opacity .3s}
 .blend-wrap.ritual-active .blend-total-strip{opacity:1;transition:opacity .3s}
-.blend-wrap.ritual-active .blend-methods{opacity:.5;pointer-events:none;transition:opacity .3s}
+.blend-wrap.ritual-active .blend-methods{opacity:0;pointer-events:none;transition:opacity .3s}
 .blend-wrap.ritual-active .blend-bottle-label{opacity:0;transition:opacity .3s}
 .blend-rain-overlay{position:fixed;inset:0;z-index:145;pointer-events:none;opacity:0;transition:opacity .8s ease}
 .blend-rain-overlay.active{opacity:1}
