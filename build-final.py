@@ -1731,7 +1731,7 @@ rScene.innerHTML=theme.rain+'<br><br>'+theme.scene;
 var bestProd=null,bestProdSim=-1;
 PRODUCTS.forEach(function(prod){var dot=0,nU2=0,nP=0;for(var i=0;i<10;i++){dot+=userVec[i]*prod.vec[i];nU2+=userVec[i]*userVec[i];nP+=prod.vec[i]*prod.vec[i];}nU2=Math.sqrt(nU2);nP=Math.sqrt(nP);if(nU2>0&&nP>0){var sim=dot/(nU2*nP);if(sim>bestProdSim){bestProdSim=sim;bestProd=prod;}}});
 if(bestProd){rMatch.innerHTML=bestProd.cn+' · <em>'+bestProd.en+'</em><br><small style="color:var(--ink3);font-size:.55rem">'+bestProd.series+'</small>';
-var matchingIngs=[];Object.keys(data).forEach(function(k){var idx=parseInt(k);var ing=INGREDIENTS[idx];if(prod.vec[catMap[ing.cat]]>0)matchingIngs.push(ing.cn);});
+var matchingIngs=[];Object.keys(data).forEach(function(k){var idx=parseInt(k);var ing=INGREDIENTS[idx];if(bestProd.vec[catMap[ing.cat]]>0)matchingIngs.push(ing.cn);});
 var whyText=bestProd.desc;
 if(matchingIngs.length>0){whyText+='<br><br><span style="font-size:.55rem;color:var(--gold);letter-spacing:.03em">你们共享的香料：</span><br><span style="font-size:.58rem;color:var(--ink2)">'+matchingIngs.slice(0,6).join(' · ')+'</span>';}
 rWhy.innerHTML=whyText;}
