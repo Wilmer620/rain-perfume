@@ -449,6 +449,17 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-total-strip .blend-total-label{font-family:'Noto Serif SC',serif;font-size:.65rem;color:var(--ink3);letter-spacing:.06em}
 .blend-total-strip .blend-total{font-family:'Noto Serif SC',serif;font-size:2.4rem;font-weight:200;color:var(--gold);transition:color .3s}
 .blend-total-strip .blend-total.warn{color:#c0392b}
+
+/* ══ 下雨动画 ══ */
+.blend-rain-cloud{position:absolute;top:-60px;left:50%;transform:translateX(-50%);z-index:10;pointer-events:none;opacity:0;transition:opacity .3s}
+.blend-rain-cloud.raining{opacity:1}
+.blend-rain-cloud svg{width:70px;height:40px}
+@keyframes raindrop{0%{transform:translateY(0);opacity:.8}100%{transform:translateY(80px);opacity:0}}
+.blend-raindrop{position:absolute;width:2px;height:10px;background:linear-gradient(180deg,transparent,rgba(212,182,96,.6));border-radius:0 0 2px 2px;animation:raindrop .8s ease-in forwards}
+@keyframes cloudBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+.blend-rain-cloud.raining{animation:cloudBounce 1.2s ease-in-out}
+
+/* ══ 瓶身分层引导 ══ */
 .blend-bottle-section{display:flex;align-items:center;justify-content:center;gap:3rem;padding:1.5rem 0}
 .blend-bottle{position:relative;width:200px;height:380px;display:flex;flex-direction:column;align-items:center}
 .blend-bottle-body{position:relative;width:170px;height:280px;border-radius:28px 28px 40px 40px;border:2px solid rgba(184,148,62,.25);background:rgba(255,253,250,.08);overflow:hidden;backdrop-filter:blur(4px)}
@@ -1427,6 +1438,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="blend-total-strip"><span class="blend-total-label">瓶中</span><span class="blend-total" id="blendTotal">0%</span></div>
 <div class="blend-bottle-section">
 <div class="blend-bottle">
+<div class="blend-rain-cloud" id="blendRainCloud"><svg viewBox="0 0 70 40"><ellipse cx="22" cy="22" rx="14" ry="9" fill="rgba(184,148,62,.15)"/><ellipse cx="35" cy="18" rx="18" ry="11" fill="rgba(184,148,62,.2)"/><ellipse cx="50" cy="23" rx="13" ry="8" fill="rgba(184,148,62,.12)"/><line x1="18" y1="28" x2="17" y2="36" stroke="rgba(212,182,96,.4)" stroke-width=".8" stroke-linecap="round"/><line x1="28" y1="26" x2="28" y2="38" stroke="rgba(212,182,96,.5)" stroke-width="1" stroke-linecap="round"/><line x1="35" y1="24" x2="35" y2="37" stroke="rgba(212,182,96,.6)" stroke-width="1.2" stroke-linecap="round"/><line x1="42" y1="26" x2="43" y2="36" stroke="rgba(212,182,96,.4)" stroke-width=".9" stroke-linecap="round"/><line x1="52" y1="28" x2="51" y2="35" stroke="rgba(212,182,96,.35)" stroke-width=".7" stroke-linecap="round"/></svg></div>
 <div class="blend-bottle-cap"></div>
 <div class="blend-bottle-neck"></div>
 <div class="blend-bottle-body">
@@ -1877,6 +1889,7 @@ var cnt=Object.keys(selected).length;
 if(cnt>=8){closeDialog();closeOverlay();return;}
 selected[dialogIngIdx]=pct;
 if(selectedOrder.indexOf(dialogIngIdx)<0)selectedOrder.push(dialogIngIdx);
+triggerRainCloud(INGREDIENTS[dialogIngIdx].cn);
 closeDialog();closeOverlay();
 setTimeout(function(){var bottle=document.querySelector('.blend-bottle-section');if(bottle){bottle.scrollIntoView({behavior:'smooth',block:'center'});}},400);
 renderFormula();
@@ -1896,11 +1909,11 @@ function renderFormula(){
 var slots=[];
 Object.keys(selected).forEach(function(k){
 var idx=parseInt(k);var ing=INGREDIENTS[idx];var p=selected[idx];
-var cumFromBottom=0;var layer='';var idxOrder=selectedOrder.indexOf(idx);
-if(idxOrder>=0){for(var oi=0;oi<=idxOrder;oi++){cumFromBottom+=selected[selectedOrder[oi]];}}
-if(cumFromBottom<=30){layer='base-note';var layerTag='尾调';}
-else if(cumFromBottom<=70){layer='mid-note';var layerTag='中调';}
-else{layer='top-note';var layerTag='前调';}
+var cumFromTop=0;var layer='';var idxOrder=selectedOrder.indexOf(idx);
+if(idxOrder>=0){for(var oi=0;oi<idxOrder;oi++){cumFromTop+=selected[selectedOrder[oi]];}}
+if(cumFromTop<30){layer='top-note';var layerTag='前调';}
+else if(cumFromTop<70){layer='mid-note';var layerTag='中调';}
+else{layer='base-note';var layerTag='尾调';}
 slots.push('<div class="blend-slot '+layer+'"><div class="blend-slot-name">'+ing.cn+'<span class="blend-slot-layer-tag">'+layerTag+'</span><small>'+ing.en+'</small></div><div class="blend-slot-ctrl"><button class="blend-step-btn s-minus" data-idx="'+idx+'">-</button><span class="s-pct">'+p+'%</span><button class="blend-step-btn s-plus" data-idx="'+idx+'">+</button></div><button class="blend-slot-del" data-idx="'+idx+'">x</button></div>');
 });
 if(slots.length===0){
@@ -1941,6 +1954,7 @@ if(s2>100){selected[lIdx]=Math.max(1,selected[lIdx]-(s2-100));}
 lastModifiedIdx=idx;
 }
 renderFormula();
+triggerRainCloud(INGREDIENTS[idx].cn);
 }
 
 function bindSlotEvents(){
@@ -2033,6 +2047,31 @@ if(bestProd){rMatch.innerHTML=bestProd.cn+' · <em>'+bestProd.en+'</em><br><smal
 resultEl.classList.add('show');resultShown=true;
 setTimeout(function(){resultEl.scrollIntoView({behavior:'smooth',block:'center'});},200);
 });
+
+
+function triggerRainCloud(ingName){
+var cloud=document.getElementById("blendRainCloud");if(!cloud)return;
+cloud.classList.add("raining");
+// Spawn raindrops inside the bottle body
+var body=document.querySelector(".blend-bottle-body");
+if(body&&!body.querySelector(".blend-raindrop")){
+var drops=document.createElement("div");
+drops.style.cssText="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:4";
+drops.className="blend-raindrop-container";
+for(var i=0;i<18;i++){
+var drop=document.createElement("div");drop.className="blend-raindrop";
+drop.style.left=(10+Math.random()*80)+"%";
+drop.style.animationDelay=(Math.random()*.6)+"s";
+drop.style.animationDuration=(.6+Math.random()*.6)+"s";
+drops.appendChild(drop);
+}
+body.appendChild(drops);
+setTimeout(function(){
+if(drops.parentNode)drops.parentNode.removeChild(drops);
+},1500);
+}
+setTimeout(function(){cloud.classList.remove("raining");},1400);
+}
 
 // Init
 buildCatGrid();renderFormula();
