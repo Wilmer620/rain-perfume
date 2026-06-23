@@ -1311,7 +1311,7 @@ var THEMES=[
 {name:"雨后",en:"After Rain",desc:"坠落、漂流、触地——雨的生命只有三秒，但雨的<em>意义</em>在触地之后才开始。",scene:"雨停了。你低头看见地上的水洼——里面倒映着刚才那朵云、刚才那道闪电、刚才那个在雨里没有跑的人。雨已经结束了，但雨<em>做过的每一件事</em>都还留在这里。",rain:"这是一场<em>已完成</em>的雨。它落完了，但它改变的一切——还在继续。"},
 ];
 
-var selected={},selectedOrder=[],totalPercent=0,resultShown=false;
+var selected={},selectedOrder=[],lastModifiedIdx=null,totalPercent=0,resultShown=false;
 var catContainer=document.getElementById("blendCatContainer");
 var bottleFill=document.getElementById("blendBottleFill");
 var bottlePct=document.getElementById("blendBottlePct");
@@ -1449,12 +1449,13 @@ var nv=Math.max(1,Math.min(100,cur+delta));
 selected[idx]=nv;
 var sum=0;Object.values(selected).forEach(function(v){sum+=v;});
 if(sum>100){
-var excess=sum-100;var lIdx=selectedOrder[selectedOrder.length-1];
+var excess=sum-100;var lIdx=lastModifiedIdx;
 if(lIdx!==undefined&&lIdx!==idx&&selected[lIdx]!==undefined){
 selected[lIdx]=Math.max(1,selected[lIdx]-excess);
 var s2=0;Object.values(selected).forEach(function(v2){s2+=v2;});
 if(s2>100){selected[lIdx]=Math.max(1,selected[lIdx]-(s2-100));}
 }else{selected[idx]=100-(sum-nv);}
+lastModifiedIdx=idx;
 }
 renderFormula();
 }
@@ -1469,7 +1470,7 @@ btn.addEventListener('click',function(){adjustPct(parseInt(this.dataset.idx),1);
 formulaEl.querySelectorAll('.blend-slot-del').forEach(function(btn){
 btn.addEventListener('click',function(){
 var idx=parseInt(this.dataset.idx);delete selected[idx];
-selectedOrder=selectedOrder.filter(function(x){return x!==idx;});
+selectedOrder=selectedOrder.filter(function(x){return x!==idx;});if(lastModifiedIdx===idx)lastModifiedIdx=null;
 buildCatGrid();renderFormula();
 if(resultShown){resultEl.classList.remove('show');resultShown=false;}
 });
