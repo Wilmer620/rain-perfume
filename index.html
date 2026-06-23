@@ -443,6 +443,9 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-dialog .dl-btn.confirm:hover{background:var(--gold-d)}
 .blend-dialog .dl-btn.cancel{background:transparent;color:var(--ink3);border:1px solid rgba(184,148,62,.15)}
 .blend-dialog .dl-btn.cancel:hover{border-color:var(--gold);color:var(--ink)}
+.dl-hint{font-size:.54rem;color:var(--ink3);line-height:1.6;margin-bottom:.8rem;letter-spacing:.03em;padding:.3rem .6rem;background:rgba(184,148,62,.04);border-radius:6px}
+.dl-hint em{font-style:normal;font-weight:500}
+
 
 /* ══ 调香瓶 ══ */
 .blend-total-strip{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.5rem 0}
@@ -496,13 +499,13 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-layer-label.ltop{top:15%}
 .blend-layer-label.lmid{top:50%}
 .blend-layer-label.lbase{top:85%}
-.blend-slot.top-note{border-left:3px solid rgba(212,182,96,.5)}
-.blend-slot.mid-note{border-left:3px solid rgba(184,148,62,.45)}
-.blend-slot.base-note{border-left:3px solid rgba(152,120,50,.4)}
+.blend-slot.top-note{border-left:4px solid #d4b660;background:rgba(212,182,96,.04)}
+.blend-slot.mid-note{border-left:4px solid #b8943e;background:rgba(184,148,62,.04)}
+.blend-slot.base-note{border-left:4px solid #8b691e;background:rgba(139,105,30,.03)}
 .blend-slot-layer-tag{font-size:.4rem;font-family:'Noto Serif SC',serif;padding:.08rem .35rem;border-radius:100px;letter-spacing:.04em;display:inline-block;margin-top:.15rem}
-.top-note .blend-slot-layer-tag{color:#b8943e;background:rgba(212,182,96,.1)}
-.mid-note .blend-slot-layer-tag{color:#8b691e;background:rgba(184,148,62,.1)}
-.base-note .blend-slot-layer-tag{color:#6b4e15;background:rgba(152,120,50,.1)}
+.top-note .blend-slot-layer-tag{color:#d4b660;background:rgba(212,182,96,.15);font-weight:500}
+.mid-note .blend-slot-layer-tag{color:#b8943e;background:rgba(184,148,62,.15);font-weight:500}
+.base-note .blend-slot-layer-tag{color:#8b691e;background:rgba(139,105,30,.15);font-weight:500}
 .blend-bottle-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;opacity:.35;pointer-events:none}
 .blend-bottle-logo svg{width:280px;height:auto}
 
@@ -554,13 +557,12 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-r-scene{font-family:'Noto Serif SC',serif;font-size:.72rem;color:var(--ink);line-height:2;letter-spacing:.04em;text-align:center;font-style:italic;padding:.8rem 1rem;border-top:1px solid rgba(184,148,62,.06);margin-top:.6rem}
 
 /* ══ 操作指引 ══ */
-.blend-guide-btn{position:fixed;bottom:2rem;right:1.5rem;padding:.35rem .7rem;border-radius:100px;border:1px solid rgba(184,148,62,.2);background:rgba(253,249,239,.85);backdrop-filter:blur(10px);color:var(--gold);font-size:.55rem;cursor:none;display:flex;align-items:center;gap:.3rem;transition:all .3s;z-index:99;font-family:'Noto Serif SC',serif;letter-spacing:.04em}
-.blend-guide-btn:hover{border-color:var(--gold-d);color:var(--gold-d);background:rgba(253,249,239,.95);transform:translateY(-2px);box-shadow:0 4px 14px rgba(184,148,62,.15)}
-.blend-guide-icon{font-weight:700;font-size:.7rem;line-height:1}
-.blend-guide{display:none;position:fixed;bottom:5.5rem;right:1.5rem;width:260px;background:rgba(253,249,239,.97);backdrop-filter:blur(14px);border:1px solid rgba(184,148,62,.12);border-radius:10px;padding:.9rem 1.1rem;z-index:99;box-shadow:0 8px 30px rgba(0,0,0,.06)}
-.blend-guide.open{display:block}
-.blend-guide h4{font-family:'Noto Serif SC',serif;font-size:.7rem;color:var(--gold);margin:0 0 .5rem;letter-spacing:.06em}
-.blend-guide ol{margin:0;padding:0 0 0 1rem;font-size:.58rem;color:var(--ink2);line-height:2.2;letter-spacing:.03em}
+.blend-guide-inline{max-width:860px;margin:0 auto 1.5rem;padding:0 1rem}
+.blend-guide-steps{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.blend-guide-step{display:flex;align-items:center;gap:.5rem;font-family:'Noto Serif SC',serif;font-size:.62rem;color:var(--ink2);letter-spacing:.03em;padding:.4rem .8rem;background:rgba(255,253,250,.3);border:1px solid rgba(184,148,62,.06);border-radius:100px}
+.blend-guide-step em{font-style:normal;color:var(--gold);font-weight:500}
+.gstep-num{display:inline-flex;width:20px;height:20px;border-radius:50%;background:rgba(184,148,62,.1);color:var(--gold);font-size:.55rem;font-weight:600;align-items:center;justify-content:center;flex-shrink:0}
+
 
 @media(max-width:900px){
 .blend-bottle-section{flex-direction:column;gap:1.5rem}
@@ -578,8 +580,6 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-overlay-header{padding:2.5rem 1rem 1rem}
 .blend-result{flex-direction:column;align-items:center}
 .blend-r-row{flex-direction:column}
-.blend-guide{width:220px;bottom:5rem;right:.8rem}
-.blend-guide-btn{bottom:1.2rem;right:.5rem;padding:.3rem .55rem;font-size:.5rem}
 }
 </style>
 </head>
@@ -1444,14 +1444,12 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 <div class="sec-label reveal"><p class="num">09</p><h2 class="title">模拟降雨</h2><p class="sec-en">Simulate Rain</p></div>
 <section class="blend-studio" id="simRain">
 <p class="blend-intro reveal">雨是天地间最古老的<em>调香师</em>——它将花香从枝头打落、将树脂从树皮泡出、将泥土的呼吸蒸成蒸汽。<br>在这里，我们开展<em>模拟降雨</em>测试。从十类香料中挑选你的原料，为每一味设定比例，<br>直到瓶中恰好是<em>百分之一百</em>——然后降下这场只属于你的雨。</p>
-<button class="blend-guide-btn" id="blendGuideBtn"><span class="blend-guide-icon">?</span><span class="blend-guide-label">如何调配</span></button>
-<div class="blend-guide" id="blendGuide">
-<h4>如何调配你的雨</h4>
-<ol>
-<li>点击上方<em style="color:var(--gold);font-style:normal">香料分类</em>进入全屏浏览</li>
-<li><em style="color:var(--gold);font-style:normal">选择原料</em>并为其设定比例（± 按钮调整）</li>
-<li>总比例恰好<em style="color:var(--gold);font-style:normal">100%</em>后点击「降下这场雨」</li>
-</ol>
+<div class="blend-guide-inline reveal" id="blendGuideInline">
+<div class="blend-guide-steps">
+<div class="blend-guide-step"><span class="gstep-num">1</span><span>点击香料分类，在<em>全屏</em>中浏览并<em>选择</em>原料</span></div>
+<div class="blend-guide-step"><span class="gstep-num">2</span><span>系统<em>智能</em>设定比例——首味30%、二三20%、四五15%，可手动调整</span></div>
+<div class="blend-guide-step"><span class="gstep-num">3</span><span>总比例恰好<em>100%</em>时，按下「降下这场雨」</span></div>
+</div>
 </div>
 <div class="blend-wrap" id="blendWrap">
 <div class="blend-ingredient-table" id="blendCatContainer"></div>
@@ -1837,8 +1835,6 @@ var rText=document.getElementById("blendRText");
 var rScene=document.getElementById("blendRScene");
 var rMatch=document.getElementById("blendRMatch");
 var rWhy=document.getElementById("blendRWhy");
-var guideBtn=document.getElementById("blendGuideBtn");
-var guideEl=document.getElementById("blendGuide");
 var overlay=document.getElementById("blendOverlay");
 var dialogMask=document.getElementById("blendDialogMask");
 if(!catContainer)return;
@@ -1892,25 +1888,48 @@ overlay.classList.remove('open');
 document.body.style.overflow='';
 }
 
-// Percentage dialog
+// Percentage dialog - smart proportion system
 var dialogIngIdx=null;
+var customAdjusted=false; // track if user manually tweaked any %
+
+function smartDefaultPct(){
+var cnt=Object.keys(selected).length;
+if(cnt===0)return 30;
+if(cnt===1)return 20;
+if(cnt===2)return 20;
+if(cnt===3)return 15;
+if(cnt===4)return 15;
+var remaining=100-totalPercent;return Math.max(5,remaining);
+}
+
 function openDialog(idx,ing){
 dialogIngIdx=idx;
+var cnt=Object.keys(selected).length;
+var pct=smartDefaultPct();
 var h='<h4>'+ing.cn+'</h4><div class="dl-ing-en">'+ing.en+'</div>';
 h+='<div class="dl-desc">'+ing.desc+'</div>';
-h+='<div class="dl-input-row"><button class="dl-btn-big dl-minus">-</button><span class="dl-pct-val" id="dlPctVal">15</span><span style="font-family:Noto Serif SC;font-size:.7rem;color:var(--ink3)">%</span><button class="dl-btn-big dl-plus">+</button></div>';
+
+// Show top-note layer hint
+var cumTop=0;selectedOrder.forEach(function(oi){cumTop+=selected[oi];});
+var hint='';
+if(cumTop<30)hint='降雨提示：此香料将加入<em style="color:var(--gold)">前调</em>（瓶中上层）';
+else if(cumTop<70)hint='降雨提示：此香料将加入<em style="color:var(--gold-d)">中调</em>（瓶中中层）';
+else hint='降雨提示：此香料将加入<em style="color:#8b691e">尾调</em>（瓶中下层）';
+if(cnt===0)hint='首次调香：此香料将作为<em style="color:var(--gold)">前调</em>开启你的雨（默认30%）';
+h+='<div class="dl-hint">'+hint+'</div>';
+
+h+='<div class="dl-input-row"><button class="dl-btn-big dl-minus">-</button><span class="dl-pct-val" id="dlPctVal">'+pct+'</span><span style="font-family:Noto Serif SC;font-size:.7rem;color:var(--ink3)">%</span><button class="dl-btn-big dl-plus">+</button></div>';
 h+='<div class="dl-actions"><button class="dl-btn confirm" id="dlConfirm">加入配方</button><button class="dl-btn cancel" id="dlCancel">取消</button></div>';
 dialogMask.innerHTML='<div class="blend-dialog">'+h+'</div>';
 dialogMask.classList.add('open');
 
 var pctEl=document.getElementById('dlPctVal');
-var pct=15;
-function updatePct(){pctEl.textContent=pct;}
+function updatePct(){pctEl.textContent=pct;customAdjusted=true;}
 document.querySelector('.dl-minus').addEventListener('click',function(){if(pct>1){pct-=1;if(pct<1)pct=1;}updatePct();});
 document.querySelector('.dl-plus').addEventListener('click',function(){if(pct<100){pct+=1;if(pct>100)pct=100;}updatePct();});
 document.getElementById('dlConfirm').addEventListener('click',function(){
-var cnt=Object.keys(selected).length;
-if(cnt>=8){closeDialog();closeOverlay();return;}
+var cnt2=Object.keys(selected).length;
+if(cnt2>=8){closeDialog();closeOverlay();return;}
 selected[dialogIngIdx]=pct;
 if(selectedOrder.indexOf(dialogIngIdx)<0)selectedOrder.push(dialogIngIdx);
 triggerRainCloud(INGREDIENTS[dialogIngIdx].cn);
@@ -2007,8 +2026,6 @@ var cat=card.dataset.cat;openOverlay(cat);
 // Close overlay with Escape
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeOverlay();closeDialog();}});
 
-// Guide
-if(guideBtn)guideBtn.addEventListener('click',function(){guideEl.classList.toggle('open');});
 // Method toggle
 var methodBtns=document.querySelectorAll('.blend-method-btn');
 methodBtns.forEach(function(btn){btn.addEventListener('click',function(){
@@ -2088,6 +2105,7 @@ resultEl.scrollIntoView({behavior:'smooth',block:'center'});
 }
 
 function runEvaluation(data){
+if(!data||Object.keys(data).length===0)return;
 var userVec=[0,0,0,0,0,0,0,0,0,0];var catMap={citrus:0,floral:1,fruity:2,green:3,spicy:4,woody:5,resin:6,musk:7,gourmand:8,aquatic:9};
 Object.keys(data).forEach(function(k){var idx=parseInt(k);var ci=catMap[INGREDIENTS[idx].cat];userVec[ci]+=data[idx];});
 var sum=0;userVec.forEach(function(v){sum+=v;});if(sum>0)userVec=userVec.map(function(v){return v/sum;});
@@ -2113,7 +2131,7 @@ var tone=toneNames[maxCat];if(domCats.length>=3&&maxVal<0.35)tone=domCats.slice(
 rTone.textContent=tone;
 
 // --- Step C: Personalized copy with theme context ---
-var sorted=Object.entries(selected).sort(function(a,b){return b[1]-a[1];}).slice(0,3);
+var sorted=Object.entries(data).sort(function(a,b){return b[1]-a[1];}).slice(0,3);
 var topIngs=sorted.map(function(e){return INGREDIENTS[parseInt(e[0])].cn;});
 var topDesc=sorted.map(function(e){var d=INGREDIENTS[parseInt(e[0])].desc;return d.replace(/[，。；]/g,'').slice(0,28);});
 var methodNames={roast:"煎炒",distill:"蒸馏",filter:"过滤",purify:"提纯",conc:"浓缩"};
