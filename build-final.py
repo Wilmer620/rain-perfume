@@ -1109,6 +1109,13 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 
 @media(max-width:900px){
+.blend-wrap.ritual-active{position:fixed;inset:0;z-index:200;background:rgba(253,249,239,.98);overflow:hidden}
+.blend-wrap.ritual-active .blend-total-strip{position:fixed;top:2rem;left:0;right:0;z-index:201}
+.blend-wrap.ritual-active .blend-bottle-section{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:0}
+.blend-wrap.ritual-active .blend-bottle{width:160px;height:320px}
+.blend-wrap.ritual-active .blend-bottle-body{width:130px;height:220px}
+.blend-wrap.ritual-active .blend-ingredient-table,.blend-wrap.ritual-active .blend-formula-strip,.blend-wrap.ritual-active .blend-submit-wrap,.blend-wrap.ritual-active .blend-methods,.blend-wrap.ritual-active .blend-bottle-label,.blend-wrap.ritual-active .blend-digi-btns{display:none!important}
+
 .blend-bottle-section{flex-direction:column;gap:1.5rem}
 .blend-bottle{width:130px;height:280px}
 .blend-bottle-body{width:110px;height:200px;border-radius:20px 20px 30px 30px}
@@ -1539,7 +1546,6 @@ selected[dialogIngIdx]=pct;
 if(selectedOrder.indexOf(dialogIngIdx)<0)selectedOrder.push(dialogIngIdx);
 triggerRainCloud(INGREDIENTS[dialogIngIdx].cn);
 closeDialog();closeOverlay();
-setTimeout(function(){var bottle=document.querySelector('.blend-bottle-section');if(bottle){bottle.scrollIntoView({behavior:'smooth',block:'center'});}},400);
 renderFormula();
 buildCatGrid();
 if(resultShown){resultEl.classList.remove('show');resultShown=false;}
@@ -1674,6 +1680,7 @@ sd++;var cp=Math.round(sp*(1-sd/ns));bottleFill.style.height=cp+'%';totalEl.text
 if(sd>=ns){clearInterval(ti);
 if(window._brf){cancelAnimationFrame(window._brf);}ro=document.getElementById('blendRainOverlay');if(ro)ro.classList.remove('active');
 wrap.classList.remove('ritual-active');
+if(window.innerWidth<=900){document.body.style.overflow='';document.body.style.position='';document.body.style.width='';}
 bottleFill.style.height='0%';totalEl.textContent='0%';
 // CLEAR ALL STATE
 selected={};selectedOrder=[];lastModifiedIdx=null;totalPercent=0;selectedMethods=[];
