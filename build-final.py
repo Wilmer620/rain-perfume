@@ -1709,7 +1709,7 @@ var bestTheme=0,bestThemeSim=-1;
 for(var t=0;t<6;t++){var dot=0,nU=0,nT=0;for(var i=0;i<10;i++){dot+=userVec[i]*themeVecs[t][i];nU+=userVec[i]*userVec[i];nT+=themeVecs[t][i]*themeVecs[t][i];}nU=Math.sqrt(nU);nT=Math.sqrt(nT);if(nU>0&&nT>0){var sim=dot/(nU*nT);if(sim>bestThemeSim){bestThemeSim=sim;bestTheme=t;}}}
 
 var theme=THEMES[bestTheme];
-rTheme.innerHTML='你的雨属于 <em>'+theme.name+'</em> · '+theme.en;
+rTheme.innerHTML='瓶中雨属于 <em>'+theme.name+'</em> · '+theme.en;
 
 // --- Step B: Tone analysis ---
 var maxCat=0,maxVal=0;userVec.forEach(function(v,i){if(v>maxVal){maxVal=v;maxCat=i;}});
@@ -1753,7 +1753,7 @@ if(savedMethods){selectedMethods=savedMethods.slice();
 var methodBtns=document.querySelectorAll('.blend-method-btn');
 methodBtns.forEach(function(btn){if(savedMethods.indexOf(btn.dataset.method)>=0){btn.classList.add('active');}else{btn.classList.remove('active');}});
 }
-buildCatGrid();renderFormula();bindIngredientClicks();
+buildCatGrid();renderFormula();
 resultEl.classList.remove('show');resultShown=false;
 resetBtn.classList.remove('show');
 totalEl.textContent='0%';
@@ -2207,7 +2207,7 @@ html = f'''<!DOCTYPE html>
 <span class="blend-layer-label lbase">尾 调</span>
 </div>
 </div>
-<div class="blend-bottle-label">你的雨</div>
+<div class="blend-bottle-label">瓶中雨</div>
 </div>
 <div class="blend-formula-strip">
 <div class="blend-formula" id="blendFormula"></div>
