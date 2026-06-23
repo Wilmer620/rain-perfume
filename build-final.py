@@ -603,6 +603,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .mob-nav a:nth-child(6){transition-delay:.36s}
 .mob-nav a:nth-child(7){transition-delay:.42s}
 .mob-nav a:nth-child(8){transition-delay:.48s}
+.mob-nav a:nth-child(9){transition-delay:.54s}
 .mob-nav a:hover{color:var(--gold)}
 .mob-nav a.active{color:var(--gold-d)}
 
@@ -884,6 +885,69 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 @media (max-width:1080px){.frag-grid{grid-template-columns:1fr 1fr;padding:0 1.5rem;gap:14px}.frag-card{min-height:420px;padding:2.5rem 1.5rem}.craft-grid{grid-template-columns:1fr;gap:14px}}
 @media (max-width:768px){.frag-grid{grid-template-columns:1fr;padding:0 1rem;gap:12px}.frag-card{min-height:360px;padding:2rem 1.2rem}.frag-name-en{font-size:1.3rem}.frag-name-cn{font-size:.8rem}.hero{padding:5rem 1.2rem 3rem;min-height:90vh}.hero-title{font-size:clamp(2.8rem,14vw,5rem)}.hero-sub-en{font-size:.5rem;letter-spacing:.3em}.hero-sub-cn{font-size:.55rem;letter-spacing:.2em}.hero-frame{inset:1.5rem}.hero-gold-line{width:85%}.phil{padding:3rem 1rem}.phil-inner{padding:2.5rem 1.5rem}.phil-text{font-size:.9rem;line-height:2.5}.quiz-inner{padding:2.5rem 1.5rem}.quiz .title{font-size:1.4rem}.quiz .q{font-size:.88rem}.quiz-opt{font-size:.68rem;padding:.5rem 1.2rem}.nl-inner{padding:2.5rem 1.5rem}.nl-form{flex-direction:column;gap:.8rem}.nl-btn{width:100%}.founders-inner,.man-inner{padding:2.5rem 1.5rem}.craft-card{padding:2rem 1.5rem}.footer{padding:2.5rem 1.5rem}.ft-links{gap:1.5rem}}
 @media (max-width:480px){.hero{padding:4rem 1rem 2.5rem;min-height:85vh}.hero-title{font-size:clamp(2.2rem,12vw,3.5rem)}.hero-sub-en{font-size:.45rem;letter-spacing:.2em}.hero-sub-cn{font-size:.5rem;letter-spacing:.15em}.hero-line{font-size:.78rem}.hero-frame{display:none}.hero-gold-line{width:90%}.frag-card{min-height:300px;padding:1.5rem 1rem}.frag-img-wrap{margin-bottom:1.2rem}.phil-inner{padding:2rem 1.2rem}.footer{padding:2rem 1rem}}
+
+/* ══ 模拟降雨 ══ */
+.blend-wrap{display:grid;grid-template-columns:220px 1fr 380px;gap:2rem;max-width:1400px;margin:0 auto;padding:2rem 1.5rem;align-items:start}
+.blend-ingredients{display:flex;flex-direction:column;gap:.4rem;position:sticky;top:100px}
+.blend-cat-btn{font-family:'Noto Serif SC',serif;font-size:.72rem;letter-spacing:.05em;color:var(--ink2);background:transparent;border:none;border-bottom:1px solid rgba(184,148,62,.12);padding:.55rem .4rem;cursor:none;text-align:left;transition:all .3s}
+.blend-cat-btn:hover,.blend-cat-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.blend-cat-list{display:none;flex-direction:column;gap:.15rem;padding:.3rem 0 .6rem .4rem;max-height:340px;overflow-y:auto}
+.blend-cat-list.open{display:flex}
+.blend-cat-list::-webkit-scrollbar{width:3px}
+.blend-cat-list::-webkit-scrollbar-thumb{background:rgba(184,148,62,.15);border-radius:10px}
+.blend-item{font-size:.62rem;color:var(--ink3);padding:.25rem .4rem;border-radius:4px;cursor:none;transition:all .25s;line-height:1.5;border:1px solid transparent}
+.blend-item:hover{color:var(--ink);background:rgba(184,148,62,.04);border-color:rgba(184,148,62,.08)}
+.blend-item.selected{color:var(--gold-d);background:rgba(184,148,62,.06);border-color:rgba(184,148,62,.15);pointer-events:none}
+.blend-item .bi-en{display:block;font-family:'Inter',sans-serif;font-size:.5rem;letter-spacing:.03em;opacity:.45}
+.blend-item .bi-desc{display:block;font-size:.55rem;opacity:.5;margin-top:.1rem}
+.blend-formula{display:flex;flex-direction:column;gap:.6rem}
+.blend-total{font-family:'Noto Serif SC',serif;font-size:1.8rem;font-weight:200;color:var(--gold);text-align:center;margin-bottom:.2rem;transition:color .3s}
+.blend-total.warn{color:#c0392b}
+.blend-formula-hint{text-align:center;font-size:.55rem;color:var(--ink3);margin-top:-.4rem;margin-bottom:.4rem;letter-spacing:.05em}
+.blend-slot{display:grid;grid-template-columns:1fr 100px 32px;gap:.6rem;align-items:center;padding:.55rem .8rem;background:rgba(255,253,250,.25);backdrop-filter:blur(8px);border:1px solid rgba(184,148,62,.06);border-radius:8px;transition:all .3s;animation:slotIn .4s ease}
+.blend-slot:hover{border-color:rgba(184,148,62,.15);background:rgba(255,253,250,.4)}
+@keyframes slotIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.blend-slot-name{font-size:.7rem;color:var(--ink);font-family:'Noto Serif SC',serif}
+.blend-slot-name small{display:block;font-family:'Inter',sans-serif;font-size:.5rem;color:var(--ink3);letter-spacing:.02em}
+.blend-slot-ctrl{display:flex;align-items:center;gap:.4rem}
+.blend-slot-ctrl input[type=range]{-webkit-appearance:none;width:100%;height:3px;background:rgba(184,148,62,.12);border-radius:10px;outline:none;cursor:none}
+.blend-slot-ctrl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--gold);cursor:none;transition:transform .2s}
+.blend-slot-ctrl input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.blend-slot-ctrl input[type=number]{width:44px;height:28px;font-family:'Inter',sans-serif;font-size:.65rem;text-align:center;border:1px solid rgba(184,148,62,.15);border-radius:4px;background:rgba(255,253,250,.5);color:var(--ink);outline:none}
+.blend-slot-ctrl input[type=number]:focus{border-color:var(--gold)}
+.blend-slot-del{width:28px;height:28px;border:none;background:transparent;color:var(--ink3);font-size:1rem;cursor:none;border-radius:50%;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.blend-slot-del:hover{color:#c0392b;background:rgba(192,57,43,.06)}
+.blend-empty{text-align:center;color:var(--ink3);font-size:.65rem;padding:2rem;letter-spacing:.05em;font-family:'Noto Serif SC',serif}
+.blend-submit{display:block;width:100%;padding:.7rem;font-family:'Noto Serif SC',serif;font-size:.75rem;letter-spacing:.15em;color:var(--bg);background:var(--gold);border:none;border-radius:100px;cursor:none;transition:all .4s;opacity:.35;pointer-events:none;margin-top:.6rem}
+.blend-submit.ready{opacity:1;pointer-events:auto}
+.blend-submit.ready:hover{background:var(--gold-d);transform:translateY(-1px);box-shadow:0 4px 16px rgba(184,148,62,.2)}
+.blend-result{display:none;flex-direction:column;gap:1rem;position:sticky;top:100px}
+.blend-result.show{display:flex;animation:fadeUp .6s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.blend-r-card{background:rgba(255,253,250,.3);backdrop-filter:blur(10px);border:1px solid rgba(184,148,62,.08);border-radius:10px;padding:1.2rem;text-align:center}
+.blend-r-label{font-family:'Inter',sans-serif;font-size:.5rem;letter-spacing:.25em;color:var(--ink3);text-transform:uppercase;margin-bottom:.5rem}
+.blend-r-tone{font-family:'Noto Serif SC',serif;font-size:1.05rem;color:var(--gold);font-weight:500;letter-spacing:.06em}
+.blend-r-text{font-family:'Noto Serif SC',serif;font-size:.68rem;color:var(--ink2);line-height:2;letter-spacing:.04em;text-align:justify}
+.blend-r-match{font-family:'Noto Serif SC',serif;font-size:.85rem;color:var(--ink);letter-spacing:.05em}
+.blend-r-match .bm-en{display:block;font-family:'Inter',sans-serif;font-size:.52rem;color:var(--ink3);letter-spacing:.08em;margin-bottom:.3rem}
+.blend-r-why{font-size:.62rem;color:var(--ink3);margin-top:.4rem;line-height:1.7;letter-spacing:.03em}
+.blend-guide-btn{position:absolute;top:0;right:0;width:32px;height:32px;border-radius:50%;border:1px solid rgba(184,148,62,.15);background:rgba(255,253,250,.3);color:var(--ink3);font-size:.9rem;cursor:none;display:flex;align-items:center;justify-content:center;transition:all .3s;z-index:2}
+.blend-guide-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(255,253,250,.5)}
+.blend-guide{display:none;position:absolute;top:42px;right:0;width:260px;background:rgba(255,253,250,.95);backdrop-filter:blur(12px);border:1px solid rgba(184,148,62,.12);border-radius:10px;padding:1rem 1.2rem;z-index:10;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.blend-guide.open{display:block}
+.blend-guide h4{font-family:'Noto Serif SC',serif;font-size:.7rem;color:var(--gold);margin:0 0 .6rem;letter-spacing:.06em}
+.blend-guide ol{margin:0;padding:0 0 0 1rem;font-size:.58rem;color:var(--ink2);line-height:2.2;letter-spacing:.03em}
+@media(max-width:900px){
+.blend-wrap{grid-template-columns:1fr;gap:1.2rem;padding:1.2rem}
+.blend-ingredients{position:static;flex-direction:row;flex-wrap:wrap;gap:.3rem;overflow-x:auto}
+.blend-cat-btn{font-size:.62rem;padding:.35rem .55rem;white-space:nowrap;border:1px solid rgba(184,148,62,.08);border-radius:100px}
+.blend-cat-btn.active{background:rgba(184,148,62,.08);border-color:var(--gold)}
+.blend-cat-list{position:absolute;left:0;right:0;top:100%;z-index:5;background:rgba(255,253,250,.97);max-height:220px}
+.blend-formula{order:1}
+.blend-ingredients{order:2;position:relative}
+.blend-result{order:3;position:static}
+.blend-guide{width:220px;right:auto;left:0}
+}
 '''
 
 # =====================================================================
@@ -1162,6 +1226,95 @@ var qs=document.querySelectorAll(".quiz-step"),qr=document.getElementById("quizR
 /* Newsletter */
 var nlType="email",nlToggleEmail=document.getElementById("nlToggleEmail"),nlTogglePhone=document.getElementById("nlTogglePhone"),nlInput=document.getElementById("nlInput"),nlForm=document.getElementById("nlForm"),nlMsg=document.getElementById("nlMsg");if(nlToggleEmail)nlToggleEmail.addEventListener("click",function(){nlType="email";nlToggleEmail.classList.add("active");nlTogglePhone.classList.remove("active");nlInput.type="email";nlInput.placeholder="你的邮箱地址";nlInput.value=""});if(nlTogglePhone)nlTogglePhone.addEventListener("click",function(){nlType="phone";nlTogglePhone.classList.add("active");nlToggleEmail.classList.remove("active");nlInput.type="tel";nlInput.placeholder="你的手机号码";nlInput.value=""});if(nlForm)nlForm.addEventListener("submit",function(e){e.preventDefault();var contact=nlInput.value.trim();if(!contact)return;fetch("https://formspree.io/f/xbdvrjvk",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contact:contact,type:nlType,subscribedAt:new Date().toISOString()})}).then(function(res){return res.json()}).then(function(data){nlMsg.textContent="订阅成功，我们会第一时间通知你。";nlMsg.classList.add("show");nlInput.value="";setTimeout(function(){nlMsg.classList.remove("show")},4000)}).catch(function(){nlMsg.textContent="订阅成功，我们会第一时间通知你。";nlMsg.classList.add("show");nlInput.value="";setTimeout(function(){nlMsg.classList.remove("show")},4000)})});
 
+
+/* ══ 模拟降雨 · 调香引擎 ══ */
+(function(){
+var INGREDIENTS=[{cn:"佛手柑",en:"Bergamot",cat:"citrus",desc:"第一缕光切开雨雾——明亮到可以刺破任何阴天。"},{cn:"苦橙",en:"Bitter Orange",cat:"citrus",desc:"橙皮里的苦是雨洗过树枝后余下的涩，清冽提神。"},{cn:"柠檬",en:"Lemon",cat:"citrus",desc:"雨滴砸在柠檬皮上溅起的碎光——酸得让人睁开眼。"},{cn:"柑橘",en:"Mandarin",cat:"citrus",desc:"温柔的酸甜，像雨停后窗台上那一瓣刚剥开的阳光。"},{cn:"柚子",en:"Yuzu",cat:"citrus",desc:"日本冬日的柚子浴——冷雨落在热汤上，升起一团青涩的水汽。"},{cn:"橙花",en:"Neroli",cat:"citrus",desc:"橙树的花比果实更轻——白花瓣上的雨珠是春天的第一封信。"},{cn:"克莱门汀",en:"Clementine",cat:"citrus",desc:"比柑橘更甜，比阳光更柔——像雨后天边那抹金橙色。"},{cn:"青柠",en:"Lime",cat:"citrus",desc:"没有柠檬圆滑，尖锐的绿意直接刺进雨帘——是一种态度。"},{cn:"葡萄柚",en:"Grapefruit",cat:"citrus",desc:"微苦的果肉在舌尖泛起泡沫——雨泡过的早晨，清醒但不沉重。"},{cn:"日本柚子",en:"Yuzu Japon",cat:"citrus",desc:"比普通柚子更幽冷——雨落在温泉乡的石阶上，空气里有一丝酸意。"},{cn:"血橙",en:"Blood Orange",cat:"citrus",desc:"橙与红之间的暧昧——像雨夜里路灯染过的水洼。"},{cn:"五月玫瑰",en:"May Rose",cat:"floral",desc:"一年只开一次——雨打在花瓣上，打不散它的浓。像一句只对一个人说的话。"},{cn:"大马士革玫瑰",en:"Damask Rose",cat:"floral",desc:"比五月玫瑰更厚更沉默——花瓣上的雨水积了一晚，第二天才慢慢滑下来。"},{cn:"茉莉",en:"Jasmine",cat:"floral",desc:"最幽的花——不在你眼前香，在你转身之后香。雨夜里的白点像星子。"},{cn:"晚香玉",en:"Tuberose",cat:"floral",desc:"白花里最大胆的——雨中的香气反而更烈，像不说出口却无法忽视的那个字。"},{cn:"鸢尾",en:"Iris",cat:"floral",desc:"根茎在土里酝酿数年——雨后破土的紫，是所有等待的颜色。"},{cn:"紫罗兰",en:"Violet",cat:"floral",desc:"矮矮贴着地面开——雨水将花瓣洗得透明，像低头才能看见的温柔。"},{cn:"铃兰",en:"Lily of the Valley",cat:"floral",desc:"最低垂的花——雨滴挂在花瓣尖将坠未坠，像初恋不敢说的话。"},{cn:"含羞草",en:"Mimosa",cat:"floral",desc:"羽毛状的黄绒花——雨一碰就轻轻收拢，敏感柔软，像被触动的心事。"},{cn:"桂花",en:"Osmanthus",cat:"floral",desc:"秋天从很远的地方先飘过来——雨里掺杂桂花的甜，微小却香透整条街。"},{cn:"依兰",en:"Ylang Ylang",cat:"floral",desc:"热带夜晚最浓的花——雨后湿气让香气更稠密，像夜的呼吸。"},{cn:"橙花醇",en:"Nerolidol",cat:"floral",desc:"橙花的灵魂分子——比完整的花更轻飘，像雨雾中最细的那粒水珠。"},{cn:"牡丹",en:"Peony",cat:"floral",desc:"大朵的花盛到近乎奢侈——雨水积在花瓣里重到弯下去却不坠落。"},{cn:"天芥菜",en:"Heliotrope",cat:"floral",desc:"杏仁与樱桃之间的暖花香——像雨滴在皮肤上慢慢蒸发后的温度。"},{cn:"百合",en:"Lily",cat:"floral",desc:"教堂里最静的那朵——雨打在彩色玻璃上，花瓣香气穿过湿气升起。"},{cn:"丁香花",en:"Lilac",cat:"floral",desc:"春天雨后最短暂的花——开三天就谢了，但香气在雨里能飘一整个星期。"},{cn:"洋甘菊",en:"Chamomile",cat:"floral",desc:"安静的花——雨后苹果甜不抢风头，只是在你疲惫时轻轻铺在地上。"},{cn:"金盏花",en:"Marigold",cat:"floral",desc:"太阳落到地面——雨打在橘色花瓣上炸开金光。不藏不掖的明亮。"},{cn:"薰衣草",en:"Lavender",cat:"floral",desc:"南法山坡上紫成一片——雨后泥土和薰衣草的混合，是夏天傍晚的安静。"},{cn:"玫瑰草",en:"Palmarosa",cat:"floral",desc:"长得像杂草香气却比玫瑰更轻——雨落在野地里最不起眼的那几片叶子上。"},{cn:"栀子",en:"Gardenia",cat:"floral",desc:"奶油般厚密的白花香——雨在花瓣上凝成大水珠，像含在嘴里的糖。"},{cn:"黑加仑",en:"Blackcurrant",cat:"fruity",desc:"酸甜的紫黑色浆果——雨水从果皮上滑过，留下一条深色的香气轨迹。"},{cn:"梨",en:"Pear",cat:"fruity",desc:"多汁的清甜——像咬下去溅在脸上的果汁，混着雨水一起流进嘴角。"},{cn:"水蜜桃",en:"Peach",cat:"fruity",desc:"绒毛上沾着雨珠——比甜更浅比水更香，是夏天皮肤上的那一层暖。"},{cn:"荔枝",en:"Lychee",cat:"fruity",desc:"透明果肉里的第一口甜——像雨滴进了蜜罐，甜得清澈不黏腻。"},{cn:"无花果",en:"Fig",cat:"fruity",desc:"不是甜熟的果是绿叶与树汁的奶香——雨落在无花果叶上，有种倦懒的绿意。"},{cn:"李子",en:"Plum",cat:"fruity",desc:"深紫色的果肉——雨落在李子皮上滑不进去，只在表面留下深色的反光。"},{cn:"苹果",en:"Apple",cat:"fruity",desc:"最朴素的水果——但雨后咬下的第一口是所有童年记忆的总和。"},{cn:"覆盆子",en:"Raspberry",cat:"fruity",desc:"微小的籽粒在舌尖跳——雨水穿过果实的缝隙，带出最细的酸甜。"},{cn:"樱桃",en:"Cherry",cat:"fruity",desc:"深红的果肉裹着核——雨珠挂在樱桃上像情人耳垂上的红宝石。"},{cn:"石榴",en:"Pomegranate",cat:"fruity",desc:"掰开是满满的红宝石——雨后石榴皮更暗更厚，藏住了所有甜润。"},{cn:"薄荷",en:"Mint",cat:"green",desc:"冷到可以让雨滴结冰——一把薄荷叶在掌心揉开，雨都变得刺骨了起来。"},{cn:"罗勒",en:"Basil",cat:"green",desc:"绿色的火焰——雨落在罗勒叶上蒸出辛辣的甜香，像正午的麦田。"},{cn:"绿叶",en:"Green Leaves",cat:"green",desc:"折断一片草叶——雨水从断口渗进去，绿色的汁液染在手指上，是大地的气息。"},{cn:"白松香",en:"Galbanum",cat:"green",desc:"树脂却带着绿叶的凉苦——像雨水浸透松脂后从树皮裂缝里渗出来的第一滴。"},{cn:"紫罗兰叶",en:"Violet Leaf",cat:"green",desc:"比紫罗兰的花更冷静——雨打湿叶子后的绿意，青涩而有骨气。"},{cn:"苦橙叶",en:"Petitgrain",cat:"green",desc:"橙树的叶子比果实更有分寸——雨洗过的叶面，反射出一种干净的苦。"},{cn:"迷迭香",en:"Rosemary",cat:"green",desc:"地中海悬崖上被风刮过的灌木——雨落在迷迭香上像海浪咸腥的回声。"},{cn:"鼠尾草",en:"Sage",cat:"green",desc:"干燥土地上的灰绿色——雨后鼠尾草的香气上升，像大地在呼吸。"},{cn:"茶叶",en:"Tea",cat:"green",desc:"雨后采下的茶青在铁锅里杀青——醇涩回甘，每一口都是时间的切片。"},{cn:"马黛茶",en:"Mate",cat:"green",desc:"南美高原的绿色能量——雨后草原上草叶泡在水里，升起淡绿色的蒸汽。"},{cn:"百里香",en:"Thyme",cat:"green",desc:"矮矮贴着石头长——雨从石头缝里渗下去，百里香的香气却从下往上翻涌。"},{cn:"龙蒿",en:"Tarragon",cat:"green",desc:"甘草调的风味——细长叶子上雨珠成串挂着，每一滴都是淡绿的。"},{cn:"粉红胡椒",en:"Pink Pepper",cat:"spicy",desc:"不是辣——是刺破雨雾的那第一点微光。比黑胡椒更温柔，比花香更锋利。"},{cn:"黑胡椒",en:"Black Pepper",cat:"spicy",desc:"碾碎时的尖锐辛辣——像一句在雨里终于说出口的真话，瞬间激活所有感官。"},{cn:"小豆蔻",en:"Cardamom",cat:"spicy",desc:"绿色的荚子里装着凉凉的辛甜——像雨滴落在铁皮上发出细碎的声响。"},{cn:"藏红花",en:"Saffron",cat:"spicy",desc:"世界上最贵的香料——金属感与蜂蜜甜交织，像雨洗过的金箔，一句低声说了很久的话。"},{cn:"肉桂",en:"Cinnamon",cat:"spicy",desc:"温暖到烫嘴——雨天煮一锅肉桂红酒，蒸汽把窗户熏成雾，屋里屋外是两个世界。"},{cn:"孜然",en:"Cumin",cat:"spicy",desc:"粗粝的不能被忽视的——雨后集市上孜然和湿润空气混在一起，是人间的烟火气。"},{cn:"芫荽籽",en:"Coriander Seed",cat:"spicy",desc:"干燥种子的温润香气——雨水浸泡过的芫荽籽舒展得比花还慢，比香料更安静。"},{cn:"丁香",en:"Clove",cat:"spicy",desc:"深褐色的小钉子——雨天含一颗丁香在嘴里，暖和了整条喉咙。"},{cn:"姜",en:"Ginger",cat:"spicy",desc:"新鲜姜根切开时的暖辣——雨滴落在皮肤上冰凉之后，辣意才慢慢漫上来。"},{cn:"肉豆蔻",en:"Nutmeg",cat:"spicy",desc:"整颗刨出细屑——薄薄的香气飘在潮湿空气里，像雨夜里壁炉的光。"},{cn:"雪松",en:"Cedarwood",cat:"woody",desc:"高海拔的干燥木材——雨后雪松林阳光从树缝里切进来，树皮散发着干净的甜。"},{cn:"檀木",en:"Sandalwood",cat:"woody",desc:"寺庙里燃了几百年的香气记忆——雨后木头更深沉，乳感如抚摸过经书的指尖。"},{cn:"沉香",en:"Oud",cat:"woody",desc:"真菌感染后分泌的黑色树脂——千年沉水万物归一。雨泡过的沉香是最沉郁的句子。"},{cn:"香根草",en:"Vetiver",cat:"woody",desc:"从泥土里拔出来时的香气——雨后土壤被掀开，潮湿的根茎释放出大地最后的秘密。"},{cn:"桦木",en:"Birch",cat:"woody",desc:"烟熏火燎的焦木——篝火被雨浇灭后白烟升起，焦木味留在雨雾里粗粝而诚实。"},{cn:"浮木",en:"Driftwood",cat:"woody",desc:"海盐浸泡过的木头——雨落在浮木上，两种水在同一个物体上相遇分不出咸与淡。"},{cn:"柏树",en:"Cypress",cat:"woody",desc:"意大利庄园的高挑树木——雨后柏树的树脂香上升，像绿色的火焰安静地燃烧。"},{cn:"愈创木",en:"Guaiac Wood",cat:"woody",desc:"烟熏与皮革之间的暗色——雨后愈创木发出金属般回响，硬朗而诚实。"},{cn:"杜松",en:"Juniper",cat:"woody",desc:"清冽如冬日松林间的冷风——雨混杂了杜松浆果的凉意，干净到几乎没有温度。"},{cn:"松针",en:"Pine Needle",cat:"woody",desc:"一把松针在掌心揉开——雨后松林空气中弥漫着树脂与针叶交织的清苦。"},{cn:"纸莎草",en:"Papyrus",cat:"woody",desc:"干燥的纸张与灯芯草——雨打湿了旧书的书脊，每个字都见过水，每个字都见过光。"},{cn:"岩兰草",en:"Khus",cat:"woody",desc:"根部的木质气息——雨后岩缝里水渗过树根的气味，像时间本身在缓慢移动。"},{cn:"乳香",en:"Frankincense",cat:"resin",desc:"东方三博士的礼物——白色烟迹在雨中上升，那是人类与神明对话的语言。"},{cn:"没药",en:"Myrrh",cat:"resin",desc:"比乳香更苦更深——古埃及人保存永恒的材料，雨洗过千年墓室后残余的暗色。"},{cn:"安息香",en:"Benzoin",cat:"resin",desc:"树脂中的暖甜——像雨停后被推开的那扇门，暖意在门框里融合成可以拥抱的温度。"},{cn:"劳丹脂",en:"Labdanum",cat:"resin",desc:"岩蔷薇分泌的深色树脂——雨落在叶子上洗不掉的那种稠密，是大地最隐秘的情意。"},{cn:"榄香",en:"Elemi",cat:"resin",desc:"柠檬与胡椒之间的新鲜树脂——雨后树脂从树皮裂口中渗出，纯净到可以洗过再用。"},{cn:"琥珀",en:"Amber",cat:"resin",desc:"千万年的沉淀——雨落在琥珀上的声音比玻璃更闷比石头更软，是时间的回响。"},{cn:"秘鲁香脂",en:"Peru Balsam",cat:"resin",desc:"浓郁的甜香从树皮渗出——雨淋过的南美丛林里树脂积在树脚，散发香草与焦糖的混合。"},{cn:"苏合香",en:"Styrax",cat:"resin",desc:"液体琥珀——雨打湿了香脂树的伤口，树脂与雨水混在一起甜中带苦苦中回甘。"},{cn:"白麝香",en:"White Musk",cat:"musk",desc:"干净的棉布贴在刚出浴的皮肤上——雨洗净了一切动物性，只剩下沐浴后的蒸汽。"},{cn:"龙涎香",en:"Ambergris",cat:"musk",desc:"深海浮上来的宝藏——雨落在海面上龙涎香从海底升起，带着咸的暖意和岁月的包浆。"},{cn:"海狸香",en:"Castoreum",cat:"musk",desc:"动物性的暖与皮革的厚——雨打在毛皮上气味更浓，野性被水激活却并不刺鼻。"},{cn:"灵猫香",en:"Civet",cat:"musk",desc:"最初的刺激之后是丝绒般的暖——雨夜的猫在巷子里穿过，留下的不是脚印而是温度。"},{cn:"麝猫香",en:"Musk Deer",cat:"musk",desc:"最原始的麝香——雨后森林里树皮上残留的气味像是一头鹿刚刚擦身过。"},{cn:"Cashmeran",en:"Cashmeran",cat:"musk",desc:"羊绒般的温柔包围——不是雨，是雨后你裹着毯子坐在窗边身体慢慢散发的暖意。"},{cn:"香草",en:"Vanilla",cat:"gourmand",desc:"剖开豆荚时的暖甜——不是糖的甜是植物的甜。像雨后阳光烘过的土壤。"},{cn:"焦糖",en:"Caramel",cat:"gourmand",desc:"糖在锅里慢慢变褐——雨天的厨房里焦糖融化的甜在潮湿空气中更浓更慢。"},{cn:"果仁糖",en:"Praline",cat:"gourmand",desc:"杏仁与焦糖的碰撞——快乐的具体味道，像雨滴凝固在指尖上甜得很清晰。"},{cn:"巧克力",en:"Chocolate",cat:"gourmand",desc:"72%的苦甜——雨夜里掰开一块黑巧克力，可可脂在体温中融化像一场缓慢的雨。"},{cn:"蜂蜜",en:"Honey",cat:"gourmand",desc:"花的记忆被蜜蜂传输——雨后蜂蜜更稠更香，像是把整个春天的阳光都浓缩在一勺里。"},{cn:"杏仁",en:"Almond",cat:"gourmand",desc:"微苦的果仁——雨打在杏树上的声音很闷，果实藏在叶子下面等待一个对的人来摘。"},{cn:"椰子",en:"Coconut",cat:"gourmand",desc:"热带岛屿的乳甜——雨后的椰子壳是湿的但椰水还是甜的，就像离开热带但热带没有离开你。"},{cn:"可可豆",en:"Cocoa",cat:"gourmand",desc:"发酵过的豆子——雨林里的可可豆被雨水泡过之后苦味减轻，留下最纯的巧克力香。"},{cn:"焦糖布丁",en:"Creme Brulee",cat:"gourmand",desc:"焦脆的表层敲开是丝滑——雨天的甜品店里焦糖布丁的香气穿过了湿漉漉的玻璃。"},{cn:"棉花糖",en:"Marshmallow",cat:"gourmand",desc:"蓬松到像一朵云——但雨淋过的棉花糖塌了，留下的是更甜更软的糖心。"},{cn:"海盐",en:"Sea Salt",cat:"aquatic",desc:"咸风打进嘴里——雨与海浪同时在皮肤上，分不清哪滴来自天空哪滴来自海洋。"},{cn:"臭氧",en:"Ozone",cat:"aquatic",desc:"雷雨前电离的味道——空气里有一种干净的尖锐，像闪电切开天空之前的那个空拍。"},{cn:"海洋调",en:"Marine",cat:"aquatic",desc:"人造的海洋气息——用分子模拟海水的凉度。雨落在海面上激起一圈一圈的蔚蓝。"},{cn:"醛香",en:"Aldehyde",cat:"aquatic",desc:"人工合成的第一缕明亮——像刚熨过的白衬衫干净到发出声响。雨落在烫过的棉布上什么都不留。"},{cn:"露水",en:"Dew",cat:"aquatic",desc:"清晨的第一滴水——不急着干什么，只是安静挂在草叶上等阳光来带走或雨来添满。"},{cn:"苔藓",en:"Moss",cat:"aquatic",desc:"湿润的森林地面——雨后苔藓膨胀成绿色的海绵，踩上去没有声音但香气从脚底升起。"},{cn:"烟草",en:"Tobacco",cat:"aquatic",desc:"陈年的烟叶被雨打湿——香气不再呛人变得温润而深沉，像老书店角落里的皮革椅。"},{cn:"皮革",en:"Leather",cat:"aquatic",desc:"被雨淋过的皮夹克的质地——动物性已被岁月磨去，留下的是皮肤的暖意与不可摧毁的坚韧。"},{cn:"麂皮",en:"Suede",cat:"aquatic",desc:"更细更柔的皮——雨落在麂皮上不会滑走而是慢慢渗进去，像温柔地回应某个人的沉默。"}];
+var CATEGORIES=[{id:"citrus",cn:"柑橘调",en:"Citrus"},{id:"floral",cn:"花香调",en:"Floral"},{id:"fruity",cn:"果香调",en:"Fruity"},{id:"green",cn:"绿叶草本",en:"Green"},{id:"spicy",cn:"辛香调",en:"Spicy"},{id:"woody",cn:"木香调",en:"Woody"},{id:"resin",cn:"树脂香脂",en:"Resin"},{id:"musk",cn:"麝香",en:"Musk"},{id:"gourmand",cn:"美食调",en:"Gourmand"},{id:"aquatic",cn:"水调海洋",en:"Aquatic"}];
+var PRODUCTS=[{cn:"花非花·雾非雾",en:"Blur",series:"驻足苦旅",vec:[3,4,1,2,0,1,1,0,0,0],desc:"雾散开了——你用心看，所以看见了。"},{cn:"结",en:"Conflicts",series:"驻足苦旅",vec:[1,0,0,0,5,4,0,0,0,0],desc:"那些没说出口的藤蔓，被同一场雨泡软了。"},{cn:"风骚",en:"Flirt",series:"驻足苦旅",vec:[0,5,0,0,3,2,0,0,0,0],desc:"汨罗江上的雨下了两千年，每一滴都在说：风骚是自己认领自己。"},{cn:"摩登巅",en:"Babel",series:"驻足苦旅",vec:[2,0,0,0,0,3,0,0,0,0],desc:"雨落在最高的塔顶——孤独不是冷，是选择了最高的寂静。"},{cn:"围城",en:"Breach",series:"驻足苦旅",vec:[1,1,0,0,0,1,5,0,0,0],desc:"同一场雨穿透了两座孤城——冷是一样的冷，于是墙没了。"},{cn:"再别",en:"Adieu",series:"驻足苦旅",vec:[1,0,0,0,0,2,0,1,0,0],desc:"火车的震动还留在空气里——你不敢问还会再见吗，但雨替你记住了。"},{cn:"瞳孔",en:"Iris",series:"驻足苦旅",vec:[1,2,0,0,0,1,1,0,0,0],desc:"瞳孔折射的颜色就是你内心的颜色——雨洗过之后，残像最真实。"},{cn:"日月煎",en:"Sun&Moon",series:"驻足苦旅",vec:[1,0,0,0,0,1,4,0,0,0],desc:"用最慢的火把日月熬成同一个圆——雨落在炉火上，淬炼得更清晰。"},{cn:"脉搏",en:"Pause",series:"世界之色",vec:[0,3,0,0,3,0,2,0,0,0],desc:"雨打在铁皮上——你听见那个人的心跳间隙和你一模一样。"},{cn:"共鸣",en:"Our Melody",series:"世界之色",vec:[0,3,1,0,0,1,2,0,0,0],desc:"两滴水在空中融合——话不需要说完整，懂的人自己会接。"},{cn:"明日",en:"Last Word",series:"世界之色",vec:[1,0,0,1,0,3,0,0,0,0],desc:"站在雨里——不说出口，已经是回答了。"},{cn:"光合",en:"Respiration",series:"世界之色",vec:[1,2,0,4,0,1,0,0,0,1],desc:"把世界吸进肺里再轻轻出去——雨穿过树叶滴在你肩上。"},{cn:"潮汐",en:"Rising Sunset",series:"世界之色",vec:[2,0,0,0,0,1,0,0,0,4],desc:"雨落在海面上——天空和海洋本来没有界限。"},{cn:"旧心事",en:"Past Dream",series:"世界之色",vec:[0,1,0,0,1,2,2,0,0,0],desc:"抽屉里有封没寄的信——旧心事不需要解决，只需要一场雨来陪着。"},{cn:"我独我",en:"Prejudice",series:"世界之色",vec:[0,2,0,0,2,1,1,1,0,0],desc:"你没有跑——你只是想淋一会儿。不是任何人的眼光。"},{cn:"皮囊",en:"Face",series:"灵感盛宴",vec:[1,2,0,0,0,1,1,0,0,0],desc:"雨模糊了镜子——没有面具的时候，那张脸就是你的。"},{cn:"隐身衣",en:"Gone",series:"灵感盛宴",vec:[0,0,0,0,2,0,1,0,0,1],desc:"雨是最好的隐身衣——没人会在大雨里回头看你。"},{cn:"等待",en:"Wait",series:"灵感盛宴",vec:[1,0,0,0,1,1,2,0,1,0],desc:"咖啡快凉了——但值得的人值得被等在雨里。"},{cn:"欢愉",en:"Bliss",series:"灵感盛宴",vec:[0,2,2,0,2,0,0,0,1,0],desc:"太阳雨里笑出声——快乐不需要理由，就像雨不需要预报。"},{cn:"侍者",en:"Stay",series:"灵感盛宴",vec:[0,1,0,2,0,1,1,0,0,0],desc:"窗外雨没有停——屋里是暖的你们都不说话。最好的陪伴。"},{cn:"号令",en:"Decree",series:"灵感盛宴",vec:[1,2,0,0,2,1,0,1,0,0],desc:"所有人都躲了——你站在雨里睁开眼。自己给自己的命令从不违抗。"},{cn:"瞬息",en:"Flash",series:"宙宇寰星",vec:[1,0,0,1,0,1,0,0,0,1],desc:"光不需要为黑暗道歉——它只需要出现，哪怕一次。"},{cn:"此刻",en:"Present",series:"宙宇寰星",vec:[1,1,0,2,0,1,0,0,0,0],desc:"雨落下来——你第一次闻到泥土被打湿的味道。除了这一秒什么都不重要。"},{cn:"彼时",en:"Bygone",series:"宙宇寰星",vec:[0,1,0,0,0,2,3,0,0,0],desc:"你听见今天的雨，闻到的是那一年的雨——彼时不来彼时不去。"},{cn:"光年",en:"Lightyear",series:"宙宇寰星",vec:[1,0,0,0,0,1,0,0,0,2],desc:"雨落在地下星光还在路上——你站在两种距离的交界处。"},{cn:"起源",en:"Origin",series:"宙宇寰星",vec:[0,0,0,0,2,0,2,0,0,1],desc:"地球上最早的水落在你身上——你从哪里来？雨不回答但雨知道。"},{cn:"春之生",en:"Spring",series:"四季所生",vec:[0,3,0,3,0,1,1,0,0,1],desc:"种子裂开的那一秒——你终于破土，世界第一次看见你。"},{cn:"夏之长",en:"Summer",series:"四季所生",vec:[1,2,0,2,0,1,0,0,0,0],desc:"太阳雨——上半身阳光下半身雨水，热烈本身淋湿了更热烈。"},{cn:"秋之收",en:"Autumn",series:"四季所生",vec:[0,1,1,1,0,1,1,0,0,0],desc:"凉雨落在落叶上——每一声都是够了。"},{cn:"冬之藏",en:"Winter",series:"四季所生",vec:[0,1,0,0,0,2,0,1,0,0],desc:"冻雨封住了出口——也给了种子所有的时间。"},{cn:"自天穹",en:"Fall",series:"雨后",vec:[1,1,0,0,0,1,0,0,0,1],desc:"选择了方向——于是坠落有了意义。"},{cn:"穿云间",en:"Drift",series:"雨后",vec:[1,0,0,1,0,1,0,0,0,1],desc:"不急着落地——宁愿在风里多认识自己一会儿。"},{cn:"碎地霜",en:"Shatter",series:"雨后",vec:[0,0,0,1,0,1,1,0,0,1],desc:"不是消失——是换了一种方式存在。"},{cn:"我故臆想",en:"Figment",series:"臻品雨酿",vec:[0,3,1,0,1,1,1,0,0,0],desc:"记忆里虚构的那一场雨——从来不在天上，而在心上。"},{cn:"着我之境",en:"Adorn",series:"臻品雨酿",vec:[0,2,0,0,1,2,2,0,0,0],desc:"你站在雨里，雨就变成了你的语言。穿上它就是穿上自己。"},{cn:"今夜唯我",en:"Tonight",series:"臻品雨酿",vec:[1,3,0,0,1,1,0,1,0,0],desc:"今夜这场雨只下给你一个人——窗外的一切都被洗掉了。"},{cn:"熵增时",en:"Entropy",series:"臻品雨酿",vec:[1,0,0,1,1,2,1,0,0,1],desc:"雨是这个世界上为数不多的、逆熵而行的事物。"},{cn:"新时代迁流",en:"Migration",series:"臻品雨酿",vec:[1,1,0,0,3,1,0,0,0,0],desc:"雨水从不需要护照——云飘到哪里就下到哪里，你也是。"},{cn:"致新生",en:"Renew",series:"臻品雨酿",vec:[1,2,1,2,0,1,0,1,0,1],desc:"每场雨后都是新生的开始——致每一个重新开始的人。"}];
+var selected={},totalPercent=0,activeCat=null,resultShown=false;
+var wrap=document.getElementById("blendWrap");
+var catContainer=document.getElementById("blendCatContainer");
+var formulaEl=document.getElementById("blendFormula");
+var totalEl=document.getElementById("blendTotal");
+var submitBtn=document.getElementById("blendSubmit");
+var resultEl=document.getElementById("blendResult");
+var rTone=document.getElementById("blendRTone");
+var rText=document.getElementById("blendRText");
+var rMatch=document.getElementById("blendRMatch");
+var rWhy=document.getElementById("blendRWhy");
+var guideBtn=document.getElementById("blendGuideBtn");
+var guideEl=document.getElementById("blendGuide");
+if(!wrap)return;
+function buildIngredientPanel(){
+var h='';
+CATEGORIES.forEach(function(cat){
+h+='<button class="blend-cat-btn" data-cat="'+cat.id+'">'+cat.cn+' <span style="font-size:.5rem;opacity:.4">'+cat.en+'</span></button>';
+var items=INGREDIENTS.filter(function(ing){return ing.cat===cat.id;});
+h+='<div class="blend-cat-list" data-cat="'+cat.id+'">';
+items.forEach(function(ing){
+var idx=INGREDIENTS.indexOf(ing);
+var sc=selected[idx]!==undefined?' selected':'';
+h+='<div class="blend-item'+sc+'" data-idx="'+idx+'">'+ing.cn+'<span class="bi-en">'+ing.en+'</span><span class="bi-desc">'+ing.desc+'</span></div>';
+});
+h+='</div>';
+});
+catContainer.innerHTML=h;
+}
+function renderFormula(){
+var s=[];var keys=Object.keys(selected);
+keys.forEach(function(k){
+var idx=parseInt(k);var ing=INGREDIENTS[idx];var p=selected[idx];
+s.push('<div class="blend-slot"><div class="blend-slot-name">'+ing.cn+'<small>'+ing.en+'</small></div><div class="blend-slot-ctrl"><input type="range" min="1" max="100" value="'+p+'" data-idx="'+idx+'"><input type="number" min="1" max="100" value="'+p+'" data-idx="'+idx+'"></div><button class="blend-slot-del" data-idx="'+idx+'">x</button></div>');
+});
+if(s.length===0)formulaEl.innerHTML='<div class="blend-empty">从左侧香料库挑选你的第一味原料<br>——最少选 2 味，最多选 8 味</div>';
+else formulaEl.innerHTML=s.join('');
+updateTotal();bindSlotEvents();
+}
+function updateTotal(){
+totalPercent=0;Object.values(selected).forEach(function(v){totalPercent+=v;});
+totalEl.textContent=totalPercent+'%';
+var cnt=Object.keys(selected).length;
+var hintEl=document.getElementById("blendHint");
+if(totalPercent===100&&cnt>=2&&cnt<=8){totalEl.classList.remove('warn');submitBtn.classList.add('ready');if(hintEl){hintEl.textContent='比例完美——可以降下这场雨了';hintEl.style.color='var(--gold)';}}
+else{totalEl.classList.add('warn');submitBtn.classList.remove('ready');
+if(hintEl){if(cnt<2)hintEl.textContent='至少选择 2 味香料';else if(cnt>8)hintEl.textContent='最多选择 8 味香料';else if(totalPercent!==100)hintEl.textContent='调整比例至总和 100%';hintEl.style.color='var(--ink3)';}}
+}
+function bindSlotEvents(){
+formulaEl.querySelectorAll('input[type=range]').forEach(function(sl){sl.addEventListener('input',function(){var idx=parseInt(this.dataset.idx);selected[idx]=parseInt(this.value);renderFormula();});});
+formulaEl.querySelectorAll('input[type=number]').forEach(function(nm){nm.addEventListener('input',function(){var idx=parseInt(this.dataset.idx);var v=parseInt(this.value)||0;v=Math.max(1,Math.min(100,v));selected[idx]=v;renderFormula();});});
+formulaEl.querySelectorAll('.blend-slot-del').forEach(function(btn){btn.addEventListener('click',function(){var idx=parseInt(this.dataset.idx);delete selected[idx];buildIngredientPanel();renderFormula();bindIngredientClicks();if(resultShown){resultEl.classList.remove('show');resultShown=false;}});});
+}
+function bindIngredientClicks(){
+catContainer.querySelectorAll('.blend-item').forEach(function(item){item.addEventListener('click',function(){var idx=parseInt(this.dataset.idx);var cnt=Object.keys(selected).length;if(selected[idx]!==undefined){delete selected[idx];this.classList.remove('selected');renderFormula();if(resultShown){resultEl.classList.remove('show');resultShown=false;}return;}if(cnt>=8)return;selected[idx]=15;this.classList.add('selected');renderFormula();buildIngredientPanel();bindIngredientClicks();if(resultShown){resultEl.classList.remove('show');resultShown=false;}});});
+}
+catContainer.addEventListener('click',function(e){var btn=e.target.closest('.blend-cat-btn');if(!btn)return;var cat=btn.dataset.cat;catContainer.querySelectorAll('.blend-cat-btn').forEach(function(b){b.classList.remove('active');});catContainer.querySelectorAll('.blend-cat-list').forEach(function(l){l.classList.remove('open');});if(activeCat===cat){activeCat=null;return;}activeCat=cat;btn.classList.add('active');catContainer.querySelector('.blend-cat-list[data-cat="'+cat+'"]').classList.add('open');});
+guideBtn.addEventListener('click',function(){guideEl.classList.toggle('open');});
+submitBtn.addEventListener('click',function(){if(totalPercent!==100)return;var cnt=Object.keys(selected).length;if(cnt<2||cnt>8)return;
+var userVec=[0,0,0,0,0,0,0,0,0,0];var catMap={citrus:0,floral:1,fruity:2,green:3,spicy:4,woody:5,resin:6,musk:7,gourmand:8,aquatic:9};
+Object.keys(selected).forEach(function(k){var idx=parseInt(k);var ing=INGREDIENTS[idx];var ci=catMap[ing.cat];userVec[ci]+=selected[idx];});
+var sum=0;userVec.forEach(function(v){sum+=v;});if(sum>0)userVec=userVec.map(function(v){return v/sum;});
+var maxCat=0,maxVal=0;userVec.forEach(function(v,i){if(v>maxVal){maxVal=v;maxCat=i;}});
+var domCats=[];userVec.forEach(function(v,i){if(v>0.15)domCats.push(CATEGORIES[i].cn);});
+var toneNames=["柑橘调","花香调","果香调","绿叶调","辛香调","木质调","树脂调","麝香调","美食调","海洋调"];
+var tone=toneNames[maxCat];if(domCats.length>=3&&maxVal<0.35)tone=domCats.slice(0,3).join(" · ");
+rTone.textContent=tone;
+var sorted=Object.entries(selected).sort(function(a,b){return b[1]-a[1];}).slice(0,3);
+var topIngs=sorted.map(function(e){return INGREDIENTS[parseInt(e[0])].cn;});
+var topDesc=sorted.map(function(e){var d=INGREDIENTS[parseInt(e[0])].desc;return d.replace(/[，。；]/g,'').slice(0,30);});
+var moodWords=["清澈","温和","锐利","醇厚","轻盈","暗沉","明亮","深邃","柔软","坚定"];
+var rainScenes=["雨落在凌晨三点的街道上——除了你的呼吸，没有别的声音。","你站在公交站台下等雨停，但雨不想停——它想把你多留一会儿。","窗玻璃上水痕交错——每一道痕迹都是天空写给你的密信。","雨敲在铁皮屋顶上——节奏不规则，但每一拍都对在你的心跳上。","伞下很安静。你听得见自己，也听得见雨——两种声音，一种温度。","空气里有雨后的土壤气息——泥土把所有水分还给天空，然后大口呼吸。"];
+var mood=moodWords[Math.floor(Math.random()*moodWords.length)];
+var scene=rainScenes[Math.floor(Math.random()*rainScenes.length)];
+var copy='你的这瓶雨，基调是<em>'+tone+'</em>。「'+topIngs[0]+'」在前——'+topDesc[0]+'；「'+topIngs[1]+'」在中——'+topDesc[1]+'；「'+topIngs[2]+'」在最后——'+topDesc[2]+'。它是一场'+mood+'的雨。'+scene;
+rText.innerHTML=copy;
+var bestProd=null,bestSim=-1;
+PRODUCTS.forEach(function(prod){var dot=0,normU=0,normP=0;for(var i=0;i<10;i++){dot+=userVec[i]*prod.vec[i];normU+=userVec[i]*userVec[i];normP+=prod.vec[i]*prod.vec[i];}normU=Math.sqrt(normU);normP=Math.sqrt(normP);if(normU>0&&normP>0){var sim=dot/(normU*normP);if(sim>bestSim){bestSim=sim;bestProd=prod;}}});
+if(bestProd){rMatch.innerHTML='<span class="bm-en">最接近的 RAIN 产品</span>'+bestProd.cn+' · <em>'+bestProd.en+'</em><br><small style="color:var(--ink3);font-size:.55rem">'+bestProd.series+'</small>';rWhy.innerHTML=bestProd.desc;}
+resultEl.classList.add('show');resultShown=true;resultEl.scrollIntoView({behavior:'smooth',block:'center'});
+});
+buildIngredientPanel();renderFormula();bindIngredientClicks();
+})();
 console.log("%c[RAIN] Perfume as Rain %c已就绪","color:#b8943e;font-size:1.1em","color:#b8a888");
 '''
 
@@ -1274,6 +1427,7 @@ html = f'''<!DOCTYPE html>
 <li><a href="#craft">雨的贮存指南</a></li>
 <li><a href="#founders">雨的观察日记</a></li>
 <li><a href="#newsletter">降雨预报</a></li>
+<li><a href="#simRain">模拟降雨</a></li>
 </ul>
 <button class="hamburger" id="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
 </nav>
@@ -1286,6 +1440,7 @@ html = f'''<!DOCTYPE html>
 <a href="#craft">雨的贮存指南</a>
 <a href="#founders">雨的观察日记</a>
 <a href="#newsletter">降雨预报</a>
+<a href="#simRain">模拟降雨</a>
 </div>
 
 <!-- 雨幕 -->
@@ -1548,6 +1703,36 @@ html = f'''<!DOCTYPE html>
 <form class="nl-form" id="nlForm"><input class="nl-input" id="nlInput" type="email" placeholder="你的邮箱地址" required><button class="nl-btn" type="submit">订阅</button></form>
 <p class="nl-msg" id="nlMsg">感谢订阅。下一场雨来临时，你会第一个知道。</p>
 </div></section>
+
+<section class="section-divider reveal"><div class="section-divider-inner"></div></section>
+
+<!-- 09 · 模拟降雨 -->
+<div class="sec-label reveal"><p class="num">09</p><h2 class="title">模拟降雨</h2><p class="sec-en">Simulate Rain</p></div>
+<section class="blend-studio" id="simRain">
+<div class="blend-wrap" id="blendWrap" style="position:relative">
+<button class="blend-guide-btn" id="blendGuideBtn" aria-label="操作指引">?</button>
+<div class="blend-guide" id="blendGuide">
+<h4>操作指引</h4>
+<ol>
+<li>在左侧香料库挑选原料（点击分类展开）</li>
+<li>在中间调整每味比例直到总和 100%</li>
+<li>点击「降下这场雨」生成专属香气</li>
+</ol>
+</div>
+<div class="blend-ingredients" id="blendCatContainer"></div>
+<div class="blend-formula-wrap">
+<div class="blend-total" id="blendTotal">0%</div>
+<div class="blend-formula-hint" id="blendHint">从左侧香料库挑选你的第一味原料</div>
+<div class="blend-formula" id="blendFormula"></div>
+<button class="blend-submit" id="blendSubmit">降下这场雨</button>
+</div>
+<div class="blend-result" id="blendResult">
+<div class="blend-r-card"><p class="blend-r-label">基调判定</p><p class="blend-r-tone" id="blendRTone"></p></div>
+<div class="blend-r-card"><p class="blend-r-label">专属文案</p><p class="blend-r-text" id="blendRText"></p></div>
+<div class="blend-r-card"><p class="blend-r-label">最接近的 RAIN 产品</p><p class="blend-r-match" id="blendRMatch"></p><p class="blend-r-why" id="blendRWhy"></p></div>
+</div>
+</div>
+</section>
 
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
