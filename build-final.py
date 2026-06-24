@@ -118,47 +118,74 @@ POSTER_MAP = {
   '新时代迁流': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWRmMmU4IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTciIHI9IjQzIiBmaWxsPSJub25lIiBzdHJva2U9IiM4YTljN2EiIHN0cm9rZS13aWR0aD0iMC4xMSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjE3MCIgY3k9IjEyMSIgcj0iMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzlhYWM4YSIgc3Ryb2tlLXdpZHRoPSIwLjE1IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9Ijg0IiB5MT0iODAiIHgyPSIyMjkiIHkyPSI4MCIgc3Ryb2tlPSIjNWE3YzRmIiBzdHJva2Utd2lkdGg9IjAuMTIiIG9wYWNpdHk9IjAuMSIvPjxjaXJjbGUgY3g9IjE0MCIgY3k9IjQ4IiByPSIzNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOGE5YzdhIiBzdHJva2Utd2lkdGg9IjAuMDgiIG9wYWNpdHk9IjAuMDgiIHN0cm9rZS1kYXNoYXJyYXk9IjggNyIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4wIiBsZXR0ZXItc3BhY2luZz0iNiIgZmlsbD0iIzVhN2M0ZiIgb3BhY2l0eT0iMC4zNSI+5paw5pe25Luj6L+B5rWBPC90ZXh0PjxsaW5lIHgxPSI3MiIgeTE9IjE0NyIgeDI9IjIxMiIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=',
   '致新生': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWRmMGY1IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjY5IiBjeT0iNzkiIHI9IjU0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5MGEwYWMiIHN0cm9rZS13aWR0aD0iMC4xOCIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjEwNiIgcj0iMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2IwYmNjOCIgc3Ryb2tlLXdpZHRoPSIwLjE4IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9IjEwNSIgeTE9IjEyMiIgeDI9IjIwNyIgeTI9IjEyMiIgc3Ryb2tlPSIjNzU4NTk1IiBzdHJva2Utd2lkdGg9IjAuMTIiIG9wYWNpdHk9IjAuMSIvPjxjaXJjbGUgY3g9IjE3NyIgY3k9IjY5IiByPSI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOTBhMGFjIiBzdHJva2Utd2lkdGg9IjAuMDgiIG9wYWNpdHk9IjAuMDgiIHN0cm9rZS1kYXNoYXJyYXk9IjcgNSIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4yIiBsZXR0ZXItc3BhY2luZz0iNSIgZmlsbD0iIzc1ODU5NSIgb3BhY2l0eT0iMC4zNSI+6Ie05paw55SfPC90ZXh0PjxsaW5lIHgxPSI4MyIgeTE9IjE0NyIgeDI9IjE5MCIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=',}
 
+def _slug(en):
+  s=en.replace('&','and').replace(' ','-').replace("'",'')
+  return s.lower()
+
+def rain_tag_for(en):
+  import re as _re
+  n=_NF.get(en,"")
+  m=_re.search(r'rain-fall">([^<]+)</em>',n or"")
+  return m.group(1)if m else""
+
+def series_for(en):
+  for sn,sd in[("驻足苦旅","sojourn"),("世界之色","world"),("灵感盛宴","feast"),("宙宇寰星","cosmos"),("四季所生","seasons"),("雨后","after")]:
+    for item in NARRATIVES.get(sd,{}).get("items",[]):
+      if item[0]==en:return sn
+  coll={'Figment':'臻品雨酿','Adorn':'臻品雨酿','Tonight':'臻品雨酿','Entropy':'臻品雨酿','Migration':'臻品雨酿','Renew':'臻品雨酿'}
+  return coll.get(en,"")
+
+def collection_data(en):
+  d={'Figment':('当归\u00b7没药\u00b7粉红胡椒','鸢尾\u00b7紫罗兰\u00b7纸莎草','檀木\u00b7香草\u00b7安息香'),
+     'Adorn':('苦橙叶\u00b7白松香\u00b7粉红胡椒','土耳其玫瑰\u00b7沉香\u00b7番红花','皮革\u00b7琥珀\u00b7苏合香'),
+     'Tonight':('香槟调\u00b7杜松\u00b7柑橘皮','鸢尾\u00b7烟草\u00b7黑巧克力','愈创木\u00b7皮革\u00b7麝香'),
+     'Entropy':('醛香\u00b7臭氧\u00b7薄荷','鸢尾\u00b7没药\u00b7焚香','白麝香\u00b7琥珀\u00b7矿物调'),
+     'Migration':('竹叶\u00b7薄荷\u00b7柑橘','桂花\u00b7白茶\u00b7紫藤','白麝香\u00b7檀木\u00b7米浆'),
+     'Renew':('绿叶\u00b7佛手柑\u00b7薄荷','铃兰\u00b7白茶\u00b7蕨类','白麝香\u00b7雪松\u00b7琥珀')}
+  return d.get(en,('','',''))
+
+def collection_cn(en):
+  m={'Figment':'我故臆想','Adorn':'着我之境','Tonight':'今夜唯我','Entropy':'熵增时','Migration':'新时代迁流','Renew':'致新生'}
+  return m.get(en,en)
+
+def collection_poster_tag(en):
+  m={'Figment':'典藏臻酿 \u00b7 忆中虚构','Adorn':'典藏臻酿 \u00b7 身体美术馆','Tonight':'典藏臻酿 \u00b7 午夜款待','Entropy':'典藏臻酿 \u00b7 秩序散落','Migration':'典藏臻酿 \u00b7 岁时坐标','Renew':'典藏臻酿 \u00b7 未来首句'}
+  return m.get(en,'')
+
+def collection_series(en):
+  m={'Figment':('SOJOURN','驻足苦旅'),'Adorn':('WORLD','世界之色'),'Tonight':('FEAST','灵感盛宴'),'Entropy':('COSMOS','宙宇寰星'),'Migration':('SEASONS','四季所生'),'Renew':('AFTER','雨后')}
+  return m.get(en,('',''))
+
 def card(num, en, cn, top, heart, base, has_img=False):
-  if has_img:
-    img_html = f'<img class="frag-img" src="images/{num}-{en.lower()}.jpg" alt="{en}" loading="lazy">'
-  else:
-    tag_html = ''
-    if en in POSTER_TAGS:
-      tag_html = f'<span class="poster-badge">{POSTER_TAGS[en]}</span>'
-    img_html = f"{tag_html}<img class='frag-img frag-img-cs' src='{POSTER_MAP.get(en, COMING_SOON_SVG)}' alt='{en}'>"
-  return f'''<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap">{img_html}</div>
-<div class="frag-info">
-<p class="frag-num">NO. {num}</p><h3 class="frag-name-en">{en}</h3><p class="frag-name-cn">{cn}</p>
-<p class="frag-accord"><b>Top</b> {top}<br><b>Heart</b> {heart}<br><b>Base</b> {base}</p>
-</div></div></div>'''
+  sn = series_for(en); rt = rain_tag_for(en)
+  first_note = top.split('\u00b7')[0].strip() if top else ''
+  p = []
+  p.append('<a href="perfume/'+_slug(en)+'.html" class="frag-link" onclick="try{sessionStorage.setItem(\'_rv\',\'1\')}catch(e){}"><div class="frag-card" data-en="'+en+'">')
+  p.append('<div class="frag-cn">'+cn+'</div>')
+  p.append('<div class="frag-en">'+en+'</div>')
+  if rt: p.append('<div class="frag-rain">'+rt+'</div>')
+  p.append('<div class="frag-note-type"><span class="frag-note-dot top-dot"></span>'+first_note+'调</div>')
+  p.append('<div class="frag-sv"><span class="fs2" data-en="'+en+'" data-cn="'+cn+'">\u2606</span></div>')
+  p.append('</div></a>')
+  return '\n'.join(p)
+
 
 def world_card(filename, alt, num, en, cn, top, heart, base):
-  # These have real images with different filenames
-  img_map = {
-    'Pause': '__coming__',
-    'Our Melody': '03-our-melody.webp',
-    'Last Word': '02-last-word.webp',
-    'Respiration': '01-respiraton.webp',
-    'Rising Sunset': '04-rising-sunset.webp',
-    'Past Dream': '05-past-dream.webp',
-    'Prejudice': '06-prejudice.webp',
-  }
-  mapped = img_map.get(en, '')
-  src = COMING_SOON_SVG if mapped == '__coming__' else f'images/{mapped}' if mapped else COMING_SOON_SVG
-  tag_html = ''
-  if en in POSTER_TAGS:
-    tag_html = f'<span class="poster-badge">{POSTER_TAGS[en]}</span>'
-  return f'''<div class="frag-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap">{tag_html}<img class="frag-img" src="{src}" alt="{en}" loading="lazy"></div>
-<div class="frag-info">
-<p class="frag-num">NO. {num}</p><h3 class="frag-name-en">{en}</h3><p class="frag-name-cn">{cn}</p>
-<p class="frag-accord"><b>Top</b> {top}<br><b>Heart</b> {heart}<br><b>Base</b> {base}</p>
-</div></div></div>'''
+  return card(num, en, cn, top, heart, base, has_img=True)
+
+
+def collection_card(en):
+  cn = collection_cn(en); top,heart,base = collection_data(en)
+  sen,scn = collection_series(en); tag = collection_poster_tag(en)
+  first_note = top.split('\u00b7')[0].strip() if top else ''
+  p = []
+  p.append('<a href="perfume/'+_slug(en)+'.html" class="frag-link" onclick="try{sessionStorage.setItem(\'_rv\',\'1\')}catch(e){}"><div class="frag-card collection-card-v2" data-en="'+en+'">')
+  p.append('<div class="frag-cn">'+cn+'</div>')
+  p.append('<div class="frag-en">'+en+'</div>')
+  p.append('<div class="frag-note-type"><span class="frag-note-dot top-dot"></span>'+first_note+'调</div>')
+  p.append('<div class="frag-sv"><span class="fs2" data-en="'+en+'" data-cn="'+cn+'">\u2606</span></div>')
+  p.append('</div></a>')
+  return '\n'.join(p)
 
 def panel(pid, cards_html, default_active=False, narrative=''):
   act = ' active' if default_active else ''
@@ -240,6 +267,18 @@ NARRATIVES = {
     ]
   },
 }
+_NF={}
+for _s in NARRATIVES.values():
+  if isinstance(_s,dict)and"items"in _s:
+    for _i in _s["items"]:
+      _NF[_i[0]]=_i[2]
+_NF['Figment']=_NF.get('我故臆想','')
+_NF['Adorn']=_NF.get('着我之境','')
+_NF['Tonight']=_NF.get('今夜唯我','')
+_NF['Entropy']=_NF.get('熵增时','')
+_NF['Migration']=_NF.get('新时代迁流','')
+_NF['Renew']=_NF.get('致新生','')
+
 
 PRODUCT_NOTES = {
   # ══ 驻足苦旅 ══
@@ -1135,6 +1174,30 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-result{flex-direction:column;align-items:center}
 .blend-r-row{flex-direction:column}
 }
+
+
+.frag-link,.frag-link:hover,.frag-link:visited{text-decoration:none!important;color:inherit!important;display:block}
+.frag-card{padding:.8rem .9rem;margin-bottom:.6rem;text-align:center;background:rgba(255,253,250,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(184,148,62,.05);border-radius:9px;transition:all .3s;display:flex;flex-direction:column;gap:.15rem;position:relative;overflow:hidden}
+.frag-card:hover{border-color:rgba(184,148,62,.14);background:rgba(255,253,250,.44);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.02)}
+.frag-cn{font-family:"Noto Serif SC",serif;font-size:.9rem;color:var(--ink);font-weight:500;letter-spacing:.04em;line-height:1.2}
+.frag-en{font-family:Inter,sans-serif;font-size:.55rem;color:var(--ink3);opacity:.38;letter-spacing:.03em}
+.frag-rain{font-family:"Noto Serif SC",serif;font-size:.52rem;color:var(--gold);opacity:.42;font-style:italic;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.frag-note-type{font-family:"Noto Serif SC",serif;font-size:.5rem;color:var(--ink3);display:flex;align-items:center;justify-content:center;gap:.2rem;opacity:.48}
+.frag-note-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}.top-dot{background:#d4b660}
+.frag-sv{display:flex;justify-content:center}
+.fs2{display:inline-block;font-family:"Noto Serif SC",serif;font-size:.44rem;padding:.04rem .4rem;border-radius:100px;cursor:pointer!important;pointer-events:auto!important;position:relative;z-index:20;color:var(--gold);background:rgba(184,148,62,.04);border:1px solid rgba(184,148,62,.08);transition:all .3s;letter-spacing:.04em;user-select:none}
+.fs2:hover{color:var(--gold-d);border-color:var(--gold);background:rgba(184,148,62,.08)}
+.fs2.sv2{color:var(--gold-d)!important;border-color:var(--gold-d)!important;background:rgba(184,148,62,.06)!important}
+.collection-card-v2{border-color:rgba(184,148,62,.08)!important;background:rgba(255,253,250,.36)!important}
+.collection-card-v2 .frag-cn{font-size:1.15rem!important}
+.frag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.8rem}
+/* Hide old card elements */
+.frag-card .corner,.frag-img-wrap,.frag-img,.frag-num,.frag-name-en,.frag-name-cn,.frag-accord,.poster-badge,.frag-card-inner,.frag-info,.frag-card-header,.frag-card-names,.frag-card-rain-tag,.frag-card-series,.frag-card-notes,.frag-card-collapse-btn,.frag-card-tags,.frag-card-actions,.frag-card-narrative,.frag-card .save-action,.frag-card-action,.frag-collapse,.frag-narrative,.frag-notes,.frag-meta,.frag-pill,.fsr{display:none!important}
+.narr-hub,.narr-hub-title,.narr-hub-sub,.narr-hub-desc,.narr-tabs,.narr-tab,.narr-body{display:none!important}
+/* Fav modal */
+.fvp{position:fixed;right:2.5rem;bottom:9.5rem;z-index:200}.fvt{width:44px;height:44px;border-radius:50%;border:1px solid rgba(184,148,62,.08);background:rgba(253,249,240,.4);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);color:var(--gold);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .4s}.fvt:hover{background:rgba(253,249,240,.55);border-color:rgba(184,148,62,.14)}.fvt.on{color:var(--gold-d);border-color:var(--gold-d)}.fvm{display:none;position:fixed;inset:0;z-index:800;align-items:center;justify-content:center;background:rgba(253,249,239,.96);backdrop-filter:blur(20px)}.fvm.open{display:flex}.fvmc{position:relative;width:92%;max-width:560px;max-height:80vh;overflow:hidden;border:1px solid rgba(184,148,62,.08);border-radius:20px;background:rgba(255,253,250,.45);backdrop-filter:blur(16px);box-shadow:0 24px 80px rgba(0,0,0,.08);animation:fvIn .4s cubic-bezier(.4,0,.2,1)}@keyframes fvIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}.fvmx{position:absolute;top:.8rem;right:.8rem;z-index:3;width:32px;height:32px;border-radius:50%;border:1px solid rgba(184,148,62,.15);background:rgba(255,253,250,.7);color:var(--ink3);font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}.fvmx:hover{background:rgba(184,148,62,.08);border-color:var(--gold);color:var(--ink);transform:rotate(90deg)}.fvms{overflow-y:auto;max-height:80vh;padding:2rem 1.8rem 2.2rem}.fvmt{font-family:"Noto Serif SC",serif;font-size:1.05rem;color:var(--ink);text-align:center;letter-spacing:.06em;font-weight:500;margin-bottom:.2rem}.fvmsub{text-align:center;font-family:"Noto Serif SC",serif;font-size:.52rem;color:var(--ink3);opacity:.45;line-height:1.8;letter-spacing:.03em;margin-bottom:1rem}.fvml{display:flex;flex-direction:column;gap:.25rem}.fvmi{display:flex;align-items:center;justify-content:space-between;padding:.35rem .55rem;border-radius:8px;font-size:.55rem;color:var(--ink2);font-family:"Noto Serif SC",serif;transition:.2s;background:rgba(255,253,250,.3);border:1px solid rgba(184,148,62,.04)}.fvmi:hover{background:rgba(184,148,62,.04);border-color:rgba(184,148,62,.1)}.fvmi a{color:var(--ink2);flex:1;text-decoration:none!important}.fvmi a:hover{color:var(--gold)}.fvm2{width:22px;height:22px;border-radius:50%;border:1px solid rgba(184,148,62,.08);background:transparent;color:var(--ink3);font-size:.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center}.fvm2:hover{color:#c0392b}.fvme{text-align:center;font-size:.52rem;color:var(--ink3);opacity:.4;padding:1.2rem 0}
+/* pH */
+.phw{display:flex;justify-content:center;padding:.4rem 0;transition:opacity .5s}.phs{display:flex;align-items:center;gap:.5rem;padding:.25rem .7rem;background:rgba(255,253,250,.22);border-radius:100px;border:1px solid rgba(184,148,62,.06)}.phl{font-family:"Noto Serif SC",serif;font-size:.46rem;color:var(--ink3)}.phb{position:relative;width:105px;height:6px;border-radius:3px;background:linear-gradient(90deg,#c0392b,#e74c3c 14%,#e67e22 28%,#f1c40f 43%,#2ecc71 50%,#27ae60 57%,#1abc9c 64%,#3498db 78%,#9b59b6)}.phf{position:absolute;right:0;top:0;bottom:0;border-radius:0 3px 3px 0;background:rgba(253,249,239,.7);transition:width .6s ease}.phn{position:absolute;top:-4px;width:3px;height:14px;border-radius:2px;background:var(--gold);transition:left .6s ease,background .3s}.phv{font-family:"Noto Serif SC",serif;font-size:.58rem;font-weight:300;color:var(--gold);min-width:1.8rem;text-align:right}
 '''
 
 # =====================================================================
@@ -1188,7 +1251,7 @@ var lastCheck=0;setInterval(function(){updateDensity();},2000);
 updateDensity();spawn();draw();
 })();
 /* Entrance */
-var entranceEl=document.getElementById("entrance");if(entranceEl){setTimeout(function(){entranceEl.classList.add("out")},2200);entranceEl.addEventListener("click",function(){entranceEl.classList.add("out")})}
+var _e=document.getElementById("entrance");if(_e){(function(){try{var _v=sessionStorage.getItem("_rv");if(_v){_e.classList.add("out");_e.style.display="none";return}}catch(_x){}setTimeout(function(){_e.classList.add("out")},2200);_e.addEventListener("click",function(){_e.classList.add("out")});try{sessionStorage.setItem("_rv","1")}catch(_x){}})()}
 
 /* Scroll BG */
 (function(){var stops=[{p:0,r:253,g:251,b:245},{p:.18,r:253,g:247,b:232},{p:.36,r:251,g:249,b:242},{p:.54,r:250,g:250,b:244},{p:.72,r:253,g:246,b:228},{p:1,r:253,g:251,b:245}];function lerp(a,b,t){return a+(b-a)*t}function updateBg(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h<=0)return;var t=Math.min(1,Math.max(0,window.scrollY/h));for(var i=0;i<stops.length-1;i++){if(t>=stops[i].p&&t<=stops[i+1].p){var lt=(t-stops[i].p)/(stops[i+1].p-stops[i].p);var r=Math.round(lerp(stops[i].r,stops[i+1].r,lt));var g=Math.round(lerp(stops[i].g,stops[i+1].g,lt));var b=Math.round(lerp(stops[i].b,stops[i+1].b,lt));document.body.style.backgroundColor="rgb("+r+","+g+","+b+")";return}}}window.addEventListener("scroll",updateBg,{passive:true});updateBg()})();
@@ -1597,7 +1660,7 @@ triggerRainCloud(INGREDIENTS[dialogIngIdx].cn);
 closeDialog();closeOverlay();
 renderFormula();
 buildCatGrid();
-if(resultShown){resultEl.classList.remove('show');resultShown=false;}
+if(resultShown){resultEl.classList.remove('show');resultShown=false;var pw=document.getElementById('phWrap');if(pw)pw.style.opacity='1';}
 });
 document.getElementById('dlCancel').addEventListener('click',function(){closeDialog();closeOverlay();});
 }
@@ -1629,10 +1692,7 @@ bindSlotEvents();
 }
 
 function updateDisplay(){
-totalPercent=0;Object.values(selected).forEach(function(v){totalPercent+=v;});
-var cnt=Object.keys(selected).length;
-if(bottleFill){bottleFill.style.height=totalPercent+'%';}
-if(totalEl){totalEl.textContent=totalPercent+'%';}
+totalPercent=0;Object.values(selected).forEach(function(v){totalPercent+=v;});var cnt=Object.keys(selected).length;if(bottleFill){bottleFill.style.height=totalPercent+'%';}if(totalEl){totalEl.textContent=totalPercent+'%';}var pV=document.getElementById('phV'),pB=document.getElementById('phBg'),pN=document.getElementById('phN');if(pV&&pB&&pN&&cnt>=2){var cats={};Object.keys(selected).forEach(function(k){var c=INGREDIENTS[parseInt(k)].cat;cats[c]=(cats[c]||0)+selected[parseInt(k)];});var ks=Object.keys(cats);var vs=ks.map(function(k){return cats[k];});var a=vs.reduce(function(a,b){return a+b;},0)/vs.length;var v=vs.reduce(function(s,x){return s+Math.pow(x-a,2);},0)/vs.length;var sd=Math.sqrt(v);var ds=Math.min(1.5,ks.length/4);var bp=Math.min(1.5,sd/12);var ps=[['citrus','floral'],['floral','woody'],['citrus','woody'],['woody','resin'],['spicy','woody'],['green','floral'],['aquatic','citrus'],['floral','musk']];var pb=0;ps.forEach(function(p){if(cats[p[0]]&&cats[p[1]])pb+=.4;});var raw=7+(ds*2.5)-(bp*2.5)+pb;var ph=Math.round(Math.max(1,Math.min(14,raw))*10)/10;pV.textContent=ph.toFixed(1);var pct=(ph-1)/13*100;pB.style.width=(100-pct)+'%';pN.style.left=pct+'%';if(ph>8)pN.style.background='#9b59b6';else if(ph>6.5)pN.style.background='#2ecc71';else if(ph>5)pN.style.background='#f1c40f';else if(ph>3.5)pN.style.background='#e67e22';else pN.style.background='#e74c3c';}else if(pV){pV.textContent='-';}
 // Update ring progress
 var rf=document.getElementById('blendRingFill');
 if(rf){var circumference=326.7;var offset=circumference*(1-totalPercent/100);rf.style.strokeDashoffset=offset;}
@@ -1686,7 +1746,7 @@ btn.addEventListener('click',function(){
 var idx=parseInt(this.dataset.idx);delete selected[idx];
 selectedOrder=selectedOrder.filter(function(x){return x!==idx;});if(lastModifiedIdx===idx)lastModifiedIdx=null;
 buildCatGrid();renderFormula();
-if(resultShown){resultEl.classList.remove('show');resultShown=false;}
+if(resultShown){resultEl.classList.remove('show');resultShown=false;var pw=document.getElementById('phWrap');if(pw)pw.style.opacity='1';}
 });
 });
 }
@@ -1790,7 +1850,7 @@ if(bp){rMatch.innerHTML=bp.cn+' · <em>'+bp.en+'</em><br><small style="color:var
 var mi=[];Object.keys(data).forEach(function(k){var i=parseInt(k);if(bp.vec[cm[INGREDIENTS[i].cat]]>0)mi.push(INGREDIENTS[i].cn);});
 var w=bp.desc;if(mi.length>0){w+='<br><br><span style="font-size:.55rem;color:var(--gold);letter-spacing:.03em">雨中共有的气息：</span><br><span style="font-size:.58rem;color:var(--ink2)">'+mi.slice(0,6).join(' · ')+'</span>';}
 rWhy.innerHTML=w;}
-resultEl.classList.add('show');resultShown=true;
+resultEl.classList.add('show');resultShown=true;var pw=document.getElementById('phWrap');if(pw)pw.style.opacity='0';
 }
 
 
@@ -1849,7 +1909,7 @@ document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.r
 if(selectedMethods){selectedMethods.forEach(function(m){var btn=document.querySelector('.blend-method-btn[data-method="'+m+'"]');if(btn)btn.classList.add('active');});}
 buildCatGrid();renderFormula();
 var bn2=document.getElementById('blendNameInput');if(bn2&&data.n)bn2.value=data.n;
-resultEl.classList.remove('show');resultShown=false;
+resultEl.classList.remove('show');resultShown=false;var pw=document.getElementById('phWrap');if(pw)pw.style.opacity='1';
 readDialog.classList.remove('open');
 var sr=document.getElementById('simRain');if(sr)window.scrollTo({top:sr.offsetTop-80,behavior:'smooth'});
 }catch(e){codeErr.classList.add('show');}
@@ -1865,11 +1925,13 @@ selectedOrder=savedSelectedOrder.slice();
 lastModifiedIdx=null;totalPercent=0;
 if(savedMethods&&savedMethods.length>0){selectedMethods=savedMethods.slice();}
 else{selectedMethods=[];}
-document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.remove('active');});
+document.querySelectorAll('.blend-method-btn').forEach(function(b){b.classList.redocument.addEventListener("click",function(e){var s=e.target.closest(".fs2");if(!s)return;e.preventDefault();e.stopPropagation();var en=s.dataset.en,cn=s.dataset.cn;var sv=JSON.parse(localStorage.getItem("_rf")||"[]");var i=sv.findIndex(function(f){return f.en===en;});if(i>=0)sv.splice(i,1);else sv.push({en:en,cn:cn});localStorage.setItem("_rf",JSON.stringify(sv));_rfA()});var _rfA=function(){var sv=JSON.parse(localStorage.getItem("_rf")||"[]");var es=sv.map(function(f){return f.en;});document.querySelectorAll(".fs2").forEach(function(p){if(es.indexOf(p.dataset.en)>=0){p.classList.add("sv2");p.innerHTML="\u2605";}else{p.classList.remove("sv2");p.innerHTML="\u2606";}});};setTimeout(_rfA,500);
+var _fvL=function(){var sv=JSON.parse(localStorage.getItem("_rf")||"[]"),el=document.getElementById("fvml");if(!el)return;var bt=document.getElementById("fvt");if(!bt)return;if(!sv.length){el.innerHTML='<div class="fvme">雨中来信，静待珍藏。<br>点击卡片中的 ☆ 即可收藏。</div>';bt.classList.remove("on");return;}bt.classList.add("on");var h="";sv.forEach(function(x,i){var slug=x.en.replace(/&/g,"and").replace(/ /g,"-").replace(/'/g,"").toLowerCase();h+='<div class="fvmi"><a href="/perfume/'+slug+'.html">'+x.cn+'</a><button class="fvm2" data-idx="'+i+'">×</button></div>';});el.innerHTML=h;el.querySelectorAll(".fvm2").forEach(function(b){b.addEventListener("click",function(e){e.stopPropagation();var i=parseInt(this.dataset.idx);var sv=JSON.parse(localStorage.getItem("_rf")||"[]");sv.splice(i,1);localStorage.setItem("_rf",JSON.stringify(sv));_fvL();_rfA();});});};var fvTg=document.getElementById("fvt");if(fvTg)fvTg.addEventListener("click",function(e){e.stopPropagation();document.getElementById("fvm").classList.add("open");_fvL();});var fvX=document.getElementById("fvmx");if(fvX)fvX.addEventListener("click",function(){document.getElementById("fvm").classList.remove("open");});var fvBg=document.getElementById("fvm");if(fvBg)fvBg.addEventListener("click",function(e){if(e.target===this)this.classList.remove("open");});_fvL();
+move('active');});
 if(savedMethods){savedMethods.forEach(function(m){var btn=document.querySelector('.blend-method-btn[data-method="'+m+'"]');if(btn)btn.classList.add('active');});}
 buildCatGrid();renderFormula();
 var bn2=document.getElementById('blendNameInput');if(bn2&&data.n)bn2.value=data.n;
-resultEl.classList.remove('show');resultShown=false;
+resultEl.classList.remove('show');resultShown=false;var pw=document.getElementById('phWrap');if(pw)pw.style.opacity='1';
 resetBtn.classList.remove('show');
 var sr=document.getElementById('simRain');if(sr)window.scrollTo({top:sr.offsetTop-80,behavior:'smooth'});
 });}
@@ -2104,20 +2166,6 @@ html = f'''<!DOCTYPE html>
 
 </div>
 
-<div class="narr-hub reveal">
-<h2 class="narr-hub-title">展开叙事</h2>
-<p class="narr-hub-sub">Read the Stories</p>
-<p class="narr-hub-desc">每一场雨都有一个名字。点击以下主题，<br>阅读每款香气背后的<em>叙事</em>。</p>
-<div class="narr-tabs">
-<button class="narr-tab active" data-sid="sojourn">驻足苦旅</button>
-<button class="narr-tab" data-sid="world">世界之色</button>
-<button class="narr-tab" data-sid="feast">灵感盛宴</button>
-<button class="narr-tab" data-sid="cosmos">宙宇寰星</button>
-<button class="narr-tab" data-sid="seasons">四季所生</button>
-<button class="narr-tab" data-sid="after">雨后</button>
-</div>
-</div>
-
 <section class="section-divider reveal"><div class="section-divider-inner"></div></section>
 
 <div style="display:none" aria-hidden="true">
@@ -2142,72 +2190,13 @@ html = f'''<!DOCTYPE html>
 </section>
 
 <div class="frag-grid reveal">
-<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 忆中虚构</span> <img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWNlNmRlIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjY0IiBjeT0iNzQiIHI9IjY0IiBmaWxsPSJub25lIiBzdHJva2U9IiNhMDk4OGMiIHN0cm9rZS13aWR0aD0iMC4xNSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjE4MyIgY3k9IjExOSIgcj0iMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M0YjhhMiIgc3Ryb2tlLXdpZHRoPSIwLjE3IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9IjczIiB5MT0iMTE2IiB4Mj0iMjQ5IiB5Mj0iMTE2IiBzdHJva2U9IiM5YzhjNzQiIHN0cm9rZS13aWR0aD0iMC4xMiIgb3BhY2l0eT0iMC4xIi8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iNTUiIHI9IjUzIiBmaWxsPSJub25lIiBzdHJva2U9IiNhMDk4OGMiIHN0cm9rZS13aWR0aD0iMC4wOCIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLWRhc2hhcnJheT0iNiA4Ii8+PHRleHQgeD0iMTQwIiB5PSIxNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJJbnRlcixIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSI4LjMiIGxldHRlci1zcGFjaW5nPSIzIiBmaWxsPSIjOWM4Yzc0IiBvcGFjaXR5PSIwLjM1Ij7miJHmlYXoh4bmg7M8L3RleHQ+PGxpbmUgeDE9IjY2IiB5MT0iMTQ3IiB4Mj0iMjEzIiB5Mj0iMTQ3IiBzdHJva2U9IiNiODk0M2UiIHN0cm9rZS13aWR0aD0iMC4xNSIgb3BhY2l0eT0iMC4yIi8+Cjwvc3ZnPg==" alt="Coming Soon"></div>
-<div class="frag-info">
-<p class="frag-num">SOJOURN · 驻足苦旅</p>
-<h3 class="frag-name-en" style="font-size:1.75rem">我故臆想</h3>
-<p class="frag-name-cn">The Fable I Tell Myself</p>
-<p class="frag-accord"><b>Top</b> 当归 · 没药 · 粉红胡椒<br><b>Heart</b> 鸢尾 · 紫罗兰 · 纸莎草<br><b>Base</b> 檀木 · 香草 · 安息香</p>
-</div></div></div>
-
-<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 身体美术馆</span><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZjVlZGUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjczIiBjeT0iNzkiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiNkNGE4NGIiIHN0cm9rZS13aWR0aD0iMC4yMSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjE5NyIgY3k9Ijg3IiByPSIyMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzQ5NjNhIiBzdHJva2Utd2lkdGg9IjAuMTMiIG9wYWNpdHk9IjAuMTIiLz48bGluZSB4MT0iMzMiIHkxPSIxMDgiIHgyPSIyMTciIHkyPSIxMDgiIHN0cm9rZT0iIzhiNjkxNCIgc3Ryb2tlLXdpZHRoPSIwLjEyIiBvcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIxNzkiIGN5PSI2MiIgcj0iNTQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q0YTg0YiIgc3Ryb2tlLXdpZHRoPSIwLjA4IiBvcGFjaXR5PSIwLjA4IiBzdHJva2UtZGFzaGFycmF5PSI5IDYiLz48dGV4dCB4PSIxNDAiIHk9IjE0MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjcuNyIgbGV0dGVyLXNwYWNpbmc9IjYiIGZpbGw9IiM4YjY5MTQiIG9wYWNpdHk9IjAuMzUiPuedgOaIkeS5i+WigzwvdGV4dD48bGluZSB4MT0iNjkiIHkxPSIxNDciIHgyPSIyMTEiIHkyPSIxNDciIHN0cm9rZT0iI2I4OTQzZSIgc3Ryb2tlLXdpZHRoPSIwLjE1IiBvcGFjaXR5PSIwLjIiLz4KPC9zdmc+" alt="Coming Soon"></div>
-<div class="frag-info">
-<p class="frag-num">WORLD · 世界之色</p>
-<h3 class="frag-name-en" style="font-size:1.75rem">着我之境</h3>
-<p class="frag-name-cn">The World Through Me</p>
-<p class="frag-accord"><b>Top</b> 苦橙叶 · 白松香 · 粉红胡椒<br><b>Heart</b> 土耳其玫瑰 · 沉香 · 番红花<br><b>Base</b> 皮革 · 琥珀 · 苏合香</p>
-</div></div></div>
-
-<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 午夜款待</span><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZjJlNWQzIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjkzIiBjeT0iNjQiIHI9IjY5IiBmaWxsPSJub25lIiBzdHJva2U9IiNlMGI4NWMiIHN0cm9rZS13aWR0aD0iMC4xMSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjIxOCIgY3k9IjgzIiByPSIzOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmE4ZTMyIiBzdHJva2Utd2lkdGg9IjAuMTciIG9wYWNpdHk9IjAuMTIiLz48bGluZSB4MT0iNzUiIHkxPSIxMDIiIHgyPSIyMjYiIHkyPSIxMDIiIHN0cm9rZT0iIzhiNjkxNCIgc3Ryb2tlLXdpZHRoPSIwLjEyIiBvcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIxODkiIGN5PSIxMDUiIHI9IjMyIiBmaWxsPSJub25lIiBzdHJva2U9IiNlMGI4NWMiIHN0cm9rZS13aWR0aD0iMC4wOCIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLWRhc2hhcnJheT0iNSAxMSIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4xIiBsZXR0ZXItc3BhY2luZz0iNSIgZmlsbD0iIzhiNjkxNCIgb3BhY2l0eT0iMC4zNSI+5LuK5aSc5ZSv5oiRPC90ZXh0PjxsaW5lIHgxPSI2NyIgeTE9IjE0NyIgeDI9IjE4MyIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=" alt="Coming Soon"></div>
-<div class="frag-info">
-<p class="frag-num">FEAST · 灵感盛宴</p>
-<h3 class="frag-name-en" style="font-size:1.75rem">今夜唯我</h3>
-<p class="frag-name-cn">Tonight, Only I Remain</p>
-<p class="frag-accord"><b>Top</b> 香槟调 · 杜松 · 柑橘皮<br><b>Heart</b> 鸢尾 · 烟草 · 黑巧克力<br><b>Base</b> 愈创木 · 皮革 · 麝香</p>
-</div></div></div>
-
-<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 秩序散落</span><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWJlZWY0IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjgwIiBjeT0iNzYiIHI9IjcxIiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTZhOGMiIHN0cm9rZS13aWR0aD0iMC4yMiIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjIwNiIgY3k9IjEwOCIgcj0iMjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhNWE3YyIgc3Ryb2tlLXdpZHRoPSIwLjE2IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9IjU0IiB5MT0iMTEzIiB4Mj0iMjE1IiB5Mj0iMTEzIiBzdHJva2U9IiMzYTRhNmMiIHN0cm9rZS13aWR0aD0iMC4xMiIgb3BhY2l0eT0iMC4xIi8+PGNpcmNsZSBjeD0iMTEwIiBjeT0iOTUiIHI9IjQ5IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTZhOGMiIHN0cm9rZS13aWR0aD0iMC4wOCIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLWRhc2hhcnJheT0iNCA2Ii8+PHRleHQgeD0iMTQwIiB5PSIxNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJJbnRlcixIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSI4LjEiIGxldHRlci1zcGFjaW5nPSI2IiBmaWxsPSIjM2E0YTZjIiBvcGFjaXR5PSIwLjM1Ij7nhrXlop7ml7Y8L3RleHQ+PGxpbmUgeDE9IjkxIiB5MT0iMTQ3IiB4Mj0iMTk5IiB5Mj0iMTQ3IiBzdHJva2U9IiNiODk0M2UiIHN0cm9rZS13aWR0aD0iMC4xNSIgb3BhY2l0eT0iMC4yIi8+Cjwvc3ZnPg==" alt="Coming Soon"></div>
-<div class="frag-info">
-<p class="frag-num">COSMOS · 宙宇寰星</p>
-<h3 class="frag-name-en" style="font-size:1.75rem">熵增时</h3>
-<p class="frag-name-cn">The Hour of Entropy</p>
-<p class="frag-accord"><b>Top</b> 醛香 · 臭氧 · 薄荷<br><b>Heart</b> 鸢尾 · 没药 · 焚香<br><b>Base</b> 白麝香 · 琥珀 · 矿物调</p>
-</div></div></div>
-
-<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 岁时坐标</span><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWRmMmU4IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTciIHI9IjQzIiBmaWxsPSJub25lIiBzdHJva2U9IiM4YTljN2EiIHN0cm9rZS13aWR0aD0iMC4xMSIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjE3MCIgY3k9IjEyMSIgcj0iMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzlhYWM4YSIgc3Ryb2tlLXdpZHRoPSIwLjE1IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9Ijg0IiB5MT0iODAiIHgyPSIyMjkiIHkyPSI4MCIgc3Ryb2tlPSIjNWE3YzRmIiBzdHJva2Utd2lkdGg9IjAuMTIiIG9wYWNpdHk9IjAuMSIvPjxjaXJjbGUgY3g9IjE0MCIgY3k9IjQ4IiByPSIzNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOGE5YzdhIiBzdHJva2Utd2lkdGg9IjAuMDgiIG9wYWNpdHk9IjAuMDgiIHN0cm9rZS1kYXNoYXJyYXk9IjggNyIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4wIiBsZXR0ZXItc3BhY2luZz0iNiIgZmlsbD0iIzVhN2M0ZiIgb3BhY2l0eT0iMC4zNSI+5paw5pe25Luj6L+B5rWBPC90ZXh0PjxsaW5lIHgxPSI3MiIgeTE9IjE0NyIgeDI9IjIxMiIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=" alt="Coming Soon"></div>
-<div class="frag-info">
-<p class="frag-num">SEASONS · 四季所生</p>
-<h3 class="frag-name-en" style="font-size:1.75rem">新时代迁流</h3>
-<p class="frag-name-cn">The River of Seasons</p>
-<p class="frag-accord"><b>Top</b> 竹叶 · 薄荷 · 柑橘<br><b>Heart</b> 桂花 · 白茶 · 紫藤<br><b>Base</b> 白麝香 · 檀木 · 米浆</p>
-</div></div></div>
-
-<div class="frag-card collection-card" onmousemove="cardTilt(this,event)" onmouseleave="cardReset(this)">
-<span class="corner c-tl"></span><span class="corner c-br"></span>
-<div class="frag-card-inner">
-<div class="frag-img-wrap"><span class="poster-badge">典藏臻酿 · 未来首句</span><img class="frag-img frag-img-cs" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMTg0Ij4KICA8cmVjdCBmaWxsPSIjZWRmMGY1IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE4NCIvPgogIDxjaXJjbGUgY3g9IjY5IiBjeT0iNzkiIHI9IjU0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5MGEwYWMiIHN0cm9rZS13aWR0aD0iMC4xOCIgb3BhY2l0eT0iMC4xNSIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjEwNiIgcj0iMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2IwYmNjOCIgc3Ryb2tlLXdpZHRoPSIwLjE4IiBvcGFjaXR5PSIwLjEyIi8+PGxpbmUgeDE9IjEwNSIgeTE9IjEyMiIgeDI9IjIwNyIgeTI9IjEyMiIgc3Ryb2tlPSIjNzU4NTk1IiBzdHJva2Utd2lkdGg9IjAuMTIiIG9wYWNpdHk9IjAuMSIvPjxjaXJjbGUgY3g9IjE3NyIgY3k9IjY5IiByPSI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOTBhMGFjIiBzdHJva2Utd2lkdGg9IjAuMDgiIG9wYWNpdHk9IjAuMDgiIHN0cm9rZS1kYXNoYXJyYXk9IjcgNSIvPjx0ZXh0IHg9IjE0MCIgeT0iMTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOC4yIiBsZXR0ZXItc3BhY2luZz0iNSIgZmlsbD0iIzc1ODU5NSIgb3BhY2l0eT0iMC4zNSI+6Ie05paw55SfPC90ZXh0PjxsaW5lIHgxPSI4MyIgeTE9IjE0NyIgeDI9IjE5MCIgeTI9IjE0NyIgc3Ryb2tlPSIjYjg5NDNlIiBzdHJva2Utd2lkdGg9IjAuMTUiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=" alt="Coming Soon"></div>
-<div class="frag-info">
-<p class="frag-num">AFTER · 雨后</p>
-<h3 class="frag-name-en" style="font-size:1.75rem">致新生</h3>
-<p class="frag-name-cn">To What Comes Next</p>
-<p class="frag-accord"><b>Top</b> 绿叶 · 佛手柑 · 薄荷<br><b>Heart</b> 铃兰 · 白茶 · 蕨类<br><b>Base</b> 白麝香 · 雪松 · 琥珀</p>
-</div></div></div>
-</div>
+{collection_card("Figment")}
+{collection_card("Adorn")}
+{collection_card("Tonight")}
+{collection_card("Entropy")}
+{collection_card("Migration")}
+{collection_card("Renew")}
+</div></div>
 
 {narrative_btn('collection', 'Narr')}
 
@@ -2330,6 +2319,7 @@ html = f'''<!DOCTYPE html>
 </div>
 
 <div class="blend-name-row"><input class="blend-name-input" id="blendNameInput" placeholder="为你的雨命名..." maxlength="20"></div>
+<div class="phw" id="phWrap"><div class="phs"><span class="phl">pH</span><div class="phb"><div class="phf" id="phBg"></div><div class="phn" id="phN"></div></div><span class="phv" id="phV">-</span></div></div>
 <div class="blend-submit-wrap"><button class="blend-submit" id="blendSubmit">降下这场雨</button></div>
 </div>
 </div>
@@ -2383,6 +2373,8 @@ html = f'''<!DOCTYPE html>
 </div></section>
 
 <!-- BUTTONS -->
+<div class="fvp" id="fvp"><button class="fvt" id="fvt">&#9733;</button></div>
+<div class="fvm" id="fvm"><div class="fvmc"><button class="fvmx" id="fvmx">&#10799;</button><div class="fvms"><div class="fvmt">我的收藏</div><p class="fvmsub">你曾在雨中驻足的那些片刻，<br>都悄悄地留在了这里。</p><div class="fvml" id="fvml"><div class="fvme">雨中来信，静待珍藏。<br>点击卡片中的 &#9734; 即可收藏。</div></div></div></div></div>
 <button class="music-btn" id="musicBtn"><svg viewBox="0 0 24 24"><path d="M12 2C9.5 2 7 4 7 10c0 3 1.2 5 2.5 6l-1.5 4h8l-1.5-4c1.3-1 2.5-3 2.5-6 0-6-2.5-8-5-8z"/></svg></button>
 <button class="back-top" id="backTop"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
