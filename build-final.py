@@ -531,6 +531,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 /* ══ Decoration Layers ══ */
 .paper{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.22;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px;mix-blend-mode:multiply}
+.global-rain-canvas{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35}
 .cursor-dot{position:fixed;width:6px;height:6px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s,box-shadow .25s;box-shadow:0 0 12px rgba(184,148,62,.4)}
 .cursor-dot.expand{width:10px;height:10px;background:var(--gold-l);box-shadow:0 0 20px rgba(212,182,96,.6)}
 .cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(184,148,62,.3);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .35s,height .35s,border-color .35s,background .35s;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
@@ -883,7 +884,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 /* ══ Responsive ══ */
 @media (max-width:1080px){.frag-grid{grid-template-columns:1fr 1fr;padding:0 1.5rem;gap:14px}.frag-card{min-height:420px;padding:2.5rem 1.5rem}.craft-grid{grid-template-columns:1fr;gap:14px}}
-@media (max-width:768px){.frag-grid{grid-template-columns:1fr;padding:0 1rem;gap:12px}.frag-card{min-height:360px;padding:2rem 1.2rem}.frag-name-en{font-size:1.3rem}.frag-name-cn{font-size:.8rem}.hero{padding:5rem 1.2rem 3rem;min-height:90vh}.hero-title{font-size:clamp(2.8rem,14vw,5rem)}.hero-sub-en{font-size:.5rem;letter-spacing:.3em}.hero-sub-cn{font-size:.55rem;letter-spacing:.2em}.hero-frame{inset:1.5rem}.hero-gold-line{width:85%}.phil{padding:3rem 1rem}.phil-inner{padding:2.5rem 1.5rem}.phil-text{font-size:.9rem;line-height:2.5}.quiz-inner{padding:2.5rem 1.5rem}.quiz .title{font-size:1.4rem}.quiz .q{font-size:.88rem}.quiz-opt{font-size:.68rem;padding:.5rem 1.2rem}.nl-inner{padding:2.5rem 1.5rem}.nl-form{flex-direction:column;gap:.8rem}.nl-btn{width:100%}.founders-inner,.man-inner{padding:2.5rem 1.5rem}.craft-card{padding:2rem 1.5rem}.footer{padding:2.5rem 1.5rem}.ft-links{gap:1.5rem}}
+@media (max-width:768px){.frag-grid{grid-template-columns:1fr;padding:0 1rem;gap:12px}.frag-card{min-height:360px;padding:2rem 1.2rem}.frag-name-en{font-size:1.3rem}.frag-name-cn{font-size:.8rem}.hero{padding:5rem 1.2rem 3rem;min-height:90vh}.hero-title{font-size:1.75rem;clamp(2.8rem,14vw,5rem)}.hero-sub-en{font-size:.5rem;letter-spacing:.3em}.hero-sub-cn{font-size:.9375rem;letter-spacing:.2em}.hero-frame{inset:1.5rem}.hero-gold-line{width:85%}.phil{padding:3rem 1rem}.phil-inner{padding:2.5rem 1.5rem}.phil-text{font-size:.9rem;line-height:2.5}.quiz-inner{padding:2.5rem 1.5rem}.quiz .title{font-size:1.375rem;1.4rem}.quiz .q{font-size:.88rem}.quiz-opt{font-size:.68rem;padding:.5rem 1.2rem}.nl-inner{padding:2.5rem 1.5rem}.nl-form{flex-direction:column;gap:.8rem}.nl-btn{width:100%}.founders-inner,.man-inner{padding:2.5rem 1.5rem}.craft-card{padding:2rem 1.5rem}.footer{padding:2.5rem 1.5rem}.ft-links{gap:1.5rem}}
 @media (max-width:480px){.hero{padding:4rem 1rem 2.5rem;min-height:85vh}.hero-title{font-size:clamp(2.2rem,12vw,3.5rem)}.hero-sub-en{font-size:.45rem;letter-spacing:.2em}.hero-sub-cn{font-size:.5rem;letter-spacing:.15em}.hero-line{font-size:.78rem}.hero-frame{display:none}.hero-gold-line{width:90%}.frag-card{min-height:300px;padding:1.5rem 1rem}.frag-img-wrap{margin-bottom:1.2rem}.phil-inner{padding:2rem 1.2rem}.footer{padding:2rem 1rem}}
 
 /* ══ 模拟降雨 ══ */
@@ -912,6 +913,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 .blend-overlay-header .ov-count{font-size:.65rem;color:var(--gold);margin-top:.4rem;opacity:.7}
 .blend-overlay-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;padding:0 2rem 3rem;max-width:1200px;margin:0 auto}
 .blend-overlay-item{display:flex;flex-direction:column;gap:.5rem;padding:1.2rem 1.4rem;border:1px solid rgba(184,148,62,.08);border-radius:12px;background:rgba(255,253,250,.4);backdrop-filter:blur(8px);cursor:none;transition:all .35s cubic-bezier(.4,0,.2,1);animation-timing-function:cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.blend-overlay-item .oi-desc{display:none}.blend-overlay-item:hover .oi-desc{display:block;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:260px;background:rgba(253,249,239,.97);border:1px solid rgba(184,148,62,.15);border-radius:8px;padding:.6rem .8rem;font-size:.7rem;color:var(--ink2);line-height:1.7;box-shadow:0 8px 24px rgba(0,0,0,.06);z-index:10;pointer-events:none}
 .blend-overlay-item:hover{border-color:rgba(184,148,62,.3);background:rgba(255,253,250,.65);transform:translateY(-3px);box-shadow:0 8px 28px rgba(184,148,62,.08)}.blend-overlay-item::after{content:'';position:absolute;inset:-2px;border-radius:14px;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(212,182,96,.08) 0%,transparent 50%);opacity:0;transition:opacity .4s ease;pointer-events:none;z-index:0}.blend-overlay-item:hover::after{opacity:1}
 .blend-overlay-item.selected{border-color:var(--gold);background:rgba(184,148,62,.04)}
 .blend-overlay-item .oi-cn{font-family:'Noto Serif SC',serif;font-size:.82rem;color:var(--ink);letter-spacing:.04em}
@@ -944,6 +946,7 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 
 
 /* ══ 调香瓶 ══ */
+.blend-total-pct-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}.blend-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.blend-total{position:relative;z-index:1}
 .blend-total-strip{display:flex;align-items:center;justify-content:center;gap:1rem;padding:.5rem 0;flex-wrap:wrap}
 .blend-total-pct-wrap{display:flex;align-items:center;gap:.4rem}
 .blend-total-label{font-family:'Noto Serif SC',serif;font-size:.65rem;color:var(--ink3);letter-spacing:.06em}
@@ -1138,6 +1141,52 @@ body{font-family:'Inter','Noto Serif SC',sans-serif;background:var(--bg);color:v
 # JS
 # =====================================================================
 JS = '''
+
+/* Global rain particles (density by section) */
+(function(){
+var canvas=document.createElement('canvas');canvas.className='global-rain-canvas';
+document.body.prepend(canvas);
+var ctx=canvas.getContext('2d'),w,h,drops=[],density=0,targetDensity=0;
+function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+
+var densities={simRain:120,quiz:60,phil:40,craft:30,founders:30,newsletter:20,default:25};
+
+function updateDensity(){
+var best=densities.default;
+Object.keys(densities).forEach(function(id){
+var el=document.getElementById(id);if(!el)return;
+var rect=el.getBoundingClientRect();
+var vis=rect.top<h&&rect.bottom>0;
+if(vis&&(densities[id]||0)>best)best=densities[id];
+});
+targetDensity=best;
+if(window.innerWidth<=768)targetDensity=Math.floor(targetDensity*.4);
+}
+
+function spawn(){
+while(drops.length<targetDensity){drops.push({x:Math.random()*w,y:Math.random()*h,speed:1.5+Math.random()*4,len:8+Math.random()*20,opacity:.08+Math.random()*.18,wind:(Math.random()-.5)*.6});}
+while(drops.length>targetDensity+20)drops.pop();
+}
+
+function draw(){
+ctx.clearRect(0,0,w,h);
+drops.forEach(function(d,i){
+ctx.beginPath();
+ctx.strokeStyle='rgba(184,148,62,'+d.opacity+')';
+ctx.moveTo(d.x,d.y);ctx.lineTo(d.x+d.wind,d.y+d.len);
+ctx.lineWidth=.6;ctx.stroke();
+d.y+=d.speed;d.x+=d.wind*.3;
+if(d.y>h+d.len){d.y=-d.len;d.x=Math.random()*w;}
+});
+if(drops.length<targetDensity-5)spawn();
+density+= (targetDensity-density)*.02;
+requestAnimationFrame(draw);
+}
+
+var lastCheck=0;setInterval(function(){updateDensity();},2000);
+updateDensity();spawn();draw();
+})();
 /* Entrance */
 var entranceEl=document.getElementById("entrance");if(entranceEl){setTimeout(function(){entranceEl.classList.add("out")},2200);entranceEl.addEventListener("click",function(){entranceEl.classList.add("out")})}
 
@@ -1250,7 +1299,7 @@ setTimeout(function(){
  var first=document.querySelector('.narr-tab[data-sid=\"sojourn\"]');
  if(first)first.click();
 },300);
-	}
+  }
 
 /* Narrative buttons */
 document.querySelectorAll(".narr-btn").forEach(function(btn){var body=document.getElementById(btn.dataset.target),open=false;if(!body)return;body.style.maxHeight="0";body.classList.add("collapsed");btn.addEventListener("click",function(){if(open){body.style.maxHeight="0";body.classList.add("collapsed");btn.textContent="展开叙事";open=false}else{body.style.maxHeight=body.scrollHeight+"px";body.classList.remove("collapsed");btn.textContent="收起叙事";open=true}})});
@@ -1584,6 +1633,20 @@ totalPercent=0;Object.values(selected).forEach(function(v){totalPercent+=v;});
 var cnt=Object.keys(selected).length;
 if(bottleFill){bottleFill.style.height=totalPercent+'%';}
 if(totalEl){totalEl.textContent=totalPercent+'%';}
+// Update ring progress
+var rf=document.getElementById('blendRingFill');
+if(rf){var circumference=326.7;var offset=circumference*(1-totalPercent/100);rf.style.strokeDashoffset=offset;}
+// Update layer arcs
+var topPct=0,midPct=0,basePct=0;
+selectedOrder.forEach(function(oi,i){
+var cum=0;for(var j=0;j<i;j++)cum+=selected[selectedOrder[j]];
+if(cum<30)topPct+=selected[oi];
+else if(cum<70)midPct+=selected[oi];
+else basePct+=selected[oi];
+});
+var rt=document.getElementById('blendRingTop');if(rt){rt.style.stroke='var(--gold)';rt.style.strokeDashoffset=96*(1-topPct/30);}
+var rm=document.getElementById('blendRingMid');if(rm){rm.style.stroke='var(--gold-d)';rm.style.strokeDashoffset=130*(1-midPct/40);}
+var rb=document.getElementById('blendRingBase');if(rb){rb.style.stroke='rgba(139,105,30,.35)';rb.style.strokeDashoffset=96*(1-basePct/30);}
 if(totalPercent===100&&cnt>=2&&cnt<=8){
 if(totalEl)totalEl.classList.remove('warn');
 submitBtn.classList.add('ready');
@@ -2239,7 +2302,7 @@ html = f'''<!DOCTYPE html>
 </div>
 <div class="blend-wrap" id="blendWrap">
 <div class="blend-ingredient-table" id="blendCatContainer"></div>
-<div class="blend-total-strip"><div class="blend-total-pct-wrap"><span class="blend-total-label">瓶中</span><span class="blend-total" id="blendTotal">0%</span></div><div class="blend-digi-btns"><button class="blend-digi-btn" id="blendDigitalSaveBtn"><span>弥留数码雨</span></button><button class="blend-digi-btn ready" id="blendDigitalLoadBtn"><span>共淋数码雨</span></button></div></div>
+<div class="blend-total-strip"><div class="blend-total-pct-wrap"><svg class="blend-ring" viewBox="0 0 120 120" width="100" height="100"><circle class="blend-ring-bg" cx="60" cy="60" r="52" fill="none" stroke="rgba(184,148,62,.08)" stroke-width="4"/><circle class="blend-ring-fill" id="blendRingFill" cx="60" cy="60" r="52" fill="none" stroke="var(--gold)" stroke-width="4" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset .6s ease"/><circle class="blend-ring-top" id="blendRingTop" cx="60" cy="60" r="46" fill="none" stroke="rgba(212,182,96,.25)" stroke-width="1.5" stroke-dasharray="96" stroke-dashoffset="96" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset .6s ease"/><circle class="blend-ring-mid" id="blendRingMid" cx="60" cy="60" r="46" fill="none" stroke="rgba(184,148,62,.25)" stroke-width="1.5" stroke-dasharray="130" stroke-dashoffset="130" transform="rotate(42 60 60)" style="transition:stroke-dashoffset .6s ease"/><circle class="blend-ring-base" id="blendRingBase" cx="60" cy="60" r="46" fill="none" stroke="rgba(139,105,30,.2)" stroke-width="1.5" stroke-dasharray="96" stroke-dashoffset="96" transform="rotate(198 60 60)" style="transition:stroke-dashoffset .6s ease"/></svg><span class="blend-total" id="blendTotal">0%</span></div><div class="blend-digi-btns"><button class="blend-digi-btn" id="blendDigitalSaveBtn"><span>弥留数码雨</span></button><button class="blend-digi-btn ready" id="blendDigitalLoadBtn"><span>共淋数码雨</span></button></div></div>
 <div class="blend-bottle-section">
 <div class="blend-bottle">
 <div class="blend-rain-cloud" id="blendRainCloud"><svg viewBox="0 0 70 40"><ellipse cx="22" cy="22" rx="14" ry="9" fill="rgba(184,148,62,.15)"/><ellipse cx="35" cy="18" rx="18" ry="11" fill="rgba(184,148,62,.2)"/><ellipse cx="50" cy="23" rx="13" ry="8" fill="rgba(184,148,62,.12)"/><line x1="18" y1="28" x2="17" y2="36" stroke="rgba(212,182,96,.4)" stroke-width=".8" stroke-linecap="round"/><line x1="28" y1="26" x2="28" y2="38" stroke="rgba(212,182,96,.5)" stroke-width="1" stroke-linecap="round"/><line x1="35" y1="24" x2="35" y2="37" stroke="rgba(212,182,96,.6)" stroke-width="1.2" stroke-linecap="round"/><line x1="42" y1="26" x2="43" y2="36" stroke="rgba(212,182,96,.4)" stroke-width=".9" stroke-linecap="round"/><line x1="52" y1="28" x2="51" y2="35" stroke="rgba(212,182,96,.35)" stroke-width=".7" stroke-linecap="round"/></svg></div>
